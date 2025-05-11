@@ -2,6 +2,8 @@
 
 **Stüdyo®** is a next-generation music platform that blends streaming, personalization, and creative expression. Built for listeners, loved by creators — Stüdyo® redefines how we experience sound.
 
+This is the official frontend for **STÜDYO®**, a modern music platform — built with [Next.js](https://nextjs.org/).
+
 ## 🚀 Features
 
 - 🎵 **Stream Seamlessly** – Discover music curated for your mood and moments.
@@ -30,6 +32,8 @@
 └── studyo-backend/   → Laravel backend
 
 
+
+
 ## 🚀 Deployment (Vercel + Laravel API)
 
 **Front-end** : Vercel + Github
@@ -37,7 +41,7 @@
 
 ## 🌐 Live Demo
 
-Check out the live platform: [studyo-beta.vercel.app](https://www.studyo-beta.vercel.app)  
+Check out the live platform: [studyo-beta.vercel.app](https://studyo-beta.vercel.app/)  
 
 
 ## 📄 License
@@ -47,6 +51,7 @@ This project is licensed under the MIT License.
 ## ❤️ Credits
 Developed and designed by **Mounir Lagzouli**
 Follow me on Instagram 
+
 
 ## 📦 Getting Started
 
