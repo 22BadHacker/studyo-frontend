@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎧 Stüdyo® - Your Sound, Your Space
 
-## Getting Started
+**Stüdyo®** is a next-generation music platform that blends streaming, personalization, and creative expression. Built for listeners, loved by creators — Stüdyo® redefines how we experience sound.
 
-First, run the development server:
+## 🚀 Features
+
+- 🎵 **Stream Seamlessly** – Discover music curated for your mood and moments.
+- 🎚️ **Creator Tools** – Upload, mix, and share your own tracks.
+- 🧠 **Smart Recommendations** – playlists tailored to your taste.
+- 🎨 **Profile Customization** – Make your listening space truly yours.
+- 🌍 **Global Vibes** – Explore audio from around the world in one place.
+
+## 🔥 Taglines
+
+> *"Feel Every Beat."*  
+> *"Where Music Finds Its Shape."*  
+> *"Not Just Music. A Movement."*  
+> *"The Future Sounds Like This."*
+
+## 🛠️ Tech Stack (Example)
+
+- **Frontend:** Next JS, Tailwind CSS, Framer Motion  
+- **Backend:** Laravel, MySQL  
+
+## 📁 File Structure
+
+STÜDYO/
+├── client/   → Next.js frontend
+└── server/   → Laravel backend
+
+**📂 Frontend (Next.js)**
+
+client/
+├── app/
+│   ├── components/          # Reusable UI components
+│   ├── pages/               # Next.js routes
+│   │   ├── index.tsx        # Home
+│   │   ├── player.tsx       # Music player
+│   │   └── api/             # API routes (if any)
+│   ├── styles/              # CSS, Tailwind, or SCSS
+│   ├── context/             # Global state (e.g. Auth, Player)
+│   
+├── public/                  # Static assets like icons and OG images
+├── .env.local               # Env variables (e.g. API base URL)
+├── next.config.js           # Next.js config
+
+**📂 Backend(Laravel)**
+server/
+├── app/
+│   ├── Http/
+│   ├── Models/
+│   └── Services/
+├── routes/
+│   └── api.php         # API routes
+├── database/
+│   └── migrations/
+├── config/
+│   └── cors.php
+├── .env
+├── composer.json
+└── artisan
+
+
+## 🚀 Deployment (Vercel + Laravel API)
+
+**Front-end** : Vercel + Github
+**back-end** : Render + Github
+
+## 🌐 Live Demo
+
+Check out the live platform: [studyo-beta.vercel.app](https://www.studyo-beta.vercel.app)  
+
+
+## 📄 License
+This project is licensed under the MIT License.
+© 2025 Stüdyo® — All rights reserved.
+
+## ❤️ Credits
+Developed and designed by **Mounir Lagzouli**
+Follow me on Instagram 
+
+## 📦 Getting Started
 
 ```bash
+# Clone the repository
+git clone https://github.com/22BadHacker/studyo-frontend.git
+
+# Go into the project directory
+cd client
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
