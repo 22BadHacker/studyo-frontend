@@ -24,41 +24,10 @@
 
 ## 📁 File Structure
 
-STÜDYO/
-├── client/   → Next.js frontend
-└── server/   → Laravel backend
+**STÜDYO/**
 
-**📂 Frontend (Next.js)**
-
-client/
-├── app/
-│   ├── components/          # Reusable UI components
-│   ├── pages/               # Next.js routes
-│   │   ├── index.tsx        # Home
-│   │   ├── player.tsx       # Music player
-│   │   └── api/             # API routes (if any)
-│   ├── styles/              # CSS, Tailwind, or SCSS
-│   ├── context/             # Global state (e.g. Auth, Player)
-│   
-├── public/                  # Static assets like icons and OG images
-├── .env.local               # Env variables (e.g. API base URL)
-├── next.config.js           # Next.js config
-
-**📂 Backend(Laravel)**
-server/
-├── app/
-│   ├── Http/
-│   ├── Models/
-│   └── Services/
-├── routes/
-│   └── api.php         # API routes
-├── database/
-│   └── migrations/
-├── config/
-│   └── cors.php
-├── .env
-├── composer.json
-└── artisan
+├── studyo-frontend/   → Next.js frontend
+└── studyo-backend/   → Laravel backend
 
 
 ## 🚀 Deployment (Vercel + Laravel API)
