@@ -221,7 +221,7 @@ const Form = () => {
                 <button
                   type="submit"
                   disabled={!isFormValid}
-                  className={`h-[52px] mt-1 rounded-full font-bold ${
+                  className={`h-[52px] mt-1  border-[.5px] rounded-full font-bold ${
                     !isFormValid
                       ? 'bg-main/15 text-white/30 border-main/15 cursor-not-allowed'
                       : 'bg-white text-main2 border-white/50 cursor-pointer'
