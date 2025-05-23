@@ -7,6 +7,8 @@ import google from '@/public/Logo/google.svg';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import Svg from '@/Component/Svg';
 import { useAppHook } from '@/context/AppProvider';
+import { LiaLongArrowAltLeftSolid } from "react-icons/lia";
+import { motion } from 'framer-motion';
 
 const Form = () => {
   const [step, setStep] = useState(1);
@@ -69,7 +71,7 @@ const Form = () => {
   return (
     <div className="w-full h-full p-6 bg-black/40 z-[10]">
       {/* Header */}
-      <div className="w-full flex justify-between items-center">
+      <div className="w-fit">
         <Link href="/">
           <Image
             alt="Logo"
@@ -83,7 +85,7 @@ const Form = () => {
 
       {/* Form Steps */}
       <div className="w-full h-full flex justify-center gap-10 flex-col items-center">
-        <form onSubmit={handleFormSubmit} className="flex flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">
+        <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className="flex flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">
           {step === 1 && (
             <>
               <h1 className="text-white pt-3 font-bold text-center leading-[1.2] text-[32px] max-w-[480px]">
@@ -148,7 +150,7 @@ const Form = () => {
                     <span className="underline">Notification Settings</span>.
                   </p>
 
-                  <p className=' w-full rounded-[11px]  fixed bottom-4  right-12 text-right text-white text-[13.5px] pt-2 opacity-85'>Already have an account?<Link className='underline text-green-500 opacity-100 font-bold' href={'/Auth/Login'}> Log in here.</Link></p>
+                  <p className=' w-full rounded-[11px]  fixed bottom-4  right-12 text-right text-white text-[13.5px] pt-2 '>Already have an account?<Link className='underline text-green-500 opacity-100 font-bold' href={'/Auth/Login'}> Log in here.</Link></p>
                 </div>
               </div>
             </>
@@ -156,13 +158,17 @@ const Form = () => {
 
           {step === 2 && (
             <>
+            <div onClick={() => setStep(1)}  className="flex text-green-500 left-6 top-5 absolute  gap-2 items-center">
+              <LiaLongArrowAltLeftSolid className='text-[19px]' />
               <button
                 type="button"
-                onClick={() => setStep(1)}
-                className="absolute cursor-pointer left-7 top-5 text-green-500 text-[14px] border-b"
+                
+                className=" flex items-center gap-1 cursor-pointer   text-[14px] border-b"
               >
                 Back
               </button>
+
+            </div>
               <div className="text-center">
                 <h1 className="text-white pt-10 font-bold text-[32px] leading-[1.2] max-w-[480px]">
                   Final details, we promise.
@@ -172,7 +178,7 @@ const Form = () => {
                 </p>
               </div>
 
-              <div className="w-full max-w-[90%] pt-[55px] flex flex-col gap-5">
+              <div className="w-full max-w-[90%] pt-[51.5px] flex flex-col gap-5">
                 <div className="flex pb-1 flex-col gap-1">
 
                     <label className="text-white text-[14px] font-medium">
@@ -252,11 +258,11 @@ const Form = () => {
                   <span className="underline">Privacy Policy</span>, and our default{' '}
                   <span className="underline">Notification Settings</span>.
                 </p>
-                <p className=' w-full rounded-[11px]  fixed bottom-4  right-12 text-right text-white text-[13.5px] pt-2 opacity-85'>Already have an account?<Link className='underline text-green-500 opacity-100 font-bold' href={'/Auth/Login'}> Log in here.</Link></p>
+                <p className=' w-full rounded-[11px]  fixed bottom-4  right-12 text-right text-white text-[13.5px] pt-2 '>Already have an account?<Link className='underline text-green-500 opacity-100 font-bold' href={'/Auth/Login'}> Log in here.</Link></p>
               </div>
             </>
           )}
-        </form>
+        </motion.form>
       </div>
     </div>
   );

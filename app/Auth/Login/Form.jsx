@@ -8,6 +8,7 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { BsEyeFill } from "react-icons/bs";
 import Svg from '@/Component/Svg'
 import { useAppHook } from '@/context/AppProvider';
+import { motion } from 'framer-motion'
 
 const Form = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -73,22 +74,22 @@ const Form = () => {
         </div>
 
         <div className="w-full h-full flex  justify-center gap-10 flex-col items-center">
-            <div className="flex flex-col  px-7 items-center  rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[715px] w-[525px]">
+            <motion.div initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} className="flex flex-col  px-7 items-center  rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[715px] w-[525px]">
                 <h1 className='text-white pt-3 font  text-center font-[700]   leading-[1.2]  text-[32px] max-w-[480px]'>Whether You Listen or Create — Welcome Back</h1>
 
-                <div className="flex w-full max-w-[90%] justify-center flex-col gap-10 pt-20">
+                <div className="flex w-full max-w-[90%] justify-center flex-col gap-10 pt-[65px]">
                     <div className="flex gap-3 hover:border-white duration-200 ease-in-out h-[52px] w-full items-center  justify-center border-white/50 border-[.5px] rounded-full">
                         <Image alt='Logo' className='w-[20px] relative -top-[1px] ' src={google} width={140} height={140}/>
                         <p className='text-white font-Montserrat font-semibold'>Continue with Google</p>
                     </div>
-                    <div className="grid items-center grid-cols-[1fr_auto_1fr] gap-3">
+                    <div className="grid pt-2 items-center grid-cols-[1fr_auto_1fr] gap-3">
                         <div className="w-full  border-b-white/50  border-b-[.5px]"></div>
                         <p className='text-white/80 font-bold text-[14px]'>OR</p>
                         <div className="w-full  border-b-white/50 border-b-[.5px]"></div>
                     </div>
                     <form onSubmit={handleFormSubmit} className="flex flex-col gap-[16px] w-full">
                         <div className="flex flex-col gap-3  w-full ">
-                            <p className='text-white text-[14px] font-Montserrat font-medium'>Your email</p>
+                            <p className='text-white text-[14px]  font-medium'>Your email</p>
                             <input onBlur={handleBlur} placeholder="you@example.com" value={formData.email} name='email'
                             onChange={handleChange} type="text" className={`flex px-4 ${!isValidEmail && touched ? "border-red-500" : "border-white/60 hover:border-white"} outline-none  duration-200 ease-in-out placeholder:text-white/50 text-white gap-3 h-[52px] text-[15.5px] w-full items-center justify-center border-[.5px] rounded-full`} />
                             {!isValidEmail && touched && (
@@ -96,7 +97,7 @@ const Form = () => {
                             )}
                         </div>
                         <div className="flex flex-col gap-3  w-full ">
-                            <p className='text-white text-[14px] font-Montserrat font-medium'>Password</p>
+                            <p className='text-white text-[14px]  font-medium'>Password</p>
                             <div className="grid grid-cols-[1fr_auto]  px-4 outline-none hover:border-white duration-200 ease-in-out placeholder:text-white/50 text-white gap-[10px] h-[52px] text-[15.5px] w-full items-center justify-center border-white/70 border-[.5px] rounded-full">
                                 <input placeholder="••••••••••••••••••••••••" name="password"
                                 value={formData.password}
@@ -117,21 +118,21 @@ const Form = () => {
                         "Enter the Stüdyo"
                       )}</button>
 
-                        <div className="flex items-center justify-between pt-1">
+                        <div className="flex opacity-90 items-center justify-between pt-1">
                             <label className="label text-white/90 text-[13px] font-medium font-Montserrat">
                                 <input  type="checkbox"  className="checkbox relative -top-[1px] checkbox-md" />
                                 Remember me
                             </label>
                             <Link href={'/'} className='text-white/90 text-[13px] font-medium font-Montserrat underline'>Forget  password</Link>
                         </div>
-                       <p className=' w-full rounded-[11px]  fixed bottom-4  right-12 text-right text-white text-[13.5px] pt-2 opacity-85'>Don't have an account?<Link className='underline text-green-500 opacity-100 font-bold' href={'/Auth/Signup'}> Sign up for Stüdyo</Link></p>
+                       <p className=' w-full rounded-[11px]  fixed bottom-4  right-12 text-right text-white text-[13.5px] pt-2 '>Don't have an account?<Link className='underline text-green-500 opacity-100 font-bold' href={'/Auth/Signup'}> Sign up for Stüdyo</Link></p>
                        {/* <p className=' w-full py-3 border-black/40 border-dashed border-[1px] rounded-[11px]  fixed -bottom-11 bg-black/10 backdrop-blur-[20px] left-0 text-center text-white text-[13.5px] pt-2 opacity-85'>Don't have an account?<Link className='underline opacity-100 font-bold' href={'/Auth/Signup'}> Sign up for Stüdyo</Link></p> */}
 
                         
 
                     </form>
                 </div>
-            </div>
+            </motion.div>
 
         </div>
             
