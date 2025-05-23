@@ -26,14 +26,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} w-screen overflow-x-hidden h-auto  ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} w-screen hide-scrollbar overflow-x-hidden h-auto  ${geistMono.variable} antialiased`}
       >
           <AppProvider>
-
-            {/* <Header /> */}
-            <Toaster />
               {children}
-            
           </AppProvider>
         </body>
     </html>

@@ -30,72 +30,76 @@ const AppProvider = ({ children }) => {
   });
 
 
- // LOGIN
+  // Login
   const login = async (formData) => {
     setAuthError(null);
     try {
+      // setLoading(true);
       await axios.get('http://localhost:8000/sanctum/csrf-cookie');
       const response = await api.post("/login", formData);
+      setUser(response.data.user);
+      console.log(response.data)
+      // router.push("/");
 
-      if (response.data.status) {
-        setUser(response.data.user);
-        Cookies.set("authToken", response.data.token, { expires: 7 });
+      setTimeout(() => {
+      router.push('/'); // Navigate after 2 seconds
+    }, 2000);
+
+      toast.success("Login successful");
+
+    
+
+      if(response.data.status){
+        Cookies.set("authToken", response.data.token, { expire: 7});
         setAuthToken(response.data.token);
-        notifySuccess("Login successful!");
 
-        setTimeout(() => {
-          router.push('/');
-        }, 1500);
-      } else {
-        notifyError("Invalid login details.");
+      } else{
+        // toast.error("Inavalid Login Details")
       }
+      
+      
+    toast.error("Inavalid Login Details")
     } catch (error) {
-      notifyError(error.response?.data?.message || "Login failed.");
+      // setAuthError(error.response?.data?.message || "Login failed");
       return { success: false };
+    } finally{
+      // setLoading(false);
     }
-  };
+  }
 
 
-
-  // REGISTER
+  // Register
   const register = async (formData) => {
     setAuthError(null);
     try {
+      // setLoading(true);
       await axios.get('http://localhost:8000/sanctum/csrf-cookie');
       const response = await api.post("/register", formData);
-
       setUser(response.data.user);
-      notifySuccess("Registration successful!");
-
+      console.log(response.data)
+      // router.push("/");
       setTimeout(() => {
-        router.push('/');
-      }, 1500);
+      router.push('/'); // Navigate after 2 seconds
+    }, 2000);
+      toast.success("Registration successful");
     } catch (error) {
-      if (error.response?.data?.errors) {
-        const errors = error.response.data.errors;
-        Object.values(errors).forEach((msgs) =>
-          msgs.forEach((msg) => notifyError(msg))
-        );
-      } else {
-        notifyError("Registration failed.");
-      }
+      if (error.response) {
+      console.log(error.response.data.errors) // <-- see which fields failed
     }
-  };
+    } finally {
+      // setLoading(false);
+    }
+  }
 
-
-
-  // LOGOUT
+  // Logout
   const logout = async () => {
     try {
       await api.post("/logout");
       setUser(null);
-      notifySuccess("Logged out successfully.");
     } catch (error) {
-      notifyError("Logout failed.");
+      console.error("Logout error", error);
     }
   };
-
-
 
   // LOAD USER ON APP START
   const getUser = async () => {
@@ -125,19 +129,7 @@ const AppProvider = ({ children }) => {
   };
 
    return <AppContext.Provider value={value}>
-             <Toaster
-                position="bottom-right"
-                toastOptions={{
-                  duration: 3000,
-                  style: {
-                    background: '#323232',
-                    color: '#fff',
-                    padding: '16px 20px',
-                    borderRadius: '10px',
-                    fontSize: '14px',
-                  },
-                }}
-              />
+            <Toaster position="bottom-left" toastOptions={{ duration: 3000 }} />
             {children}
           </AppContext.Provider>;
 }

@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 
 const Form = () => {
   const [step, setStep] = useState(1);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
 
@@ -25,7 +25,7 @@ const Form = () => {
   });
 
   // Login Context
-  const {register, loading} = useAppHook();
+  const {register} = useAppHook();
 
   
     // Email Pattern
@@ -63,7 +63,12 @@ const Form = () => {
   const handleFormSubmit = async (e) => {
 
         e.preventDefault();
+        setLoading(true);
+        
+        await new Promise((res) => setTimeout(res, 3000));
+        
         await register(formData);
+        setLoading(false);
 
 
     }

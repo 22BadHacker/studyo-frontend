@@ -12,7 +12,7 @@ import { motion } from 'framer-motion'
 
 const Form = () => {
     const [showPassword, setShowPassword] = useState(false);
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [touched, setTouched] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Form = () => {
 
 
     // Login Context
-    const {login, loading} = useAppHook();
+    const {login} = useAppHook();
     
     // Email Pattern
     const isValidEmail = /^\S+@\S+\.\S+$/.test(formData.email);
@@ -51,8 +51,13 @@ const Form = () => {
 
     const handleFormSubmit = async(e) => {
         e.preventDefault();
-        await login(formData);
-
+         setLoading(true);
+         
+         await new Promise((res) => setTimeout(res, 3000));
+         
+         await login(formData);
+         
+         setLoading(false);
     }
 
     const handleBlur = (e) => {
