@@ -17,8 +17,8 @@ const Form = () => {
   // Form Data
   const [formData, setFormData] = useState({
     email: '',
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     password: '',
   });
 
@@ -31,8 +31,8 @@ const Form = () => {
 
     // Form  Validation 
   const isFormValid =
-    formData.first_name.trim() !== '' &&
-    formData.last_name.trim() !== '' &&
+    formData.firstName.trim() !== '' &&
+    formData.lastName.trim() !== '' &&
     formData.password.length >= 6 &&
     isValidEmail;
     
@@ -61,8 +61,31 @@ const Form = () => {
   const handleFormSubmit = async (e) => {
 
         e.preventDefault();
-        await register(formData);
 
+       if (!isFormValid) return;
+
+      setLoading(true); // Start loading
+
+        try {
+          const payload = {
+            email: formData.email,
+            password: formData.password,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+          };
+
+          // Simulate a delay or send API request here
+          // await new Promise((resolve) => setTimeout(resolve, 2000));
+          await register(payload);
+
+          console.log("Form submitted:", payload);
+
+          // Redirect or show success message here
+        } catch (error) {
+          console.error("Submission error:", error);
+        } finally {
+          setLoading(false); // Stop loading
+        }
 
     }
 
@@ -200,8 +223,8 @@ const Form = () => {
                     <input
                     placeholder=''
                       type="text"
-                      name="first_name"
-                      value={formData.first_name}
+                      name="firstName"
+                      value={formData.firstName}
                       onChange={handleChange}
                       className="mt-2 text-white px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px]  outline-none hover:border-white"
                     />
@@ -210,8 +233,8 @@ const Form = () => {
                     Last Name
                     <input
                       type="text"
-                      name="last_name"
-                      value={formData.last_name}
+                      name="lastName"
+                      value={formData.lastName}
                       onChange={handleChange}
                       className="mt-2 text-white px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
                     />

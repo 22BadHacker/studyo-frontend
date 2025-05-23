@@ -50,7 +50,29 @@ const Form = () => {
 
     const handleFormSubmit = async(e) => {
         e.preventDefault();
-        await login(formData);
+
+        if (!isFormValid) return;
+
+        setLoading(true);
+
+        try {
+
+        const payload = {
+            email: formData.email,
+            password: formData.password
+        };
+
+        // Replace this with your real API call
+        // await new Promise((res) => setTimeout(res, 2000));
+        await login(formData.email, formData.password)
+
+        // console.log("Login successful", payload);
+        // Redirect or show success
+        } catch (error) {
+            console.error("Login failed", error);
+        } finally {
+        setLoading(false);
+        }
 
     }
 

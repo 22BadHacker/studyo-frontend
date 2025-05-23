@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/Component/Header";
 import SideBar from "@/Component/SideBar";
+import AppProvider from "@/context/AppProvider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +27,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} w-screen overflow-x-hidden h-auto  ${geistMono.variable} antialiased`}
       >
-        {/* <Header /> */}
+          <AppProvider>
 
-          {children}
-        
-      </body>
+            {/* <Header /> */}
+
+              {children}
+            
+          </AppProvider>
+        </body>
     </html>
   );
 }
