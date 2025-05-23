@@ -90,7 +90,7 @@ const Form = () => {
 
       {/* Form Steps */}
       <div className="w-full h-full flex justify-center gap-10 flex-col items-center">
-        <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className="flex flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">
+        <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className="flex border-[.5px] border-main/05 flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">
           {step === 1 && (
             <>
               <h1 className="text-white pt-3 font-bold text-center leading-[1.2] text-[32px] max-w-[480px]">
@@ -247,7 +247,7 @@ const Form = () => {
                   type="submit"
                   disabled={!isFormValid || loading}
                   className={`h-[52px] mt-1 flex items-center justify-center overflow-hidden duration-200 ease-in-out  border-[.5px] rounded-full font-bold ${
-                    !isFormValid || loading ? 'bg-main/15 text-white/30 border-main/15 cursor-not-allowed' : 'bg-white text-main2  border-white/50 cursor-pointer' }`}>
+                    !isFormValid || loading ? 'bg-main/15 text-white/30  border-main/15 cursor-not-allowed' : 'bg-white text-main2  border-white/50 cursor-pointer' }`}>
                       {loading ? (
                       <Svg/>
                        

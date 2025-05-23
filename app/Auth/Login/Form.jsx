@@ -79,7 +79,7 @@ const Form = () => {
         </div>
 
         <div className="w-full h-full flex  justify-center gap-10 flex-col items-center">
-            <motion.div initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} className="flex flex-col  px-7 items-center  rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[715px] w-[525px]">
+            <motion.div initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} className="flex flex-col border-[.5px] border-main/05 px-7 items-center  rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[715px] w-[525px]">
                 <h1 className='text-white pt-3 font  text-center font-[700]   leading-[1.2]  text-[32px] max-w-[480px]'>Whether You Listen or Create — Welcome Back</h1>
 
                 <div className="flex w-full max-w-[90%] justify-center flex-col gap-10 pt-[65px]">
