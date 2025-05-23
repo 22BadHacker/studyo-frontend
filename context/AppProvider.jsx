@@ -2,6 +2,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 // Creating the context
 const AppContext = createContext();
@@ -9,16 +11,6 @@ const AppContext = createContext();
 
 // Custom hook
 export const useAppHook = () => useContext(AppContext);
-
-// export const useAppHook = () => {
-//   const context = useContext(AppContext);
-//   if(!context){
-//     throw new Error("Context will be wrapped inside AppProvider")
-//   }
-
-//   return context;
-// }
-
 
 // Backend API
 const API_URL = `${process.env.NEXT_PUBLIC_API_URL}`
@@ -30,6 +22,7 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [authError, setAuthError] = useState(null);
+  const [authToken, setAuthToken] = useState(null);
 
 
   const api = axios.create({
@@ -44,11 +37,27 @@ const AppProvider = ({ children }) => {
     setAuthError(null);
     try {
       setLoading(true);
+      await axios.get('http://localhost:8000/sanctum/csrf-cookie');
       const response = await api.post("/login", formData);
       setUser(response.data.user);
-      router.push("/");
+      console.log(response.data)
+      // router.push("/");
+      toast.success("Login successful");
+
+    
+
+      if(response.data.status){
+        Cookies.set("authToken", response.data.token, { expire: 7});
+        setAuthToken(response.data.token);
+
+      } else{
+        // toast.error("Inavalid Login Details")
+      }
+      
+      
+    toast.error("Inavalid Login Details")
     } catch (error) {
-      setAuthError(error.response?.data?.message || "Login failed");
+      // setAuthError(error.response?.data?.message || "Login failed");
       return { success: false };
     } finally{
       setLoading(false);
@@ -66,6 +75,7 @@ const AppProvider = ({ children }) => {
       setUser(response.data.user);
       console.log(response.data)
       router.push("/");
+      toast.success("Registration successful");
     } catch (error) {
       if (error.response) {
       console.log(error.response.data.errors) // <-- see which fields failed

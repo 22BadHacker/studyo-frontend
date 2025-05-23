@@ -79,13 +79,6 @@ const Form = () => {
             height={140}
           />
         </Link>
-        {/* <p className="fixed top-7 right-9 text-white text-[15px] opacity-85">
-          Already have an account?
-          <Link href="/Auth/Login" className="underline font-bold opacity-100">
-            {' '}
-            Log in here.
-          </Link>
-        </p> */}
       </div>
 
       {/* Form Steps */}

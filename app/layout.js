@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/Component/Header";
 import SideBar from "@/Component/SideBar";
 import AppProvider from "@/context/AppProvider";
+import { Toaster } from "react-hot-toast";
 
 
 const geistSans = Geist({
@@ -30,7 +31,7 @@ export default function RootLayout({ children }) {
           <AppProvider>
 
             {/* <Header /> */}
-
+            <Toaster />
               {children}
             
           </AppProvider>
