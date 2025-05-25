@@ -29,7 +29,6 @@ const Header = () => {
 			await signOut({ callbackUrl: '/' });
 		} else {
 			// Regular login - Laravel
-			//  await new Promise((res) => setTimeout(res, 2000));
 			await logout(); // Make sure your logout() in AppProvider also calls your API
 		}
 	};

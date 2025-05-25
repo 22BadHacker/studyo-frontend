@@ -4,6 +4,8 @@ import Header from "@/Component/Header";
 import SideBar from "@/Component/SideBar";
 import AppProvider from "@/context/AppProvider";
 import { Toaster } from "react-hot-toast";
+import SessionWrapper from "@/context/SessionWrapper";
+
 
 
 const geistSans = Geist({
@@ -28,9 +30,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} w-screen hide-scrollbar overflow-x-hidden h-auto  ${geistMono.variable} antialiased`}
       >
+        <SessionWrapper>
           <AppProvider>
               {children}
           </AppProvider>
+
+        </SessionWrapper>
         </body>
     </html>
   );

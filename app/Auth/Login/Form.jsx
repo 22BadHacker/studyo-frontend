@@ -85,7 +85,7 @@ const Form = () => {
                 <h1 className='text-white pt-3 font  text-center font-[700]   leading-[1.2]  text-[32px] max-w-[480px]'>Whether You Listen or Create — Welcome Back</h1>
 
                 <div className="flex w-full max-w-[90%] justify-center flex-col gap-10 pt-[65px]">
-                    <button onClick={() => signIn('google')} className="flex gap-3 hover:border-white duration-200 ease-in-out h-[52px] w-full items-center  justify-center border-white/50 border-[.5px] rounded-full">
+                    <button onClick={() => signIn("google")}  className="flex gap-3 hover:border-white duration-200 ease-in-out h-[52px] w-full items-center  justify-center border-white/50 border-[.5px] rounded-full">
                         <Image alt='Logo' className='w-[20px] relative -top-[1px] ' src={google} width={140} height={140}/>
                         <p className='text-white font-Montserrat font-semibold'>Continue with Google</p>
                     </button>

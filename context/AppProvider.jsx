@@ -99,6 +99,21 @@ const AppProvider = ({ children }) => {
 
   // LOGOUT
   const logout = async () => {
+  try {
+    await axios.post('/logout'); // Laravel logout route
+  } catch (error) {
+    console.error('Logout failed', error);
+  } finally {
+    // Clear local user state
+    setUser(null);
+    setAuthToken(null); // Or wherever you store auth
+    router.push('/Auth/Login');
+    notifySuccess("Logged out successfully.");
+  }
+};
+
+
+  const logout2 = async () => {
     try {
       // await api.post("/logout");
       setAuthToken(null);

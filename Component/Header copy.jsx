@@ -12,27 +12,9 @@ import { IoIosNotifications } from "react-icons/io";
 import { useSession, signOut } from 'next-auth/react';
 
 const Header = () => {
+	const {logout, user} = useAppHook();
 	const [search, setSearch] = useState("");
-
-	 const { logout, user } = useAppHook(); // local login
-	const { data: session } = useSession(); // Google login
-
-	const displayUser = user || session?.user;
-
-	const profileImage = displayUser?.profile_image || displayUser?.image;
-	const firstLetter = displayUser?.first_name?.charAt(0) || displayUser?.name?.charAt(0) || "U";
-
-
-	const handleLogout = async () => {
-		if (session) {
-			// Google login - NextAuth
-			await signOut({ callbackUrl: '/' });
-		} else {
-			// Regular login - Laravel
-			//  await new Promise((res) => setTimeout(res, 2000));
-			await logout(); // Make sure your logout() in AppProvider also calls your API
-		}
-	};
+	const { data: session, status } = useSession();
 	return (
 		<>
 			<nav className='w-full px-8 py-6 flex justify-between items-center'>
@@ -42,6 +24,14 @@ const Header = () => {
 						<Image alt='Logo' className='w-[140px]' src={Logo} width={140} height={140}/> {/* Studyo Logo */}
 							<div className="w-[1px] h-[30px] bg-[#323232]/80"></div>
 
+						{/* Search Bar */}
+						{/* <div className="grid grid-cols-[auto_1fr_auto] search w-[430px] scale-95   gap-[7px] items-center h-[45px] px-[9px] border-[1.5px] border-[#323232]/95  rounded-full">
+							<BiSearch className='text-[#323232] text-[23.5px] cursor-pointer' /> 
+							<input className="outline-none font-medium text-[14.5px] capitalize placeholder:text-[14.5px] w-full tracking-wide placeholder:text-[#323232]/95" value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="What’s playing in your Stüdyo today?" />
+
+							{search && (<IoMdClose onClick={() => setSearch("")} className='text-[#323232]  hover:text-black transition-all text-[24px] cursor-pointer'/>)}
+								
+						</div> */}
 						<div className="grid grid-cols-[auto_1fr_auto] search w-[430px]    gap-[7px] items-center h-[43.5px] px-[9px] border-[1.5px] border-[#323232]/95  rounded-full">
 							<BiSearch className='text-[#323232] text-[22.5px] cursor-pointer' /> 
 							<input className="outline-none font-medium text-[13.5px] capitalize placeholder:text-[13.5px] w-full tracking-wide placeholder:text-[#323232]/95" value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="What’s playing in your Stüdyo today?" />
@@ -55,63 +45,56 @@ const Header = () => {
 						<div className="flex gap-8 items-center">
 							{/* <Link className='font-semibold text-[15px]  text-[#323232] hover:text-black' href={'/'}>install the app</Link>   */}
 							
-							{!user && !session?.user ? (
+							{!user ? (
 								<>
 									<Link className="font-semibold text-[15px] text-[#323232] hover:text-black" href="/Auth/Signup">
-										Sign up
+									Sign up
 									</Link>
 									<Link
-										className="font-semibold hover:scale-105 duration-200 ease-out hover:bg-[#323232] text-[14.5px] px-6 h-[45px] flex items-center justify-center rounded-full bg-[#010101] text-[#e4e4e4]"
-										href="/Auth/Login"
+									className="font-semibold hover:scale-105 duration-200 ease-out hover:bg-[#323232] text-[14.5px] px-6 h-[45px] flex items-center justify-center rounded-full bg-[#010101] text-[#e4e4e4]"
+									href="/Auth/Login"
 									>
-										Log in
+									Log in
 									</Link>
 								</>
-							) : (
-								<>
-									<Link
+								) : (
+									<>
+										<Link
 										className="font-semibold hover:scale-105 duration-200 ease-out hover:bg-[#323232] hover:text-white text-[14.5px] px-6 h-[45px] flex items-center justify-center border-[.5px] rounded-full border-[#010101] text-main2"
 										href="/Auth/Login"
-									>
+										>
 										Explore premium
-									</Link>
-
-									<IoIosNotifications className='text-[#323232] cursor-pointer text-[25px]' />
-
-									{/* Profile Circle with Dropdown */}
-									<div className="relative cursor-pointer group">
-										{/* Profile image or first letter */}
-										<button className="w-10 h-10 rounded-full bg-[#323232] text-white font-bold flex items-center justify-center uppercase overflow-hidden">
-											{profileImage ? (
-											<img src={profileImage} alt="avatar" className="w-full h-full object-cover rounded-full" />
-											) : (
-											firstLetter
-											)}
-										</button>
+										</Link>
+										<IoIosNotifications className='text-[#323232] cursor-pointer text-[25px]' />
+										<div className="relative cursor-pointer group">
+											{/* Circle with first letter */}
+											<button className="w-10 cursor-pointer h-10 rounded-full bg-[#323232] text-white font-bold flex items-center justify-center uppercase">
+											{user.first_name.charAt(0)}
+											</button>
 
 										{/* Dropdown menu */}
-										<div className="absolute right-0 mt-4 w-[180px] bg-white border border-black/10 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
+										<div className="absolute right-0 mt-4 overflow-hidden w-[180px] bg-white border-[.5px] border-black/50 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
 											<Link href="/dashboard" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-											<LayoutDashboard size={18} /> Dashboard
+												<LayoutDashboard size={18} /> Dashboard
 											</Link>
 											<Link href="/profile" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-											<User size={18} /> Profile
+												<User size={18} /> Profile
 											</Link>
 											<Link href="/settings" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-											<Settings size={18} /> Settings
+												<Settings size={18} /> Settings
 											</Link>
 											<button
-											onClick={handleLogout}
-											className="w-full flex items-center gap-3 px-4 py-2 border-t border-black/20 text-sm text-gray-700 hover:bg-gray-100 text-left"
+												onClick={logout}
+												className="w-full flex items-center gap-3 px-4 py-2 border-t-[.5px] border-black/20 text-sm text-gray-700 hover:bg-gray-100 text-left"
 											>
-											<LogOut size={18} /> Logout
+												<LogOut size={18} /> Logout
 											</button>
+											</div>
 										</div>
-									</div>
 
-								</>
-							)}
-
+									
+									</>
+								)}
 							 
 							
 
