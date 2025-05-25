@@ -75,19 +75,7 @@ const Form = () => {
 
   return (
     <div className="w-full h-full p-6 bg-black/40 z-[10]">
-      {/* Header */}
-      <div className="w-fit">
-        <Link href="/">
-          <Image
-            alt="Logo"
-            className="w-[120px] fixed top-7 left-9"
-            src={Logo}
-            width={140}
-            height={140}
-          />
-        </Link>
-      </div>
-
+      
       {/* Form Steps */}
       <div className="w-full h-full flex justify-center gap-10 flex-col items-center">
         <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className="flex border-[.5px] border-main/05 flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">

@@ -99,3 +99,19 @@ body {
 .menu:hover{
   animation: rotate 1s linear infinite ;
 }
+
+@keyframes color {
+  0%{
+    color: #fff;
+  }
+  50%  {
+    color: #1db954;
+  }
+  
+}
+
+@layer components {
+  .coloor{
+    animation: color 1s linear infinite ;
+  }
+}

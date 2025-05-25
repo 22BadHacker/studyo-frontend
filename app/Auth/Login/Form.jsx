@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '@/public/Logo/Studyo_white.svg'
 import google from '@/public/Logo/google.svg'
 import Image from 'next/image'
@@ -9,11 +9,14 @@ import { BsEyeFill } from "react-icons/bs";
 import Svg from '@/Component/Svg'
 import { useAppHook } from '@/context/AppProvider';
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react';
 
 const Form = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [touched, setTouched] = useState(false);
+    const router = useRouter();
 
     const [formData, setFormData] = useState({
     password: "",
@@ -22,7 +25,13 @@ const Form = () => {
 
 
     // Login Context
-    const {login} = useAppHook();
+    const {login, authToken} = useAppHook();
+
+    // useEffect(() => {
+    //     if(authToken){
+    //         router.push('/')
+    //     }
+    // }, [authToken, loading]);
     
     // Email Pattern
     const isValidEmail = /^\S+@\S+\.\S+$/.test(formData.email);
@@ -70,23 +79,16 @@ const Form = () => {
     
   return (
     <div className='w-full h-full p-6  bg-black/40 z-[10] '>
-        <div className=" w-full flex justify-between items-center">
-            <Link href={'/'}>
-                <Image alt='Logo' className='w-[120px] fixed top-7 left-9 ' src={Logo} width={140} height={140}/>
-            </Link>
-            {/* <p className=' fixed top-7 right-9 text-white text-[15px] opacity-85'>Don't have an account?<Link className='underline opacity-100 font-bold' href={'/Auth/Signup'}> Sign up for Stüdyo</Link></p> */}
-
-        </div>
-
+       
         <div className="w-full h-full flex  justify-center gap-10 flex-col items-center">
             <motion.div initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} className="flex flex-col border-[.5px] border-main/05 px-7 items-center  rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[715px] w-[525px]">
                 <h1 className='text-white pt-3 font  text-center font-[700]   leading-[1.2]  text-[32px] max-w-[480px]'>Whether You Listen or Create — Welcome Back</h1>
 
                 <div className="flex w-full max-w-[90%] justify-center flex-col gap-10 pt-[65px]">
-                    <div className="flex gap-3 hover:border-white duration-200 ease-in-out h-[52px] w-full items-center  justify-center border-white/50 border-[.5px] rounded-full">
+                    <button onClick={() => signIn('google')} className="flex gap-3 hover:border-white duration-200 ease-in-out h-[52px] w-full items-center  justify-center border-white/50 border-[.5px] rounded-full">
                         <Image alt='Logo' className='w-[20px] relative -top-[1px] ' src={google} width={140} height={140}/>
                         <p className='text-white font-Montserrat font-semibold'>Continue with Google</p>
-                    </div>
+                    </button>
                     <div className="grid pt-2 items-center grid-cols-[1fr_auto_1fr] gap-3">
                         <div className="w-full  border-b-white/50  border-b-[.5px]"></div>
                         <p className='text-white/80 font-bold text-[14px]'>OR</p>

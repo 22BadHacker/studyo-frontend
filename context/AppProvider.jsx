@@ -1,5 +1,5 @@
 'use client'
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, use, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -16,6 +16,19 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [authToken, setAuthToken] = useState(null);
+
+  // useEffect(() => {
+  //   const token = Cookies.get("authToken");
+  //   if (token) {
+  //     setAuthToken(token);
+
+  //   }else{
+  //     router.push('/Auth/Login')
+  //   }
+
+  // })
+
+
 
 
   // Toast Helpers
@@ -87,9 +100,11 @@ const AppProvider = ({ children }) => {
   // LOGOUT
   const logout = async () => {
     try {
-      await api.post("/logout");
+      // await api.post("/logout");
+      setAuthToken(null);
       setUser(null);
       notifySuccess("Logged out successfully.");
+      router.push('/Auth/Login');
     } catch (error) {
       notifyError("Logout failed.");
     }
@@ -121,7 +136,8 @@ const AppProvider = ({ children }) => {
     login,
     logout,
     notifySuccess, 
-    notifyError
+    notifyError,
+    authToken
   };
 
    return <AppContext.Provider value={value}>

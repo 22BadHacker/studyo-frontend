@@ -6,8 +6,12 @@ import Link from 'next/link'
 import { BiSearch } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { CiWavePulse1 } from "react-icons/ci";
+import { useAppHook } from '@/context/AppProvider'
+import { LogOut, Settings, User, LayoutDashboard } from "lucide-react";
+import { IoIosNotifications } from "react-icons/io";
 
 const Header = () => {
+	const {logout, user} = useAppHook();
 	const [search, setSearch] = useState("");
 	return (
 		<>
@@ -39,8 +43,58 @@ const Header = () => {
 						<div className="flex gap-8 items-center">
 							{/* <Link className='font-semibold text-[15px]  text-[#323232] hover:text-black' href={'/'}>install the app</Link>   */}
 							
-							<Link className='font-semibold text-[15px]  text-[#323232] hover:text-black'  href={'/'}>Sign up</Link>  
-							<Link className='font-semibold hover:scale-105 duration-200 ease-out hover:bg-[#323232]  text-[14.5px] px-6 h-[45px] flex items-center justify-center rounded-full bg-[#010101] text-[#e4e4e4]' href={'/'}>Log in</Link>
+							{!user ? (
+								<>
+									<Link className="font-semibold text-[15px] text-[#323232] hover:text-black" href="/Auth/Signup">
+									Sign up
+									</Link>
+									<Link
+									className="font-semibold hover:scale-105 duration-200 ease-out hover:bg-[#323232] text-[14.5px] px-6 h-[45px] flex items-center justify-center rounded-full bg-[#010101] text-[#e4e4e4]"
+									href="/Auth/Login"
+									>
+									Log in
+									</Link>
+								</>
+								) : (
+									<>
+										<Link
+										className="font-semibold hover:scale-105 duration-200 ease-out hover:bg-[#323232] hover:text-white text-[14.5px] px-6 h-[45px] flex items-center justify-center border-[.5px] rounded-full border-[#010101] text-main2"
+										href="/Auth/Login"
+										>
+										Explore premium
+										</Link>
+										<IoIosNotifications className='text-[#323232] cursor-pointer text-[25px]' />
+										<div className="relative cursor-pointer group">
+											{/* Circle with first letter */}
+											<button className="w-10 cursor-pointer h-10 rounded-full bg-[#323232] text-white font-bold flex items-center justify-center uppercase">
+											{user.first_name.charAt(0)}
+											</button>
+
+										{/* Dropdown menu */}
+										<div className="absolute right-0 mt-4 overflow-hidden w-[180px] bg-white border-[.5px] border-black/50 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
+											<Link href="/dashboard" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+												<LayoutDashboard size={18} /> Dashboard
+											</Link>
+											<Link href="/profile" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+												<User size={18} /> Profile
+											</Link>
+											<Link href="/settings" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+												<Settings size={18} /> Settings
+											</Link>
+											<button
+												onClick={logout}
+												className="w-full flex items-center gap-3 px-4 py-2 border-t-[.5px] border-black/20 text-sm text-gray-700 hover:bg-gray-100 text-left"
+											>
+												<LogOut size={18} /> Logout
+											</button>
+											</div>
+										</div>
+
+									
+									</>
+								)}
+							 
+							
 
 							{/* <span className="bg-[#d9d9d9] flex justify-center items-center size-12 rounded-full">
 								<CiWavePulse1 className='text-[30px]' />
