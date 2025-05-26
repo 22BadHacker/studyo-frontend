@@ -1,13 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Spline+Sans:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
-:root {
-  --background: #e4e4e4;
-  --foreground: #171717;
-  --sora: 'Sora', sans-serif;
+@font-face {
+  font-family: "Neue Montreal";
+  src: url('/public/fonts/NeueMontreal-Regular.otf') format('opentype');
 }
+@font-face {
+  font-family: "TWK-Everett";
+  src: url('../public/fonts/TWKEverettMono-Regular.otf') format('opentype');
+}
+
+
+
+@layer base {
+  :root {
+    --background: #fff;
+    /* --background: #e4e4e4; */
+    --foreground: #222222;
+    --sora: 'Sora', sans-serif;
+    --color-primary: 255 90 95;     /* a reddish color */
+    --color-secondary: 34 197 94;   /* green */
+    --color-accent: 59 130 246;     /* blue */
+    --SplineSans: 'Spline Sans', Arial, Helvetica, sans-serif;
+    --SpaceGrotesk: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    --InterTight: 'Inter Tight', Arial, Helvetica, sans-serif;
+    --NeueMontreal: 'Neue Montreal', Arial, Helvetica, sans-serif;
+    --TWKEverett: 'TWK-Everett', Arial, Helvetica, sans-serif;
+  }
+  
+}
+
+
+
 
 @theme inline {
   --background: var(--background);
@@ -20,7 +48,12 @@
   --color-main : var(--background);
   --color-main2 : var(--foreground);
   --font-Montserrat: 'Montserrat', Arial, Helvetica, sans-serif;
-  /* --color-mint-500: oklch(0.72 0.11 178); */
+  --font-SpaceGrotesk: var(--SpaceGrotesk);
+  --font-SplineSans: var(--SplineSans);
+  --font-InterTight: var(--InterTight);
+  --font-NeueMontreal: var(--NeueMontreal);
+  --font-TWK-Everett: var(--TWKEverett);
+  --font-sora: var(--sora);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,10 +64,12 @@
   }
 }
 
+
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: var(--sora), Arial, Helvetica, sans-serif;
+  color: var(--background);
+  /* color: var(--foreground); */
+  font-family: var(--InterTight), Arial, Helvetica, sans-serif;
 }
 
 .hide-scrollbar {
@@ -47,71 +82,29 @@ body {
 }
 
 
-/* globals.css */
-/* 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
 
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 0px;
-}
+@layer utilities{
+    .container{
+      @apply max-w-[1660px] px-5 w-full py-6 mx-auto
+      /* @apply max-w-[1620px] px-5 w-full py-6 mx-auto */
+    }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 0px;
-}
+    .flex-center{
+      @apply flex items-center justify-center
+    }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+    .flex-between{
+      @apply flex items-center justify-between
+    }
 
+    .linkk{
+      @apply w-full py-2 text-white font-NeueMontreal flex tracking-wide hover:text-green-500 items-center justify-between px-1 text-[13px] duration-200 ease-in-out
+    }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-} */
-
-@media (max-width: 500px) {
-  ::-webkit-scrollbar {
-  width: 0px;
-  height: 8px;
-}
 }
 
 
-.search:hover{
-  /* box-shadow: 0 0 0 2px #1db95440; */
+.Linnk:hover > .text{
+  display: block;
 }
 
-
-@keyframes rotate {
-  0%{
-    rotate: 0deg;
-  }
-  100%  {
-    rotate: 360deg;
-  }
-}
-
-.menu:hover{
-  animation: rotate 1s linear infinite ;
-}
-
-@keyframes color {
-  0%{
-    color: #fff;
-  }
-  50%  {
-    color: #1db954;
-  }
-  
-}
-
-@layer components {
-  .coloor{
-    animation: color 1s linear infinite ;
-  }
-}

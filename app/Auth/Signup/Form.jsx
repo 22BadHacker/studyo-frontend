@@ -78,30 +78,30 @@ const Form = () => {
       
       {/* Form Steps */}
       <div className="w-full h-full flex justify-center gap-10 flex-col items-center">
-        <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className="flex border-[.5px] border-main/05 flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">
+        <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className="flex border-[.5px] border-white/10 flex-col px-7 items-center rounded-xl bg-black/60 backdrop-blur-[10px] py-8 h-[645px] w-[520px]">
           {step === 1 && (
             <>
-              <h1 className="text-white pt-3 font-bold text-center leading-[1.2] text-[32px] max-w-[480px]">
+              <h1 className="text-white pt-3 font-bold font-NeueMontreal text-center leading-[1.2] text-[34px] max-w-[480px]">
                 Create Your Free Account & Start Listening.
               </h1>
-              <div className="flex w-full max-w-[90%] flex-col gap-10 pt-[72px]">
+              <div className="flex w-full max-w-[90%] flex-col gap-10 pt-[65px]">
                 <button
                   type="button"
                   onClick={() => setStep(2)}
                   className="flex gap-3 hover:border-white duration-200 h-[52px] w-full items-center justify-center border-white/50 border-[0.5px] rounded-full"
                 >
                   <Image alt="Google" src={google} className="w-[20px]" />
-                  <span className="text-white font-semibold">Sign up with Google</span>
+                  <span className="text-white/90 font-NeueMontreal font-medium tracking-wide text-[16.5px]">Sign up with Google</span>
                 </button>
 
                 <div className="grid pt-2 items-center grid-cols-[1fr_auto_1fr] gap-3">
                   <div className="w-full border-b-white/50 border-b-[.5px]" />
-                  <p className="text-white/80 font-bold text-[14px]">OR</p>
+                  <p className='text-white/80 font-NeueMontreal font-bold text-[14.5px]'>OR</p>
                   <div className="w-full border-b-white/50 border-b-[.5px]" />
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <label className="text-white text-[14px] font-medium">
+                  <label className="text-white font-InterTight text-[14.5px] tracking-wide  font-medium">
                     Your email
                   </label>
                     <input
@@ -111,14 +111,14 @@ const Form = () => {
                       placeholder="you@example.com"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`mt-1 px-4 py-3 placeholder:text-white/50 text-white bg-transparent border-[0.5px] rounded-full outline-none ${
+                      className={`mt-1 px-4 font-NeueMontreal duration-200 ease-in-out py-3 placeholder:text-white/60 text-white bg-transparent border-[0.5px] rounded-full outline-none ${
                         !isValidEmail && touched
                           ? 'border-red-500'
-                          : 'border-white/70 hover:border-white'
+                          : 'border-white/60 hover:border-white'
                       }`}
                     />
                   {!isValidEmail && touched && (
-                    <p className="text-red-500 fixed right-12 pt-[2px] text-[12px] font-medium">
+                    <p className="text-red-500 font-InterTight fixed right-12 pt-[2px] text-[12px] font-medium">
                       Please enter a valid email address.
                     </p>
                   )}
@@ -136,7 +136,7 @@ const Form = () => {
                     Create Your Account
                   </button>
 
-                  <p className="text-main text-center text-[11px] pt-5 opacity-90">
+                  <p className="text-main font-InterTight tracking-wide text-center text-[11px] pt-5 opacity-90">
                     By creating an account you agree with our{' '}
                     <span className="underline">Terms of Service</span>,{' '}
                     <span className="underline">Privacy Policy</span>, and our default{' '}
@@ -151,30 +151,30 @@ const Form = () => {
 
           {step === 2 && (
             <>
-            <div onClick={() => setStep(1)}  className="flex text-green-500 left-6 top-5 absolute  gap-2 items-center">
+            <div onClick={() => setStep(1)}  className="flex text-green-500 left-6 top-5 absolute  gap-2 items-center cursor-pointer">
               <LiaLongArrowAltLeftSolid className='text-[19px]' />
               <button
                 type="button"
                 
-                className=" flex items-center gap-1 cursor-pointer   text-[14px] border-b"
+                className=" flex uppercase font-NeueMontreal tracking-wide font-bold items-center gap-1 cursor-pointer   text-[12.5px] border-b"
               >
                 Back
               </button>
 
             </div>
               <div className="text-center">
-                <h1 className="text-white pt-10 font-bold text-[32px] leading-[1.2] max-w-[480px]">
+                <h1 className="text-white font-NeueMontreal  pt-9 font-bold text-[34px] tracking-[0.5px] leading-[1.2] max-w-[480px]">
                   Final details, we promise.
                 </h1>
-                <p className="text-main font-medium text-[14px]">
+                <p className="text-white/70 uppercase relative top-2 font-InterTight font-normal text-[12px] tracking-wide">
                   Pick the name others will see on your profile.
                 </p>
               </div>
 
-              <div className="w-full max-w-[90%] pt-[51.5px] flex flex-col gap-5">
+              <div className="w-full max-w-[90%] pt-[51px] flex flex-col gap-5">
                 <div className="flex pb-1 flex-col gap-1">
 
-                    <label className="text-white text-[14px] font-medium">
+                    <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
                     Email
                     </label>
                     <input
@@ -182,12 +182,12 @@ const Form = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="mt-1 text-white px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
+                        className="mt-1 text-white text-[13.5px] px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
                     />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <label className="text-white pb-1 text-[14px] font-medium">
+                  <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
                     First Name
                     <input
                     placeholder=''
@@ -198,7 +198,7 @@ const Form = () => {
                       className="mt-2 text-white px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px]  outline-none hover:border-white"
                     />
                   </label>
-                  <label className="text-white text-[14px] font-medium">
+                  <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
                     Last Name
                     <input
                       type="text"
@@ -210,7 +210,7 @@ const Form = () => {
                   </label>
                 </div>
 
-                <label className="text-white text-[14px] font-medium">
+                <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
                   Password
                   <div className="mt-2 flex items-center px-4 bg-transparent border-[0.5px]  border-white/50 hover:border-white rounded-[12px]">
                     <input
@@ -245,7 +245,7 @@ const Form = () => {
                   
                 </button>
 
-                <p className="text-main text-center text-[11px] pt-3 opacity-90">
+                <p className="text-main  font-InterTight tracking-wide  text-center text-[11px] pt-3 opacity-90">
                   By creating an account you agree with our{' '}
                   <span className="underline">Terms of Service</span>,{' '}
                   <span className="underline">Privacy Policy</span>, and our default{' '}
