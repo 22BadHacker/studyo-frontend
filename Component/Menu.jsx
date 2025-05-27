@@ -19,7 +19,7 @@ const MenuToggle = () => {
   return (
 
     <AnimatePresence>
-        <div className="relative overflow-hidden w-9 h-9 cursor-pointer" onClick={toggleMenu}>
+        <div className="relative z-20 overflow-hidden w-9 h-9 cursor-pointer" onClick={toggleMenu}>
         {/* Hamburger lines */}
         <span
             className={`absolute right-0 top-[10px] h-[2px] bg-white transition-all duration-200 ease-in-out ${

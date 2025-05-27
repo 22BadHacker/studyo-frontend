@@ -19,8 +19,7 @@ const Form = () => {
   // Form Data
   const [formData, setFormData] = useState({
     email: '',
-    first_name: '',
-    last_name: '',
+    username: '',
     password: '',
   });
 
@@ -33,8 +32,7 @@ const Form = () => {
 
     // Form  Validation 
   const isFormValid =
-    formData.first_name.trim() !== '' &&
-    formData.last_name.trim() !== '' &&
+    formData.username.trim() !== '' &&
     formData.password.length >= 6 &&
     isValidEmail;
     
@@ -163,63 +161,54 @@ const Form = () => {
 
             </div>
               <div className="text-center">
-                <h1 className="text-white font-NeueMontreal  pt-9 font-bold text-[34px] tracking-[0.5px] leading-[1.2] max-w-[480px]">
+                <h1 className="text-white font-NeueMontreal  pt-6 font-bold text-[34px] tracking-[0.5px] leading-[1.2] max-w-[480px]">
                   Final details, we promise.
                 </h1>
                 <p className="text-white/70 uppercase relative top-2 font-InterTight font-normal text-[12px] tracking-wide">
                   Pick the name others will see on your profile.
                 </p>
               </div>
-
-              <div className="w-full max-w-[90%] pt-[51px] flex flex-col gap-5">
+              <div className="w-full relative max-w-[90%] pt-[52px] flex flex-col gap-4">
+                {/* <div className="w-full absolute top-7 border-dashed border-b-[.5px] border-b-white/20"></div> */}
                 <div className="flex pb-1 flex-col gap-1">
 
-                    <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
-                    Email
+                    <label className="text-white/90 pb-1 font-InterTight text-[14px] tracking-wide font-normal">
+                    Username
+                    </label>
+                    <input
+                        type="text"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleChange}
+                        className="mt-1 text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-full outline-none hover:border-white"
+                    />
+                </div>
+                <div className="flex pb-1 flex-col gap-1">
+
+                    <label className="text-white/90 pb-1 font-InterTight text-[14px] tracking-wide font-normal">
+                    Email Adress
                     </label>
                     <input
                         type="text"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="mt-1 text-white text-[13.5px] px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
+                        className="mt-1 text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-full outline-none hover:border-white"
                     />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
-                    First Name
-                    <input
-                    placeholder=''
-                      type="text"
-                      name="first_name"
-                      value={formData.first_name}
-                      onChange={handleChange}
-                      className="mt-2 text-white px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px]  outline-none hover:border-white"
-                    />
-                  </label>
-                  <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
-                    Last Name
-                    <input
-                      type="text"
-                      name="last_name"
-                      value={formData.last_name}
-                      onChange={handleChange}
-                      className="mt-2 text-white px-3 py-2 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
-                    />
-                  </label>
-                </div>
+            
 
-                <label className="text-white pb-1 font-InterTight text-[14px] tracking-wide font-normal">
+                <label className="text-white/90 pb-1 font-InterTight text-[14px] tracking-wide font-normal">
                   Password
-                  <div className="mt-2 flex items-center px-4 bg-transparent border-[0.5px]  border-white/50 hover:border-white rounded-[12px]">
+                  <div className="mt-2  flex items-center px-4 bg-transparent border-[0.5px]  border-white/50 hover:border-white rounded-full">
                     <input
                     placeholder=''
                       type={showPassword ? 'text' : 'password'}
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className="flex-1 py-2 text-white bg-transparent outline-none border-none"
+                      className="flex-1 py-3 text-white bg-transparent outline-none border-none"
                     />
                     <button
                       type="button"

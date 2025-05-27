@@ -15,6 +15,7 @@ import Profiles from './Profiles'
 
 
 
+
 const Header = () => {
 	const [search, setSearch] = useState("");
 	const [isHover, setIsHoverd] = useState("");
@@ -33,13 +34,13 @@ const Header = () => {
 
 			<div className="flex-center gap-2">
 				
-				<div className="grid  hover:text-white duration-200 ease-in-out grid-cols-[auto_1fr_auto] search w-[430px] bg-main2 hover:border-[1.5px]   gap-[13px] items-center h-[52px] px-[9px] border-[1.5px]  hover:border-white/80 border-transparent rounded-full">
+				<Link href={'/Search'} className="grid  hover:text-white duration-200 ease-in-out grid-cols-[auto_1fr_auto] search w-[430px] bg-main2 hover:border-[1.5px]   gap-[13px] items-center h-[52px] px-[9px] border-[1.5px]  hover:border-white/80 border-transparent rounded-full">
 					<FiSearch className='text-[#b3b3b3] h-fit  text-[27px] relative -top-[1px] cursor-pointer' /> 
 					<input className="outline-none font- tracking-wider font-medium text-[14px] capitalize placeholder:text-[14px] w-full  placeholder:text-[#b3b3b3]" value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="What’s playing in your Stüdyo today?" />
 
 					{search && (<IoMdClose onClick={() => setSearch("")} className='text-[#b3b3b3]  hover:text-white transition-all text-[28px] cursor-pointer'/>)}
 						
-				</div>
+				</Link>
 
 			</div>
 
