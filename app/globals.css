@@ -88,6 +88,10 @@ body {
       @apply max-w-[1660px] px-5 w-full py-6 mx-auto
       /* @apply max-w-[1620px] px-5 w-full py-6 mx-auto */
     }
+    .container2{
+      @apply max-w-[1660px] px-5 w-full pb-2 pt-4 mx-auto
+      /* @apply max-w-[1620px] px-5 w-full py-6 mx-auto */
+    }
 
     .flex-center{
       @apply flex items-center justify-center

@@ -20,11 +20,11 @@ const Header = () => {
 	const [search, setSearch] = useState("");
 	const [isHover, setIsHoverd] = useState("");
   return (
-	<div className='container'>
+	<div className='container2    '>
 
 		<div className="grid grid-cols-[auto_1fr_auto] gap-8 w-full">
 
-			<div className="flex items-center gap-[30px]">
+			<div className="flex  items-center gap-[30px]">
 				
 				<MenuToggle />
 				<Link className='' href={'/'}>
@@ -34,7 +34,7 @@ const Header = () => {
 
 			<div className="flex-center gap-2">
 				
-				<Link href={'/Search'} className="grid  hover:text-white duration-200 ease-in-out grid-cols-[auto_1fr_auto] search w-[430px] bg-main2 hover:border-[1.5px]   gap-[13px] items-center h-[52px] px-[9px] border-[1.5px]  hover:border-white/80 border-transparent rounded-full">
+				<Link href={'/Search'} className="grid  hover:text-white  duration-200 ease-in-out grid-cols-[auto_1fr_auto] search w-[430px] bg-main2 hover:border-[1.5px]   gap-[13px] items-center h-[52px] px-[9px] border-[1.5px]  hover:border-white/80 border-transparent rounded-full">
 					<FiSearch className='text-[#b3b3b3] h-fit  text-[27px] relative -top-[1px] cursor-pointer' /> 
 					<input className="outline-none font- tracking-wider font-medium text-[14px] capitalize placeholder:text-[14px] w-full  placeholder:text-[#b3b3b3]" value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="What’s playing in your Stüdyo today?" />
 

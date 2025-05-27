@@ -5,8 +5,9 @@ import React from 'react'
 const layout = ({children}) => {
   return (
     <div className='grid bg-[#000000]  hide-scrollbar grid-rows-[auto_1fr_auto] h-screen overflow-y-scroll'>
-      
+      <div className="w-full fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-[10px] transition-all " >
         <Header />
+      </div>
         {children}
         <Footer />
     </div>

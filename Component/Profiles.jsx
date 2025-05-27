@@ -34,7 +34,7 @@ const Profiles = () => {
 
 
   return (
-    <div className='w-full justify-end'>
+    <div className='w-full  justify-end'>
         {
             !user && !session?.user ? (
                 <div className="flex relative w-full justify-end gap-6 items-center">
@@ -49,7 +49,7 @@ const Profiles = () => {
             (
                 <div className="flex w-full justify-end gap-7 items-center">
                     <Link
-                        className="font-semibold hover:bg-[#f0f0f0] duration-200 ease-in-out hover:scale-[1.05] ] bg-white text-[#000] text-[14.5px] px-6 h-[50px] flex items-center justify-center border-[.5px] rounded-full border-[#010101] capitalize"
+                        className="font-semibold hover:bg-[#f0f0f0] duration-200 ease-in-out hover:scale-[1.05] ] bg-white text-[#000] text-[14.5px] px-6 h-[51px] flex items-center justify-center rounded-full  capitalize"
                         href="/Auth/Login"
                     >
                         Explore premium
@@ -72,7 +72,7 @@ const Profiles = () => {
                        {
                         
                             open &&
-                            <div className="absolute py-1 right-0 top-20 w-[200px] px-2 bg-main2/80 backdrop-blur-[10px] border border-black/10 rounded-md shadow-md   transition-opacity duration-200 z-50">
+                            <div className="absolute py-1 right-0 top-20 w-[200px] px-2 bg-main2/80 backdrop-blur-[20px] border border-black/40 rounded-md shadow-md   transition-opacity duration-200 z-50">
                                 <Link className='linkk' href={'/'}>Account <LuSquareArrowOutUpRight size={16}/></Link>
                                 <Link className='linkk' href={'/'}>My Music </Link>
                                 <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
