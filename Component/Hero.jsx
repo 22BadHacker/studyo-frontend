@@ -46,7 +46,7 @@ const [index, setIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 400); // Change every 1 second
+    }, 300); // Change every 1 second
 
     return () => clearInterval(interval); // Cleanup
   }, []);
@@ -59,14 +59,14 @@ const [index, setIndex] = useState(0);
                
                 src={src}
                 alt={`Slide ${i}`}
-                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity ease-in-out duration-400 ${
+                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity ease-in-out duration-300 ${
                     i === index ? 'opacity-100' : 'opacity-0'
                 }`}
                 />
             ))}
         </div>
         
-        <Image alt='Logo' className='w-[100%] mix-blend-difference opacity-95' src={logo} width={140} height={140}/>
+        <Image alt='Logo' className='w-[100%] mix-blend-difference ' src={logo} width={140} height={140}/>
     </div>
   )
 }
