@@ -121,15 +121,15 @@ const exitFullscreen = () => {
        
           <div className="container w-full h-full">
           
-            <Link className='absolute top-8 left-12 flex gap-5 items-center' href={'/'}>
+            <Link className='absolute top-8 left-12 flex gap-6 items-center' href={'/'}>
               <Image alt='Logo' className='w-[120px] ' src={logo} width={120} height={120}/>
-              <div className="h-[.5px] w-[30px] bg-white/90"></div>
-              <h1 className="font-bold opacity-95  font-NeueMontreal tracking-wide text-[22px]">Your Music, Your Way.</h1>
+              <div className="w-[.5px] h-[21px] bg-white/90"></div>
+              <h1 className="font-medium text-white opacity-95  font-TWK-Everett  text-[17px]">Your Music, Your Way.</h1>
             </Link>
 
             <div  className="w-full place-items-between z-[50] relative h-screen gap-10 grid grid-rows-[1fr_.2fr]">
               <div className="w-full h-full  flex-center">
-                <img src={currentTrack.cover} alt="" className="size-[530px] bg-gradient-to-tl from-[#f9ce34]/50 via-[#ee2a7b]/50 to-[#6228d7]/50 p-[.5px] " />
+                <img src={currentTrack.cover} alt="" className="size-[530px] bg-gradient-to-tl from-[#f9ce34]/50 via-[#ee2a7b]/50 to-[#6228d7]/50 p-[.5px]  object-cover" />
 
               </div>
 
@@ -142,7 +142,7 @@ const exitFullscreen = () => {
                             {/* Info */}
                             <div className="flex duration-200 ease-in-out  pb-1 h-fit gap-4 items-start">
 
-                                <img src={currentTrack.cover} alt="" className="size-[50px] " />
+                                <img src={currentTrack.cover} alt="" className="size-[50px] object-cover" />
                                 <div className="flex flex-col items-left gap-0">
                                   <p className="text-[17px] font-NeueMontreal font-medium tracking-wide">{currentTrack.title}</p>
                                   <p className="text-[13px] text-gray-200">{currentTrack.artist}</p>
@@ -286,7 +286,7 @@ const exitFullscreen = () => {
                   <img
                     src={currentTrack.cover || '/default-cover.jpg'}
                     alt={currentTrack.title}
-                    className={`w-full rounded-[6px] object-cover ${
+                    className={`w-full rounded-[6px_6px_0_0] object-cover ${
                       viewMode === 'fullscreen' ? 'h-[60vh]' : 'h-[300px]'
                     }`}
                   />

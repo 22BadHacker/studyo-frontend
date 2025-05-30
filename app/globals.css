@@ -36,7 +36,6 @@
 
 
 
-
 @theme inline {
   --background: var(--background);
   --foreground: var(--foreground);
@@ -127,4 +126,10 @@ body {
 
 input[type="range"] {
   cursor: pointer;
+}
+
+
+.bottom-nav {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
 }

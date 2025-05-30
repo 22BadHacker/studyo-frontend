@@ -58,21 +58,21 @@ const Profiles = () => {
                     {/* <IoIosNotifications className='text-[#fff] cursor-pointer text-[25px]' /> */}
 
                     {/* Profile Circle with Dropdown */}
-                    <div className="relative bg-[#d8dfe8]/20  backdrop-blur-[15px] border-white/30 border-[1.5px]  flex gap-6 items-center px-[7px] py-[4.5px] rounded-full cursor-pointer group">
+                    <div className="relative bg-[#d8dfe8]/0  backdrop-blur-[15px] border-white/0 border-[1.5px]  flex gap-6 items-center px-[7px] py-[4.5px] rounded-full cursor-pointer group">
                         {/* Profile image or first letter */}
-                        <span className='relative size-[40px] flex-center bg-main2/60 backdrop-blur-[6px] rounded-full'>
+                        <span className='relative size-[40px] flex-center  backdrop-blur-[6px] rounded-full'>
                             <IoIosNotifications className='relative  text-white cursor-pointer text-[25px]' />
-                            <span className='absolute top-0 right-1 bg-red-500  size-[9px] rounded-full'></span>
+                            {/* <span className='absolute top-0 right-1 bg-red-500  size-[9px] rounded-full'></span> */}
                         </span>
-                        <div className="w-[.5px] h-[20px] bg-white"></div>
+                        {/* <div className="w-[.5px] h-[20px] bg-white"></div> */}
                         <button onClick={() => setOpen(!open)} className="size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[18px] flex-center uppercase shadow overflow-hidden"z>
                             {profileImage ? (
-                            <img src={profileImage} alt="" className="w-full bg-white/30 h-full  p-[.5px] object-cover rounded-full" />
+                            <img src={profileImage} alt="" className="w-full  h-full  object-cover rounded-full" />
                             ) : (
                             firstLetter
                             )}
 
-                            <span className='absolute top-[5px] right-[10px] bg-green-500 size-[8.5px] rounded-full'></span>
+                            <span className='absolute top-[4.5px] right-[8.5px] bg-green-500 size-[8.5px] rounded-full'></span>
                         </button>
 
                         {/* Dropdown menu */}

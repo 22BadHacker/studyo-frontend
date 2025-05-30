@@ -34,8 +34,8 @@ const Header = () => {
 				</Link>
 				<button onClick={() => playTrack({
 				id: 1,
-				title: 'Dreaming Awake',
-				artist: "Faouzia",
+				title: 'The Mute Girl',
+				artist: "Yann Tiersen",
 				cover: '/images/img32.jpg',
 				src: '/girl.mp3',
 				})} className="text-white font-bold p-4">
@@ -45,7 +45,7 @@ const Header = () => {
 
 			<div className="flex justify-center items-center relative -left-5 w-full gap-2">
 				
-				<Link href={'/Search'} className="grid  hover:text-white  duration-200 ease-in-out grid-cols-[auto_1fr_auto] search w-[430px] bg-[#d8dfe8]/20 hover:border-[1.5px] backdrop-blur-[20px]   gap-[13px] items-center h-[53px] px-[9px]   hover:border-white/70 border-white/10 border-[1px]  rounded-full">
+				<Link href={'/Search'} className="grid  hover:text-white scale-[.99] mt-1  duration-200 ease-in-out grid-cols-[auto_1fr_auto] search w-[430px] bg-gradient-to-tr from-[#d8dfe8]/0 via-[#d8dfe8]/10 to-[#d8dfe8]/0 hover:border-[1.5px] backdrop-blur-[20px]   gap-[13px] items-center h-[53px] px-[9px]   hover:border-white/70 border-white/10 border-[1.5px]  rounded-full">
 					<FiSearch className='text-[#f4f4f4] h-fit  text-[27px] relative -top-[1px] cursor-pointer' /> 
 					<input className="outline-none font- tracking-wider font-medium text-[14px] capitalize placeholder:text-[14px] w-full  placeholder:text-[#fff]/85"  value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="What’s playing in your Stüdyo today?" />
 

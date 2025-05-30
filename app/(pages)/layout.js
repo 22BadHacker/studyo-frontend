@@ -45,7 +45,7 @@ const layout = ({children}) => {
                   <Footer />
 
               </footer>
-              <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: .8 , delay: 1, ease: 'easeInOut'}} className="w-full z-[30] fixed bottom-8 left-0 right-0 flex-center">
+              <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: .8 , delay: 1, ease: 'easeInOut'}} className="w-full z-[30] fixed bottom-7 left-0 right-0 flex-center">
                 <Bottom />
               </motion.div>
           </>
