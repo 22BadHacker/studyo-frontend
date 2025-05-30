@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 // };
 
 
-const layout = ({children}) => {
+const Layout = ({children}) => {
 
   const [loading, setLoading] = useState(true);
   
@@ -56,7 +56,7 @@ const layout = ({children}) => {
   )
 }
 
-export default layout
+export default Layout
 
 
 // 0d0d0d
