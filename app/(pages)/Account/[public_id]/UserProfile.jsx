@@ -12,6 +12,7 @@ import api from '@/lib/axios';
 import Follows from './Follows';
 import { useAudio } from '@/context/AudioProvider'
 
+import { useAppHook } from '@/context/AppProvider';
 
 export default function UserProfile() {
   const { public_id } = useParams();
@@ -19,6 +20,7 @@ export default function UserProfile() {
   const [loading, setLoading] = useState(true)
   const [isFollowing, setIsFollowing] = useState(false);
   const { playTrack } = useAudio();
+  // const { user } = useAppHook();
 
   
   const [showSticky, setShowSticky] = useState(false);
@@ -97,9 +99,10 @@ export default function UserProfile() {
 
 
       <div className="">
-            <div className="w-full  z-[6] bg-gradient-to-b from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]"></div>
-            <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]"></div>
-            <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]"></div>
+            <div className="w-full  z-[6] bg-gradient-to-b from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
+            <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
+            <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
+            
             <div className="absolute   overflow-hidden grid grid-cols-3 top-0 left-0 right-0 w-full h-auto ">
                 {user.profile_image ? (
                   <>
@@ -159,7 +162,7 @@ export default function UserProfile() {
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {isFollowing ? 'Unfollow' : 'Follow'}
+                    {isFollowing ? 'Following' : 'Follow'}
                   </motion.span>
                 </motion.button>
 

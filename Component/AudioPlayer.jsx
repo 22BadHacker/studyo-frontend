@@ -12,18 +12,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FiMinimize2 } from "react-icons/fi";
 import { CiMinimize1 } from "react-icons/ci";
+import { RxLoop } from "react-icons/rx";
+import { PiShuffleThin } from "react-icons/pi";
 
 export default function AudioPlayer() {
 
   const {
     currentTrack,
     isPlaying,
-    togglePlay,
+     isLooping,
+    isShuffling,
     nextTrack,
     prevTrack,
     audioRef,
     volume,
     setVolume,
+    togglePlay,
+    toggleLoop,
+    toggleShuffle,
   } = useAudio();
 
   const [progress, setProgress] = useState(0);
@@ -116,7 +122,7 @@ const exitFullscreen = () => {
          
           className="w-full h-full  flex items-center justify-between text-white z-[50]"
         >
-          <img src="/images/img4.jpg " alt="" className="absolute saturate-150 top-0 left-0 object-cover" />
+          <img src="/images/img4.jpg " alt="" className="absolute animate-pulse saturate-200 top-0 left-0 object-cover" />
           <div className="absolute top-0 left-0 w-full h-full bg-black/10 from-[#000]/0 backdrop-blur-[70px] "></div>
        
           <div className="container w-full h-full">
@@ -156,6 +162,9 @@ const exitFullscreen = () => {
                                   <div className="flex pt-4 pb-2 w-full justify-between items-center">
 
                                     <div className="flex w-full justify-center items-center space-x-5">
+                                        <button onClick={toggleShuffle} className={isShuffling ? 'text-green-500' : 'text-white'}>
+                                          <PiShuffleThin  className='mr-1'/>
+                                      </button>
                                       <button onClick={prevTrack}>
                                         <MdSkipPrevious className='opacity-80 hover:opacity-100' size={27} />
                                       </button>
@@ -170,6 +179,10 @@ const exitFullscreen = () => {
                                       <button onClick={nextTrack}>
                                         <MdSkipNext className='opacity-80 hover:opacity-100' size={27} />
                                       </button>
+
+                                       <button onClick={toggleLoop} className={isLooping ? 'text-green-500' : 'text-white'}>
+                                            <RxLoop className='ml-1'/>
+                                        </button>
                                     </div>
 
                                     

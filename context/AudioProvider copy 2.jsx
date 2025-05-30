@@ -8,8 +8,6 @@ export function AudioProvider({ children }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [queue, setQueue] = useState([]);
   const [volume, setVolume] = useState(0.8);
-  const [isLooping, setIsLooping] = useState(false);
-  const [isShuffling, setIsShuffling] = useState(false);
   const audioRef = useRef(null);
 
   const playTrack = (track) => {
@@ -27,18 +25,10 @@ export function AudioProvider({ children }) {
   };
 
   const nextTrack = () => {
-    if (isShuffling) {
-      const otherTracks = queue.filter(t => t.id !== currentTrack?.id);
-      const randomTrack = otherTracks[Math.floor(Math.random() * otherTracks.length)];
-      if (randomTrack) {
-        playTrack(randomTrack);
-      }
-    } else {
-      const index = queue.findIndex(t => t.id === currentTrack?.id);
-      if (index >= 0 && index < queue.length - 1) {
-        setCurrentTrack(queue[index + 1]);
-        setIsPlaying(true);
-      }
+    const index = queue.findIndex(t => t.id === currentTrack?.id);
+    if (index >= 0 && index < queue.length - 1) {
+      setCurrentTrack(queue[index + 1]);
+      setIsPlaying(true);
     }
   };
 
@@ -48,14 +38,6 @@ export function AudioProvider({ children }) {
       setCurrentTrack(queue[index - 1]);
       setIsPlaying(true);
     }
-  };
-
-  const toggleLoop = () => {
-    setIsLooping(prev => !prev);
-  };
-
-  const toggleShuffle = () => {
-    setIsShuffling(prev => !prev);
   };
 
   // Auto play when track changes
@@ -75,28 +57,6 @@ export function AudioProvider({ children }) {
     }
   }, [volume]);
 
-
-  // Handle track end
-  useEffect(() => {
-    const handleEnded = () => {
-      if (isLooping) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play();
-      } else {
-        nextTrack();
-      }
-    };
-
-    const audio = audioRef.current;
-    audio.addEventListener('ended', handleEnded);
-    return () => {
-      audio.removeEventListener('ended', handleEnded);
-    };
-  }, [currentTrack, isLooping, isShuffling, queue]);
-
-
-
-
   return (
     <AudioContext.Provider value={{
       currentTrack,
@@ -109,10 +69,6 @@ export function AudioProvider({ children }) {
       togglePlay,
       nextTrack,
       prevTrack,
-      toggleLoop,
-      toggleShuffle,
-      isLooping,
-      isShuffling,
       audioRef,
     }}>
       {children}
