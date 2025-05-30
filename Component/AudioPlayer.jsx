@@ -181,7 +181,7 @@ const exitFullscreen = () => {
                                       </button>
 
                                        <button onClick={toggleLoop} className={isLooping ? 'text-green-500' : 'text-white'}>
-                                            <RxLoop className='ml-1'/>
+                                            <RxLoop className='ml-1 mt-1 opacity-80 text-[14.5px]'/>
                                         </button>
                                     </div>
 
