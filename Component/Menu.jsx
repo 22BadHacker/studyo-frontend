@@ -45,7 +45,7 @@ const MenuToggle = () => {
 
         {
             open && (
-                <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: '100%' }} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, height: 0 , transition: { duration: 0.3, ease: 'linear' }}} className="fixed top-0 left-0 w-full h-full bg-red-500 z-[5]"></motion.div>
             )
         }
 

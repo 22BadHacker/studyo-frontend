@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+    domains: ['https://via.placeholder.com', 'http://localhost:8000/api/artists'], // Add your backend image domains here
+  },
+};
 
 export default nextConfig;

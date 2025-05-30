@@ -19,7 +19,7 @@ const handler = NextAuth({
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/google-auth`, {
           email: user.email,
           username: user.name,
-          profile_image: user.image,
+          image: user.image,
         });
 
         return !!response.data.success;

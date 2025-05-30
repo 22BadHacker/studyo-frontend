@@ -38,8 +38,8 @@ const Profiles = () => {
         {
             !user && !session?.user ? (
                 <div className="flex relative w-full justify-end gap-6 items-center">
-                    <Link href={'/Auth/Login'} className=' duration-200 ease-in-out hover:scale-[1.05] px-6 py-3 rounded-full hover:bg-main2 font-semibold text-white'>Log in</Link>
-                    <Link href={'/Auth/Signup'} className='bg-white duration-200 ease-in-out hover:scale-[1.05] px-6 py-3 rounded-full hover:bg-[#f0f0f0] font-semibold text-main2'>Sign up</Link>
+                    <Link href={'/Auth/Login'} className=' duration-200 ease-in-out hover:scale-[1.05] px-6 py-[14px] rounded-full hover:bg-main2 font-semibold text-white'>Log in</Link>
+                    <Link href={'/Auth/Signup'} className='bg-white duration-200 ease-in-out hover:scale-[1.05] px-6 py-3 rounded-full border-white border-[1px] hover:bg-[#f0f0f0] font-semibold text-main2'>Sign up</Link>
 
 
                      
@@ -48,31 +48,38 @@ const Profiles = () => {
             :
             (
                 <div className="flex w-full justify-end gap-7 items-center">
-                    <Link
+                    {/* <Link
                         className="font-semibold hover:bg-[#f0f0f0] duration-200 ease-in-out hover:scale-[1.05] ] bg-white text-[#000] text-[14.5px] px-6 h-[51px] flex items-center justify-center rounded-full  capitalize"
                         href="/Auth/Login"
                     >
                         Explore premium
-                    </Link>
+                    </Link> */}
 
                     {/* <IoIosNotifications className='text-[#fff] cursor-pointer text-[25px]' /> */}
 
                     {/* Profile Circle with Dropdown */}
-                    <div className="relative cursor-pointer group">
+                    <div className="relative bg-[#d8dfe8]/20  backdrop-blur-[15px] border-white/30 border-[1.5px]  flex gap-6 items-center px-[7px] py-[4.5px] rounded-full cursor-pointer group">
                         {/* Profile image or first letter */}
-                        <button onClick={() => setOpen(!open)} className="size-[53px] cursor-pointer rounded-full bg-green-500 text-[#000] font-[800] font-sora text-[18px] flex-center uppercase overflow-hidden">
+                        <span className='relative size-[40px] flex-center bg-main2/60 backdrop-blur-[6px] rounded-full'>
+                            <IoIosNotifications className='relative  text-white cursor-pointer text-[25px]' />
+                            <span className='absolute top-0 right-1 bg-red-500  size-[9px] rounded-full'></span>
+                        </span>
+                        <div className="w-[.5px] h-[20px] bg-white"></div>
+                        <button onClick={() => setOpen(!open)} className="size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[18px] flex-center uppercase shadow overflow-hidden"z>
                             {profileImage ? (
-                            <img src={profileImage} alt="" className="w-full h-full bg-green-500 p-[.5px] object-cover rounded-full" />
+                            <img src={profileImage} alt="" className="w-full bg-white/30 h-full  p-[.5px] object-cover rounded-full" />
                             ) : (
                             firstLetter
                             )}
+
+                            <span className='absolute top-[5px] right-[10px] bg-green-500 size-[8.5px] rounded-full'></span>
                         </button>
 
                         {/* Dropdown menu */}
                        {
                         
                             open &&
-                            <div className="absolute py-1 right-0 top-20 w-[200px] px-2 bg-main2/80 backdrop-blur-[20px] border border-black/40 rounded-md shadow-md   transition-opacity duration-200 z-50">
+                            <div className="absolute py-1 right-0 top-[70px] w-[200px] px-2 bg-main2/90 backdrop-blur-[20px] border border-black/40 rounded-md shadow-md   transition-opacity duration-200 z-10">
                                 <Link className='linkk' href={'/'}>Account <LuSquareArrowOutUpRight size={16}/></Link>
                                 <Link className='linkk' href={'/'}>My Music </Link>
                                 <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>

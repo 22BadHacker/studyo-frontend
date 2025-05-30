@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/context/AppProvider";
 import SessionWrapper from "@/context/SessionWrapper";
+import { AudioProvider } from "@/context/AudioProvider";
+import AudioPlayer from "@/Component/AudioPlayer";
 
 
 
@@ -29,7 +31,10 @@ export default function RootLayout({ children }) {
       >
         <SessionWrapper>
           <AppProvider>
+            <AudioProvider>
               {children}
+              <AudioPlayer />
+            </AudioProvider>
           </AppProvider>
 
         </SessionWrapper>
