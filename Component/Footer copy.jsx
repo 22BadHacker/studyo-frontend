@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div className="container">
       <div className='py-6 w-full flex flex-col gap-[110px]'>
-        <div className="grid place-items-between grid-cols-[1fr_.6fr_.8fr_.6fr] gap-12">
+        <div className="grid grid-cols-[1fr_.6fr_.6fr_1fr] gap-12">
             <div className="flex flex-col gap-6">
               <p className='h-fit w-[300px] uppercase text-white/80 font-TWK-Everett flex items-center gap-3 font-medium tracking-wider text-[13.5px]'>Your next favorite song is one click away.</p>
               <div className="w-[80%] pb-3 border-b-[.4px] border-b-white/70  flex justify-between gap-2">

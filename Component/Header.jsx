@@ -24,7 +24,7 @@ const Header = () => {
   return (
 	<div className='container2   '>
 
-		<nav className="grid   pb-5  grid-cols-[auto_1fr_auto] gap-8 w-full">
+		<nav className="grid   pb-5  grid-cols-[.4fr_1fr_.4fr] gap-8 w-full">
 
 			<div className="flex z-[30] w-fit items-center gap-[30px]">
 				<MenuToggle />
@@ -32,7 +32,7 @@ const Header = () => {
 				<Link className='z-[70]' href={'/'}>
 					<Image alt='Logo' className='w-[125px] ' src={logo} width={120} height={120}/>
 				</Link>
-				<button onClick={() => playTrack({
+				{/* <button onClick={() => playTrack({
 				id: 1,
 				title: 'The Mute Girl',
 				artist: "Yann Tiersen",
@@ -40,7 +40,7 @@ const Header = () => {
 				src: '/girl.mp3',
 				})} className="text-white font-bold p-4">
 				Play
-				</button>
+				</button> */}
 			</div>
 
 			<div className="flex justify-center items-center relative -left-5 w-full gap-2">

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '@/public/Logo/Studyo_white.svg';
@@ -12,12 +12,44 @@ import { motion } from 'framer-motion';
 import art from '@/public/artist.webp'
 import art2 from '@/public/Listener.jpg'
 
+
+const months = [
+  { value: "01", name: "January" },
+  { value: "02", name: "February" },
+  { value: "03", name: "March" },
+  { value: "04", name: "April" },
+  { value: "05", name: "May" },
+  { value: "06", name: "June" },
+  { value: "07", name: "July" },
+  { value: "08", name: "August" },
+  { value: "09", name: "September" },
+  { value: "10", name: "October" },
+  { value: "11", name: "November" },
+  { value: "12", name: "December" },
+];
+
+
 const Form = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
   const [selectedRole, setSelectedRole] = useState(null);
+  const [monthDropdownOpen, setMonthDropdownOpen] = useState(false);
+
+
+  useEffect(() => {
+  const handleClickOutside = (e) => {
+    if (!e.target.closest(".month-dropdown")) {
+      setMonthDropdownOpen(false);
+    }
+  };
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
 
   // Form Data
   const [formData, setFormData] = useState({
@@ -25,6 +57,9 @@ const Form = () => {
     username: '',
     password: '',
     date_of_birth: '',
+    day: '',
+    month: '',
+    year: '',
     role: '', // Added role field
   });
 
@@ -45,7 +80,22 @@ const Form = () => {
   // Handle Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+    const updated = { ...prev, [name]: value };
+
+    // If day, month, and year exist, update date_of_birth
+    const { day, month, year } = {
+      ...updated,
+      [name]: value
+    };
+
+    if (day && month && year) {
+      updated.date_of_birth = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    }
+
+    return updated;
+  });
+
 
     if (name === "email") {
       setTouched(false);
@@ -245,7 +295,7 @@ const Form = () => {
                     name="username"
                     value={formData.username}
                     onChange={handleChange}
-                    className="mt-1 font-semibold text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
+                    className="mt-1 text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[4px] outline-none hover:border-white"
                   />
                 </div>
                 
@@ -253,25 +303,71 @@ const Form = () => {
                   <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
                     Date of Birth
                   </label>
-                  <input
-                    type="date"
-                    name="date_of_birth"
-                    value={formData.date_of_birth}
-                    onChange={handleChange}
-                    className="mt-1 text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
-                  />
+                  <div className="grid grid-cols-[.5fr_1fr_.5fr] gap-3">
+                    <input
+                      type="number"
+                      name="day"
+                      value={formData.day}
+                      onChange={handleChange}
+                      placeholder="DD"
+                      min="1"
+                      max="31"
+                      className="w-full text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[4px] outline-none hover:border-white"
+                    />
+                    <div className="relative month-dropdown w-full">
+                      <button
+                        type="button"
+                        onClick={() => setMonthDropdownOpen(!monthDropdownOpen)}
+                        className="w-full text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white text-left"
+                      >
+                        {formData.month
+                          ? months.find((m) => m.value === formData.month)?.name
+                          : "Month"}
+                      </button>
+
+                      {monthDropdownOpen && (
+                        <ul className="absolute z-10 mt-1 w-full bg-[#101010] border border-white/20 rounded-[12px] overflow-hidden shadow-lg">
+                          {months.map((month) => (
+                            <li
+                              key={month.value}
+                              onClick={() => {
+                                setFormData({ ...formData, month: month.value });
+                                setMonthDropdownOpen(false);
+                              }}
+                              className="px-3 py-2 text-sm text-white hover:bg-white/10 cursor-pointer"
+                            >
+                              {month.name}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+
+                    <input
+                      type="number"
+                      name="year"
+                      value={formData.year}
+                      onChange={handleChange}
+                      placeholder="YYYY"
+                      min="1900"
+                      max={new Date().getFullYear()}
+                      className="w-full text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[4px] outline-none hover:border-white"
+                    />
+                  </div>
                 </div>
+
 
                 <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
                   Password
-                  <div className="mt-2 flex items-center px-3 bg-transparent border-[0.5px] border-white/50 hover:border-white rounded-[12px]">
+                  <div className="mt-2 flex items-center px-4 bg-transparent border-[0.5px] border-white/50 hover:border-white rounded-[4px]">
                     <input
                       placeholder=''
                       type={showPassword ? 'text' : 'password'}
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className="flex-1 py-3  text-[13.5px] text-white bg-transparent outline-none border-none"
+                      className="flex-1 py-3 text-white bg-transparent outline-none border-none"
                     />
                     <button
                       type="button"

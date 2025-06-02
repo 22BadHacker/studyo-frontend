@@ -62,7 +62,7 @@ export default function ArtistsPage() {
 
           <motion.div viewport={{ once: true }} key={artist.id} whileInView={{ opacity: [0, 1], once: true }} transition={{ duration: .2, delay: i * .1, ease: 'easeInOut' }}>
             <Link
-              href={`/Account/${artist.public_id}`}
+              href={`/artist/${artist.public_id}`}
              
               className="p-4 group relative flex flex-col gap-1 hover:bg-[#1f1f1f]/50 cursor-pointer rounded-xl text-left"
             >

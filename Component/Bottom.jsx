@@ -24,7 +24,7 @@ export default function Bottom() {
           <Link
             key={item.href}
             href={item.href}
-            className={`relative  text-[15.8px] z-10 px-6 py-[12.5px] flex-center rounded-full transition-colors duration-300 ${
+            className={`relative  text-[15.8px] z-10 px-6 py-[13px] flex-center rounded-full transition-colors duration-300 ${
               isActive ? 'bg-white  text-black' : 'hover:bg-white/10'
             }`}
           >

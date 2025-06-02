@@ -14,6 +14,7 @@ import { FiMinimize2 } from "react-icons/fi";
 import { CiMinimize1 } from "react-icons/ci";
 import { RxLoop } from "react-icons/rx";
 import { PiShuffleThin } from "react-icons/pi";
+import xx from '@/public/xx.svg'
 
 export default function AudioPlayer() {
 

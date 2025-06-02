@@ -82,6 +82,11 @@ const AppProvider = ({ children }) => {
 
       setTimeout(() => {
         router.push('/');
+        // if (user.role === 'artist') {
+        //   router.push(`/artist/${user.public_id}`);
+        // } else {
+        //   router.push(`/user/${user.public_id}`);
+        // }
       }, 1500);
     } catch (error) {
       if (error.response?.data?.errors) {

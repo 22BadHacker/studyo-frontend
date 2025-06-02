@@ -101,7 +101,7 @@ body {
     }
 
     .linkk{
-      @apply w-full py-2 text-white font-NeueMontreal flex tracking-wide hover:text-green-500 items-center justify-between px-1 text-[13px] duration-200 ease-in-out
+      @apply w-full py-2 px-2 text-white font-NeueMontreal flex tracking-wide hover:bg-white/10 hover:text-green-500 items-center justify-between  text-[13px] duration-200 ease-in-out
     }
 
 }
