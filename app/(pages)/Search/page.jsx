@@ -7,7 +7,7 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='h-screen relative'>
+    <div className='h-auto py-[180px] relative'>
       <Search/>
     </div>
   )

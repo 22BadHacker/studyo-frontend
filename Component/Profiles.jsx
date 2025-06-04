@@ -60,7 +60,7 @@ const Profiles = () => {
         {
             !user && !session?.user ? (
                 <div className="flex relative w-full justify-end gap-6 items-center">
-                    <Link href={'/Auth/Login'} className=' duration-200 ease-in-out hover:scale-[1.05] px-6 py-[14px] rounded-full hover:bg-main2 font-semibold text-white'>Log in</Link>
+                    <Link href={'/Auth/Login'} className=' duration-200 ease-in-out hover:scale-[1.05] px-6 py-[14px] rounded-full hover:bg-main2/50 backdrop-blur-xl font-semibold text-white'>Log in</Link>
                     <Link href={'/Auth/Signup'} className='bg-white duration-200 ease-in-out hover:scale-[1.05] px-6 py-3 rounded-full border-white border-[1px] hover:bg-[#f0f0f0] font-semibold text-main2'>Sign up</Link>  
                 </div>
             )

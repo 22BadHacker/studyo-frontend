@@ -63,24 +63,15 @@ const Form = () => {
   // Handle Password Visibility
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
- const handleFormSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-
-  const formPayload = new FormData();
-  formPayload.append('email', formData.email);
-  formPayload.append('username', formData.username);
-  formPayload.append('password', formData.password);
-  formPayload.append('date_of_birth', formData.date_of_birth);
-  formPayload.append('role', formData.role);
-  if (formData.profile_image) {
-    formPayload.append('profile_image', formData.profile_image); // 👈 include image
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    await new Promise((res) => setTimeout(res, 3000));
+    
+    await register(formData);
+    setLoading(false);
   }
-
-  await register(formPayload); // Your API must accept FormData
-  setLoading(false);
-};
-
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
@@ -271,38 +262,6 @@ const Form = () => {
                     className="mt-1 text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
                   />
                 </div>
-
-                {/* Profile Image Upload */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
-                    Upload Profile Image
-                  </label>
-
-                  <div className="flex items-center gap-4">
-                    {formData.profile_image && (
-                      <Image
-                        src={URL.createObjectURL(formData.profile_image)}
-                        alt="Profile Preview"
-                        width={60}
-                        height={60}
-                        className="rounded-full object-cover w-[60px] h-[60px]"
-                      />
-                    )}
-                    
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) =>
-                        setFormData(prev => ({
-                          ...prev,
-                          profile_image: e.target.files[0],
-                        }))
-                      }
-                      className="text-white text-[13px] bg-transparent"
-                    />
-                  </div>
-                </div>
-
 
                 <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
                   Password

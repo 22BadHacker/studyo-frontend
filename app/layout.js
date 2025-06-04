@@ -4,6 +4,7 @@ import AppProvider from "@/context/AppProvider";
 import SessionWrapper from "@/context/SessionWrapper";
 import { AudioProvider } from "@/context/AudioProvider";
 import AudioPlayer from "@/Component/AudioPlayer";
+import PageWrapper from "@/Component/PageWrapper";
 
 
 
@@ -32,7 +33,8 @@ export default function RootLayout({ children }) {
         <SessionWrapper>
           <AppProvider>
             <AudioProvider>
-              {children}
+              <PageWrapper childrenn={children}></PageWrapper>
+              {/* {children} */}
               <AudioPlayer />
             </AudioProvider>
           </AppProvider>

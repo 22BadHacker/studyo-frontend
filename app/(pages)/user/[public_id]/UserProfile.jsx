@@ -26,24 +26,32 @@ export default function UserProfile() {
   const [isFollowing, setIsFollowing] = useState(false);
   const { playTrack } = useAudio();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showSticky, setShowSticky] = useState(false);
-
-   
-
-  
 
 
-  useEffect(() => {
-  const container = document.getElementById('scroll-container');
-  const handleScroll = () => {
-    if (container) {
-      setShowSticky(container.scrollTop > 450);
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY) {
+        // scrolling down
+        setShow(true);
+      } else {
+        // scrolling up
+        setShow(false);
+      }
+      setLastScrollY(window.scrollY);
     }
   };
 
-  container?.addEventListener('scroll', handleScroll);
-  return () => container?.removeEventListener('scroll', handleScroll);
-}, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
 
 
 useEffect(() => {
@@ -99,27 +107,27 @@ useEffect(() => {
     <>  
 
        <AnimatePresence>
-            {showSticky && (
+            {show && (
               <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{  opacity: 1 }}
                 exit={{  opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="fixed bottom-7 left-0  right-0 mx-auto w-[415px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
+                className="fixed bottom-7 left-0  right-0 mx-auto w-[405px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
               >
                 <div className="max-w-7xl mx-auto p-[7px] pr-4 flex items-center justify-between">
                   <div className="text-white flex items-center gap-3 text-lg font-semibold capitalize">
                     {
                       user.profile_image ? (
                       <img
-                          src={'/images/img10.jpg'}
+                          src={user.profile_image}
                           alt={user.username}
-                          width={40}
-                          height={40}
-                          className="rounded-full object-cover"
+                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
+                          
+                          className="rounded-full size-[45px] object-cover"
                       />
                       ) : (
-                      <div className="size-11 flex items-center justify-center rounded-full bg-gray-400 text-white text-md font-bold">
+                      <div className="size-[45px] flex items-center justify-center rounded-full bg-gray-400 text-white text-md font-bold">
                           {user.username.charAt(0).toUpperCase()}
                       </div>
                       )
@@ -153,10 +161,11 @@ useEffect(() => {
                         
                         <img
                           key={index}
-                          src={'/bad.avif'}
+                          src={user.profile_image}
+                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
                           alt={user.username}
                         
-                          className="size-full p saturate-[1.3]  object-cover"
+                          className="size-full  saturate-[1.3]  object-cover"
                         />
                       </div>
                     ))

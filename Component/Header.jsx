@@ -24,12 +24,13 @@ const Header = () => {
   return (
 	<div className='container2   '>
 
-		<nav className="grid   pb-5  grid-cols-[.4fr_1fr_.4fr] gap-8 w-full">
+			 <div className="absolute top-0 left-0  size-full h-[200px] bg-gradient-to-b from-[#000]/70 via-[#000]/30 to-transparent"></div>
+		<nav className="grid relative  pb-5  grid-cols-[.4fr_1fr_.4fr] gap-8 w-full">
 
-			<div className="flex z-[30] w-fit items-center gap-[30px]">
+			<div className="flex z-[30]  w-fit items-center gap-[30px]">
 				<MenuToggle />
 				
-				<Link className='z-[70]' href={'/'}>
+				<Link className='z-[70] ' href={'/'}>
 					<Image alt='Logo' className='w-[125px] ' src={logo} width={120} height={120}/>
 				</Link>
 				{/* <button onClick={() => playTrack({

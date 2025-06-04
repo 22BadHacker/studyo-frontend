@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Svg from '@/Component/Svg';
@@ -17,6 +17,9 @@ import { RxDotsHorizontal } from 'react-icons/rx';
 import { RiHeartAddFill } from "react-icons/ri";
 import { BsCopy } from 'react-icons/bs';
 import CopyLinkButton from '@/Component/CopyLinkButton';
+import EditModel from '@/Component/EditModel';
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { IoMdAdd } from "react-icons/io";
 
 
 export default function UserProfile() {
@@ -30,21 +33,33 @@ export default function UserProfile() {
 
   const isOwner = currentUser?.public_id === user?.public_id;
 
-  
-  const [showSticky, setShowSticky] = useState(false);
 
 
-  useEffect(() => {
-  const container = document.getElementById('scroll-container');
-  const handleScroll = () => {
-    if (container) {
-      setShowSticky(container.scrollTop > 450);
+
+ const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY) {
+        // scrolling down
+        setShow(true);
+      } else {
+        // scrolling up
+        setShow(false);
+      }
+      setLastScrollY(window.scrollY);
     }
   };
 
-  container?.addEventListener('scroll', handleScroll);
-  return () => container?.removeEventListener('scroll', handleScroll);
-}, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
 
 
 useEffect(() => {
@@ -89,29 +104,29 @@ useEffect(() => {
   
 
   return (
-    <>  
+    <div >  
 
        <AnimatePresence>
-            {showSticky && (
+            {show && (
               <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{  opacity: 1 }}
                 exit={{  opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="fixed bottom-7 left-0  right-0 mx-auto w-[415px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
+                className="fixed bottom-7 left-0  right-0 mx-auto w-[405px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
               >
                 <div className="max-w-7xl mx-auto p-[7px] flex items-center justify-between">
                   <div className="text-white flex items-center gap-3 text-lg font-semibold capitalize">{
-                      user.profile_image ? (
+                      user?.profile_image ? (
                       <img
-                          src={'/images/img10.jpg'}
-                          alt={user.username}
-                          width={40}
-                          height={40}
-                          className="rounded-full object-cover"
+                          src={user.profile_image}
+                          // alt={user.username}
+                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
+                         
+                          className="rounded-full size-[45px] object-cover"
                       />
                       ) : (
-                      <div className="size-11 flex items-center justify-center rounded-full bg-gray-400 text-white text-md font-bold">
+                      <div className="size-[45px] flex items-center justify-center rounded-full bg-gray-400 text-white text-md font-bold">
                           {user.username.charAt(0).toUpperCase()}
                       </div>
                       )
@@ -143,22 +158,23 @@ useEffect(() => {
         </AnimatePresence>
 
 
-      <div className="">
+      <div  className="">
             <div className="w-full  z-[6] bg-gradient-to-b from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
             <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
             <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
             
             <div className="absolute   overflow-hidden grid grid-cols-3 top-0 left-0 right-0 w-full h-auto ">
-                 {user.profile_image ? (
+                 {user?.profile_image ? (
                   <>
                   {
                     [...Array(3)].map((_, index) => (
-                      <div className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-[500px]'>
+                      <div key={index} className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-[500px]'>
                         
                         <img
-                          key={index}
-                          src={'/bad.avif'}
+                          
+                          src={user.profile_image}
                           alt={user.username}
+                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
                         
                           className="size-full p saturate-[1.3]  object-cover"
                         />
@@ -169,10 +185,10 @@ useEffect(() => {
                   </>
                     ) : (
                       [...Array(3)].map((_, index) => (
-                      <div className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-[500px]'>
+                      <div key={index}  className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-[500px]'>
                         
                         <img
-                          key={index}
+                          
                           src={'/selena.jpeg'}
                           alt={user.username}
                         
@@ -184,7 +200,7 @@ useEffect(() => {
             </div>
       </div>
 
-        <div className="items-end  z-[10] pt-[200px] relative flex justify-between gap-4 w-full">
+        <div  className="items-end  z-[10] pt-[200px] relative flex justify-between gap-4 w-full">
           <div className="flex  flex-col gap-2">
             <p className='flex upp font-medium items-center  gap-2'>
             <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[28px]' />
@@ -251,9 +267,8 @@ useEffect(() => {
                 </div>
               </>
             ) : (
-              <button className="px-6 py-2 text-sm font-medium rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition">
-                Edit Profile
-              </button>
+              // <UploadProfileImageButton />
+              <EditModel />
             )}
           </div>
 
@@ -265,10 +280,36 @@ useEffect(() => {
         </div>
 
 
-        <div className="pt-[100px] flex flex-col gap-4 w-full">
+        <div className="pt-[100px] flex flex-col gap-20 w-full">
             <div className="flex w-full items-center justify-between">
-                  {/* <h1 className='text-[20px] text-white font-semibold'>Top Albums</h1> */}
+                  <h1 className='text-[22px] text-green-500 font-NeueMontreal tracking-wide font-semibold'>{!isOwner ? 'Top Tracks' : 'Your Tracks'}</h1>
+
+                  <div className="flex items-center gap-4">
+                      {/* <span className='size-[32px] bg-main2/70 text-[16px] rounded-full flex-center cursor-pointer hover:bg-main2'><FiChevronLeft/></span>
+                      <span className='size-[32px] bg-main2/70 text-[16px] rounded-full flex-center cursor-pointer hover:bg-main2'><FiChevronRight/></span> */}
+                      <span className='uppercase px-3 py-[6px] rounded-full bg-gradient-to-t from-[#d8dfe8]/0 via-[#d8dfe8]/10 to-[#d8dfe8]/0 border border-white/10 text-white/80 font-NeueMontreal flex items-center gap-3 font-medium tracking-wider text-[12px]'>view all</span>
+                  </div>
                   
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex w-full items-center justify-between">
+                    <h1 className='text-[22px] text-green-500 font-NeueMontreal tracking-wide font-semibold'>{!isOwner ? 'Top Albums' : 'Your Albums'}</h1>
+                    <div className="flex items-center gap-4">
+                        <span className='size-[32px] bg-main2/70 text-[16px] rounded-full flex-center cursor-pointer hover:bg-main2'><FiChevronLeft/></span>
+                        <span className='size-[32px] bg-main2/70 text-[16px] rounded-full flex-center cursor-pointer hover:bg-main2'><FiChevronRight/></span>
+                        <span className='uppercase px-3 py-[6px] rounded-full bg-gradient-to-t from-[#d8dfe8]/0 via-[#d8dfe8]/10 to-[#d8dfe8]/0 border border-white/10 text-white/80 font-NeueMontreal flex items-center gap-3 font-medium tracking-wider text-[12px]'>view all</span>
+                    </div>
+              </div>
+              
+
+              <div className="flex items-center gap-4">
+                <div className="size-[200px] flex-center flex-col uppercase gap-2 text-[13px] font-NeueMontreal bg-main2/50 rounded-md border-dashed border-[1px] border-white/50"><IoMdAdd size={30}/> create album</div>
+                
+
+              </div>
+                    
+
             </div>
         </div>
 
@@ -279,7 +320,7 @@ useEffect(() => {
 
 
         
-    </>
+    </div>
    
   );
 }

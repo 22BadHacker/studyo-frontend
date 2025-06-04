@@ -15,8 +15,8 @@ export async function generateMetadata({ params }) {
 
 const page = () => {
   return (
-     <div className='w-full relative py-[120px] h-auto'>
-          <div className="container h-screen">
+     <div  className='w-full relative py-[120px] h-auto'>
+          <div className="container h-auto">
             <UserProfile />
           </div>
     
