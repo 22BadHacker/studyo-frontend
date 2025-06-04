@@ -9,7 +9,6 @@ import { BsArrowRight } from "react-icons/bs";
 import { IoIosArrowRoundUp } from "react-icons/io";
 import TimeClock from './TimeClock';
 import monir from '@/public/Logo/MounirLagzouliWhite.svg'
-import { motion } from 'framer-motion';
 
 
 const socail = [
@@ -31,23 +30,23 @@ const company = [
 
 const Footer = () => {
 
-  // const ref = useRef(null);
-  // const [isVisible, setVisible] = useState(false);
+  const ref = useRef(null);
+  const [isVisible, setVisible] = useState(false);
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => setVisible(entry.isIntersecting),
-  //     { threshold: 0.1 }
-  //   );
-  //   if (ref.current) observer.observe(ref.current);
-  //   return () => observer.disconnect();
-  // }, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
 
   return (
-    <div className="container " >
+    <div className="container " ref={ref}>
 
-      <div  className="w-full py-20 grid-cols-[1fr_.85fr] grid">
+      <div className={`w-full transition-all duration-700 ease-in-ou py-20 grid-cols-[1fr_.85fr] grid ${isVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-3xl'}`}>
           <div className="flex flex-col gap-5">
               <p className='uppercase tracking-wide font-normal font-NeueMontreal text-[11px]'>/ Reach out </p>
               <div className="flex leading-[1.1] flex-col">
@@ -84,7 +83,7 @@ const Footer = () => {
           </div>
       </div>
 
-      <motion.div viewport={{ once: false }} initial={{ opacity: 0, filter: 'blur(10px)' }} transition={{ duration: .2, ease: 'easeInOut' }} whileInView={{ opacity: 1, filter: 'blur(0px)' }}  className="flex pb-6  pt-[130px] items-end justify-between w-full">
+      <div className={`flex transition-all duration-700 ease-in-ou  pb-6 pt-[130px] items-end justify-between w-full ${isVisible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-10 blur-3xl'}`}>
 
           <div className="flex  flex-col items-start">
               <p className='text-[14px] font-normal uppercase font-NeueMontreal '>site by</p>
@@ -103,8 +102,7 @@ const Footer = () => {
 
           </div>
         </div>
-      </motion.div>
-      
+      </div>
 
     </div>
   )

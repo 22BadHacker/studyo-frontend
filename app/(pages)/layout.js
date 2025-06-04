@@ -25,21 +25,12 @@ const Layout = ({children}) => {
             </header> 
           
               {children}
-              <div className="container">
+              <div className="container2 pb-4">
                 <Image alt='Logo' className='w-full opacity-90' src={logo} width={140} height={140}/>
               </div>
-
-              {/* <footer style={{clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0% 100%)'}}  className="w-full  h-[700px] relative bg-[#2d2e2f]">
-                <div className="relative  h-[calc(100vh+700px)] -top-[100vh]">
-                  <div className=" sticky top-[calc(100vh+700px)] h-[700px]">
-                    <Footer />
-
-                  </div>
-                </div>
-              </footer> */}
+              
               <footer style={{clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0% 100%)'}} className="w-full  h-[600px] relative bg-[#e82525]">
                 <div className="fixed flex items-center  bottom-0 w-full h-[600px]">
-                  {/* <div className="absolute bottom-0 bg-red-500 size-60 opacity-70 blur-3xl"></div> */}
                   <Footer />
                 </div>
               </footer>
