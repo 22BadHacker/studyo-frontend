@@ -21,3 +21,27 @@ export const tracks = [
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
   },
 ];
+
+
+// utils/genreHashtags.js
+export const genreHashtags = {
+  "made for you": ["#MadeForYou", "#PersonalizedPlaylist", "#YourVibeOnly"],
+  "classical music": ["#ClassicalVibes", "#OrchestralMagic", "#TimelessTunes"],
+  "new releases": ["#FreshDrops", "#JustReleased", "#NowStreaming"],
+  "Top hits": ["#GlobalHits", "#HitZone", "#BangersOnly"],
+  "country": ["#CountryVibes", "#SouthernSound", "#HeartlandHits"],
+  "instrumental": ["#InstrumentalSoul", "#NoWordsNeeded", "#CinematicSounds"],
+  "podcasts": ["#PodCulture", "#TalkTime", "#VoicesThatMatter"],
+  "Moroccan Rap": ["#MoroccanRap", "#RapMaghribi", "#CasablancaBeats"],
+  "workout": ["#WorkoutWave", "#BeastModeOn", "#PumpUpPlaylist"],
+  "dance/electronic": ["#DanceBeats", "#FestivalAnthems"],
+  "Hip Hop": ["#HipHopMusic", "#UndergroundHipHop"],
+  "k-pop": ["#KpopFandom", "#IdolLife"],
+  "Anime": ["#AnimeMusic", "#AnimeOpening", "#OtakuBeats"],
+  "karaoke": ["#KaraokeTime", "#SingYourHeartOut"],
+  "tv & movies": ["#MovieMusic", "#NetflixPlaylist", "#ScreenSounds"],
+  "chill": ["#LofiVibes", "#SoothingSounds", "#EveningVibes"],
+  "folk & acoustic": ["#GuitarSessions", "#AcousticVibes"],
+  "trending": ["#TrendingNow", "#CurrentlyListening", "#TopHits"],
+};
+

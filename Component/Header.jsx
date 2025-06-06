@@ -30,8 +30,9 @@ const Header = () => {
 			<div className="flex z-[30]  w-fit items-center gap-[30px]">
 				<MenuToggle />
 				
-				<Link className='z-[70] ' href={'/'}>
-					<Image alt='Logo' className='w-[125px] ' src={logo} width={120} height={120}/>
+				<Link className='z-[70] group relative inline-block overflow-hidden  h-[47px] ' href={'/'}>
+					<Image alt='Logo' className='w-[125px] block transition-transform duration-300 group-hover:-translate-y-full h-full' src={logo} width={120} height={120}/>
+					<Image alt='Logo' className='w-[125px] absolute left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full h-full' src={logo} width={120} height={120}/>
 				</Link>
 				{/* <button onClick={() => playTrack({
 				id: 1,

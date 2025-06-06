@@ -8,6 +8,9 @@ export const metadata = {
     title: "Site Credits — 𝗦𝘁ü𝗱𝘆𝗼 ",  
 };
 
+
+
+
 const page = () => {
   return (
     <div className='w-full  h-screen bg-[#dddee2] overflow-hidden relative'>

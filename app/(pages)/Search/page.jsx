@@ -7,7 +7,7 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='h-auto py-[180px] relative'>
+    <div className='h-auto pt-[200px] pb-[180px] '>
       <Search/>
     </div>
   )

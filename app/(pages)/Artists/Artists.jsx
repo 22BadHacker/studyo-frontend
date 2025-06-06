@@ -53,9 +53,15 @@ export default function ArtistsPage() {
 
   return (
     <>
-      <h1 className="text-2xl pb-3 pt-10 font-NeueMontreal tracking-wide text-green-500 rounded-full w-fit font-bold mb-6">
+      {/* <h1 className="text-2xl pb-3 pt-10 font-NeueMontreal tracking-wide text-green-500 rounded-full w-fit font-bold mb-6">
         Discover Your Next Favorite Artist
-      </h1>
+      </h1> */}
+
+      <div className="link-wrapper  h-[65px]  cursor-pointer w-fit  font-NeueMontreal  text-white/60 font leading-tight font-[600] tracking-[0.015em] text-[50px]">
+        <h1 className=' link-text '>Discover Your Next Favorite Artist</h1>
+        <h1 className=' link-text-clone '>Discover Your Next Favorite Artist </h1>
+
+      </div>
 
       <div className="py-10 grid grid-cols-6 w-full gap-1">
         {filteredArtists.map((artist, i) => (
@@ -69,7 +75,7 @@ export default function ArtistsPage() {
               <div className="relative size-full">
                 {artist.profile_image ? (
                   <img
-                    src={images[Math.floor(Math.random() * images.length)]}
+                    src={artist.profile_image}
                     alt={artist.username}
                     className="size-full bg-gradient-to-r from-green-400 to-red-600 p-[.2px] mx-auto rounded-full object-cover"
                   />

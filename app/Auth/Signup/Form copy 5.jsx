@@ -11,10 +11,6 @@ import { LiaLongArrowAltLeftSolid } from "react-icons/lia";
 import { motion } from 'framer-motion';
 import art from '@/public/artist.webp'
 import art2 from '@/public/Hand.jpeg'
-import { FaCheckCircle } from 'react-icons/fa';
-import { IoMdCloseCircle } from 'react-icons/io';
-import { IoCloseCircleSharp } from "react-icons/io5";
-import { IoMdClose } from "react-icons/io";
 
 const Form = () => {
   const [step, setStep] = useState(1);
@@ -28,7 +24,9 @@ const Form = () => {
     email: '',
     username: '',
     password: '',
-    role: '', 
+    date_of_birth: '',
+    role: '', // Added role field
+    profile_image: null,
   });
 
   // Login Context
@@ -36,21 +34,13 @@ const Form = () => {
 
   // Email Pattern
   const isValidEmail = /^\S+@\S+\.\S+$/.test(formData.email);
-  
-  const passwordChecks = {
-    length: formData.password.length >= 8,
-    lowercase: /[a-z]/.test(formData.password),
-    uppercase: /[A-Z]/.test(formData.password),
-    // number: /[0-9]/.test(formData.password),
-    // special: /[^A-Za-z0-9]/.test(formData.password),
-  };
+
   // Form Validation 
   const isFormValid =
     formData.username.trim() !== '' &&
-    passwordChecks.length &&
+    formData.password.length >= 6 &&
+    formData.date_of_birth.trim() !== '' &&
     isValidEmail;
-
-
     
 
   // Handle Changes
@@ -73,15 +63,24 @@ const Form = () => {
   // Handle Password Visibility
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    
-    await new Promise((res) => setTimeout(res, 3000));
-    
-    await register(formData);
-    setLoading(false);
+ const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  const formPayload = new FormData();
+  formPayload.append('email', formData.email);
+  formPayload.append('username', formData.username);
+  formPayload.append('password', formData.password);
+  formPayload.append('date_of_birth', formData.date_of_birth);
+  formPayload.append('role', formData.role);
+  if (formData.profile_image) {
+    formPayload.append('profile_image', formData.profile_image); // 👈 include image
   }
+
+  await register(formPayload); // Your API must accept FormData
+  setLoading(false);
+};
+
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
@@ -238,7 +237,7 @@ const Form = () => {
               </div>
               
               <div className="text-center">
-                <h1 className="text-white font-NeueMontreal pt-[40px] font-bold text-[34px] tracking-[0.5px] leading-[1.2] max-w-[480px]">
+                <h1 className="text-white font-NeueMontreal pt-7 font-bold text-[34px] tracking-[0.5px] leading-[1.2] max-w-[480px]">
                   Final details, we promise.
                 </h1>
                 <p className="text-white/70 uppercase relative top-2 font-InterTight font-normal text-[12px] tracking-wide">
@@ -246,7 +245,7 @@ const Form = () => {
                 </p>
               </div>
               
-              <div className="w-full relative max-w-[90%] pt-[45px] flex flex-col gap-4">
+              <div className="w-full relative max-w-[90%] pt-[52px] flex flex-col gap-4">
                 <div className="flex pb-1 flex-col gap-1">
                   <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
                     Username
@@ -260,7 +259,50 @@ const Form = () => {
                   />
                 </div>
                 
-               
+                <div className="flex pb-1 flex-col gap-1">
+                  <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
+                    Date of Birth
+                  </label>
+                  <input
+                    type="date"
+                    name="date_of_birth"
+                    value={formData.date_of_birth}
+                    onChange={handleChange}
+                    className="mt-1 text-white text-[13.5px] px-3 py-3 bg-transparent border-[0.5px] border-white/50 rounded-[12px] outline-none hover:border-white"
+                  />
+                </div>
+
+                {/* Profile Image Upload */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
+                    Upload Profile Image
+                  </label>
+
+                  <div className="flex items-center gap-4">
+                    {formData.profile_image && (
+                      <Image
+                        src={URL.createObjectURL(formData.profile_image)}
+                        alt="Profile Preview"
+                        width={60}
+                        height={60}
+                        className="rounded-full object-cover w-[60px] h-[60px]"
+                      />
+                    )}
+                    
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        setFormData(prev => ({
+                          ...prev,
+                          profile_image: e.target.files[0],
+                        }))
+                      }
+                      className="text-white text-[13px] bg-transparent"
+                    />
+                  </div>
+                </div>
+
 
                 <label className="text-white/90 pb-1 font-InterTight text-[15px] tracking-wide font-semibold">
                   Password
@@ -283,32 +325,6 @@ const Form = () => {
                   </div>
                 </label>
 
-                <div className="py-1 text-[13px] text-white font-InterTight space-y-[6px]">
-                    {Object.entries(passwordChecks).map(([key, isValid]) => {
-                      const conditionText = {
-                        length: 'At least 8 characters',
-                        lowercase: 'Contains a lowercase letter',
-                        uppercase: 'Contains an uppercase letter',
-                        // number: 'Contains a number',
-                        // special: 'Contains a special character',
-                      }[key];
-
-                      return (
-                        <div key={key} className="flex font-NeueMontreal tracking-wide capitalize items-center gap-2">
-                          {isValid ? (
-                            <FaCheckCircle className="text-green-400 relative -top-[1px]" />
-                          ) : (
-                              <IoMdClose  className="text-red-400 relative -top-[0px]" />
-                          )}
-                          <span className={isValid ? 'text-green-300 line-through ' : 'text-white/75'}>
-                            {conditionText}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-
                 <button
                   type="submit"
                   disabled={!isFormValid || loading}
@@ -321,7 +337,7 @@ const Form = () => {
                   {loading ? <Svg/> : "Continue"}
                 </button>
 
-                <p className="text-main font-InterTight tracking-wide text-center text-[11px] pt-2 opacity-90">
+                <p className="text-main font-InterTight tracking-wide text-center text-[11px] pt-3 opacity-90">
                   By creating an account you agree with our{' '}
                   <span className="underline">Terms of Service</span>,{' '}
                   <span className="underline">Privacy Policy</span>, and our default{' '}

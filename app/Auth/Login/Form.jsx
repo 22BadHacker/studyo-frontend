@@ -84,7 +84,7 @@ const Form = () => {
             <motion.div initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} className="flex flex-col border-[.5px] border-white/10 px-7 items-center  rounded-xl bg-gradient-to-t from-[#000]/60 via-[#000]/20 to-[#0000]/60 backdrop-blur-[50px] py-8 h-[715px] w-[530px]">
                 <h1 className='text-white pt-3 font-NeueMontreal  text-center font-[700]   leading-[1.2]  text-[34px] max-w-[480px]'>Whether You Listen or Create Music — Welcome Back</h1>
 
-                <div className="flex  w-full max-w-[90%] justify-center flex-col gap-10 pt-[62px]">
+                <div className="flex  w-full max-w-[90%] justify-center flex-col gap-10 pt-[55px]">
                     <button onClick={() => signIn("google", { redirect: false })}  className="flex gap-3 cursor-pointer hover:bg-main2/40 backdrop-blur-[4px] hover:border-white duration-200 ease-in-out h-[52px] w-full items-center  justify-center border-white/50 border-[.5px] rounded-full">
                         <Image alt='Logo' className='w-[20px] relative -top-[1px] ' src={google} width={140} height={140}/>
                         <p className='text-white/90 text-[16.5px] font-NeueMontreal font-medium tracking-wide'>Continue with Google</p>
