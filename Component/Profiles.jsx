@@ -24,7 +24,14 @@ const Profiles = () => {
 
     const displayUser = user || session?.user;
 
-    const profileImage = displayUser?.profile_image || displayUser?.image;
+    // const profileImage = displayUser?.profile_image || displayUser?.image;
+    const backendUrl = "http://localhost:8000"; // Or use an environment variable
+    const profileImagePath = displayUser?.profile_image || displayUser?.image;
+
+    // Add base URL only if path exists and starts with "/storage/"
+    const profileImage = profileImagePath?.startsWith("/storage")
+    ? `${backendUrl}${profileImagePath}`
+    : profileImagePath;
     const firstLetter = displayUser?.username?.charAt(0) || displayUser?.name?.charAt(0) || "U";
 
 
@@ -78,7 +85,12 @@ const Profiles = () => {
                         {/* Profile image or first letter */}
                         <button onClick={() => setOpen(!open)} className="dropdown size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[18px] flex-center uppercase shadow overflow-hidden"z>
                             {profileImage ? (
-                            <img src={profileImage} alt="" className="w-full  h-full  object-cover rounded-full" />
+                            <img src={profileImage || "/Hand.jpeg"}
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "/Hand.jpeg";
+                            }}
+                            alt="Profile"  className="w-full  h-full  object-cover rounded-full" />
                             ) : (
                             firstLetter
                             )}

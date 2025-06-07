@@ -75,12 +75,17 @@ export default function ArtistsPage() {
               <div className="relative size-full">
                 {artist.profile_image ? (
                   <img
-                    src={artist.profile_image}
-                    alt={artist.username}
-                    className="size-full bg-gradient-to-r from-green-400 to-red-600 p-[.2px] mx-auto rounded-full object-cover"
+                    src={`http://localhost:8000${artist.profile_image}`}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/Hand.jpeg'; // fallback image in /public
+                    }}
+                    alt="Profile"
+                    // alt={artist.username}
+                    className="size-[240px]  mx-auto rounded-full object-cover"
                   />
                 ) : (
-                  <div className="size-full text-[24px] bg-gradient-to-r from-gray-400 text-black p-[.2px] mx-auto rounded-full mb-4 bg-gray-300 flex items-center justify-center text-2xl font-bold">
+                  <div className="size-[240px] text-[24px] bg-gradient-to-r from-gray-400 text-black p-[.2px] mx-auto rounded-full mb-4 bg-gray-300 flex items-center justify-center text-2xl font-bold">
                     {artist.username?.charAt(0).toUpperCase()}
                   </div>
                 )}

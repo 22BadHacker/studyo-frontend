@@ -33,10 +33,10 @@ const MenuToggle = () => {
         />
 
         {/* X icon (two lines forming X) */}
-        <motion.span exit={{width: '0%'}} transition={{ duration: 0.3,delay:.1, ease: 'linear' }} animate={{ width: showX ? '100%' : '0%', bottom: showX ? '12px' : '0px' }}
+        <motion.span exit={{width: '0%'}} transition={{ duration: 0.3,delay:.1, ease: 'linear' }} animate={{ height: showX ? '2px' : '0%', width: showX ? '100%' : '0%', top: showX ? '12px' : '0px' }}
             className={`absolute top-[12px] left-0  h-[2px] bg-white rotate-45 origin-center `}
         />
-        <motion.span exit={{width: '0%'}} transition={{ duration: 0.2, ease: 'linear' }} animate={{ width: showX ? '100%' : '0%', top: showX ? '12px' : '0px' }}
+        <motion.span exit={{width: '0%'}} transition={{ duration: 0.2, ease: 'linear' }} animate={{ width: showX ? '100%' : '0%', height: showX ? '2px' : '0%', top: showX ? '12px' : '0px' }}
             className={`absolute top-[12px] right-0 w-0 h-[2px] bg-white -rotate-45 origin-center `}
         />
         </div>

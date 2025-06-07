@@ -20,6 +20,8 @@ import CopyLinkButton from '@/Component/CopyLinkButton';
 import EditModel from '@/Component/EditModel';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { IoMdAdd } from "react-icons/io";
+import UploadProfileImageButton from './ImageUpdate';
+import Link from 'next/link';
 
 
 export default function UserProfile() {
@@ -94,7 +96,7 @@ useEffect(() => {
     }, 1000)
 
     return () => clearTimeout(timer)
-  }, [public_id])
+  })
 
 
   
@@ -119,9 +121,13 @@ useEffect(() => {
                   <div className="text-white flex items-center gap-3 text-lg font-semibold capitalize">{
                       user?.profile_image ? (
                       <img
-                          src={user.profile_image}
+                          src={`http://localhost:8000${user.profile_image}`}
                           // alt={user.username}
-                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
+                          onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/Hand.jpeg'; // fallback image in /public
+                        }}
+                         
                          
                           className="rounded-full size-[45px] object-cover"
                       />
@@ -172,9 +178,13 @@ useEffect(() => {
                         
                         <img
                           
-                          src={user.profile_image}
                           alt={user.username}
-                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
+                         src={`http://localhost:8000${user.profile_image}`}
+                          // alt={user.username}
+                          onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/Hand.jpeg'; // fallback image in /public
+                        }}
                         
                           className="size-full p saturate-[1.3]  object-cover"
                         />
@@ -267,8 +277,14 @@ useEffect(() => {
                 </div>
               </>
             ) : (
-              // <UploadProfileImageButton />
-              <EditModel />
+              <>
+                <UploadProfileImageButton />
+                <EditModel />
+                <Link href="/Edit-Profile" className="text-sm text-blue-600 hover:underline">
+                  Edit Profile
+                </Link>
+
+              </>
             )}
           </div>
 

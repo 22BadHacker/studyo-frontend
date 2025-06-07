@@ -90,6 +90,8 @@ html, body {
 
 
 
+
+
 @layer utilities{
     .container{
       @apply max-w-[1660px] px-5 w-full py-6 mx-auto
@@ -106,6 +108,10 @@ html, body {
 
     .flex-between{
       @apply flex items-center justify-between
+    }
+
+    .inpuut{
+      @apply w-full text-[15px] tracking-wide font-normal font-NeueMontreal outline-none bg-transparent text-main border-[1px] hover:border-white/90 py-[11px] px-2 rounded border-white/40
     }
 
     .linkk{

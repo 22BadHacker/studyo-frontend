@@ -1,10 +1,14 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
+import { useAppHook } from '@/context/AppProvider';
+import toast from 'react-hot-toast';
 
 const UploadProfileImageButton = () => {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
+
+  const { authToken } = useAppHook();
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -18,15 +22,16 @@ const UploadProfileImageButton = () => {
       const res = await axios.post('http://localhost:8000/api/profile/image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${authToken}`,
         },
         withCredentials: true, // for Sanctum
       });
 
-      setSuccessMsg('✅ Image uploaded!');
+      toast.success('Image uploaded successfully');
       console.log(res.data);
     } catch (err) {
       console.error(err);
-      setSuccessMsg('❌ Upload failed');
+      toast.error('Failed to upload image');
     } finally {
       setLoading(false);
     }

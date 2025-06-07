@@ -17,6 +17,7 @@ import { MdEdit } from "react-icons/md";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { BsCopy } from 'react-icons/bs';
 import CopyLinkButton from '@/Component/CopyLinkButton';
+import Link from 'next/link';
 
 
 export default function UserProfile() {
@@ -205,7 +206,7 @@ useEffect(() => {
              {
                 showDropdown && (
                   <div className="absolute top-10 overflow-hidden  right-0 bg-main2/70 rounded-md flex flex-col backdrop-blur-2xl w-[200px] ">
-                      <p className='px-3 py-3 cursor-pointer hover:bg-main2 flex gap-4 text-[14.5px] items-center'><MdEdit size={18} />Edit profile</p>
+                      <Link href={'/Edit-Profile'} className='px-3 py-3 cursor-pointer hover:bg-main2 flex gap-4 text-[14.5px] items-center'><MdEdit size={18} />Edit profile</Link>
                       <button  className='px-3 cursor-pointer py-3 hover:bg-main2 flex gap-4 text-[14.5px] items-center'><BsCopy /><CopyLinkButton role="user" publicId={user.public_id} /></button>
                   </div>
 
