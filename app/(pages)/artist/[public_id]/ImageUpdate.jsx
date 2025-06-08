@@ -3,12 +3,22 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useAppHook } from '@/context/AppProvider';
 import toast from 'react-hot-toast';
+import { FiEdit2 } from "react-icons/fi";
+import { IoCheckmarkSharp, IoPlayOutline } from "react-icons/io5";
+import { PiCopySimpleThin } from "react-icons/pi";
+import { IoCloudUploadOutline } from "react-icons/io5";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import { Edit2 } from 'lucide-react';
+import EditModel from '@/Component/EditModel';
+import CopyLinkButton from '@/Component/CopyLinkButton';
+import { IoAddSharp } from "react-icons/io5";
+
 
 const UploadProfileImageButton = () => {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  const { authToken } = useAppHook();
+  const { authToken, user: currentUser } = useAppHook();
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -38,18 +48,32 @@ const UploadProfileImageButton = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <label className="cursor-pointer bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-        {loading ? 'Uploading...' : 'Upload Profile Image'}
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          hidden
-        />
-      </label>
-      {successMsg && <p className="text-sm text-gray-700">{successMsg}</p>}
-    </div>
+
+    <>
+    
+      <div className="cursor-pointer relative bg-main/15 text-[18px]  text-white/80 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition"><IoPlayOutline /> <span className="absolute group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Play Music</span></div>
+      <div className="cursor-pointer relative bg-main/15 text-[18px]  text-white/80 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition"><IoAddSharp /> <span className="absolute group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Your Library</span></div>
+
+      <EditModel />
+
+      <div className="flex relative w-fit  flex-col items-center gap-4 ">
+
+        <label className="cursor-pointer relative bg-main/15 text-[18px]  text-white/80 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out   ">
+          {loading ? <IoCheckmarkSharp className='text-green-700'/> : <AiOutlineCloudUpload size={20}/>}
+
+          <span className="absolute group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[112px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/3 -translate-x-1/2">Upload Profile Image</span>
+          
+          {/* {loading ? 'Uploading...' : 'Upload Profile Image'} */}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            hidden
+          />
+        </label>
+        {successMsg && <p className="text-sm text-gray-700">{successMsg}</p>}
+      </div>
+    </>
   );
 };
 

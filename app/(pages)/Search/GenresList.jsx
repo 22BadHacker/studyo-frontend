@@ -11,7 +11,9 @@ const GenresList = () => {
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/genres');
+        const res = await axios.get('http://localhost:8000/api/genres', {
+          withCredentials: true,
+        });
         setGenres(res.data);
       } catch (err) {
         console.error('Failed to fetch genres:', err);

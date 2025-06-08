@@ -29,6 +29,8 @@ const EditProfileForm = () => {
       }
     );
 
+    
+
     toast.success('Profile image removed.');
     setProfileImage(null); // Clear the local selected image
     user.profile_image = null; // Update the context or force refetch if needed

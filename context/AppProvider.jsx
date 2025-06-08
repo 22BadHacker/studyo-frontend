@@ -48,7 +48,9 @@ const AppProvider = ({ children }) => {
   const login = async (formData) => {
     setAuthError(null);
     try {
-      await axios.get('http://localhost:8000/sanctum/csrf-cookie');
+      await axios.get('http://localhost:8000/sanctum/csrf-cookie', {
+        withCredentials: true,
+      });
       const response = await api.post("/login", formData);
 
       if (response.data.status) {
@@ -75,7 +77,9 @@ const AppProvider = ({ children }) => {
   const register = async (formData) => {
     setAuthError(null);
     try {
-      await axios.get('http://localhost:8000/sanctum/csrf-cookie');
+      await axios.get('http://localhost:8000/sanctum/csrf-cookie', {
+        withCredentials: true,
+      });
       const response = await api.post("/register", formData);
 
       setUser(response.data.user);

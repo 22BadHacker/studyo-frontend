@@ -122,6 +122,10 @@ html, body {
       @apply font-NeueMontreal text-white/85 cursor-pointer duration-200 ease-out hover:bg-main2 px-6 py-[11px] rounded-full  text-[15.5px]
     }
 
+    /* .artist_btn{
+      @apply cursor-pointer relative bg-main/15 text-[18px]  text-white/80 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out
+    } */
+
 }
 
 

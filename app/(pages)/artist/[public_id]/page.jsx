@@ -3,13 +3,14 @@ import UserProfile from './UserProfile'
 
 export async function generateMetadata({ params }) {
   const res = await fetch(`http://localhost:8000/api/users/${params.public_id}`, {
-    cache: "no-store", // always fetch fresh data
+    cache: "no-store", 
+    withCredentials: true,// always fetch fresh data
   });
 
   const data = await res.json();
 
   return {
-    title: `${data.username} — 𝗦𝘁ü𝗱𝘆𝗼 `, // customize as needed
+    title: `${data.username} — 𝗦𝘁ü𝗱𝘆𝗼 `, 
   };
 }
 
