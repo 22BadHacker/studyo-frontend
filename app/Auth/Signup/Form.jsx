@@ -134,7 +134,7 @@ const Form = () => {
                 </div>
                 
                 <div className="pt-2">
-                  <p className="text-white/90 underline font-SpaceGrotesk font-medium  text-[16px] pt-4 text-center">
+                  <p className="text-white  font-NeueMontreal tracking-wide font-normal  text-[16.5px] pt-4 text-center">
                     If you're already have an account, <Link href={'/Auth/Login'} className="underline  font-semibold cursor-pointer text-green-500">Log in</Link>
                   </p>
                 </div>
@@ -298,9 +298,9 @@ const Form = () => {
                           {isValid ? (
                             <FaCheckCircle className="text-green-400 relative -top-[1px]" />
                           ) : (
-                              <IoMdClose  className="text-red-400 relative -top-[0px]" />
+                              <span  className="relative -top-[.5px] size-[12.8px]  rounded-full border-[1px] border-white/80" />
                           )}
-                          <span className={isValid ? 'text-green-300 line-through ' : 'text-white/75'}>
+                          <span className={isValid ? 'text-white ' : 'text-white/70'}>
                             {conditionText}
                           </span>
                         </div>

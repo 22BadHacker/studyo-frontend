@@ -19,7 +19,7 @@ const GenresList = () => {
     };
 
     fetchGenres();
-  }, []);
+  });
 
   return (
 

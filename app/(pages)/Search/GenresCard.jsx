@@ -53,7 +53,7 @@ const GenreCard = ({ genre, index }) => {
             src={genre.image}
             alt={genre.name}
             loading='lazy'
-            className="absolute shadow-2xl top-[6px] right-[6px] w-[210px] h-[250px] object-cover saturate-150"
+            className="absolute  transition-all duration-200 ease-in-out shadow-2xl top-[6px] right-[6px] w-[210px] h-[250px] object-cover saturate-[1.2]"
           />
         
 

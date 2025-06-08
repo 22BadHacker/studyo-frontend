@@ -42,6 +42,13 @@ export const genreHashtags = {
   "tv & movies": ["#MovieMusic", "#NetflixPlaylist", "#ScreenSounds"],
   "chill": ["#LofiVibes", "#SoothingSounds", "#EveningVibes"],
   "folk & acoustic": ["#GuitarSessions", "#AcousticVibes"],
-  "trending": ["#TrendingNow", "#CurrentlyListening", "#TopHits"],
+  "arab": ["#ArabicVibes", "#MiddleEasternVibes", "#MusiqaArabiya"],
+  "live events": ["#EventOfTheYear", "#BackstagePass", "#LiveMusic"],
+  "latin": ["#MusicaLatina", "#BailaConmigo", "#SalsaNight"],
+  "music": ["#MusicLovers", "#CurrentlyListening", "#TopTracks"],
+  "music festivals": ["#BigStageEnergy", "#FestivalWeekend", "#MusicMadness"],
+  "Bands": ["#BandLife", "#ConcertVibes", "#OnStage"],
+  "Trending": ["#TrendingNow", "#CurrentlyListening", "#TopHits"],
+
 };
 

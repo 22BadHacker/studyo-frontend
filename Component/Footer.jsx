@@ -145,11 +145,6 @@ const Footer = () => {
             </div>
 
             <div   className="flex pb-6  pt-[180px] items-end justify-between w-full">
-
-                {/* <div className="flex  flex-col items-start">
-                    <p className='text-[14px] font-normal uppercase font-NeueMontreal '>site by</p>
-                    <p className='text-[15px] uppercase font-InterTight tracking-wide font-bold'>mounir lagzouli</p>
-                    </div> */}
                 
                     <Image alt='Logo' className='w-[200px] relative top-2 opacity-90' src={logo} width={140} height={140}/>
 

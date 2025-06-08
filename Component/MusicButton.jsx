@@ -34,7 +34,7 @@ export default function MusicButton() {
 
   return (
     <div className="fixed cursor-pointer top-7 right-9 z-50 flex items-center gap-2">
-      <audio ref={audioRef} src="/music/Cinematic2.mp3" loop />
+      <audio ref={audioRef} src="/music/nicee.mp3" loop />
       <button
         onClick={toggleMusic}
         className="bg-main2/50 cursor-pointer backdrop-blur-[5px] text-white p-3 rounded-full border-main2 border-[.5px] hover:scale-105 transition"

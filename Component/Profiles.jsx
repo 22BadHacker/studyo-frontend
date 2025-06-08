@@ -78,12 +78,13 @@ const Profiles = () => {
 
 
                     {/* Profile Circle with Dropdown */}
-                    <div className="relative  flex gap-6 items-center p-1 rounded-full cursor-pointer group">
-                        <button className=' relative text-[16.5px] font-semibold bg-main2/50 backdrop-blur-xl pl-[11px] p-1 flex gap-[14px] flex-center  ] rounded-full'>
-                           Create <span className='bg-[#2d2e2f]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
+                    <div className="relative  flex gap-6 items-center p-1 rounded-full cursor-pointer ">
+                        <button className='cursor-pointer text-white/75 hover:text-white relative border-[.5px] border-main/30 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
+                           Create <span className='bg-[#2d2e2f] duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
                         </button>
                         {/* Profile image or first letter */}
-                        <button onClick={() => setOpen(!open)} className="dropdown size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[18px] flex-center uppercase shadow overflow-hidden"z>
+                        <div className="size-[53px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
+                            <button onClick={() => setOpen(!open)} className="dropdown size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[18px] flex-center uppercase shadow overflow-hidden"z>
                             {profileImage ? (
                             <img src={profileImage || "/Hand.jpeg"}
                             onError={(e) => {
@@ -95,8 +96,9 @@ const Profiles = () => {
                             firstLetter
                             )}
 
-                            {/* <span className='absolute top-[4.5px] right-[8.5px] bg-green-500 size-[8.5px] rounded-full'></span> */}
                         </button>
+                        {/* <span className='text-[12px] w-[120px] flex-center group-hover:opacity-100 opacity-0 rounded absolute top-[57px] right-0 font-semibold duration-200 ease-in-out  text-white/80 bg-main2 px-[10px] py-[4px]'>{displayUser.username}</span> */}
+                        </div>
 
                         {/* Dropdown menu */}
                         <AnimatePresence>
@@ -104,6 +106,12 @@ const Profiles = () => {
                                 
                                     open &&
                                     <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: 0.2 }} exit={{ opacity: 0, filter: 'blur(10px)' }} className=" absolute overflow-hidden  right-0 top-[70px] w-[200px]  bg-main2/60 backdrop-blur-[20px] border border-black/40 rounded-md shadow-md   transition-opacity duration-200 z-10">
+                                        {/* <div className="flex py-2 px-2 flex-col border-b-[.5px] border-b-white/20">
+                                            <p className='text-[15px] font-NeueMontreal font-semibold'>{displayUser.username}</p>
+                                            <span className='text-[12px] text-white/50 font-NeueMontreal'>@{displayUser.username}</span>
+                                        </div> */}
+
+                                        
                                         <Link className='linkk' href={
                                             displayUser?.role === 'artist'
                                             ? `/artist/${displayUser?.public_id || displayUser?.id}`
