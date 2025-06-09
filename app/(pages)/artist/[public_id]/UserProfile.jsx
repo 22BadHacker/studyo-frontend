@@ -179,7 +179,7 @@ useEffect(() => {
       </AnimatePresence>
     
           {/*Profile Container  */}
-      <div className='w-full group h-[500px] absolute top-0 left-0 overflow-hidden' >
+      <div className='w-full group h-[510px] absolute top-0 left-0 overflow-hidden' >
             <div className="w-full  z-[6] opacity-95  bg-gradient-to-b from-transparent via-[#000000]/15 to-[#000000]/100 absolute top-0 left-0 h-full" />
             <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/0 to-[#000000]/90 absolute top-0 left-0 h-full" />
             <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/0 to-[#000000]/85 absolute top-0 left-0 h-full" />
@@ -198,10 +198,10 @@ useEffect(() => {
                           // alt={user.username}
                           onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = '/Hand.jpeg'; // fallback image in /public
+                          e.target.src = '/Hand.jpeg';
                         }}
                         
-                          className="size-full p saturate-[1.3]  object-cover"
+                          className={`size-full  p saturate-[1.3] ${user.id === 17 && 'object-top' }  ${user.id === 14 && 'object-top' }  object-center object-cover`}
                         />
 
 
@@ -233,7 +233,7 @@ useEffect(() => {
 
         {/* Info + username */}
                     
-        <div  className="items-end  z-[30] pt-[200px] relative flex justify-between gap-4 w-full">
+        <div  className="items-end  z-[30] pt-[210px] relative flex justify-between gap-4 w-full">
           
           <div className="flex w-fit   flex-col gap-2">
             <p className='flex  text-[#4cb3ff] text-[14.5px] font-NeueMontreal font-medium items-center  gap-2'>

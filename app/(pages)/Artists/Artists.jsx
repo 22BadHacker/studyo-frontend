@@ -62,16 +62,16 @@ export default function ArtistsPage() {
 
       </div>
 
-      <div className="py-10 grid grid-cols-6 w-full gap-1">
+      <div className="py-10 min-h-screen grid grid-cols-6 w-full gap-1">
         {filteredArtists.map((artist, i) => (
 
           <motion.div viewport={{ once: true }} key={artist.id} whileInView={{ opacity: [0, 1], once: true }} transition={{ duration: .2, delay: i * .1, ease: 'easeInOut' }}>
             <Link
               href={`/artist/${artist.public_id}`}
              
-              className="p-4 group relative flex flex-col gap-1 hover:bg-[#1f1f1f]/50 cursor-pointer rounded-xl text-left"
+              className="p-4 group relative flex flex-col gap-1 hover:bg-[#1f1f1f]/40 duration-200 ease-in-out cursor-pointer rounded-xl text-left"
             >
-              <div className="relative size-full">
+              <div className="relative size-[230px]">
                 {artist.profile_image ? (
                   <img
                     src={`http://localhost:8000${artist.profile_image}`}
@@ -81,10 +81,10 @@ export default function ArtistsPage() {
                     }}
                     alt="Profile"
                     // alt={artist.username}
-                    className="size-[240px]  mx-auto rounded-full object-cover"
+                    className="size-full  mx-auto rounded-full object-cover"
                   />
                 ) : (
-                  <div className="size-[240px] text-[24px] bg-gradient-to-r from-gray-400 text-black p-[.2px] mx-auto rounded-full mb-4 bg-gray-300 flex items-center justify-center text-2xl font-bold">
+                  <div className="size-full  bg-main text-main2 p-[.2px] mx-auto rounded-full mb-4 flex-center font-NeueMontreal text-[35px] font-bold">
                     {artist.username?.charAt(0).toUpperCase()}
                   </div>
                 )}

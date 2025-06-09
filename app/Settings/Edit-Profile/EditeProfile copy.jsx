@@ -99,7 +99,7 @@ export default function EditProfile() {
 
   return (
     <div className="w-full flex items-center flex-col gap-20 ">
-      <div className="flex  max-w-[1100px] py-2  items-center  justify-between w-full mx-auto">
+      {/* <div className="flex  max-w-[1100px] py-2  items-center  justify-between w-full mx-auto">
           <Link className='z-[70] group relative inline-block overflow-hidden  h-[47px] ' href={'/'}>
             <Image alt='Logo' className='w-[115px] block transition-transform duration-300 group-hover:-translate-y-full h-full' src={logo} width={120} height={120}/>
             <Image alt='Logo' className='w-[115px] absolute left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full h-full' src={logo} width={120} height={120}/>
@@ -113,7 +113,7 @@ export default function EditProfile() {
         }} alt="" />
 
         </div>
-      </div>
+      </div> */}
 
       <div className="max-w-[700px]  flex flex-col gap-[65px] mx-auto  w-full  ">
           <div className="breadcrumbs relative top-10 text-sm">

@@ -86,7 +86,7 @@ const Profiles = () => {
                         </button>
                         {/* Profile image or first letter */}
                         <div className="size-[53px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
-                            <button onClick={() => setOpen(!open)} className="dropdown size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[18px] flex-center uppercase shadow overflow-hidden"z>
+                            <button onClick={() => setOpen(!open)} className="dropdown size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[17px] flex-center uppercase shadow overflow-hidden"z>
                             {profileImage ? (
                             <img src={profileImage || "/Hand.jpeg"}
                             onError={(e) => {
@@ -122,7 +122,7 @@ const Profiles = () => {
                                         <Link className='linkk' href={'/'}>My Music </Link>
                                         <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
                                         <Link className='linkk' href={'/'}> Notifications </Link>
-                                        <Link className='linkk' href={'/'}>Settings </Link>
+                                        <Link className='linkk' href={'/Settings'}>Settings </Link>
                                         <button
                                         onClick={handleLogout}
                                         className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "
