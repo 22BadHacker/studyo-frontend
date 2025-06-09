@@ -4,6 +4,7 @@ import Bottom from '@/Component/Bottom';
 import Image from 'next/image';
 import logo from '@/public/Logo/Studyo_white.svg'
 import Effect from '@/SmallComponent/Effect';
+import Settings from '@/Component/Settings';
 
 
 
@@ -34,7 +35,7 @@ const Layout = ({children}) => {
                   <Footer />
                 </div>
               </footer>
-
+               {/* <Settings/> */}
 
               <div className="w-fit z-[30] fixed bottom-7 left-1/2 -translate-x-1/2">
                 <Bottom />

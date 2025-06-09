@@ -33,7 +33,8 @@ import EditModel from '@/Component/EditModel';
 import UploadProfileImageButton from './ImageUpdate';
 import UploadProfileImageButton2 from './ImageUpdate2';
 import Follow from './Follow';
-
+import { getUserImageClasses } from '@/Data/data';
+import Track from './Track';
 
 export default function UserProfile() {
   const { public_id } = useParams();
@@ -45,6 +46,7 @@ export default function UserProfile() {
   const { user: currentUser } = useAppHook();
 
   const isOwner = currentUser?.public_id === user?.public_id;
+
 
 
 
@@ -106,6 +108,7 @@ useEffect(() => {
   
       return () => clearTimeout(timer)
     })
+
 
 
 
@@ -184,12 +187,12 @@ useEffect(() => {
             <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/0 to-[#000000]/90 absolute top-0 left-0 h-full" />
             <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/0 to-[#000000]/85 absolute top-0 left-0 h-full" />
             
-            <div className="absolute   overflow-hidden grid grid-cols-3 top-0 left-0 right-0 w-full h-full ">
+            <div className={`absolute ${user.id === 19 && 'grid-cols-[.8fr_1.2fr_.8fr]'} ${user.id === 14 && 'grid-cols-[.8fr_1.2fr_.8fr]'}   overflow-hidden grid grid-cols-[.8fr_1fr_.8fr] top-0 left-0 right-0 w-full h-full `}>
                  {user?.profile_image ? (
                   <>
                   {
                     [...Array(3)].map((_, index) => (
-                      <div key={index} className='w-full z-[1] profileImg  first:grayscale-[100%]  last:grayscale-[100%] overflow-hidden  h-full'>
+                      <div key={index} className={`w-full z-[1]  profileImg   first:grayscale-[100%]  last:grayscale-[100%] overflow-hidden  h-full`}>
                         
                         <img
                           
@@ -201,7 +204,7 @@ useEffect(() => {
                           e.target.src = '/Hand.jpeg';
                         }}
                         
-                          className={`size-full  p saturate-[1.3] ${user.id === 17 && 'object-top' }  ${user.id === 14 && 'object-top' }  object-center object-cover`}
+                          className={getUserImageClasses(user.id)}
                         />
 
 
@@ -240,7 +243,7 @@ useEffect(() => {
             <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' />
             Verified Artist
             </p>
-            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white  flex gap-3 items-center  font-bold">{user.username}</h1>
+            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username}</h1>
           </div>
           
           <div className="flex relative items-center gap-4">
@@ -256,7 +259,9 @@ useEffect(() => {
 
         </div>
 
-        <div className="h-screen relative z-[20] flex-col pt-[50px] w-full flex gap-4 ">
+
+
+        <div className="min-h-screen relative z-[20] flex-col pt-[50px] w-full flex gap-4 ">
           
                 <div className="flex gap-4 items-center">
                     <p className='font-NeueMontreal bg-main2 px-7 py-[10px] rounded-full text-white text-[15.5px]'>All</p>
@@ -265,6 +270,10 @@ useEffect(() => {
                     <p className='profile_btn'>Tracks</p>
 
                 </div>
+
+
+              <Track/>
+
 
 
         </div>

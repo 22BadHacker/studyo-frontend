@@ -17,7 +17,7 @@ const layout = ({children}) => {
               </footer> */}
         
         <div className="flex  max-w-[1100px] py-6  items-center  justify-between w-full mx-auto">
-          <span className='font-medium text-[14px] uppercase hover:text-green-500 duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>© Stüdyo llc <span className='text-[16px]'>{new Date().getFullYear()}</span> </span>
+          <span className='font-medium text-[14px] uppercase hover:text-green-500 duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>© <span className='text-[16px]'>{new Date().getFullYear()}</span> Stüdyo llc.ALL RIGHTS RESERVED  </span>
 
           <div className="flex text-[14px] gap-2 items-center">
             <span className='font-medium uppercase hover:text-green-500 duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>Privacy Policy</span>

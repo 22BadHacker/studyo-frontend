@@ -119,7 +119,7 @@ html, body {
     }
 
     .profile_btn{
-      @apply font-NeueMontreal text-white/85 cursor-pointer duration-200 ease-out hover:bg-main2 px-6 py-[11px] rounded-full  text-[15.5px]
+      @apply font-NeueMontreal hover:text-white text-white/85 cursor-pointer duration-200 ease-out hover:bg-main2 px-6 py-[11px] rounded-full  text-[15.5px]
     }
 
     /* .artist_btn{
@@ -212,7 +212,7 @@ input[type="range"] {
 /* profileImg */
 
 .profileImg:nth-child(2){
-  filter: saturate(1.3) !important;
+  filter: saturate(1.2) !important;
 }
 
 

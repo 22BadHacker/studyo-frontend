@@ -85,8 +85,8 @@ const Profiles = () => {
                            Create <span className='bg-[#2d2e2f] duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
                         </button>
                         {/* Profile image or first letter */}
-                        <div className="size-[53px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
-                            <button onClick={() => setOpen(!open)} className="dropdown size-[40px]  cursor-pointer rounded-full bg-white text-main2 font-[800] font-sora text-[17px] flex-center uppercase shadow overflow-hidden"z>
+                        <div className="size-[52px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
+                            <button onClick={() => setOpen(!open)} className="dropdown size-[43px] relative left-[.5px]  cursor-pointer rounded-full bg-white/90 text-main2 font-[800] font-sora text-[17px] flex-center uppercase shadow overflow-hidden"z>
                             {profileImage ? (
                             <img src={profileImage || "/Hand.jpeg"}
                             onError={(e) => {
@@ -95,7 +95,8 @@ const Profiles = () => {
                             }}
                             alt="Profile"  className="w-full  h-full  object-cover rounded-full" />
                             ) : (
-                            firstLetter
+                                
+                            <span className='size-[43px] flex-center'>{firstLetter}</span>
                             )}
 
                         </button>

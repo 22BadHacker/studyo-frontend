@@ -62,14 +62,14 @@ export default function ArtistsPage() {
 
       </div>
 
-      <div className="py-10 min-h-screen grid grid-cols-6 w-full gap-1">
+      <div className="py-10 min-h-screen grid-rows-[.63fr] gap-y-3 grid grid-cols-6 w-full gap-1">
         {filteredArtists.map((artist, i) => (
 
-          <motion.div viewport={{ once: true }} key={artist.id} whileInView={{ opacity: [0, 1], once: true }} transition={{ duration: .2, delay: i * .1, ease: 'easeInOut' }}>
+          <motion.div className='h-fit ' viewport={{ once: true }} key={artist.id} whileInView={{ opacity: [0, 1], once: true }} transition={{ duration: .2, delay: i * .1, ease: 'easeInOut' }}>
             <Link
               href={`/artist/${artist.public_id}`}
              
-              className="p-4 group relative flex flex-col gap-1 hover:bg-[#1f1f1f]/40 duration-200 ease-in-out cursor-pointer rounded-xl text-left"
+              className="p-4 group relative flex h-fit flex-col gap-1 hover:bg-[#1f1f1f]/50 duration-200 ease-in-out cursor-pointer rounded-xl text-left"
             >
               <div className="relative size-[230px]">
                 {artist.profile_image ? (
