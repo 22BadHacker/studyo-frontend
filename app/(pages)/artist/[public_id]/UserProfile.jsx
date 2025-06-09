@@ -154,7 +154,23 @@ useEffect(() => {
                     </div>
                   </div>
                 <div className="flex items-center gap-3">
-                  <Follow />
+                  <motion.button
+                      onClick={() => setIsFollowing(prev => !prev)}
+                      className="relative cursor-pointer px-5 py-[10px] rounded-full border border-white/20 overflow-hidden text-white text-sm font-medium"
+                      initial={false}
+                      animate={{ backgroundColor: isFollowing ? '#ffffff' : 'transparent', color: isFollowing ? '#000' : '#fff' }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      >
+                      <motion.span
+                          key={isFollowing ? 'unfollow' : 'follow'}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.2 }}
+                      >
+                          {isFollowing ? 'Following' : 'Follow'}
+                      </motion.span>
+                  </motion.button>
                   
                 </div>
               </div>
@@ -217,7 +233,7 @@ useEffect(() => {
 
         {/* Info + username */}
                     
-        <div  className="items-end  z-[10] pt-[200px] relative flex justify-between gap-4 w-full">
+        <div  className="items-end  z-[30] pt-[200px] relative flex justify-between gap-4 w-full">
           
           <div className="flex w-fit   flex-col gap-2">
             <p className='flex  text-[#4cb3ff] text-[14.5px] font-NeueMontreal font-medium items-center  gap-2'>
@@ -227,7 +243,7 @@ useEffect(() => {
             <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white  flex gap-3 items-center  font-bold">{user.username}</h1>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex relative items-center gap-4">
 
             {
               isOwner ? <UploadProfileImageButton /> : <UploadProfileImageButton2 />

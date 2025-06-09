@@ -131,7 +131,7 @@ const exitFullscreen = () => {
             <Link className='absolute top-8 left-12 flex gap-6 items-center' href={'/'}>
               <Image alt='Logo' className='w-[120px] ' src={logo} width={120} height={120}/>
               <div className="w-[.5px] h-[21px] bg-white/90"></div>
-              <h1 className="font-medium text-white opacity-95  font-TWK-Everett  text-[17px]">Your Music, Your Way.</h1>
+              <h1 className="font-medium text-white opacity-95 font-NeueMontreal  text-[17px]">Your Music, Your Way.</h1>
             </Link>
 
             <div  className="w-full place-items-between z-[50] relative h-screen gap-10 grid grid-rows-[1fr_.2fr]">

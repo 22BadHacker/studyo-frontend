@@ -47,6 +47,7 @@ const GenreCard = ({ genre, index }) => {
         initial={{ opacity: 0,  filter: 'blur(10px)' }}
         whileInView={{ opacity: 1, filter: 'blur(0px)' }}
         transition={{ delay: index * 0.1, duration: 0.6, ease: 'easeOut' }}
+        viewport={{ once: true }}
       >
           <motion.img
             ref={imageRef}

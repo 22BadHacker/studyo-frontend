@@ -28,9 +28,8 @@ export default function ArtistsPage() {
   )
 
   useEffect(() => {
-    // Delay fetch by 5 seconds
     const timer = setTimeout(() => {
-      fetch('http://localhost:8000/api/artists')
+      fetch('http://localhost:8000/api/artists', { withCredentials: true })
         .then(res => res.json())
         .then(data => {
           setArtists(data)
@@ -40,7 +39,7 @@ export default function ArtistsPage() {
           console.error('Failed to fetch artists:', err)
           setLoading(false)
         })
-    }, 4000)
+    }, 2000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -89,14 +88,14 @@ export default function ArtistsPage() {
                     {artist.username?.charAt(0).toUpperCase()}
                   </div>
                 )}
-                <span className="size-[50px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-600/70 shadow-lg border-[1.5px] border-black/40 backdrop-blur-[50px] text-black rounded-full">
+                <span className="size-[50px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full">
                   <IoMdPlay />
                 </span>
               </div>
-              <h5 className="font-NeueMontreal font-medium pt-4 text-[16.5px] text-white capitalize text-lg">
+              <h5 className="font-NeueMontreal font-semibold pt-4 text-[16.5px] text-white capitalize text-lg">
                 {artist.username}
               </h5>
-              <p className="text-[14.5px] relative -top-[2px] opacity-85">Artist</p>
+              {/* <p className="text-[14.5px] capitalize font-NeueMontreal relative -top-[2px] opacity-85">Artist</p> */}
             </Link>
           </motion.div>
         ))}

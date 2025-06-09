@@ -168,13 +168,13 @@ input[type="range"] {
   }
 
 }
-.genres:nth-child(6), .genres:nth-child(18){
-  grid-column: span 1 / span 1;
+.genres:nth-child(6), .genres:nth-child(18), .genres:nth-child(24), .genres:nth-child(23), .genres:nth-child(22){
+  grid-column: span 1 / span 1 !important;
   
 }
 
 
-.genres:nth-child(19), .genres:nth-child(8), .genres:nth-child(14), .genres:nth-child(7), .genres:nth-child(22), .genres:nth-child(23){
+.genres:nth-child(19), .genres:nth-child(8), .genres:nth-child(14), .genres:nth-child(7){
   grid-column: span 2 / span 2 !important;
   width: 100%;
   justify-content: end;
@@ -183,7 +183,9 @@ input[type="range"] {
 
 
 .genres:nth-child(21){
-  grid-column: span 2 / span 2 !important;
+  grid-column: span 4 / span 4 !important;
+  width: 100%;
+  justify-content: end;
   
 }
 
@@ -195,8 +197,8 @@ input[type="range"] {
   }
 }
 
-.genres:nth-child(9){
-  grid-column: span 2 / span 2;
+.genres:nth-child(9),  .genres:nth-child(23){
+  grid-column: span 2 / span 2 !important;
   width: 100%;
   
   .chiild{
