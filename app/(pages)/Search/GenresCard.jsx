@@ -71,8 +71,8 @@ const GenreCard = ({ genre, index }) => {
 
         <motion.div  className="w-full   top-[2px] relative flex items-center justify-between gap-2 text-[#222222] font-bold text-[27px] tracking-tight z-10 capitalize font-NeueMontreal transition-all duration-200">
           <Link className='h-[38px]  relative inline-block overflow-hidden' href={'/'}>
-            <span className='block transition-transform duration-300  group-hover:-translate-y-full '>{genre.name}</span>
-            <span className="absolute left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">
+            <span className='block transition-transform duration-300  group-hover:-translate-y-full ease-in-out'>{genre.name}</span>
+            <span className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">
               {genre.name}
             </span>
           </Link>

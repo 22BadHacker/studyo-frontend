@@ -69,7 +69,7 @@ export default function ArtistsPage() {
             <Link
               href={`/artist/${artist.public_id}`}
              
-              className="p-4 group relative flex h-fit flex-col gap-1 hover:bg-[#1f1f1f]/50 duration-200 ease-in-out cursor-pointer rounded-xl text-left"
+              className="p-5  group relative flex h-fit flex-col gap-1 hover:bg-main2/70 duration-200 ease-in-out cursor-pointer rounded-md text-left"
             >
               <div className="relative size-[230px]">
                 {artist.profile_image ? (
@@ -92,10 +92,12 @@ export default function ArtistsPage() {
                   <IoMdPlay />
                 </span>
               </div>
-              <h5 className="font-NeueMontreal font-semibold pt-4 text-[16.5px] text-white capitalize text-lg">
-                {artist.username}
-              </h5>
-              {/* <p className="text-[14.5px] capitalize font-NeueMontreal relative -top-[2px] opacity-85">Artist</p> */}
+                {/* <h5 className="font-NeueMontreal font-semibold pt-4 text-[16.5px] text-white capitalize text-lg">{artist.username}</h5> */}
+              <div className=" h-[26px]  relative inline-block  overflow-hidden font-NeueMontreal font-semibold mt-4 text-[16.5px] text-white capitalize text-lg">
+                <h5 className="block transition-transform duration-300 relative top-[0px]  group-hover:-translate-y-full ease-in-out">{artist.username}</h5>
+                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{artist.username}</h5>
+              </div>
+              <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p>
             </Link>
           </motion.div>
         ))}
@@ -103,3 +105,10 @@ export default function ArtistsPage() {
     </>
   )
 }
+
+
+
+//  <div className="link-wrapper h-[18px] w-fit opacity-95 cursor-pointer font-normal tracking-wide font-NeueMontreal text-[11.5px] uppercase">
+//                         <p className='link-text'>/ Reach out </p>
+//                         <p className=' link-text-clone '>/ Reach out </p>
+//                     </div>
