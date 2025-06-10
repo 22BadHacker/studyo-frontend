@@ -122,6 +122,14 @@ html, body {
       @apply font-NeueMontreal hover:text-white text-white/85 cursor-pointer duration-200 ease-out hover:bg-main2 px-6 py-[11px] rounded-full  text-[15.5px]
     }
 
+    /* .inputt{
+      @apply peer h-11 w-full px-2 border-white/40 border-[.5px] text-gray-900 placeholder-transparent focus:outline-none focus:border-white
+    } */
+
+    .label{
+      @apply absolute left-[2px]  text-sm peer-focus:left-3  text-white/80 transition-all peer-placeholder-shown:top-[5px] peer-placeholder-shown:text-base peer-placeholder-shown:text-white/70 peer-focus:-top-3 py-1 peer-focus:text-sm peer-focus:text-white peer-focus:bg-[#010101] px-[10px] 
+    }
+
     /* .artist_btn{
       @apply cursor-pointer relative bg-main/15 text-[18px]  text-white/80 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out
     } */

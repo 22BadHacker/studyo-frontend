@@ -19,7 +19,11 @@ const layout = ({children}) => {
         <Nav />
       </div>
 
+
+      <div className="w-full relative bg-black/40 min-h-screen h-full flex-center">
         {children}
+
+      </div>
     </div>
   )
 }
