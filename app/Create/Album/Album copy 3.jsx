@@ -117,37 +117,39 @@ export default function CreateAlbumPage() {
         <h2 className="text-[37px] text-white font-NeueMontreal font-semibold">Your Next Album Starts Here</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5 pt-3">
+      <form onSubmit={handleSubmit} className="space-y-6 pt-3">
         {/* Album Title */}
-        <div className="flex flex-col gap-[6px]">
+        <div className="flex flex-col">
           <span className='text-[15px] text-white  font-NeueMontreal'>/ Album Title</span>
           <input
             type="text"
             
-            className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px] "
+            className="w-full  bg-transparent font-NeueMontreal  outline-none pt-[8px] pb-[3px] "
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
 
+          <div className="w-full border-b-1 border-b-white/80"></div>
         </div>
 
         {/* Description */}
-        <div className="flex gap-[6px] flex-col">
+        <div className="flex flex-col">
           <span className='text-[15px] text-white  font-NeueMontreal'>/ Description</span>
           <textarea
-            className="min-h-[100px] hover:border-white  ease-in-out w-full rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px]"
+            className="min-h-[100px] w-full  bg-transparent  outline-none pt-[8px] pb-[2px] "
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <div className="w-full border-b-1 border-b-white/80"></div>
         </div>
 
 
         {/* Genre Dropdown */}
-        <div className="flex gap-[6px] flex-col">
+        <div className="flex flex-col">
           <span className='text-[15px] text-white  font-NeueMontreal'>/ Select Genre</span>
           <select
-            className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-1 h-[36px]"
+            className="w-full  bg-transparent font-NeueMontreal  outline-none pt-[8px] pb-[3px]"
             value={genreId}
             onChange={(e) => setGenreId(e.target.value)}
             required
@@ -157,18 +159,8 @@ export default function CreateAlbumPage() {
               <option key={genre.id} value={genre.id}>{genre.name}</option>
             ))}
           </select>
+          <div className="w-full border-b-1 border-b-white/80"></div>
         </div>
-
-          
-          {/* <div className="w-full h-[35px] border-[1px] border-white/80 relative">
-
-            <div className="w-full absolute h-[450px] border bg-black/100 -bottom-0 left-0">
-              {genres.map((genre) => (
-              <p className='w-full p-2' key={genre.id} value={genre.id}>{genre.name}</p>
-              ))}
-            </div>
-          </div> */}
-
           
 
 
@@ -210,26 +202,31 @@ export default function CreateAlbumPage() {
             </> */}
 
 
-
+        {/* <GenresDropdown onChange={(value) => setGenreId((prev) => ({ ...prev, genres: value }))} genres={genres} selected={genres.name}  /> */}
 
         {/* Release Date: Year - Month - Day */}
 
         <span className='text-[15px] text-white  font-NeueMontreal'>/ Release Date</span>
-        <div className="w-full pt-[6px] grid-cols-[1fr_1.2fr_1fr] grid gap-4">
+        <div className="w-full grid-cols-[1fr_1.2fr_1fr] grid gap-4">
 
+          <div className="flex flex-col">
             <input
               ype="text"
             maxLength={2}
             pattern="\d{1,2}"
             placeholder="DD"
-              className="w-full placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px] hover:border-white  ease-in-out"
+              className="w-full placeholder:text-white/70  bg-transparent font-NeueMontreal  outline-none pt-[8px] pb-[3px]"
                value={releaseDay}
             onChange={(e) => setReleaseDay(e.target.value)}
             required
             />
-          
+            <div className="w-full border-b-1 border-b-white/90"></div>
+
+          </div>
+
+          <div className="flex flex-col">
             <select
-                className="w-full   rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-1 h-[36px] hover:border-white  ease-in-out"
+                className="w-full   bg-transparent font-NeueMontreal  outline-none pt-[8px] pb-[8px]"
                 value={releaseMonth}
                 onChange={(e) => setReleaseMonth(e.target.value)}
                 required
@@ -239,32 +236,40 @@ export default function CreateAlbumPage() {
                   <option key={month.value} value={month.value}>{month.label}</option>
                 ))}
               </select>
+            <div className="w-full border-b-1 border-b-white/90"></div>
 
-              <input
-                type="text"
-                maxLength={4}
-                pattern="\d{4}"
-                placeholder="YYYY"
-                className="w-full hover:border-white  ease-in-out placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px]"
-                value={releaseYear}
-                onChange={(e) => setReleaseYear(e.target.value)}
-                required
-              />                     
+          </div>
+
+          <div className="flex flex-col">
+            <input
+              type="text"
+              maxLength={4}
+              pattern="\d{4}"
+              placeholder="YYYY"
+              className="w-full placeholder:text-white/70  bg-transparent font-NeueMontreal  outline-none pt-[8px] pb-[3px]"
+              value={releaseYear}
+              onChange={(e) => setReleaseYear(e.target.value)}
+              required
+            />
+            <div className="w-full border-b-1 border-b-white/90"></div>
+
+          </div>
+                     
         </div>
 
         {/* Drag-and-Drop Cover Image */}
         <div
-          className={`border-[1px] flex-center hover:border-white  ease-in-out  overflow-hidden flex-col relative h-[240px] bg-transparent backdrop-blur-2xl  rounded  text-center ${coverImage ? 'border-green-500' : 'border-gray-300'} transition`}
+          className={`border-[1px] flex-center overflow-hidden flex-col relative h-[240px] bg-transparent backdrop-blur-2xl  rounded  text-center ${coverImage ? 'border-green-500' : 'border-gray-300'} transition`}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
         >
-          <p className="text-sm mb-2 font-NeueMontreal text-white/85">
+          <p className="text-sm mb-2 text-white/70">
             {coverImage ? `Selected: ${coverImage.name}` : 'Drag & Drop Cover Image Here or Click'}
           </p>
           <input
             type="file"
             accept="image/*"
-            className="w-full cursor-pointer placeholder:text-transparent opacity-0 absolute top-0 left-0 h-full p-2   bg-transparent"
+            className="w-full placeholder:text-transparent opacity-0 absolute top-0 left-0 h-full p-2   bg-transparent"
             onChange={(e) => setCoverImage(e.target.files[0])}
           />
         </div>

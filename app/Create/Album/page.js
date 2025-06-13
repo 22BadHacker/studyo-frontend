@@ -7,9 +7,9 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='relative flex-center  w-full h-screen'>
+    <div className='relative py-8 flex-center h-auto w-full min-h-screen'>
 
-      <div className=" w-[900px]">
+      <div className=" min-h-screen flex-center">
         <CreateAlbumPage/>
 
       </div>
@@ -18,3 +18,6 @@ const page = () => {
 }
 
 export default page
+
+
+// w-[600px]

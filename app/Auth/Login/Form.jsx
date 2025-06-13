@@ -125,7 +125,7 @@ const Form = () => {
                         "Enter the Stüdyo"
                       )}</button>
 
-                        <div className="flex opacity-90 items-center justify-between pt-1">
+                        <div className="flex w-full opacity-90 items-center justify-between pt-1">
                             <label className="label text-white/90 text-[13px] font-medium font-InterTight">
                                 <input  type="checkbox"  className="checkbox relative -top-[1px] checkbox-md scale-95" />
                                 Remember me

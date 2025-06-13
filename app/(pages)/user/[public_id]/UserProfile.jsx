@@ -18,6 +18,10 @@ import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { BsCopy } from 'react-icons/bs';
 import CopyLinkButton from '@/Component/CopyLinkButton';
 import Link from 'next/link';
+import UploadProfileImageButton from '../../artist/[public_id]/ImageUpdate';
+import UploadProfileImageButton2 from '../../artist/[public_id]/ImageUpdate2';
+import EditModel from '@/Component/EditModel';
+import ImageUpdate from './ImageUpdate';
 
 
 export default function UserProfile() {
@@ -28,6 +32,9 @@ export default function UserProfile() {
   const { playTrack } = useAudio();
   const [showDropdown, setShowDropdown] = useState(false);
 
+   const { user: currentUser } = useAppHook();
+    
+    const isOwner = currentUser?.public_id === user?.public_id;
 
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -95,7 +102,7 @@ useEffect(() => {
     }, 1000)
 
     return () => clearTimeout(timer)
-  }, [public_id])
+  })
 
 
   
@@ -116,15 +123,19 @@ useEffect(() => {
                 transition={{ duration: 0.4 }}
                 className="fixed bottom-7 left-0  right-0 mx-auto w-[405px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
               >
-                <div className="max-w-7xl mx-auto p-[7px] pr-4 flex items-center justify-between">
-                  <div className="text-white flex items-center gap-3 text-lg font-semibold capitalize">
+                <div className="max-w-7xl mx-auto p-[7.5px] pr-4 flex items-center justify-between">
+                  <div className="text-white flex items-center font-NeueMontreal tracking-[0.01em] gap-3 text-[16px] font-semibold capitalize">
                     {
-                      user.profile_image ? (
+                      user?.profile_image ? (
                       <img
-                          src={user.profile_image}
-                          alt={user.username}
-                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
-                          
+                          src={`http://localhost:8000${user.profile_image}`}
+                          // alt={user.username}
+                          onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/Hand.jpeg'; // fallback image in /public
+                        }}
+                        
+                        
                           className="rounded-full size-[45px] object-cover"
                       />
                       ) : (
@@ -133,92 +144,108 @@ useEffect(() => {
                       </div>
                       )
                     }
-                   
-                    {user?.username}</div>
+                    <div className="flex flex-col leading-snug">
+                        {user?.username}
+                        <span className='text-[11px] font-normal text-white/70'>@{user?.username}</span>
+
+                    </div>
+                </div>
+
                   <div className="flex items-center gap-3">
                     <button className="text-white cursor-pointer text-sm font-semibold hover:text-green-600 flex items-center gap-1">
                       <RxDotsHorizontal className="text-[22px]" /> 
                     </button>
-                    {/* <Follow /> */}
-                    
+                   
                   </div>
+                    
                 </div>
               </motion.nav>
             )}
         </AnimatePresence>
 
 
-      <div className="">
-            <div className="w-full  z-[6] bg-gradient-to-b from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
-            <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
-            <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/10 to-[#000000]/100 absolute top-0 left-0 h-[500px]" />
-            
-            <div className="absolute   overflow-hidden grid grid-cols-3 top-0 left-0 right-0 w-full h-auto ">
-                {user.profile_image ? (
-                  <>
-                  {
+     <div className='w-full group h-[510px] absolute top-0 left-0 overflow-hidden' >
+          <div className="w-full  z-[6] opacity-95  bg-gradient-to-b from-transparent via-[#000000]/15 to-[#000000]/100 absolute top-0 left-0 h-full" />
+          <div className="w-full  z-[6] bg-gradient-to-l from-transparent via-[#000000]/0 to-[#000000]/90 absolute top-0 left-0 h-full" />
+          <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/0 to-[#000000]/85 absolute top-0 left-0 h-full" />
+          
+          <div className={`absolute overflow-hidden grid grid-cols-[.8fr_1fr_.8fr] top-0 left-0 right-0 w-full h-full `}>
+              {user?.profile_image ? (
+                <>
+                {
+                  [...Array(3)].map((_, index) => (
+                    <div key={index} className={`w-full z-[1]  profileImg   first:grayscale-[100%]  last:grayscale-[100%] overflow-hidden  h-full`}>
+                      
+                      <img
+                        
+                      alt={user.username}
+                      src={`http://localhost:8000${user.profile_image}`}
+                        // alt={user.username}
+                        onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/Hand.jpeg';
+                      }}
+                      
+                        className={`object-cover size-full p saturate-[1.3]  object-center `}
+                      />
+
+
+                      
+                    </div>
+                  ))
+                }
+                  
+                </>
+                  ) : (
                     [...Array(3)].map((_, index) => (
-                      <div className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-[500px]'>
+                    <div key={index}  className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-full'>
+                      
+                      <img
                         
-                        <img
-                          key={index}
-                          src={user.profile_image}
-                          onError={(e) => { e.target.src = '/Hand.jpeg'; }}
-                          alt={user.username}
-                        
-                          className="size-full  saturate-[1.3]  object-cover"
-                        />
-                      </div>
+                        src={'/Hand.jpeg'}
+                        alt={user.username}
+                      
+                        className="size-full p saturate-[1.5]  object-cover"
+                      />
+                    </div>
                     ))
-                  }
-                    
-                  </>
-                    ) : (
-                      [...Array(3)].map((_, index) => (
-                      <div className='w-full z-[1]  first:grayscale-[100%] last:grayscale-[100%] overflow-hidden  h-[500px]'>
-                        
-                        <img
-                          key={index}
-                          src={'/Hand.jpeg'}
-                          alt={user.username}
-                        
-                          className="size-full p saturate-[1.5]  object-cover"
-                        />
-                      </div>
-                    ))
-                    )}
-            </div>
+                  )}
+          </div>
+     
       </div>
+     
+                 
 
 
-        <div className="items-end  z-[10] pt-[200px] relative flex justify-between gap-4 w-full">
-          <div className="flex  flex-col gap-2">
-            <p className='flex text-[17px] items-center  gap-2'>Welcome Back</p>
-            <h1 className="text-7xl uppercase font-NeueMontreal text-white  flex gap-3 items-center  font-bold">{user.username}</h1>
-          </div>
-          <div className="flex drop h-fit relative items-center gap-4">
-            
-              <button onClick={()=>setShowDropdown(!showDropdown)} className=" flex cursor-pointer relative ">
-                <RxDotsHorizontal className='text-[27px]' />
+        <div className="items-end  z-[10] pt-[210px] relative flex justify-between gap-4 w-full">
 
-              </button>
-             
-             {
-                showDropdown && (
-                  <div className="absolute top-10 overflow-hidden  right-0 bg-main2/70 rounded-md flex flex-col backdrop-blur-2xl w-[200px] ">
-                      <Link href={'/Edit-Profile'} className='px-3 py-3 cursor-pointer hover:bg-main2 flex gap-4 text-[14.5px] items-center'><MdEdit size={18} />Edit profile</Link>
-                      <button  className='px-3 cursor-pointer py-3 hover:bg-main2 flex gap-4 text-[14.5px] items-center'><BsCopy /><CopyLinkButton role="user" publicId={user.public_id} /></button>
-                  </div>
+            <div className="flex  flex-col gap-2">
+              <p className='flex text-[17px] items-center  gap-2'>Welcome Back</p>
+              <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username}</h1>
+            </div>
 
-                )
-             }
-          </div>
+            <div className="flex relative items-center gap-4">
+      
+                  {/* {
+                    isOwner ? <UploadProfileImageButton /> : <UploadProfileImageButton2 />
+                  } */}
+                  {
+                    isOwner && ( <>
+                      <ImageUpdate /> 
+                      {/* <EditModel /> */}
+                    </>
+                    )
+                  }
+                  <CopyLinkButton role={user.role} publicId={user.public_id} />
+                  
+      
+                </div>
 
+        </div>
 
 
        
 
-        </div>
 
 
         {/* <div className="pt-[100px] flex flex-col gap-4 w-full">

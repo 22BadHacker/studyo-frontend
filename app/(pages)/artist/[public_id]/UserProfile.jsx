@@ -35,18 +35,22 @@ import UploadProfileImageButton2 from './ImageUpdate2';
 import Follow from './Follow';
 import { getUserImageClasses } from '@/Data/data';
 import Track from './Track';
+import Albums from './Albums';
+import ArtistAlbums from './Albums';
 
 export default function UserProfile() {
   const { public_id } = useParams();
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true)
   const [isFollowing, setIsFollowing] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const { playTrack } = useAudio();
   const { user: currentUser } = useAppHook();
-
+  
   const isOwner = currentUser?.public_id === user?.public_id;
-
+  
+  const artistId = user?.public_id;
 
 
 
@@ -130,7 +134,7 @@ useEffect(() => {
               className="fixed bottom-7 left-0  right-0 mx-auto w-[405px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
             >
               <div className="max-w-7xl mx-auto p-[7.5px] flex items-center justify-between">
-                <div className="text-white flex items-center font-NeueMontreal tracking-[0.01em] gap-3 text-[16px] font-semibold capitalize">
+                  <div className="text-white flex items-center font-NeueMontreal tracking-[0.01em] gap-3 text-[16px] font-semibold capitalize">
                     {
                       user?.profile_image ? (
                       <img
@@ -138,11 +142,11 @@ useEffect(() => {
                           // alt={user.username}
                           onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = '/Hand.jpeg'; // fallback image in /public
+                          e.target.src = '/Hand.jpeg'; // fallback image in /public 
                         }}
                         
                         
-                          className="rounded-full size-[45px] object-cover"
+                          className={`rounded-full ${user.id === 14 && 'object-top'}  size-[45px] object-cover`}
                       />
                       ) : (
                       <div className="size-[45px] flex items-center justify-center rounded-full bg-gray-400 text-white text-md font-bold">
@@ -155,7 +159,7 @@ useEffect(() => {
                         <span className='text-[11px] font-normal text-white/70'>@{user?.username}</span>
 
                     </div>
-                  </div>
+                </div>
                 <div className="flex items-center gap-3">
                   <motion.button
                       onClick={() => setIsFollowing(prev => !prev)}
@@ -226,7 +230,7 @@ useEffect(() => {
                           className="size-full p saturate-[1.5]  object-cover"
                         />
                       </div>
-                    ))
+                      ))
                     )}
             </div>
 
@@ -243,7 +247,7 @@ useEffect(() => {
             <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' />
             Verified Artist
             </p>
-            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username}</h1>
+            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>
           
           <div className="flex relative items-center gap-4">
@@ -273,6 +277,52 @@ useEffect(() => {
 
 
               <Track/>
+
+              {/* <Albums artistId={user?.id} /> */}
+
+
+               {/* <h2>Albums</h2>
+                  {user.albums.length > 0 ? (
+                    <ul>
+                      {user.albums.map(album => (
+                        <li key={album.id}>
+                          <h3>{album.title}</h3>
+                
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No albums found</p>
+                  )} */}
+                
+                {user?.albums.length > 0 && (
+                  
+                  <Albums />
+                )}
+                  
+
+
+                {/* {
+                  user?.bio && (
+                  
+
+                      <div className=" flex flex-col gap-6 pt-11">
+                          <h1 className='text-2xl flex items-end leading-tight gap-2 text-white font-NeueMontreal font-semibold'> Biography <span className='text-[14px] text-white/70 relative top-[0px] font-medium'>{user.username}</span></h1>
+
+                          <div className="w-[720px] h-[490px] overflow-hidden rounded-md relative">
+                              <img className='size-full object-top object-cover' src={`http://localhost:8000${user.profile_image}`} alt="" />
+                              
+                              <div className="w-full    opacity-95  bg-gradient-to-b from-transparent via-[#000000]/15 to-[#000000]/95 absolute top-0 left-0 h-full" />
+                              <div className="absolute p-6 font-NeueMontreal tracking-wide font-medium leading-[1.42]   text-white/80 text-justify capitalize text-[15px] w-full h-full top-0 left-0 flex items-end justify-end">
+                                  {user.bio}
+                              </div>
+                          </div>
+
+
+                      </div>
+                  )
+                } */}
+
 
 
 

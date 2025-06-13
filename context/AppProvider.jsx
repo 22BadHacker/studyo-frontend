@@ -86,7 +86,7 @@ const AppProvider = ({ children }) => {
       notifySuccess("Registration successful!");
 
       setTimeout(() => {
-        router.push('/');
+        router.push('/Auth/Login');
       }, 1500);
     } catch (error) {
       if (error.response?.data?.errors) {

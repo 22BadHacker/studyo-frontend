@@ -4,19 +4,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { IoMdPlay } from "react-icons/io"
 import { motion } from 'framer-motion'
+import { PiSealCheckFill } from "react-icons/pi";
 
-const images = [
-  '/images/img1.jpg',
-  '/images/img2.jpg',
-  '/images/img3.jpg',
-  '/images/img4.jpg',
-  '/images/img5.jpg',
-  '/images/img6.jpg',
-  '/images/img7.jpg',
-  '/images/img8.jpg',
-  '/images/img16.jpg',
-  '/images/img20.jpg',
-]
+
 
 export default function ArtistsPage() {
   const [artists, setArtists] = useState([])
@@ -42,7 +32,7 @@ export default function ArtistsPage() {
     }, 2000)
 
     return () => clearTimeout(timer)
-  }, [])
+  })
 
   if (loading) {
     return (
@@ -62,14 +52,14 @@ export default function ArtistsPage() {
 
       </div>
 
-      <div className="py-10 min-h-screen grid-rows-[.63fr] gap-y-3 grid grid-cols-6 w-full gap-1">
+      <div className="py-10 min-h-screen grid-rows-[.63fr] gap-y-4 grid grid-cols-6 w-full gap-2">
         {filteredArtists.map((artist, i) => (
 
           <motion.div className='h-fit ' viewport={{ once: true }} key={artist.id} whileInView={{ opacity: [0, 1], once: true }} transition={{ duration: .2, delay: i * .1, ease: 'easeInOut' }}>
             <Link
               href={`/artist/${artist.public_id}`}
              
-              className="p-5  group relative flex h-fit flex-col gap-1 hover:bg-main2/70 duration-200 ease-in-out cursor-pointer rounded-md text-left"
+              className="p-4  group relative flex h-fit flex-col gap-1 hover:bg-main2/70  duration-200 ease-in-out cursor-pointer rounded-md text-left"
             >
               <div className="relative size-[230px]">
                 {artist.profile_image ? (
@@ -81,7 +71,7 @@ export default function ArtistsPage() {
                     }}
                     alt="Profile"
                     // alt={artist.username}
-                    className="size-full  mx-auto rounded-full object-cover"
+                    className={`size-full  ${artist.id === 14 && 'object-top'} ${artist.id === 86 && 'object-top'}  ${artist.id === 72 && 'object-top'} ${artist.id === 52 && 'saturate-[1]'} saturate-[1.2] mx-auto rounded-full object-cover`}
                   />
                 ) : (
                   <div className="size-full  bg-main text-main2 p-[.2px] mx-auto rounded-full mb-4 flex-center font-NeueMontreal text-[35px] font-bold">
@@ -92,10 +82,9 @@ export default function ArtistsPage() {
                   <IoMdPlay />
                 </span>
               </div>
-                {/* <h5 className="font-NeueMontreal font-semibold pt-4 text-[16.5px] text-white capitalize text-lg">{artist.username}</h5> */}
               <div className=" h-[26px]  relative inline-block  overflow-hidden font-NeueMontreal font-semibold mt-4 text-[16.5px] text-white capitalize text-lg">
-                <h5 className="block transition-transform duration-300 relative top-[0px]  group-hover:-translate-y-full ease-in-out">{artist.username}</h5>
-                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{artist.username}</h5>
+                <h5 className="block mt-[.5px]  transition-transform duration-300 relative top-[1px]  group-hover:-translate-y-full ease-in-out">{artist.username} <PiSealCheckFill className='inline-flex text-blue-500 text-[15.5px] relative left-[1px] -top-[.5px]'/></h5>
+                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{artist.username} <PiSealCheckFill className='inline-flex text-blue-500 text-[15.5px] relative left-[1px] -top-[.5px]'/></h5>
               </div>
               <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p>
             </Link>
@@ -107,8 +96,3 @@ export default function ArtistsPage() {
 }
 
 
-
-//  <div className="link-wrapper h-[18px] w-fit opacity-95 cursor-pointer font-normal tracking-wide font-NeueMontreal text-[11.5px] uppercase">
-//                         <p className='link-text'>/ Reach out </p>
-//                         <p className=' link-text-clone '>/ Reach out </p>
-//                     </div>

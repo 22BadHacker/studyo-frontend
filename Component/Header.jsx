@@ -27,7 +27,7 @@ const Header = () => {
 			 <div className="absolute top-0 left-0  size-full h-[150px] bg-gradient-to-b from-[#000]/60 via-[#000]/30 to-transparent"/>
 		<nav className="grid relative  pb-5  grid-cols-[.4fr_1fr_.4fr] gap-8 w-full">
 
-			<div className="flex z-[30]   w-fit items-center gap-[30px]">
+			<div className="flex z-[30]   w-fit items-center gap-[25px]">
 				<MenuToggle />
 				
 				<Link className='z-[70] group relative inline-block overflow-hidden  h-[47px] ' href={'/'}>

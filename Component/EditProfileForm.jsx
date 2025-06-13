@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useAppHook } from '@/context/AppProvider';
 import { FiEdit2 } from 'react-icons/fi';
+import Svg from './Svg';
 
 const EditProfileForm = () => {
   const { authToken, user } = useAppHook();
@@ -25,6 +26,7 @@ const EditProfileForm = () => {
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'multipart/form-data',
         },
       }
     );
@@ -52,6 +54,8 @@ const EditProfileForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    await new Promise((res) => setTimeout(res, 2000));
 
     const formData = new FormData();
     formData.append('username', username);
@@ -134,8 +138,9 @@ const EditProfileForm = () => {
         className=" p-[10px] text-[15px] w-full font-NeueMontreal capitalize h-fit border outline-none bg-main2/10 border-gray-300/40 rounded"
         />
 
-        <button className='bg-white text-[15px] font-semibold px-7 py-3 rounded-full text-[#222222] font-NeueMontreal' type="submit" disabled={loading}>
-          {loading ? 'Saving...' : 'Save'}
+        <button className={`${loading ? 'bg-white/10 backdrop-blur-[10px] ' : 'bg-white '} cursor-pointer  border-white/40 border-[.5px] text-[15px] font-semibold w-[100px] flex-center h-[46px] rounded-full text-[#222222] font-NeueMontreal`} type="submit" disabled={loading}>
+          {/* {loading ? 'Saving...' : 'Save'} */}
+          {loading ? <span className='scale-95'><Svg/></span> : "Save"}
           
         </button>
 
