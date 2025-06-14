@@ -29,7 +29,7 @@ const Layout = ({children}) => {
       {
         loading ? <Hero /> : (
           <>
-            <motion.header initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .6, delay: .3, ease: 'easeInOut' }}  className="w-full  bg-transparent fixed top-0 left-0 right-0 z-50  transition-all " >
+            <motion.header initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: .5, ease: 'easeInOut' }}  className="w-full  bg-transparent fixed top-0 left-0 right-0 z-50  transition-all " >
               <Header />
             </motion.header> 
           
@@ -41,7 +41,7 @@ const Layout = ({children}) => {
                   <Footer />
                 </div>
               </footer>
-              <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: .6 , delay: .5, ease: 'easeInOut'}} className="w-full z-[30] fixed bottom-7 left-0 right-0 flex-center">
+              <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: .8 , delay: 1, ease: 'easeInOut'}} className="w-full z-[30] fixed bottom-7 left-0 right-0 flex-center">
                 <Bottom />
               </motion.div>
           </>

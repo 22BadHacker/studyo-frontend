@@ -49,7 +49,7 @@ const [index, setIndex] = useState(0);
         </div>
         {/* <div className="flex flex-col gap-6 items-right"></div> */}
         <div className="flex mix-blend-difference relative -top-8 -left-[350px]  items-center">
-          <Image alt='Logo' className='w-[220px]  ' src={logo2} width={140} height={140}/>
+          {/* <Image alt='Logo' className='w-[220px]  ' src={logo2} width={140} height={140}/> */}
           {/* <p className='text-[22px] pb-[3px] tracking-wider font-NeueMontreal '>' s</p> */}
         </div>
         <Image alt='Logo' className='w-[55%] mix-blend-difference' src={logo} width={140} height={140}/>

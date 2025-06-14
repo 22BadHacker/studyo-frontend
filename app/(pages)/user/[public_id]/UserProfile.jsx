@@ -9,7 +9,7 @@ import { FaPlay } from 'react-icons/fa6';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoMdPlay } from "react-icons/io";
 import api from '@/lib/axios';
-import Follows from '../../Account/[public_id]/Follows';
+import Follows from '../../../../Component/Follows';
 import { useAudio } from '@/context/AudioProvider'
 import { useAppHook } from '@/context/AppProvider';
 import { RxDotsHorizontal } from "react-icons/rx";
