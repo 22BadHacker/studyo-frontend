@@ -32,7 +32,7 @@ export default function ArtistsPage() {
     }, 2000)
 
     return () => clearTimeout(timer)
-  })
+  }, [])
 
   if (loading) {
     return (
@@ -83,8 +83,8 @@ export default function ArtistsPage() {
                 </span>
               </div>
               <div className=" h-[26px]  relative inline-block  overflow-hidden font-NeueMontreal font-semibold mt-4 text-[16.5px] text-white capitalize text-lg">
-                <h5 className="block mt-[.5px]  transition-transform duration-300 relative top-[1px]  group-hover:-translate-y-full ease-in-out">{artist.username} <PiSealCheckFill className='inline-flex text-blue-500 text-[15.5px] relative left-[1px] -top-[.5px]'/></h5>
-                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{artist.username} <PiSealCheckFill className='inline-flex text-blue-500 text-[15.5px] relative left-[1px] -top-[.5px]'/></h5>
+                <h5 className="block mt-[.5px]  transition-transform duration-300 relative top-[1px]  group-hover:-translate-y-full ease-in-out">{artist.username} <PiSealCheckFill className={`inline-flex text-blue-500 ${artist.id === 105 && '-top-[1.5px]'} ${artist.id === 108 && '-top-[1.5px]'} text-[15.5px] relative left-[1px] -top-[.5px]`}/></h5>
+                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{artist.username} <PiSealCheckFill className={`inline-flex text-blue-500 ${artist.id === 105 && '-top-[1.5px]'} ${artist.id === 108 && '-top-[1.5px]'} text-[15.5px] relative left-[1px] -top-[.5px]`}/></h5>
               </div>
               <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p>
             </Link>

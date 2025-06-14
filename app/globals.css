@@ -92,6 +92,7 @@ html, body {
 
 
 
+
 @layer utilities{
     .container{
       @apply max-w-[1660px] px-5 w-full py-6 mx-auto

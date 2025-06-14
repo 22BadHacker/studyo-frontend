@@ -4,12 +4,14 @@ import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { useParams, useRouter } from 'next/navigation'
 import { useAppHook } from '@/context/AppProvider'
-import GenresDropdown from './GenresDropdown'
+import GenresDropdown from './GenreDropdown'
 import { BiChevronDown } from 'react-icons/bi'
 import { GoChevronLeft } from 'react-icons/go'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
 import Svg from '@/Component/Svg'
+import MonthDropdown from './MothDropdown'
+import GenreDropdown from './GenreDropdown'
 // import naviga
 
 export default function CreateAlbumPage() {
@@ -124,7 +126,7 @@ export default function CreateAlbumPage() {
           <input
             type="text"
             
-            className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px] "
+            className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-2 "
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -146,7 +148,13 @@ export default function CreateAlbumPage() {
         {/* Genre Dropdown */}
         <div className="flex gap-[6px] flex-col">
           <span className='text-[15px] text-white  font-NeueMontreal'>/ Select Genre</span>
-          <select
+
+          <GenreDropdown
+          genres={genres}
+          selectedGenre={genreId}
+          setSelectedGenre={setGenreId}
+        />
+          {/* <select
             className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-1 h-[36px]"
             value={genreId}
             onChange={(e) => setGenreId(e.target.value)}
@@ -156,61 +164,11 @@ export default function CreateAlbumPage() {
             {genres.map((genre) => (
               <option key={genre.id} value={genre.id}>{genre.name}</option>
             ))}
-          </select>
+          </select> */}
         </div>
 
           
-          {/* <div className="w-full h-[35px] border-[1px] border-white/80 relative">
-
-            <div className="w-full absolute h-[450px] border bg-black/100 -bottom-0 left-0">
-              {genres.map((genre) => (
-              <p className='w-full p-2' key={genre.id} value={genre.id}>{genre.name}</p>
-              ))}
-            </div>
-          </div> */}
-
-          
-
-
-        {/* <>
-            <div className="relative w-full" ref={dropdownRef}>
-              <button
-                type="button"
-                required
-                value={genreId}
-                onClick={() => setOpen(!open)}
-                className="inpuut capitalize flex justify-between items-center"
-              >
-                <span>{genreId || "Select Genre"}</span>
-                <BiChevronDown className="text-xl " />
-              </button>
         
-              {open && (
-                <ul className="absolute z-10 mt-1 w-full bg-[#121212] border border-white/50 rounded">
-                  {genres.map((genre) => (
-                    <li
-                      key={genre.id}
-                      onChange={(e) => setGenreId(e.target.value)}
-                      
-                      onClick={() => {
-                        // onChange(genre);
-                        setOpen(false);
-                      }}
-                      className={`px-4 capitalize py-2 cursor-pointer hover:text-black font-medium hover:bg-blue-100 ${
-                        genreId === genre ? "bg-main text-black font-semibold" : ""
-                      }`}
-                    >
-                    <input type="text" name={genre} className="hidden"/>
-                      {genre}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div> 
-            </> */}
-
-
-
 
         {/* Release Date: Year - Month - Day */}
 
@@ -222,13 +180,13 @@ export default function CreateAlbumPage() {
             maxLength={2}
             pattern="\d{1,2}"
             placeholder="DD"
-              className="w-full placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px] hover:border-white  ease-in-out"
+              className="w-full placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-2 hover:border-white  ease-in-out"
                value={releaseDay}
             onChange={(e) => setReleaseDay(e.target.value)}
             required
             />
           
-            <select
+            {/* <select
                 className="w-full   rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-1 h-[36px] hover:border-white  ease-in-out"
                 value={releaseMonth}
                 onChange={(e) => setReleaseMonth(e.target.value)}
@@ -238,14 +196,20 @@ export default function CreateAlbumPage() {
                 {months.map((month) => (
                   <option key={month.value} value={month.value}>{month.label}</option>
                 ))}
-              </select>
+              </select> */}
+
+              <MonthDropdown
+              selectedMonth={releaseMonth}
+              setSelectedMonth={setReleaseMonth}
+            />
+
 
               <input
                 type="text"
                 maxLength={4}
                 pattern="\d{4}"
                 placeholder="YYYY"
-                className="w-full hover:border-white  ease-in-out placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px]"
+                className="w-full hover:border-white  ease-in-out placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-2"
                 value={releaseYear}
                 onChange={(e) => setReleaseYear(e.target.value)}
                 required
