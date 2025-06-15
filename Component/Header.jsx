@@ -25,8 +25,8 @@ const Header = () => {
   return (
 	<div className='container2   '>
 
-			 <div className="absolute top-0 left-0  size-full h-[150px] bg-gradient-to-b from-[#000]/60 via-[#000]/30 to-transparent"/>
-		<nav className="grid relative  pb-5  grid-cols-[.4fr_1fr_.4fr] gap-8 w-full">
+	<div className="absolute top-0 left-0  size-full h-[150px] bg-gradient-to-b from-[#000]/60 via-[#000]/30 to-transparent"/>
+		<nav className="grid relative -top-[2px]  pb-5  grid-cols-[.4fr_1fr_.4fr] gap-8 w-full">
 
 			<div className="flex z-[30]   w-fit items-center gap-[25px]">
 				<MenuToggle />

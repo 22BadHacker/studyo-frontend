@@ -123,7 +123,7 @@ const Profiles = () => {
                                         <Link className='linkk' href={'/'}>My Music </Link>
                                         <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
                                         <Link className='linkk' href={'/'}> Notifications </Link>
-                                        <Link className='linkk' href={'/Settings'}>Settings </Link>
+                                        <Link className='linkk' href={'/Library'}>Settings </Link>
                                         <button
                                         onClick={handleLogout}
                                         className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "
