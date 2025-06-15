@@ -95,20 +95,7 @@ export default function CreateAlbumPage() {
     }
   }
 
-  const months = [
-    { label: 'January', value: '01' },
-    { label: 'February', value: '02' },
-    { label: 'March', value: '03' },
-    { label: 'April', value: '04' },
-    { label: 'May', value: '05' },
-    { label: 'June', value: '06' },
-    { label: 'July', value: '07' },
-    { label: 'August', value: '08' },
-    { label: 'September', value: '09' },
-    { label: 'October', value: '10' },
-    { label: 'November', value: '11' },
-    { label: 'December', value: '12' }
-  ]
+
 
   return (
     <div className="flex scale-95 flex-col gap-9">
@@ -185,18 +172,6 @@ export default function CreateAlbumPage() {
             onChange={(e) => setReleaseDay(e.target.value)}
             required
             />
-          
-            {/* <select
-                className="w-full   rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-1 h-[36px] hover:border-white  ease-in-out"
-                value={releaseMonth}
-                onChange={(e) => setReleaseMonth(e.target.value)}
-                required
-              >
-                <option className='text-white/70' value="">MM</option>
-                {months.map((month) => (
-                  <option key={month.value} value={month.value}>{month.label}</option>
-                ))}
-              </select> */}
 
               <MonthDropdown
               selectedMonth={releaseMonth}

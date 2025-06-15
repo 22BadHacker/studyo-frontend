@@ -39,7 +39,7 @@ const page = () => {
                 
             </Link>
             {/* <div className="w-[95%]  border-b-[.5px] border-white/40"></div> */}
-            <div className="flex rounded-lg w-[420px]  bg-main2  flex-col gap-1 ">
+            <Link href={'/Create/Track'} className="flex rounded-lg w-[420px]  bg-main2  flex-col gap-1 ">
                 <div className="flex py-[10px] hover:bg-main/10 group transition-all duration-200 rounded-md px-[10px] items-center  gap-4 backdrop-blur-2xl  h-fit ">
                   <span className='size-[65px] group-hover:rotate-12 transition-all  group-hover:text-green-500 duration-200 ease-in-out bg-main/10 text-[36px] flex-center rounded-full mix-blend-difference text-white'><PiMusicNotesPlusLight className='group-hover:drop-shadow-lg group-hover:drop-shadow-green-500'/></span>
                   <div className="flex  flex-col gap-1">
@@ -48,7 +48,7 @@ const page = () => {
                   </div>
                 </div>
                 
-            </div>
+            </Link>
           </div>
         </div>
     </div>
