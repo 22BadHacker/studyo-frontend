@@ -91,7 +91,7 @@ export default async function SearchResults({ params }) {
                  <h2 className="text-2xl pb-2 hover:text-green-500 ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Albums</h2>
                <div className=" relative -left-2 w-full  grid grid-cols-8 gap-[2px]">
                 {results.albums.length > 0 ? results.albums.map(album => (
-                    <div className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group  flex-col gap-[6px]' key={album.id}>
+                    <Link href={`/album/${album.public_id}`}  className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group  flex-col gap-[6px]' key={album.id}>
                             
                             <div className="relative ">
                                 <img className='h-[176px]  w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${album.cover_image}`} alt={album.title} />
@@ -111,7 +111,7 @@ export default async function SearchResults({ params }) {
             
                             </div>
             
-                        </div>
+                        </Link>
                         
                         
                 )) : <p>No albums found.</p>}

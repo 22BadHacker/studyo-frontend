@@ -22,11 +22,17 @@ const Layout = ({children}) => {
     <div  className=' bg-[#000]  hide-scrollbar h-auto'>
 
           <>
-            <header   className="w-full  bg-transparent fixed top-0 left-0 right-0 z-50  transition-all " >
+            <div className="z-[100]">
+              {children}
+
+            </div>
+
+
+            <header   className="w-full  bg-transparent fixed top-0 left-0 right-0 z-[120] transition-all " >
               <Header />
             </header> 
+
           
-              {children}
 
               {/* <Effect/> */}
               
@@ -37,7 +43,7 @@ const Layout = ({children}) => {
               </footer>
                {/* <Settings/> */}
 
-              <div className="w-fit z-[30] fixed bottom-7 left-1/2 -translate-x-1/2">
+              <div className="w-fit z-[20] fixed bottom-7 left-1/2 -translate-x-1/2">
                 <Bottom />
               </div>
           </>

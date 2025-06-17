@@ -86,7 +86,7 @@ const EditProfileForm = () => {
   };
 
   return (
-    <form className="grid grid-cols-[auto_1fr] place-items-center gap-5 text-white  " onSubmit={handleSubmit}>
+    <form className="grid  grid-cols-[auto_1fr] place-items-center gap-5 text-white  " onSubmit={handleSubmit}>
 
      <div className='rounded-full  relative group size-[180px] overflow-hidden'>
         {profileImage ? (

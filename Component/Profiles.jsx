@@ -140,7 +140,7 @@ const Profiles = () => {
                         {
                             drop && (
 
-                                <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-100">
+                                <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
                                 
                                         <CreatePopup setDrop={()=> setDrop(false)} />
                                 </div>

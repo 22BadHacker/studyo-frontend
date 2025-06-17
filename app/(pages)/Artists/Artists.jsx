@@ -13,7 +13,7 @@ export default function ArtistsPage() {
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
 
-  const filteredArtists = artists.filter(artist =>
+  const filteredArtists = artists.slice(0, 60).filter(artist =>
     artist.username.toLowerCase().includes(search.toLowerCase())
   )
 

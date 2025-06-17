@@ -56,7 +56,7 @@ export const genreHashtags = {
 
 
 export const getUserImageClasses = (id) => {
-  const objectTopIds = [14, 15, 17,  23, 24, 25, 29, 33, 35, 44, 45, 72, 75, 86, 98, 99, 101];
+  const objectTopIds = [14, 15, 17,  23, 24, 25, 29, 33, 35, 44, 45, 72, 75, 86, 98, 99, 101, 116, 114];
   const saturateIds = [16, 26, 33, 57, 65, 36,];
   const saturate = [52,];
 
