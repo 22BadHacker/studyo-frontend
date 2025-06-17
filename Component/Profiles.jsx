@@ -12,6 +12,7 @@ import { useParams } from 'next/navigation';
 import { AiOutlinePlus } from "react-icons/ai";
 import { AnimatePresence, motion } from 'framer-motion';
 import { PiMusicNotesPlusFill } from "react-icons/pi";
+import CreatePopup from './CreatePopup';
 
 
 
@@ -81,9 +82,9 @@ const Profiles = () => {
 
                     {/* Profile Circle with Dropdown */}
                     <div className="relative  flex gap-6 items-center p-1 rounded-full cursor-pointer ">
-                        <Link href={'/Create'} className='cursor-pointer text-white/75 hover:text-white relative border-[.5px] border-main/30 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
+                        <div onClick={() => setDrop(!drop)} className='cursor-pointer text-white/75 hover:text-white relative border-[.5px] border-main/30 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
                            Create <span className='bg-[#2d2e2f] duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
-                        </Link>
+                        </div>
                         {/* Profile image or first letter  */}
                         <div className="size-[52px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
                             <button onClick={() => setOpen(!open)} className="dropdown size-[43px] relative left-[.5px]  cursor-pointer rounded-full bg-white/90 text-main2 font-[800] font-sora text-[17px] flex-center uppercase shadow overflow-hidden"z>
@@ -135,6 +136,16 @@ const Profiles = () => {
                                 }
 
                         </AnimatePresence>
+
+                        {
+                            drop && (
+
+                                <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-100">
+                                
+                                        <CreatePopup setDrop={()=> setDrop(false)} />
+                                </div>
+                            )
+                        }        
 
 
 

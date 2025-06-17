@@ -20,19 +20,43 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
 
   return (
     <>
-    <div className="text-white p-6">
-      <h1 className="text-3xl font-bold mb-4">{album.title}</h1>
-      {/* <p className="mb-6">{album.description}</p> */}
-      <img className='size-[300px]' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
+    <div className="fixed w-full h-[90%] top-0 left-0">
+        <img className='w-full opacity-65 h-full object-top object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
+        <div className="w-full  z-[6] opacity-95  bg-gradient-to-b from-[#000000]/100 via-[#000000]/50 to-[#000000]/100 absolute top-0 left-0 h-full" />
+    </div>
 
-      <h2 className="text-xl font-semibold mb-2">Tracks:</h2>
+    <div className="text-white pt-12 relative z-20">
+      <div className="flex gap-5 items-end">
+        <img className='size-[250px] rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
+        <div className="flex flex-col">
+          {/* <h5 className='text-white/80  font-semibold uppercase tracking-wide font-NeueMontreal text-[13px]'>Album</h5> */}
+          <h1 className="text-[72px] pb-2 capitalize leading-[1.1]  font-NeueMontreal  text-white  flex gap-3 items-center  font-bold">{album.title}</h1>
+          <div className="flex pb-7 font-NeueMontreal items-center gap-3">
+            <div className="size-10  bg-green-500/50 rounded-full p-[1px]">
+              <img className='size-full  rounded-full  object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
+
+            </div>
+              
+              <h5 className='text-white/80  font-semibold capitalize tracking-wide font-NeueMontreal text-[13px]'>{album.user.username} </h5>
+          </div>
+
+          <h4 className='text-white/80 flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[13px]'>Album <span className='size-1 mb-1 rounded-full bg-white'></span> {album.tracks.length} songs </h4>
+          <p className='text-white/80 flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[13px] pt-1'>{album.release_date}</p>
+
+
+        </div>
+
+      </div>
+      {/* <p className="mb-6">{album.description}</p> */}
+
+      {/* <h2 className="text-xl font-semibold mb-2">Tracks:</h2>
       <ul className="space-y-2">
         {album.tracks.map(track => (
           <li key={track.id} className="border p-3 rounded bg-white/5">
             <span className="font-medium">{track.title}</span>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
       
     </>

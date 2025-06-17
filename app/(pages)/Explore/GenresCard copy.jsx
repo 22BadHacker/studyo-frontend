@@ -49,8 +49,6 @@ const GenreCard = ({ genre, index }) => {
         transition={{ delay: index * 0.1, duration: 0.6, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
-
-        
           <motion.img
             ref={imageRef}
             src={genre.image}
@@ -60,7 +58,7 @@ const GenreCard = ({ genre, index }) => {
           />
         
 
-        <p className="absolute opacity-90 text-[15.5px] text-[#b2b2b2] font-NeueMontreal font-semibold top-[11px] left-[11px] mix-blend-difference">
+        <p className="absolute opacity-90 text-[15.5px] text-[#b2b2b2] font-NeueMontreal top-[11px] left-[11px] mix-blend-difference">
           00{index + 1}
         </p>
 

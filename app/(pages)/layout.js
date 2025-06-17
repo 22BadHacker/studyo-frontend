@@ -19,7 +19,7 @@ const Layout = ({children}) => {
 
   return (
     
-    <div  className=' bg-[#000000]  hide-scrollbar h-auto'>
+    <div  className=' bg-[#000]  hide-scrollbar h-auto'>
 
           <>
             <header   className="w-full  bg-transparent fixed top-0 left-0 right-0 z-50  transition-all " >

@@ -1,15 +1,175 @@
-import React from 'react'
+'use client'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'next/navigation';
+import { useAppHook } from '@/context/AppProvider';
+import { IoMdAdd } from "react-icons/io";
+import PopularTracks from '@/SmallComponent/PopularTracks';
+import { BiSolidHot } from "react-icons/bi";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { IoMdPlay } from "react-icons/io";
 
-const Track = () => {
+
+const Track = ({owner}) => {
+  const [tracks, setTracks] = useState([]);
+  const [showModal, setShowModal] = useState(false)
+  const { public_id } = useParams(); 
+  const { authToken} = useAppHook()
+   const [allTracks, setAllTracks] = useState([])
+   const [showAll, setShowAll] = useState(false);
+   const [hover, setHover] = useState(false);
+
+  const popularTracks = tracks.filter(track => track.is_popular).slice(0, 5);
+  const tracksToShow = showAll ? tracks.filter(track => track.is_popular) : popularTracks;
+
+
+  useEffect(() => {
+    const fetchTracks = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8000/api/users/${public_id}/tracks`, {
+        });
+        setTracks(res.data);
+        // setShowModal(true);
+      } catch (err) {
+        console.error('❌ Failed to fetch tracks', err);
+      }
+    };
+
+    fetchTracks();
+  }, [public_id]);
+
+
+
+  const togglePopular = async (trackId) => {
+    try {
+      const res = await axios.post(`http://localhost:8000/api/tracks/${trackId}/toggle-popular`, {}, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      });
+
+      setTracks(prev =>
+        prev.map(track =>
+          track.id === trackId ? { ...track, is_popular: res.data.is_popular } : track
+        )
+      );
+    } catch (err) {
+        if (err.response?.status === 403) {
+          toast.error("You can only mark up to 10 tracks as hot");
+        } else {
+          console.error("Failed to toggle popular:", err);
+          toast.error("Something went wrong");
+        }
+      }
+  }
+
+
+
+
+
+ 
+
   return (
-    <div className='w-full pt-11 grid grid-cols-2 gap-10'>
-        <div className="flex flex-col gap-6">
-            <h1 className='text-2xl text-white font-NeueMontreal font-semibold'>New Releases</h1>
+
+    <>
+        <div className='w-full  pt-11 grid grid-cols-2 gap-[60px]'>
+            <div className="flex flex-col gap-6">
+                <h1 className='text-2xl flex items-center gap-8 text-white font-NeueMontreal font-semibold'>Popular Tracks {owner && <span onClick={()=> setShowModal(true)}  className='text-[12px] scale-90 flex items-center  cursor-pointer bg-red-500 w-[65px] justify-center gap-[2px] px-1 pr-3 py-1 rounded-full' ><IoMdAdd size={20}/> add</span>}</h1>
+
+                {tracks.length === 0 ? (
+                    <p>No popular tracks yet.</p>
+                  ) : (
+                    <ul className="">
+                      
+                      {tracksToShow.map((track , i) => (
+                        <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
+                            <div className="flex items-center gap-4">
+                                <span className={`text-[#d7d7d7] text-[17px] font-semibold font-mono ${hover ? 'mr-0' : 'mr-2' }`}>{!hover ? <IoMdPlay className='' size={15} /> : i + 1}  </span>
+                                <img
+                                src={`http://localhost:8000/storage/${track.cover_image}`}
+                                alt={track.title}
+                                className="size-11 saturate-150 object-cover rounded-sm"
+                              />
+                                <span className="font-medium text-[#fff]/90  text-[16px]">{track.title}</span>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                                {/* <span className="font-medium text-[#fff] font-NeueMontreal text-[16px]">{track.user.username}</span> */}
+                                <span className="font-medium text-[#fff]/90 text-[16px]"><span className=''></span>{track.album.title}</span>
+                            </div>
+
+                            <div className="flex gap-3 items-center">
+                              <IoIosAddCircleOutline  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/>
+                              <p>{track.duration}</p>
+                              <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
+
+                            </div>
+                        </div>
+                      ))}
+                    </ul>
+                  )}
+
+                  {tracks.length > 5 && (
+                    <button
+                      onClick={() => setShowAll(!showAll)}
+                      className="mt-1  w-fit text-left text-sm text-[#d7d7d7] hover:text-white cursor-pointer font-NeueMontreal font-semibold"
+                    >
+                      {showAll ? 'Show Less' : 'Show All'}
+                    </button>
+                  )}
+            </div>
+            
+            <div className="flex flex-col gap-6">
+                <h1 className='text-2xl text-white font-NeueMontreal font-semibold'>New Releases</h1>
+            </div>
         </div>
-        <div className="flex flex-col gap-6">
-            <h1 className='text-2xl text-white font-NeueMontreal font-semibold'>Top Tracks</h1>
-        </div>
-    </div>
+
+
+
+
+
+
+
+        <>
+          {showModal && (
+              <div className='w-full fixed bottom-0 left-0 flex-center bg-black/50  h-screen z-[600]'>
+              <div className="fixed bottom-0 py-2 overflow-y-scroll  h-[60%] rounded-[20px_20px_0_0] w-full flex bg-main2 justify-center">
+                <div className=" container pb-20 rounded-lg w-full h-full ">
+
+                  <div className="w-full pb-9 flex justify-between">
+                  <h2 className="text-3xl  flex items-center gap-8 text-white font-NeueMontreal font-semibold">Select Your Popular Tracks</h2>
+                  <button onClick={() => setShowModal(false)} className=" text-[19px] font-NeueMontreal font-bold hover:text-red-600 ">Close</button>
+
+                  </div>
+                  <ul className="w-full pb-[100px] grid grid-cols-7 gap-5 text-white">
+                    {tracks.map(track => (
+                      <li onClick={() => togglePopular(track.id)} key={track.id} className="flex h-[212px] w-full  overflow-hidden flex-col relative gap-2 ">
+
+
+                           <img
+                            src={`http://localhost:8000/storage/${track.cover_image}`}
+                            alt={track.title}
+                            className="w-full h-full object-cover "
+                          />
+
+                          <div className="absolute top-0 left-0 size-full bg-gradient-to-b from-transparent capitalize via-[#000]/30 to-[#000]/70"></div>
+
+                          <span className='text-white text-[14px] absolute bottom-2 left-2 font-NeueMontreal font-semibold'>{track.title}</span>
+                          <div className={`absolute ${track.is_popular ? 'bg-white' : 'bg-transparent'} bottom-3 right-2 size-4 rounded-full border-[.5px] border-white`}></div>
+                        
+                         
+                      </li>
+                    ))}
+                  </ul>
+                  
+                </div>
+              </div>
+
+              </div>
+          
+            )}
+          </>
+    
+    </>
   )
 }
 

@@ -2,7 +2,6 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getUserByPublicId } from '@/lib/api';
-// import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation';
 import { IoMdPlay } from 'react-icons/io';
 import Link from 'next/link';
@@ -40,9 +39,17 @@ export default function Albums() {
       {/* <h1>{userData.name}'s Profile</h1> */}
       
       {/* <h1 className='text-2xl text-white font-NeueMontreal font-semibold'>Discover {userData.username} Albums</h1> */}
-      <div className="w-full flex justify-between items-center">
-      <h1 className='text-2xl hover:text-green-500 ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Discover Albums</h1>
-      <p className='text-white/80 relative right-[10px] bg-main2/60 px-6 py-[8px] text-[15.5px] capitalize hover:bg-main2 cursor-pointer duration-200 ease-in-out hover:text-white font-NeueMontreal rounded-full '>See all</p>
+      <div className="w-full flex justify-between items-start">
+        <div className="flex flex-col gap-3">
+          <h1 className='text-2xl hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Discography</h1>
+          <div className="flex gap-3 items-center">
+            <p className='text-[13px] py-[5px] capitalize px-4 rounded-full text-main2 bg-white'>popular releases</p>
+            <p className='text-[13px] py-[5px] capitalize px-4 rounded-full bg-main2 text-white'>Albums</p>
+            <p className='text-[13px] py-[5px] capitalize px-4 rounded-full bg-main2 text-white'>Singles and EPs</p>
+          </div>
+
+        </div>
+      <p className='text-white/80 relative right-[10px] top-1 font-semibold text-[15px]  hover:bg-main2 cursor-pointer duration-200 ease-in-out hover:text-white font-NeueMontreal rounded-full '>Show all</p>
 
       </div>
       {userData.albums.length > 0 ? (

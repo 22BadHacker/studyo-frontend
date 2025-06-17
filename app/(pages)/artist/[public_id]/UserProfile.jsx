@@ -37,6 +37,7 @@ import { getUserImageClasses } from '@/Data/data';
 import Track from './Track';
 import Albums from './Albums';
 import ArtistAlbums from './Albums';
+import Tracks from './Track';
 
 export default function UserProfile() {
   const { public_id } = useParams();
@@ -155,7 +156,11 @@ useEffect(() => {
                       )
                     }
                     <div className="flex flex-col leading-snug">
+                      <div className="flex gap-[2px] items-center">
                         {user?.username}
+                        <img className='inline-flex ml-[.5px] relative top-[1px] w-[15px]' src="/check.png" alt="" />
+
+                      </div>
                         <span className='text-[11px] font-normal text-white/70'>@{user?.username}</span>
 
                     </div>
@@ -240,14 +245,15 @@ useEffect(() => {
 
         {/* Info + username */}
                     
-        <div  className="items-end  z-[30] pt-[210px] relative flex justify-between gap-4 w-full">
+        <div  className="items-end  z-[10] pt-[210px] relative flex justify-between gap-3 w-full">
           
           <div className="flex w-fit   flex-col gap-2">
-            <p className='flex  text-[#4cb3ff] text-[14.5px] font-NeueMontreal font-medium items-center  gap-2'>
-            <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' />
+            <p className='flex  text-white text-[15px] font-NeueMontreal font-medium items-center  gap-2'>
+            {/* <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' /> */}
+            <img className='inline-flex ml-[.5px] mb-[.5px] w-[28px]' src="/check.png" alt="" />
             Verified Artist
             </p>
-            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
+            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>
           
           <div className="flex relative items-center gap-4">
@@ -275,25 +281,9 @@ useEffect(() => {
 
                 </div>
 
-
-              <Track/>
-
-              {/* <Albums artistId={user?.id} /> */}
-
-
-               {/* <h2>Albums</h2>
-                  {user.albums.length > 0 ? (
-                    <ul>
-                      {user.albums.map(album => (
-                        <li key={album.id}>
-                          <h3>{album.title}</h3>
-                
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>No albums found</p>
-                  )} */}
+              
+              <Tracks owner={isOwner}/>
+             
                 
                 {user?.albums.length > 0 && (
                   

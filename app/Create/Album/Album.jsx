@@ -31,6 +31,16 @@ export default function CreateAlbumPage() {
 
    const [open, setOpen] = useState(false);
     const dropdownRef = useRef(null);
+
+
+    const isFormValid =
+    title.trim() !== '' && 
+    // description.trim() !== '' &&
+    coverImage !== null &&
+    genreId !== '' &&
+    releaseDay !== '' &&
+    releaseMonth !== '' &&
+    releaseYear !== '';
   
   
   
@@ -62,7 +72,7 @@ export default function CreateAlbumPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true);
-    await new Promise((res) => setTimeout(res, 3000));
+    await new Promise((res) => setTimeout(res, 1000));
 
     const fullReleaseDate = `${releaseYear}-${releaseMonth.padStart(2, '0')}-${releaseDay.padStart(2, '0')}`
 
@@ -98,22 +108,22 @@ export default function CreateAlbumPage() {
 
 
   return (
-    <div className="flex scale-95 flex-col gap-9">
+    <div className="flex max-w-[800px]  py-5 pt-10 flex-col gap-9">
       
-      <Link href={'/Create'} className='size-12 mb-1 relative top-5  flex-center text-white bg-main2 rounded-full text-[23px]'><GoChevronLeft/></Link>
+      <Link href={'/'} className='size-12 mb-1 relative top-5  flex-center text-white bg-main2 rounded-full text-[23px]'><GoChevronLeft/></Link>
       <div className="flex leading-snug flex-col gap-1">
         <p className="text-white/95 font-semibold tracking-wide font-NeueMontreal text-[15px]">Create Album</p>
         <h2 className="text-[37px] text-white font-NeueMontreal font-semibold">Your Next Album Starts Here</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5 pt-3">
+      <form onSubmit={handleSubmit} className="space-y-6 pt-3">
         {/* Album Title */}
-        <div className="flex flex-col gap-[6px]">
-          <span className='text-[15px] text-white  font-NeueMontreal'>/ Album Title</span>
+        <div className="flex relative ">
+          <span className='text-[14px] absolute -top-3 left-2 bg-black px-[6px] text-white font-semibold  font-NeueMontreal'>Album Title</span>
           <input
             type="text"
             
-            className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-2 "
+            className="w-full rounded hover:border-white  ease-in-out border-white/50 duration-200 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[10px] "
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -122,10 +132,10 @@ export default function CreateAlbumPage() {
         </div>
 
         {/* Description */}
-        <div className="flex gap-[6px] flex-col">
-          <span className='text-[15px] text-white  font-NeueMontreal'>/ Description</span>
+        <div className="flex gap-[6px] flex-col relative">
+          <span className='text-[14px] absolute -top-3 left-2 bg-black px-[6px] text-white font-semibold  font-NeueMontreal'>Description</span>
           <textarea
-            className="min-h-[100px] hover:border-white  ease-in-out w-full rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[6px]"
+            className="min-h-[100px] w-full rounded hover:border-white  ease-in-out border-white/50 duration-200 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[10px]"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -133,25 +143,15 @@ export default function CreateAlbumPage() {
 
 
         {/* Genre Dropdown */}
-        <div className="flex gap-[6px] flex-col">
-          <span className='text-[15px] text-white  font-NeueMontreal'>/ Select Genre</span>
+        <div className="flex z-[20] gap-[6px] flex-col relative">
+          <span className='text-[15px] z-10 absolute -top-3 left-2 bg-[#000] px-[6px] text-white font-semibold  font-NeueMontreal'>Select Genre</span>
 
           <GenreDropdown
           genres={genres}
           selectedGenre={genreId}
           setSelectedGenre={setGenreId}
-        />
-          {/* <select
-            className="w-full rounded hover:border-white  ease-in-out border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-1 h-[36px]"
-            value={genreId}
-            onChange={(e) => setGenreId(e.target.value)}
-            required
-          >
-            <option value="">Select Genre</option>
-            {genres.map((genre) => (
-              <option key={genre.id} value={genre.id}>{genre.name}</option>
-            ))}
-          </select> */}
+          />
+          
         </div>
 
           
@@ -159,15 +159,15 @@ export default function CreateAlbumPage() {
 
         {/* Release Date: Year - Month - Day */}
 
-        <span className='text-[15px] text-white  font-NeueMontreal'>/ Release Date</span>
-        <div className="w-full pt-[6px] grid-cols-[1fr_1.2fr_1fr] grid gap-4">
+        <div className="w-full relative pt-[6px] grid-cols-[1fr_1.2fr_1fr] grid gap-4">
+        <span className='text-[14px] absolute -top-[6px] left-2 bg-[#000] px-[6px] text-white font-semibold  font-NeueMontreal'>Release Date</span>
 
             <input
               ype="text"
             maxLength={2}
-            pattern="\d{1,2}"
+            pattern="\d{1,2}" 
             placeholder="DD"
-              className="w-full placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-2 hover:border-white  ease-in-out"
+              className="w-full rounded hover:border-white  ease-in-out border-white/50 duration-200 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[10px]"
                value={releaseDay}
             onChange={(e) => setReleaseDay(e.target.value)}
             required
@@ -184,7 +184,7 @@ export default function CreateAlbumPage() {
                 maxLength={4}
                 pattern="\d{4}"
                 placeholder="YYYY"
-                className="w-full hover:border-white  ease-in-out placeholder:text-white/70  rounded border-white/85 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-2"
+                className="w-full rounded hover:border-white  ease-in-out border-white/50 duration-200 border-[1px]  bg-transparent font-NeueMontreal  outline-none px-2 py-[10px]"
                 value={releaseYear}
                 onChange={(e) => setReleaseYear(e.target.value)}
                 required
@@ -193,12 +193,17 @@ export default function CreateAlbumPage() {
 
         {/* Drag-and-Drop Cover Image */}
         <div
-          className={`border-[1px] flex-center hover:border-white  ease-in-out  overflow-hidden flex-col relative h-[240px] bg-transparent backdrop-blur-2xl  rounded  text-center ${coverImage ? 'border-green-500' : 'border-gray-300'} transition`}
+          className={`w-full rounded hover:border-white  ease-in-out border-white/50 duration-200 border-[1px] relative flex-center   flex-col  h-[240px] text-center ${coverImage ? 'border-green-500' : 'border-gray-300'} transition`}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
         >
+
+          <span className='text-[15px] z-10 absolute -top-3 left-2 bg-[#000] px-[6px] text-white font-semibold  font-NeueMontreal'>Cover Image</span>
           <p className="text-sm mb-2 font-NeueMontreal text-white/85">
-            {coverImage ? `Selected: ${coverImage.name}` : 'Drag & Drop Cover Image Here or Click'}
+            {coverImage ? `Selected: ${coverImage.name}` : (  <div className="flex flex-col gap-1 items-center">
+                  <span className="text-white/80 font-medium text-sm">Drag & Drop Cover Image Here or Click</span>
+                  <span className="text-white/40 text-xs">JPEG / JPG / PNG • Max 5MB</span>
+                </div>)}
           </p>
           <input
             type="file"
@@ -212,9 +217,14 @@ export default function CreateAlbumPage() {
         <div className="flex justify-end">
           <button
             type="submit"
-            className={`w-[160px] border flex-center ${loading ? 'bg-main/15 text-white/30 border-main/15 cursor-not-allowed' 
-                      : 'bg-white text-main2 hover:bg-green-500 border-white/50 cursor-pointer'} h-[55px] font-NeueMontreal font-semibold text-black  rounded-full  transition`}
+            // disabled={isFormValid}
+            className={`w-[160px] border flex-center ${
+                    !isFormValid || loading 
+                      ? 'bg-main/15 text-white/30 border-main/15 cursor-not-allowed' 
+                      : 'bg-white text-main2 border-white/50 cursor-pointer'
+                  } h-[55px] font-NeueMontreal font-semibold text-black  rounded-full  transition`}
           >
+            {/* Upload Album */}
             
             {loading ? <Svg/> : "Upload Album"}
           </button>

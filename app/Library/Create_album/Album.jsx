@@ -140,7 +140,7 @@ export default function CreateAlbumPage() {
           genres={genres}
           selectedGenre={genreId}
           setSelectedGenre={setGenreId}
-        />
+          />
           
         </div>
 
