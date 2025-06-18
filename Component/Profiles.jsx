@@ -13,6 +13,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { AnimatePresence, motion } from 'framer-motion';
 import { PiMusicNotesPlusFill } from "react-icons/pi";
 import CreatePopup from './CreatePopup';
+import Settiings from './Settiings';
 
 
 
@@ -22,6 +23,7 @@ const Profiles = () => {
     const { data: session } = useSession(); // Google login
     const [open, setOpen] = useState(false);
     const [drop, setDrop] = useState(false);
+    const [create, setCreate] = useState(false);
 
     const displayUser = user || session?.user;
 
@@ -124,7 +126,7 @@ const Profiles = () => {
                                         <Link className='linkk' href={'/'}>My Music </Link>
                                         <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
                                         <Link className='linkk' href={'/'}> Notifications </Link>
-                                        <Link className='linkk' href={'/Library'}>Settings </Link>
+                                        <Link href={'/Settings'}>Settings </Link>
                                         <button
                                         onClick={handleLogout}
                                         className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "
@@ -146,7 +148,16 @@ const Profiles = () => {
                                 </div>
                             )
                         }        
+                        {/* {
+                            create && (
 
+                            )
+                            }         */}
+
+                            {/* <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
+                            
+                                    <Settiings />
+                            </div> */}
 
 
 

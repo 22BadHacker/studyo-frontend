@@ -5,7 +5,7 @@ import Footer from '@/Component/Footer'
 const layout = ({children}) => {
   return (
     <div className='min-h-screen grid  grid-rows-[auto_1fr_auto] relative w-full  items-center flex-col gap-[70px]  bg-[#121212]'>
-        <Nav />
+        {/* <Nav /> */}
 
        <div className="w-full  min-h-screen flex justify-center">
           {children}

@@ -55,7 +55,7 @@ export default function ArtistsPage() {
       <div className="py-10 min-h-screen grid-rows-[.63fr] gap-y-4 grid grid-cols-6 w-full gap-2">
         {filteredArtists.map((artist, i) => (
 
-          <motion.div className='h-fit ' viewport={{ once: true }} key={artist.id} whileInView={{ opacity: [0, 1], once: true }} transition={{ duration: .2, delay: i * .1, ease: 'easeInOut' }}>
+          <motion.div className='h-fit ' viewport={{ once: true}} key={artist.id} whileInView={{ opacity: [0, 1] }} transition={{ duration: .05, delay: i * .08, ease: 'easeInOut' }}>
             <Link
               href={`/artist/${artist.public_id}`}
              

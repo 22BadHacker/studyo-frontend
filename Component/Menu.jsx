@@ -41,13 +41,29 @@ const MenuToggle = () => {
         />
         </div>
 
-
+        <AnimatePresence>
 
         {
             open && (
-                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: '100%' }} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, height: 0 , transition: { duration: 0.3, ease: 'linear' }}} className="fixed top-0 left-0 w-full h-full bg-red-500 z-[5]"></motion.div>
+                <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, transition: { duration: 0.3, delay: .6, ease: 'linear' }}} className="fixed flex justify-center top-0 bg-black left-0 w-full h-screen overflow-y-scroll  z-[5]">
+
+                  <div className="h-auto pt-[120px] pb-[180px]">
+                    <div className="container ">
+                      <h1 className="text-[11.2vw]  font-NeueMontreal font-bold uppercase leading-[.85] text-center">Trending <span className=" text-green-500">music</span> <br /> this Week!</h1>
+                      
+                        {/* <div className="flex flex-col gap-10">
+
+                            <img className='size-[700px] object-cover' src="/images/lola.jpg" alt="" />
+                        </div> */}
+                    </div>
+
+                  </div>
+
+                </motion.div>
             )
         }
+        </AnimatePresence>
+
 
     </AnimatePresence>
   );

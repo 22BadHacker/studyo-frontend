@@ -247,13 +247,13 @@ const exitFullscreen = () => {
                   drag
                   ref={containerRef}
                   whileDrag={{cursor: 'grabbing'}}
-                  dragConstraints={containerRef}
+                  // dragConstraints={containerRef}
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}
-                  className="fixed bottom-8 scale-95 left-10 w-[300px] h-[60px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-md rounded-full flex items-center justify-between text-white px-3 shadow-lg z-50"
+                  className="fixed bottom-7 scale-95 left-10 w-[300px] h-[60px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-md rounded-full flex items-center justify-between text-white px-3 shadow-lg z-50"
                 >
                   <div className="flex items-center gap-2">
-                    <img src={currentTrack.cover} alt="" className="w-10 h-10 p-[1px] bg-gradient-to-tl from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full" />
+                    <img src={currentTrack.cover} alt="" className="w-10 h-10 object-cover bg-gradient-to-tl from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full" />
                     <div>
                       <p className="text-sm font-semibold">{currentTrack.title}</p>
                       <p className="text-xs text-gray-200">{currentTrack.artist}</p>
@@ -275,10 +275,10 @@ const exitFullscreen = () => {
               <motion.div
                 drag
                 ref={containerRef}
-                whileDrag={{cursor: 'grabbing'}}
-                dragConstraints={containerRef}
+                whileDrag={{cursor: 'grabbing', scale: .95,}}
+                // dragConstraints={containerRef}
                 
-                className={`fixed z-50 p-2 rounded-xl shadow-xl text-white backdrop-blur-[15px] border border-white/10 -bottom-2 left-4 w-[370px] bg-gradient-to-b from-[#d8dfe8]/10 via-[#d8dfe8]/0 to-[#d8dfe8]/10 scale-[.85]`}
+                className={`fixed z-[9999] p-2 rounded-xl shadow-xl text-white backdrop-blur-[20px] border-white/10 border-[1px] -bottom-2 left-4 w-[370px] bg-gradient-to-tr  from-[#d8dfe8]/5 via-[#d8dfe8]/10 to-[#d8dfe8]/0 scale-[.85]`}
               >
                 {/* Top Bar: Fullscreen/Minimize */}
                 <div className="absolute mix-blend-difference top-3 right-3 flex space-x-2 z-10">
@@ -322,8 +322,8 @@ const exitFullscreen = () => {
                   {/* Info */}
                   <div className="flex justify-between pt-1 items-start">
                     <div className="flex-grow">
-                      <p className="font-bold text-[21px]">{currentTrack.title}</p>
-                      <p className="text-[16px] text-gray-200">{currentTrack.artist}</p>
+                      <p className="font-bold font-NeueMontreal text-[21px]">{currentTrack.title}</p>
+                      <p className="text-[15px] relative -top-1 font-medium text-gray-200">{currentTrack.artist}</p>
                     </div>
                   </div>
                 </div>

@@ -357,7 +357,7 @@ export default function UploadTrackForm() {
         <div className='relative w-full h-auto'>
           <label className="text-[14px] absolute -top-3 left-2 bg-black px-[6px] text-white font-semibold  font-NeueMontreal">Cover Image</label>
           <div 
-            className={`"w-full min-h-[110px] border border-dashed  rounded  hover:border-white/60 transition cursor-pointer p-6 text-center flex items-center justify-center flex-col space-y-3 ${dragActive ? 'bg-blue-50 text-black' : 'border-white/70'}`}
+            className={`"w-full min-h-[120px] border border-dashed  rounded  hover:border-white/60 transition cursor-pointer p-6 text-center flex items-center justify-center flex-col space-y-3 ${dragActive ? 'bg-blue-50 text-black' : 'border-white/70'}`}
             onDragEnter={(e) => handleDrag(e, 'image')}
             onDragLeave={(e) => handleDrag(e, 'image')}
             onDragOver={(e) => handleDrag(e, 'image')}
@@ -402,7 +402,7 @@ export default function UploadTrackForm() {
 
         {/* Custom Track File Upload */}
         <div className='relative w-full'>
-          <label className="text-[14px] absolute -top-3 left-2 bg-black px-[6px] text-white font-semibold  font-NeueMontreal">Track File</label>
+          <label className="text-[14px] absolute -top-3 left-2 text-shadow-sm text-shadow-black px-[6px] text-white font-semibold  font-NeueMontreal">Track File</label>
           {/* <div className="w-full border border-dashed border-white/70 rounded  hover:border-white/60 transition cursor-pointer p-6 text-center flex items-center justify-center flex-col space-y-3">
             {trackFile ? (
               <div className="flex flex-col items-center">

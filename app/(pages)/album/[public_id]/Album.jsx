@@ -44,73 +44,106 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
     </div>
 
     <div className="text-white  pt-12 relative z-20">
-      <div className="flex gap-5 items-end">
-        <img className='size-[250px] rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
-        <div className="flex flex-col">
-          {/* <h5 className='text-white/80  font- uppercase tracking-wide font-NeueMontreal text-[13px]'>Album</h5> */}
-          <h1 className="text-[72px] pb-2 capitalize leading-[1.1]  font-NeueMontreal  text-white  flex gap-3 items-center  font-bold">{album.title}</h1>
-          <div className="flex pb-7 font-NeueMontreal items-center gap-3">
-            <div className="size-10  bg-green-500/50 rounded-full p-[1px]">
-              <img className='size-full  rounded-full  object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
 
+      <div className="w-full flex justify-between items-end">
+        <div className="flex gap-5 items-end">
+          <img className='size-[250px] rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
+          <div className="flex flex-col">
+            {/* <h5 className='text-white/80  font- uppercase tracking-wide font-NeueMontreal text-[13px]'>Album</h5> */}
+            <h1 className="text-[72px] pb-2 capitalize leading-[1.1]  font-NeueMontreal  text-white  flex gap-3 items-center  font-bold">{album.title}</h1>
+            <div className="flex pb-7 font-NeueMontreal items-center gap-3">
+              <div className="size-10  bg-green-500/50 rounded-full p-[1px]">
+                <img className='size-full  rounded-full  object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
+
+              </div>
+                
+                <h5 className='text-white/80  font-semibold capitalize tracking-wide font-NeueMontreal text-[13px]'>{album.user.username} </h5>
             </div>
-              
-              <h5 className='text-white/80  font-semibold capitalize tracking-wide font-NeueMontreal text-[13px]'>{album.user.username} </h5>
+
+            
+            <h4 className='text-white/80 flex items-center gap-[6px] uppercase pb-1  font-medium  tracking-wide font-NeueMontreal text-[12px]'>Album <span className='size-1  rounded-full bg-white'></span> {album.tracks.length} songs <span className='size-1  rounded-full bg-white'></span>{album?.release_date ? (
+                <p>{new Date(album.release_date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}</p>
+              ) : (
+                <p>Unknown Release Date</p>
+              )}</h4>
+            {/* <h4 className='text-white/80 flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[13px]'>Album <span className='size-1 mb-1 rounded-full bg-white'></span> {album.tracks.length} songs </h4> */}
+            {/* <p className='text-white/80 uppercase flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[12px] pt-1'>{formattedDate}</p> */}
+
+
           </div>
 
-          
-          <h4 className='text-white/80 flex items-center gap-[6px] uppercase pb-1  font-medium  tracking-wide font-NeueMontreal text-[12px]'> {album.tracks.length} songs <span className='size-1  rounded-full bg-white'></span>{album?.release_date ? (
-              <p>{new Date(album.release_date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}</p>
-            ) : (
-              <p>Unknown Release Date</p>
-            )}</h4>
-          {/* <h4 className='text-white/80 flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[13px]'>Album <span className='size-1 mb-1 rounded-full bg-white'></span> {album.tracks.length} songs </h4> */}
-          {/* <p className='text-white/80 uppercase flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[12px] pt-1'>{formattedDate}</p> */}
-
-
+        <div className="flex relative -left-2 scale-80 items-center gap-5">
+            <div className="px-6 py-2 text-main2 rounded-full bg-white">Play All</div>
+            <div className="px-6 py-2 text-main rounded-full bg-main2">Shuffle</div>
+            <div className="px-6 py-2 text-main rounded-full bg-main2">Save</div>
         </div>
+        </div>
+
 
       </div>
       
 
-      <h2 className="text-2xl pt-20 hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Album Songs</h2>
 
-      <div className="w-full grid grid-cols-2 gap-10">
+            <h2 className="text-2xl pt-20 hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Album Songs</h2>
+      <div className="w-full items-center grid grid-cols-[1.4fr_1fr]  gap-10">
+        <div className="">
 
-      <ul className="space-y-2 pt-5">
-        {album.tracks.map((track, i) => (
-           <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
-              <div className="flex items-center gap-4">
-                  <span className={`text-[#d7d7d7]/70 text-[16px] font-semibold  ${hover ? 'mr-0' : 'mr-2' }`}>{hover ? <IoMdPlay className='' size={15} /> : i + 1 }  </span>
-                  {/* <img
-                  src={`http://localhost:8000/storage/${track.cover_image}`}
-                  
-                  className="size-11 saturate-150 object-cover rounded-sm"
-                /> */}
-                  <span className="font-medium text-[#fff]/95  text-[16.5px]">{track.title}</span>
-              </div>
+            <ul className="space-y-2 pt-5">
+              {album.tracks.map((track, i) => (
+                <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
+                    <div className="flex items-center gap-4">
+                        <span className={`text-[#d7d7d7]/70 relative text-[16px] w-3 flex-center font-semibold  mr-1`}><IoMdPlay className='absolute opacity-0 group-hover:opacity-100 ' size={15} /> <span className='opacity-100 group-hover:opacity-0'>{ i + 1 } </span> </span>
+                        {/* <img
+                        src={`http://localhost:8000/storage/${track.cover_image}`}
+                        
+                        className="size-11 saturate-150 object-cover rounded-sm"
+                      /> */}
+                        <span className="font-medium text-[#fff]/95  text-[16.5px]">{track.title}</span>
+                    </div>
 
-              <div className="flex items-center gap-4">
-                  <span className="font-medium text-[#fff] font-NeueMontreal text-[16px]">{album.user.username}</span>
-                  {/* <span className="font-medium text-[#fff]/90 text-[16px]"><span className=''></span>{track.album.title}</span> */}
-              </div>
+                    <div className="flex items-center gap-4">
+                        <span className="font-medium text-[#fff] font-NeueMontreal text-[16px]">{album.user.username}</span>
+                        {/* <span className="font-medium text-[#fff]/90 text-[16px]"><span className=''></span>{track.album.title}</span> */}
+                    </div>
 
-              <div className="flex gap-3 items-center">
-                <IoIosAddCircleOutline  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/>
-                <p>{track.duration}</p>
-                <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
+                    <div className="flex gap-3 items-center">
+                      <IoIosAddCircleOutline  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/>
+                      <p>{track.duration}</p>
+                      <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
 
-              </div>
+                    </div>
+                </div>
+              ))}
+            </ul>
+        </div>
+
+
+
+      <div className="">
+        {/* <h2 className="text-2xl pt-20 pb-5 hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">About The Album</h2> */}
+
+        <div className="flex h-[580px] flex-col w-full  relative  gap-3 ">
+          <div className=" flex items-center gap-3 z-[10] absolute top-3 left-3">
+            <div className="size-10  bg-green-500/50 rounded-full p-[1px]">
+              <img className='size-full  rounded-full  object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
+            </div>
+            <h5 className='text-white/80   font-semibold capitalize tracking-wide font-NeueMontreal text-[13px]'>{album.user.username} </h5>
           </div>
-        ))}
-      </ul>
+
+
+          <img className='size-full saturate-[1.2] opacity-90 object-cover rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
+          <div className="w-full  z-[6] opacity-95  bg-gradient-to-b from-black/100 via-[#000000]/0 backdrop-blur-sm to-[#000000]/100 absolute top-0 left-0 h-full" />
+          <p className="absolute bottom-4 left-4 z-[20] text-white font-semibold text-sm font- w-[550px]">{album.description}</p>
+
+        </div>
+      </div>
       </div>
 
-      <p className="mb-6 text-[13px] font- w-[400px]">{album.description}</p>
+      {/* <p className="mb-6 text-[13px] font- w-[400px]">{album.description}</p> */}
 
       <h2 className="text-2xl pt-20 hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">More Album by {album.user.username}</h2>
 

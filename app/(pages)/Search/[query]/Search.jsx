@@ -34,17 +34,17 @@ export default async function SearchResults({ params }) {
 
   if (!query) return <p className="text-white">Please enter a search term</p>
 
-//   if (!results.tracks.length && !results.albums.length && !results.artists.length) return <p className="text-white">No results found for "{query}"</p>
+  if (!results.tracks.length && !results.albums.length && !results.artists.length) return <p className="text-white">No results found for "{query}"</p>
 
   return (
     <div className=" text-white">
         <div className="">
             {/* <h1 className="text-2xl font-bold mb-4">Results for "{query}"</h1> */}
             <div className="">
-                {/* <h2 className="text-xl font-semibold">Tracks</h2>
+                <h2 className="text-xl font-semibold">Tracks</h2>
                 {results.tracks.length > 0 ? results.tracks.map(track => (
                     <div key={track.id}>{track.title}</div>
-                )) : <p>No tracks found.</p>} */}
+                )) : <p>No tracks found.</p>}
 
 
                 <h2 className="text-2xl pb-2 hover:text-green-500 ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Artists</h2>
@@ -102,12 +102,12 @@ export default async function SearchResults({ params }) {
                             </div>
             
                             <div className="flex flex-col gap-[2px]">
-                            <div className=" h-[26px]  relative inline-block   overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
-                                <h5 className="block transition-transform duration-300 relative top-[0px]  group-hover:-translate-y-full ease-in-out">{album.title}</h5>
-                                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{album.title}</h5>
-                            </div>
-            
-                            <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> album</p>
+                              <div className=" h-[26px]  relative inline-block   overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
+                                  <h5 className="block transition-transform duration-300 relative top-[0px]  group-hover:-translate-y-full ease-in-out">{album.title}</h5>
+                                  <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{album.title}</h5>
+                              </div>
+              
+                              <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> album</p>
             
                             </div>
             

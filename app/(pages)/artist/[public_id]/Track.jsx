@@ -12,6 +12,7 @@ import { IoMdPlay } from "react-icons/io";
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import { useAudio } from '@/context/AudioProvider';
 
 
 const Track = ({owner}) => {
@@ -22,9 +23,12 @@ const Track = ({owner}) => {
    const [allTracks, setAllTracks] = useState([])
    const [showAll, setShowAll] = useState(false);
    const [hover, setHover] = useState(false);
+   const { playTrack, isPlaying, togglePlay} = useAudio();
 
-  const popularTracks = tracks.filter(track => track.is_popular).slice(0, 5);
+   const popularTracks = tracks.filter(track => track.is_popular).slice(0, 5);
   const tracksToShow = showAll ? tracks.filter(track => track.is_popular) : popularTracks;
+
+  
 
 
   useEffect(() => {
@@ -41,6 +45,20 @@ const Track = ({owner}) => {
 
     fetchTracks();
   }, [public_id]);
+
+
+    // const play = (track) => playTrack({
+    //   id: track.id,
+    //   title: track.title,
+    //   artist: 'null',
+    //   cover: `http://localhost:8000/storage/${track.cover_image}`,
+    //   src: `http://localhost:8000/storage/${tracks.file_path}`
+    // })
+      
+
+
+
+
 
 
 
@@ -74,7 +92,7 @@ const Track = ({owner}) => {
   return (
 
     <>
-        <div className='w-full  pt-11 grid grid-cols-2 gap-[60px]'>
+        <div className='w-full  pt-11 grid grid-cols-[1.2fr_1fr] gap-[60px]'>
             <div className="flex flex-col gap-6">
                 <h1 className='text-2xl flex items-center gap-8 text-white font-NeueMontreal font-semibold'>Popular Tracks {owner && <span onClick={()=> setShowModal(true)}  className='text-[12px] scale-90 flex items-center  cursor-pointer bg-red-500 w-[65px] justify-center gap-[2px] px-1 pr-3 py-1 rounded-full' ><IoMdAdd size={20}/> add</span>}</h1>
 
@@ -84,9 +102,17 @@ const Track = ({owner}) => {
                     <ul className="">
                       
                       {tracksToShow.map((track , i) => (
-                        <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
-                            <div className="flex items-center gap-4">
-                                <span className={`text-[#d7d7d7] text-[17px] font-semibold font-mono ${hover ? 'mr-0' : 'mr-2' }`}>{!hover ? <IoMdPlay className='' size={15} /> : i + 1}  </span>
+                        <div onClick={ () => playTrack({
+                            id: track.id,
+                            title: track.title,
+                            artist: track.user.username,
+                            cover: `http://localhost:8000/storage/${track.cover_image}`,
+                            src: `http://localhost:8000/storage/${track.file_path}`
+                          })}   className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
+                            <div   className="flex items-center gap-4">
+                                <span className={`text-[#d7d7d7] relative text-[16px] font-semibold   w-[20px]`}> 
+                                   <IoMdPlay  className='opacity-0 absolute top-1/2 -translate-y-1/2 group-hover:opacity-100' size={15} /> <p className='opacity-100 group-hover:opacity-0'>{ i + 1}</p>  </span>
+                                {/* <span className={`text-[#d7d7d7] text-[16px] font-semibold   w-[20px]`}>{hover ? <IoMdPlay className='' size={15} /> : i + 1}  </span> */}
                                 <img
                                 src={`http://localhost:8000/storage/${track.cover_image}`}
                                 alt={track.title}
@@ -122,7 +148,36 @@ const Track = ({owner}) => {
             </div>
             
             <div className="flex flex-col gap-6">
-                <h1 className='text-2xl text-white font-NeueMontreal font-semibold'>New Releases</h1>
+                <h1 className='text-2xl text-white font-NeueMontreal font-semibold'>Latest Releases</h1>
+
+                {tracks.length === 0 ? (
+                    <p>No tracks yet.</p>
+                  ) : (
+                    <ul className="pt-2">
+                      {tracks.slice(0, 1).map((track) => (
+                        <div className="w-full py-2 hover:bg-main2/60 px-3 rounded" key={track.id}>
+                          <div className="flex items-center gap-5">
+                            <img
+                              src={`http://localhost:8000/storage/${track.cover_image}`}
+                              alt={track.title}
+                              className="size-[150px] saturate-150 object-cover rounded-sm"
+                            />
+                            <div className="flex flex-col gap-2">
+                              <span className=" font-NeueMontreal font-semibold  text-[#fff] text-[21px]">{track.title}</span>
+                              <p className='flex text-[14px] font-NeueMontreal  items-center gap-3 '>
+                                By
+                                <img
+                                src={`http://localhost:8000/${track.user.profile_image}`}
+                                alt={track.title}
+                                className="size-[30px] rounded-full saturate-150 object-cover "
+                              />
+                                {track.user.username}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </ul>
+                  )}
             </div>
         </div>
 
