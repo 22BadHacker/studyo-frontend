@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { IoMdPlay } from 'react-icons/io';
 import { PiSealCheckFill } from 'react-icons/pi';
 
-// export const metadata = {
-//     title: "Search | 𝗦𝘁ü𝗱𝘆𝗼 ",
-// }
+export const metadata = {
+    title: "Search — 𝗦𝘁ü𝗱𝘆𝗼 ",
+}
 
 export default async function SearchResults({ params }) {
   const query = decodeURIComponent(params.query);
@@ -20,6 +20,7 @@ export default async function SearchResults({ params }) {
   } catch (err) {
     console.error('Search failed', err);
   }
+
 
     // if (!results.tracks.length && !results.albums.length && !results.artists.length) return <p className="text-white min-h-screen">No results found for "{query}"</p>
 
@@ -38,6 +39,36 @@ export default async function SearchResults({ params }) {
                         
 
                         <div className="flex pt-7 flex-col gap-12 w-full h-auto">
+
+                            <div className="flex flex-col gap-0">
+                                <h2 className="text-2xl pb-2 hover:text-green-500 ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Songs</h2>
+                                <div className="flex flex-col gap-3 w-full ">
+                                    {results.tracks.length > 0 ? results.tracks.slice(0, 6).map(track => (
+                                        <div className="flex justify-between max-w-[700px] " key={track.id}>
+
+                                            <div className="flex items-center gap-2">
+                                                <img
+                                                        src={`http://localhost:8000/storage/${track.cover_image}`}
+                                                        alt={track.title}
+                                                        className={`size-[50px] saturate-[1.2] mx-auto rounded-sm object-cover`}
+                                                    />
+                                                    <div className="flex flex-col gap-">
+                                                        <p className="text-sm font-semibold">{track.title}</p>
+                                                        <Link href={`/artist/${track.user?.public_id}`} className="text-sm hover:text-white hover:underline text-white/60">{track.user?.username}</Link>
+                                                    </div>
+
+                                            </div>
+                                            
+                                            <h5>
+                                                {track.duration}
+                                            </h5>
+                                            
+                                        </div>
+                                    )) : null}
+                                </div>
+                            </div>
+
+
                             <div className="flex flex-col gap-0">
                                 <h2 className="text-2xl pb-2 hover:text-green-500 ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Artists</h2>
                                 <div className="grid-rows-[.63fr] gap-y-4 grid grid-cols-6 w-full gap-2">
@@ -79,13 +110,11 @@ export default async function SearchResults({ params }) {
 
                             </div>
 
-
-
                             <div className="flex flex-col gap-1">
                                     <h2 className="text-2xl pb-1 hover:text-green-500 ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Albums</h2>
                                 <div className=" relative -left-2 w-full  grid grid-cols-8 gap-[2px]">
                                     {results.albums.length > 0 ? results.albums.map(album => (
-                                        <Link href={`/album/${album.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group  flex-col gap-[6px]' key={album.id}>
+                                        <div key={album.id}>
                                                 
                                                 <div className="relative ">
                                                     <img className='h-[176px]  w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${album.cover_image}`} alt={album.title} />
@@ -96,16 +125,19 @@ export default async function SearchResults({ params }) {
                                                 </div>
                                 
                                                 <div className="flex flex-col gap-[2px]">
-                                                <div className=" h-[26px]  relative inline-block   overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
+                                                <Link  href={`/album/${album.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group  flex-col gap-[6px]' className=" h-[26px]  relative inline-block   overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
                                                     <h5 className="block transition-transform duration-300 relative top-[0px]  group-hover:-translate-y-full ease-in-out">{album.title}</h5>
                                                     <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{album.title}</h5>
+                                                </Link>
+                                
+                                                <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>
+                                                {new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span>
+                                                 <Link href={`/artist/${album.user.public_id}`}  className='hover:text-white hover:underline'>{album.user.username}</Link> 
+                                                 </p>
+                                
                                                 </div>
                                 
-                                                <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> album</p>
-                                
-                                                </div>
-                                
-                                            </Link>
+                                            </div>
                                             
                                             
                                     )) : <p>No albums found.</p>}

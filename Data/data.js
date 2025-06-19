@@ -112,13 +112,44 @@ export const trackss = [
     //   link: '/artist/EuZaNtPdc4PTmoEAhUFC7r',
     // },
     {
-      title: 'Cliché',
-      artist: 'MGK',
-      cover: '/Songs/cliche.jpg',
-      src: '/music/MGK.mp3',
+      title: 'Gangsta',
+      artist: 'Kehlani',
+      cover: '/Songs/gangsta.jpg',
+      src: '/music/kkk.mp3',
       id: 3,
-      profileImage: "/artists/mgk.jpg",
+      profileImage: "/artists/kk.avif",
       link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
+    },
+    // {
+    //   title: 'Cliché',
+    //   artist: 'MGK',
+    //   cover: '/Songs/cliche.jpg',
+    //   src: '/music/MGK.mp3',
+    //   id: 3,
+    //   profileImage: "/artists/mgk.jpg",
+    //   link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
+    // },
+
+     {
+      title: "Sweet but Psycho",
+      artist: 'Ava Max',
+      cover: '/Songs/sweet.jpg',
+      src: '/music/sweet.mp3',
+      id: 5,
+      profileImage: "/artists/rose.jpg",
+      link: '/artist/skDzNmRmxIVi9TeDcsF2xA'
+
+    },
+
+     {
+      title: "Zombie",
+      artist: 'YUNGBLUD',
+      cover: '/Songs/Yung.jpg',
+      src: '/music/Yung.mp3',
+      id: 5,
+      profileImage: "/artists/rose.jpg",
+      link: '/artist/skDzNmRmxIVi9TeDcsF2xA'
+
     },
     
     {
@@ -133,6 +164,21 @@ export const trackss = [
       link: '/artist/skDzNmRmxIVi9TeDcsF2xA',
       link2: '/artist/sxBvL0puKK77fAay5bo1J1',
     },
+
+
+    {
+      title: "Sprinter",
+      artist: 'Central Cee',
+      artist2: 'Dave',
+      cover: '/Songs/ssp.jpg',
+      src: '/music/ssp.mp3',
+      id: 3,
+      profileImage: "/artists/rose.jpg",
+      profileImage2: "/artists/mars.webp",
+      link: '/artist/skDzNmRmxIVi9TeDcsF2xA',
+      link2: '/artist/sxBvL0puKK77fAay5bo1J1',
+    },
+   
     
   ];
   

@@ -8,7 +8,7 @@ import { moroccan, trackss } from '@/Data/data'
 const Hits = () => {
     const {playTrack} = useAudio()
   return (
-    <div>
+    <div className='relative -top-3'>
         <div className="flex pb-3 flex-col gap-2">
         <h1 className='text-2xl  hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>#Trending Moroccan Hits</h1>
         </div>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Songs from "./Songs";
 import Hits from "./Hits";
+import Artists from "./Artists";
+import Studyo from "./Studyo";
 
 export default function Home() {
   // const {user} = useAppHook();
@@ -11,11 +13,13 @@ export default function Home() {
     <div className="min-h-screen pt-[160px] pb-[180px] ">
         <div className="container relative flex flex-col gap-[30px] relative h-auto">
            {/* <h1 className="text-[10.30vw] relative text-shadow-2xs text-shadow-[#d8262c] pt-5 text-[#d8262c] font-NeueMontreal font-bold uppercase leading-[.46] text-end">Trending Tracks <span className=" tracking-tight text-[5.78vw] font-[800]  text-[#d7d7d7]/90 text-shadow-2xs text-shadow-transparent  "> You’ll Love</span></h1> */}
-           <h1 className="text-[10.26vw] pt-5 text-[#d8262c] text-shadow-2xs text-shadow-[#d8262c] font-NeueMontreal font-bold uppercase leading-[.35] text-end">Trending Tracks <br /><span className="text-[2.54vw] lowercase relative -top-6   tracking-tight font-[800] text-[#d7d7d7]/90 text-shadow-2xs text-shadow-transparent "> You will Love</span></h1>
+           <h1 className="text-[10.3vw] pt-5 text-[#d8262c] text-shadow-2xs text-shadow-[#d8262c] font-NeueMontreal font-bold uppercase leading-[.35] text-end">Trending Tracks <br /><span className="text-[2.54vw] lowercase relative -top-6   tracking-tight font-[800] text-[#d7d7d7]/90 text-shadow-2xs text-shadow-transparent "> You will Love</span></h1>
            <img src="/xx.svg" alt="xx" className="absolute scale-95  -top-5 left-0  object-cover" />
            <div className="flex z-[10] flex-col gap-20">
             <Songs />
+            <Artists/>
             <Hits/>
+            <Studyo/>
 
            </div>
         </div>

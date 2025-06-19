@@ -254,3 +254,8 @@ input[type="range"] {
 .link-wrapper:hover .link-text-clone {
   transform: translateY(-100%);
 }
+
+
+/* .coon:hover > .cheff{
+  opacity: 1 !important;
+} */
