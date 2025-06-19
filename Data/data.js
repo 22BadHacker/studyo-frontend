@@ -102,15 +102,7 @@ export const trackss = [
       profileImage: "/artists/cc.jpg",
       link: '/artist/ACjwcgWz1fXx2svdG03O0L',
     },
-    // {
-    //   title: "that's so true",
-    //   artist: 'gracie abrams',
-    //   cover: '/Songs/chappel.jpg',
-    //   src: '/music/abram.mp3',
-    //   id: 3,
-    //   profileImage: "/artists/Gracie.jpg",
-    //   link: '/artist/EuZaNtPdc4PTmoEAhUFC7r',
-    // },
+    
     {
       title: 'Gangsta',
       artist: 'Kehlani',
@@ -120,23 +112,14 @@ export const trackss = [
       profileImage: "/artists/kk.avif",
       link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
     },
-    // {
-    //   title: 'Cliché',
-    //   artist: 'MGK',
-    //   cover: '/Songs/cliche.jpg',
-    //   src: '/music/MGK.mp3',
-    //   id: 3,
-    //   profileImage: "/artists/mgk.jpg",
-    //   link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
-    // },
-
+    
      {
       title: "Sweet but Psycho",
       artist: 'Ava Max',
       cover: '/Songs/sweet.jpg',
       src: '/music/sweet.mp3',
       id: 5,
-      profileImage: "/artists/rose.jpg",
+      profileImage: "/artists/ava.jpg",
       link: '/artist/skDzNmRmxIVi9TeDcsF2xA'
 
     },
@@ -147,7 +130,7 @@ export const trackss = [
       cover: '/Songs/Yung.jpg',
       src: '/music/Yung.mp3',
       id: 5,
-      profileImage: "/artists/rose.jpg",
+      profileImage: "/artists/yung.jpg",
       link: '/artist/skDzNmRmxIVi9TeDcsF2xA'
 
     },
@@ -165,6 +148,16 @@ export const trackss = [
       link2: '/artist/sxBvL0puKK77fAay5bo1J1',
     },
 
+    {
+      title: "that's so true",
+      artist: 'gracie abrams',
+      cover: '/Songs/garcia.webp',
+      src: '/music/abram.mp3',
+      id: 3,
+      profileImage: "/artists/Gracie.jpg",
+      link: '/artist/EuZaNtPdc4PTmoEAhUFC7r',
+    },
+
 
     {
       title: "Sprinter",
@@ -177,6 +170,16 @@ export const trackss = [
       profileImage2: "/artists/mars.webp",
       link: '/artist/skDzNmRmxIVi9TeDcsF2xA',
       link2: '/artist/sxBvL0puKK77fAay5bo1J1',
+    },
+
+    {
+      title: 'Cliché',
+      artist: 'MGK',
+      cover: '/Songs/cliche.jpg',
+      src: '/music/MGK.mp3',
+      id: 3,
+      profileImage: "/artists/mgk.jpg",
+      link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
     },
    
     

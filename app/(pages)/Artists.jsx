@@ -61,13 +61,13 @@ const Artists = () => {
 
         <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className="w-full h-auto relative">
           {hover && showLeft && (
-            <div onClick={() => scroll('left')} className="absolute flex-center text-[20px] hover:scale-110 cursor-pointer duration-200 ease-in-out z-10 -left-0 top-[40%] -translate-y-1/2 rounded-full size-9 bg-main2/50 backdrop-blur-[13px]">
+            <div onClick={() => scroll('left')} className="absolute flex-center text-[20px] hover:scale-110 cursor-pointer duration-200 ease-in-out z-10 -left-[6px] top-[40%] -translate-y-1/2 rounded-full size-[43px] border-white/10 border-[.5px] bg-main2/50 backdrop-blur-[13px]">
               <IoChevronBackSharp className='relative -left-[2px]' />
             </div>
           )}
 
           {hover && showRight && (
-            <div onClick={() => scroll('right')} className="absolute flex-center text-[20px] hover:scale-110 cursor-pointer duration-200 ease-in-out -right-0 z-10 top-[40%] -translate-y-1/2 rounded-full size-10 bg-main2/50 backdrop-blur-[13px]">
+            <div onClick={() => scroll('right')} className="absolute flex-center text-[20px] hover:scale-110 cursor-pointer duration-200 ease-in-out -right-0 z-10 top-[40%] -translate-y-1/2 rounded-full size-11 border-white/10 border-[.5px]  bg-main2/50 backdrop-blur-[13px]">
               <IoChevronForwardSharp className='relative right-[0px]' />
             </div>
           )}
@@ -77,7 +77,7 @@ const Artists = () => {
               <div key={i} className='h-fit'>
                 <Link
                   href={`/artist/${artist.public_id}`}
-                  className="p-3 coon group relative flex h-fit flex-col gap-1 hover:bg-main2/60 duration-200 ease-in-out cursor-pointer rounded-md text-left"
+                  className="p-3 coon group relative flex h-fit flex-col gap-1 hover:bg-main2/80 duration-200 ease-in-out cursor-pointer rounded-md text-left"
                 >
                   <div className="relative size-[240px]">
                     {artist.profile_image ? (
