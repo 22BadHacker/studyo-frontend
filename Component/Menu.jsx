@@ -19,7 +19,7 @@ const MenuToggle = () => {
   return (
 
     <AnimatePresence>
-        <div className="relative z-20 overflow-hidden w-9 h-9 cursor-pointer" onClick={toggleMenu}>
+        <div className="relative mix-blend-difference z-20 overflow-hidden w-9 h-9 cursor-pointer" onClick={toggleMenu}>
         {/* Hamburger lines */}
         <span
             className={`absolute right-0 top-[10px] h-[2px] bg-white transition-all duration-200 ease-in-out ${
@@ -45,19 +45,13 @@ const MenuToggle = () => {
 
         {
             open && (
-                <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, transition: { duration: 0.3, delay: .6, ease: 'linear' }}} className="fixed flex justify-center top-0 bg-black left-0 w-full h-screen overflow-y-scroll  z-[5]">
+                <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, transition: { duration: 0.3, delay: .6, ease: 'linear' }}} className="fixed flex pt-20 flex-col  top-0 bg-[#fcfaf5] left-0 w-full h-screen overflow-hidden  z-[5]">
 
-                  <div className="h-auto pt-[120px] pb-[180px]">
-                    <div className="container ">
-                      <h1 className="text-[11.2vw]  font-NeueMontreal font-bold uppercase leading-[.85] text-center">Trending <span className=" text-green-500">music</span> <br /> this Week!</h1>
-                      
-                        {/* <div className="flex flex-col gap-10">
+                {/* <p className='stroke-[#f8fe23] absolute top-4 right-10 text-[4vw] hover:text-green-500 duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>Popular music videos</p> */}
 
-                            <img className='size-[700px] object-cover' src="/images/lola.jpg" alt="" />
-                        </div> */}
-                    </div>
-
-                  </div>
+                <div className="w-full">
+                    {/* <video src="/vedios/one.mp4" autoPlay loop muted className="w-full object-contain h-full"></video> */}
+                </div>
 
                 </motion.div>
             )

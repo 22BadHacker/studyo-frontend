@@ -52,11 +52,12 @@ const GenresList = () => {
 
     <div className='w-full min-h-screen'>
 
-      <div className="link-wrapper  h-[65px]  cursor-pointer w-fit  font-NeueMontreal  text-white/60 font leading-tight font-[600] tracking-[0.015em] text-[50px]">
+      {/* <div className="link-wrapper  h-[65px]  cursor-pointer w-fit  font-NeueMontreal  text-white/60 font leading-tight font-[600] tracking-[0.015em] text-[50px]">
         <h1 className=' link-text '>Explore All Categories <span className='text-[15px] tracking-wider font-sora'>({genres.length})</span></h1>
         <h1 className=' link-text-clone '>Explore All Categories <span className='text-[15px] tracking-wider font-sora'>({genres.length})</span></h1>
+      </div> */}
+      <h1 className='cursor-pointer w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6.05vw] '>Explore All <br />Categories <span className='text-[17px] relative -top-1 tracking-wider font-sora'>({genres.length})</span></h1>
 
-      </div>
       <div className="w-full  grid grid-cols-4 place-items-between gap-x-7 gap-y-10  py-9">
       {genres.map((genre, index) => (
           <GenreCard key={genre.id} genre={genre} index={index} />

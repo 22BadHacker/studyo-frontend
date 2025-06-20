@@ -56,7 +56,7 @@ export const genreHashtags = {
 
 
 export const getUserImageClasses = (id) => {
-  const objectTopIds = [14, 15, 17,  23, 24, 25, 29, 33, 35, 44, 45, 72, 75, 86, 98, 99, 101, 116, 114,115, 118];
+  const objectTopIds = [14, 15, 17,  23, 24, 25, 29, 33, 35, 44, 45, 72, 75, 86, 98, 99, 101, 116, 114,115, 118, 120];
   const saturateIds = [16, 26, 33, 57, 65, 36,];
   const saturate = [52,];
 
@@ -84,15 +84,8 @@ export const trackss = [
       profileImage: '/artists/Lola.jpg',
       link: '/artist/xakRTPDf8uRWi4hKnSX8Hx',
     },
-    {
-      title: 'They not like us',
-      artist: 'kendrick Lamar',
-      cover: '/artists/notlike.webp',
-      src: '/music/Noot.mp3',
-      id: 2,
-      profileImage: "/artists/kk.webp",
-      link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
-    },
+    
+    
     {
       title: "Pink Pony Club",
       artist: 'Chappell Roan',
@@ -102,16 +95,28 @@ export const trackss = [
       profileImage: "/artists/cc.jpg",
       link: '/artist/ACjwcgWz1fXx2svdG03O0L',
     },
-    
+
     {
-      title: 'Gangsta',
-      artist: 'Kehlani',
-      cover: '/Songs/gangsta.jpg',
-      src: '/music/kkk.mp3',
-      id: 3,
-      profileImage: "/artists/kk.avif",
+      title: 'Tenshi to Akuma',
+      artist: 'GRe4N BOYZ',
+      cover: '/Songs/lofi.jpg',
+      src: '/music/lofii.mp3',
+      id: 2,
+      profileImage: "/artists/green.jpg",
       link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
     },
+
+    {
+      title: "Zombie",
+      artist: 'YUNGBLUD',
+      cover: '/Songs/Yung.jpg',
+      src: '/music/Yung.mp3',
+      id: 5,
+      profileImage: "/artists/yung.jpg",
+      link: '/artist/zEeYTYfMSx2XEJZ4xnAQSn'
+
+    },  
+    
     
      {
       title: "Sweet but Psycho",
@@ -120,19 +125,41 @@ export const trackss = [
       src: '/music/sweet.mp3',
       id: 5,
       profileImage: "/artists/ava.jpg",
-      link: '/artist/skDzNmRmxIVi9TeDcsF2xA'
+      link: '/artist/sHHTP8llVzmNOHLA9X4ugv'
 
     },
-
+    
+    
      {
-      title: "Zombie",
-      artist: 'YUNGBLUD',
-      cover: '/Songs/Yung.jpg',
-      src: '/music/Yung.mp3',
+      title: "Flowers",
+      artist: 'Miley Cyrus',
+      cover: '/Songs/Mily.jpg',
+      src: '/music/mily.mp3',
       id: 5,
-      profileImage: "/artists/yung.jpg",
-      link: '/artist/skDzNmRmxIVi9TeDcsF2xA'
+      profileImage: "/artists/mily.jpg",
+      link: '/artist/s9VaIEfTMT3SWpogm7dYDm'
 
+    },
+     
+
+    {
+      title: 'They not like us',
+      artist: 'kendrick Lamar',
+      cover: '/artists/notlike.webp',
+      src: '/music/Noot.mp3',
+      id: 2,
+      profileImage: "/artists/kk.webp",
+      link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
+    },
+
+    {
+      title: "that's so true",
+      artist: 'gracie abrams',
+      cover: '/Songs/garcia.webp',
+      src: '/music/abram.mp3',
+      id: 3,
+      profileImage: "/artists/Gracie.jpg",
+      link: '/artist/EuZaNtPdc4PTmoEAhUFC7r',
     },
     
     {
@@ -148,29 +175,29 @@ export const trackss = [
       link2: '/artist/sxBvL0puKK77fAay5bo1J1',
     },
 
+    
     {
-      title: "that's so true",
-      artist: 'gracie abrams',
-      cover: '/Songs/garcia.webp',
-      src: '/music/abram.mp3',
+      title: 'Gangsta',
+      artist: 'Kehlani',
+      cover: '/Songs/gangsta.jpg',
+      src: '/music/kkk.mp3',
       id: 3,
-      profileImage: "/artists/Gracie.jpg",
-      link: '/artist/EuZaNtPdc4PTmoEAhUFC7r',
+      profileImage: "/artists/kk.avif",
+      link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
     },
 
-
-    {
-      title: "Sprinter",
-      artist: 'Central Cee',
-      artist2: 'Dave',
-      cover: '/Songs/ssp.jpg',
-      src: '/music/ssp.mp3',
-      id: 3,
-      profileImage: "/artists/rose.jpg",
-      profileImage2: "/artists/mars.webp",
-      link: '/artist/skDzNmRmxIVi9TeDcsF2xA',
-      link2: '/artist/sxBvL0puKK77fAay5bo1J1',
-    },
+    // {
+    //   title: "Sprinter",
+    //   artist: 'Central Cee',
+    //   artist2: 'Dave',
+    //   cover: '/Songs/ssp.jpg',
+    //   src: '/music/ssp.mp3',
+    //   id: 3,
+    //   profileImage: "/artists/rose.jpg",
+    //   profileImage2: "/artists/mars.webp",
+    //   link: '/artist/skDzNmRmxIVi9TeDcsF2xA',
+    //   link2: '/artist/sxBvL0puKK77fAay5bo1J1',
+    // },
 
     {
       title: 'Cliché',
@@ -182,6 +209,100 @@ export const trackss = [
       link: '/artist/kZiKRYm8iLLytqBH4gHF0K',
     },
    
+    
+  ];
+
+
+
+export const trackss2 = [
+    {
+      title: 'Manchild',
+      artist: 'Sabrina Carpenter',
+      cover: '/Songs/manchild.jpg',
+      src: '/music/manchild.mp3',
+      id: 1,
+      profileImage: '/artists/Lola.jpg',
+      link: '/artist/y582AITbRnGl9GUXUBQf1z',
+    },
+    
+    {
+      title: "Ordinary",
+      artist: 'Alex Warren',
+      cover: '/Songs/alex.jpg',
+      src: '/music/alex.mp3',
+      id: 3,
+      profileImage: "/artists/alex.png",
+      link: '/artist/4TBltsCY9ZT5ZU7SSTl95m',
+    },
+
+    {
+      title: 'Bad Romance',
+      artist: 'Lady Gaga',
+      cover: '/Songs/bad.jpg',
+      src: '/music/bad.mp3',
+      id: 3,
+      profileImage: "/artists/lady.jpg",
+      link: '/artist/GOX4TSqGSHEwbQzPNB2DTh',
+    },
+
+
+    {
+      title: "Spiser-Man",
+      artist: 'John Paesano',
+      cover: '/Songs/spider.jpg',
+      src: '/music/Spider-Man.mp3',
+      id: 3,
+      profileImage: "/artists/john.jpg",
+      link: '/artist/r46shAEhwb9toSemK2ITyC',
+    },
+
+    
+
+    {
+      title: "twilight zone",
+      artist: 'Ariana Grande',
+      cover: '/Songs/ariana.png',
+      src: '/music/arii.mp3',
+      id: 3,
+      profileImage: "/artists/arii.webp",
+      link: '/artist/ZRzVZCrRLsMAz5euTHlupi',
+    },
+    
+    
+
+    {
+      title: 'Back To Friends ',
+      artist: 'Sombr',
+      cover: '/Songs/sombr.jpg',
+      src: '/music/sombr.mp3',
+      id: 3,
+      profileImage: "/artists/sombr.jpg",
+      link: '/artist/Ag4e5neR0z0DPqEcbymOCX',
+    },
+
+    {
+      title: "Daredevil",
+      artist: 'The Newton Brothers',
+      cover: '/Songs/dare.jpg',
+      src: '/music/dare.mp3',
+      id: 3,
+      profileImage: "/artists/dare.jpg",
+      link: '/artist/5pr5BuWUPa8e4AIF5lQB4g',
+    },
+    
+
+    {
+      title: "Sapphire",
+      artist: 'Ed Sheeran',
+      cover: '/Songs/ed.jpg',
+      src: '/music/Cc.mp3',
+      id: 3,
+      profileImage: "/artists/ed.jpg",
+      link: '/artist/5pr5BuWUPa8e4AIF5lQB4g',
+    },
+    
+    
+    
     
   ];
   

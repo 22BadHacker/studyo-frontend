@@ -40,19 +40,22 @@ export default function ArtistsPage() {
     )
   }
 
+  
+
   return (
     <>
       {/* <h1 className="text-2xl pb-3 pt-10 font-NeueMontreal tracking-wide text-green-500 rounded-full w-fit font-bold mb-6">
         Discover Your Next Favorite Artist
       </h1> */}
 
-      <div className="link-wrapper  h-[65px]  cursor-pointer w-fit  font-NeueMontreal  text-white/60 font leading-tight font-[600] tracking-[0.015em] text-[50px]">
+      {/* <div className="link-wrapper  h-[65px]  cursor-pointer w-fit  font-NeueMontreal  text-white/60 font leading-tight font-[600] tracking-[0.015em] text-[50px]">
         <h1 className=' link-text '>Discover Your Next Favorite Artist</h1>
         <h1 className=' link-text-clone '>Discover Your Next Favorite Artist </h1>
+        
+        </div> */}
+        <h1 className='cursor-pointer w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6.05vw] '>Discover Your Next Favorite Artist </h1>
 
-      </div>
-
-      <div className="py-10 min-h-screen grid-rows-[.63fr] gap-y-4 grid grid-cols-6 w-full gap-2">
+      <div className="py-10 pt-11 min-h-screen grid-rows-[.63fr] gap-y-4 grid grid-cols-6 w-full gap-2">
         {filteredArtists.map((artist, i) => (
 
           <motion.div className='h-fit ' viewport={{ once: true}} key={artist.id} whileInView={{ opacity: [0, 1] }} transition={{ duration: .05, delay: i * .08, ease: 'easeInOut' }}>

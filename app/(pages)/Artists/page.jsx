@@ -8,7 +8,7 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='h-auto pt-[200px] pb-[180px] '>
+    <div className='h-auto pt-[190px] pb-[180px] '>
         <div className="container  h-auto">
             <Artists />
         </div>

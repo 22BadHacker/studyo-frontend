@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   const data = await res.json();
 
   return {
-    title: `${data.title} — ${data.user.username} `, 
+    title: `${data.album.title} — ${data.album.user.username} `, 
   };
 }
 
