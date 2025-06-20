@@ -391,7 +391,7 @@ export default function UploadTrackForm() {
                 </div>
                 <input
                   type="file"
-                  accept="image/*"
+                  accept="image/png, image/jpeg, image/jpg, "
                   className="hidden"
                   onChange={handleCoverImageUpload}
                 />

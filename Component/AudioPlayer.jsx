@@ -250,7 +250,7 @@ const exitFullscreen = () => {
                   // dragConstraints={containerRef}
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}
-                  className="fixed bottom-7 scale-95 left-10 w-[300px] h-[60px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-md rounded-full flex items-center justify-between text-white px-3 shadow-lg z-50"
+                  className="fixed z-[9999] bottom-7 scale-95 left-10 w-[300px] h-[60px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-md rounded-full flex items-center justify-between text-white px-3 shadow-lg "
                 >
                   <div className="flex items-center gap-2">
                     <img src={currentTrack.cover} alt="" className="w-10 h-10 object-cover bg-gradient-to-tl from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full" />
@@ -271,15 +271,16 @@ const exitFullscreen = () => {
           ) 
           
           : (
-          
+           
               <motion.div
                 drag
                 ref={containerRef}
                 whileDrag={{cursor: 'grabbing', scale: .95,}}
                 // dragConstraints={containerRef}
                 
-                className={`fixed z-[9999] p-2 rounded-xl shadow-xl text-white backdrop-blur-[20px] border-white/10 border-[1px] -bottom-2 left-4 w-[370px] bg-gradient-to-tr  from-[#d8dfe8]/5 via-[#d8dfe8]/10 to-[#d8dfe8]/0 scale-[.85]`}
+                className={`fixed z-[9999]  overflow-hidden p-2 rounded-xl shadow-xl text-white backdrop-blur-[20px] border-white/10 border-[1px] -bottom-2 left-4 w-[370px] bg-gradient-to-tr  from-[#d8dfe8]/5 via-[#d8dfe8]/10 to-[#d8dfe8]/0 scale-[.85]`}
               >
+                
                 {/* Top Bar: Fullscreen/Minimize */}
                 <div className="absolute mix-blend-difference top-3 right-3 flex space-x-2 z-10">
                   {viewMode === 'normal' ? (
@@ -306,7 +307,7 @@ const exitFullscreen = () => {
                   />
 
                   {/* Volume */}
-                  <div className="flex absolute bottom-[29px] -right-4 items-center space-x-2 mt-3">
+                  <div className="flex absolute bottom-[28px] -right-4 items-center space-x-2 mt-3">
                     <FaVolumeUp size={16} />
                     <input
                       type="range"
@@ -322,7 +323,7 @@ const exitFullscreen = () => {
                   {/* Info */}
                   <div className="flex justify-between pt-1 items-start">
                     <div className="flex-grow">
-                      <p className="font-bold font-NeueMontreal text-[21px]">{currentTrack.title}</p>
+                      <p className="font-bold w-[200px] truncate font-NeueMontreal text-[21px]">{currentTrack.title}</p>
                       <p className="text-[15px] relative -top-1 font-medium text-gray-200">{currentTrack.artist}</p>
                     </div>
                   </div>
@@ -368,6 +369,7 @@ const exitFullscreen = () => {
                   <RxDotsVertical className="text-[18px] text-green-500" />
                 </div>
               </motion.div>
+          
           )}
 
     </div>

@@ -5,6 +5,7 @@ import axios from 'axios'
 import { IoIosAddCircleOutline, IoMdPlay } from 'react-icons/io'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import Link from 'next/link'
+import { useAudio } from '@/context/AudioProvider';
 
 
 
@@ -12,9 +13,10 @@ const Album = () => {
   const { public_id } = useParams()
   const [album, setAlbum] = useState(null)
   const [hover, setHover] = useState(false);
+  const { playTrack, isPlaying, togglePlay} = useAudio();
+  const [moreAlbums, setMoreAlbums] = useState([])
   
   
- const [moreAlbums, setMoreAlbums] = useState([])
 
   useEffect(() => {
     if (public_id) {
@@ -58,7 +60,7 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
 
               </div>
                 
-                <h5 className='text-white/80  font-semibold capitalize tracking-wide font-NeueMontreal text-[13px]'>{album.user.username} </h5>
+                <Link href={`/artist/${album.user.public_id}`} className='text-white/80 hover:underline  font-semibold capitalize tracking-wide font-NeueMontreal text-[13px]'>{album.user.username} </Link>
             </div>
 
             
@@ -101,7 +103,13 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
               {album.tracks.map((track, i) => (
                 <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
                     <div className="flex items-center gap-4">
-                        <span className={`text-[#d7d7d7]/70 relative text-[16px] w-3 flex-center font-semibold  mr-1`}><IoMdPlay className='absolute opacity-0 group-hover:opacity-100 ' size={15} /> <span className='opacity-100 group-hover:opacity-0'>{ i + 1 } </span> </span>
+                        <span onClick={ () => playTrack({
+                                    id: track.id,
+                                    title: track.title,
+                                    artist: album.user.username,
+                                    cover: `http://localhost:8000/storage/${track.cover_image}`,
+                                    src: `http://localhost:8000/storage/${track.file_path}`
+                                })}  className={`text-[#d7d7d7]/70 relative cursor-pointer text-[16px] w-3 flex-center font-semibold  mr-1`}><IoMdPlay className='absolute opacity-0 group-hover:opacity-100 ' size={15} /> <span className='opacity-100 group-hover:opacity-0'>{ i + 1 } </span> </span>
                         {/* <img
                         src={`http://localhost:8000/storage/${track.cover_image}`}
                         

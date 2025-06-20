@@ -18,6 +18,7 @@ import { GoChevronLeft } from "react-icons/go";
 export default function EditProfile() {
   const [user, setUser] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
+  
   const [form, setForm] = useState({ username: '', email: '', password: '', gender: '', bio: '', role: '',  });
   const [dateOfBirth, setDateOfBirth] = useState({
     day: "",
@@ -44,7 +45,9 @@ export default function EditProfile() {
     if (!authToken) return router.push('/Auth/Login');
 
     axios.get('http://localhost:8000/api/user/profile', {
-      headers: { Authorization: `Bearer ${authToken}` },
+      headers: { Authorization: `Bearer ${authToken}`,  },
+
+      withCredentials: true
     })
       .then(res => {
         setUser(res.data);
@@ -80,7 +83,7 @@ export default function EditProfile() {
   };
 
     axios.put('http://localhost:8000/api/user/profile', updatedForm, {
-      headers: { Authorization: `Bearer ${authToken}` },
+      headers: { Authorization: `Bearer ${authToken}` , },
     })
       .then(res => {
         toast.success('Profile updated successfully');

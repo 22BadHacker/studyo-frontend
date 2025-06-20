@@ -38,6 +38,7 @@ import Track from './Track';
 import Albums from './Albums';
 import ArtistAlbums from './Albums';
 import Tracks from './Track';
+import RelatedArtist from './RelatedArtist';
 
 export default function UserProfile() {
   const { public_id } = useParams();
@@ -251,7 +252,7 @@ useEffect(() => {
             <p className='flex  text-white text-[15px] font-NeueMontreal font-medium items-center  gap-2'>
             {/* <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' /> */}
             <img className='inline-flex ml-[.5px] mb-[.5px] w-[28px]' src="/check.png" alt="" />
-            Verified Artist {user.id }
+            Verified Artist {user.email }
             </p>
             <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>
@@ -294,7 +295,7 @@ useEffect(() => {
                   
 
 
-                {/* {
+                {
                   user?.bio && (
                   
 
@@ -313,7 +314,12 @@ useEffect(() => {
 
                       </div>
                   )
-                } */}
+                }
+
+                <RelatedArtist />
+
+
+
 
 
 

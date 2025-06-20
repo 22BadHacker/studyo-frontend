@@ -6,6 +6,7 @@ import { IoIosAddCircleOutline, IoMdPlay } from 'react-icons/io';
 import { PiSealCheckFill } from 'react-icons/pi';
 import { useState, useEffect } from 'react';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
+import { useAudio } from '@/context/AudioProvider';
 
 export default function SearchClient({ query }) {
     const [tabs, setTabs] = useState('all');
@@ -17,6 +18,7 @@ export default function SearchClient({ query }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [topResult, setTopResult] = useState(null);
+  const { playTrack, isPlaying, togglePlay} = useAudio();
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -101,9 +103,6 @@ export default function SearchClient({ query }) {
             </div>
 
         {!results.tracks.length && !results.albums.length && !results.artists.length ? (
-        //   <p className="cursor-pointer w-fit font-NeueMontreal text-white/60 font-bold leading-tight tracking-[0.015em] text-[50px]">
-        //     No results found for "{query}"
-        //   </p>
         null
         ) : (
           <>
@@ -120,8 +119,8 @@ export default function SearchClient({ query }) {
                             <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Top Result</h2>
 
                         {topResult.type === 'artist' && (
-                        <Link
-                            href={`/artist/${topResult.data.public_id}`}
+                        <div
+                            
                             className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition"
                         >
                              <span className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
@@ -133,22 +132,31 @@ export default function SearchClient({ query }) {
                             alt={topResult.data.username}
                             />
                             <div className='flex gap-1 pt-1 flex-col leading-tight'>
-                                <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.username}</h3>
+                                <Link href={`/artist/${topResult.data.public_id}`}  className="text-white hover:underline font-NeueMontreal text-[30px] font-bold">{topResult.data.username}</Link>
                                 <p className="text-white/70 font-NeueMontreal text-sm">Artist</p>
                             </div>
-                        </Link>
+                        </div>
                         )}
 
                         {topResult.type === 'track' && (
                         <div className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition">
+                             <span onClick={ () => playTrack({
+                                    id: topResult.data.id,
+                                    title: topResult.data.title,
+                                    artist: topResult.data.user.username,
+                                    cover: `http://localhost:8000/storage/${topResult.data.cover_image}`,
+                                    src: `http://localhost:8000/storage/${topResult.data.file_path}`
+                                })}  className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
+                                <IoMdPlay />
+                                </span>
                             <img
                             src={`http://localhost:8000/storage/${topResult.data.cover_image}`}
-                            className="size-[80px] object-cover rounded-md"
+                            className="size-[110px] shadow-2xl  object-cover rounded-md"
                             alt={topResult.data.title}
                             />
-                            <div>
-                            <h3 className="text-white text-xl font-bold">{topResult.data.title}</h3>
-                            <p className="text-white/70 text-sm">Track · {topResult.data.user.username}</p>
+                            <div className='flex pt-1 gap-1 flex-col leading-tight'>
+                            <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.title}</h3>
+                            <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Song <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link> </p>
                             </div>
                         </div>
                         )}
@@ -179,23 +187,34 @@ export default function SearchClient({ query }) {
 
                         <div className="flex flex-col gap-0">
                             <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-2">Songs</h2>
-                            <div className="flex pt-1 flex-col gap-0 w-full">
+                            <div className="flex pt-[6px] flex-col gap-1 w-full">
                             {results.tracks.length > 0 ? results.tracks.slice(0, 4).map(track => (
                                 <div className="flex group py-2 hover:bg-main2/60 px-3 rounded justify-between " key={track.id}>
                                 <div className="flex items-center gap-2 ">
-                                    <img
-                                    src={`http://localhost:8000/storage/${track.cover_image}`}
-                                    alt={track.title}
-                                    className={`size-[46px] saturate-[1.2] mx-auto rounded-sm object-cover`}
-                                    />
+                                    <div className="size-[47px] relative overflow-hidden">
+                                        <img
+                                        src={`http://localhost:8000/storage/${track.cover_image}`}
+                                        alt={track.title}
+                                        className={`size-full saturate-[1.2] mx-auto rounded-sm object-cover`}
+                                        />
+                                        <span onClick={ () => playTrack({
+                                        id: track.id,
+                                        title: track.title,
+                                        artist: track.user.username,
+                                        cover: `http://localhost:8000/storage/${track.cover_image}`,
+                                        src: `http://localhost:8000/storage/${track.file_path}`
+                                        })} className={`size-full absolute duration-200 ease-in-out top-0 left-0 bg-black/50  opacity-0 group-hover:opacity-100 flex-center text-white text-[26px] z-10`}><IoMdPlay className=' ' size={18} /></span>
+
+                                    </div>
+
                                     <div className="flex flex-col gap-">
-                                    <p className="text-md font-medium">{track.title}</p>
-                                    <Link href={`/artist/${track.user?.public_id}`} className="text-sm font hover:text-white hover:underline text-white/60">{track.user?.username}</Link>
+                                        <p className="text-md font-medium">{track.title}</p>
+                                        <Link href={`/artist/${track.user?.public_id}`} className="text-sm font hover:text-white hover:underline text-white/60">{track.user?.username}</Link>
                                     </div>
                                 </div>
                                 <div className="flex gap-3 items-center">
                                     <IoIosAddCircleOutline  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/>
-                                    <p>{track.duration}</p>
+                                    <p className='text-[13px] text-white/90'>{track.duration}</p>
                                     <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
             
                                 </div>
@@ -271,7 +290,7 @@ export default function SearchClient({ query }) {
              )}   
 
 
-             {
+             {/* {
                 tabs === 'songs' && (
                     <div className="flex flex-col gap-0">
                         <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Songs</h2>
@@ -291,6 +310,54 @@ export default function SearchClient({ query }) {
                             </div>
                             <h5>{track.duration}</h5>
                             </div>
+                        )) : null}
+                        </div>
+                    </div>
+                )
+             } */}
+             {
+                tabs === 'songs' && (
+                    <div className="flex flex-col gap-0">
+                        <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Songs</h2>
+                         <div className="grid grid-cols-[1fr_.7fr_auto] pb-2 pt-5 border-b-[.5px] border-white/40 items-center px-4 justify-between">
+                            <span className=" flex gap-4 uppercase items-center text-[#fff]/70 font-semibold  text-[13px]"><span>#</span> Title</span>
+                            <span className=" flex relative -left-[14px] gap-4 uppercase items-center text-[#fff]/70 font-semibold  text-[13px]">Artist</span>
+                            <span className=" flex gap-4 uppercase items-center text-[#fff]/70 font-semibold  text-[13px]">Duration</span>
+                        </div>
+                        <div className="space-y-2 pt-1">
+                        {results.tracks.length > 0 ? results.tracks.map((track, i) => (
+                            <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
+                            <div className="flex items-center gap-4">
+                                <span onClick={ () => playTrack({
+                                    id: track.id,
+                                    title: track.title,
+                                    artist: track.user.username,
+                                    cover: `http://localhost:8000/storage/${track.cover_image}`,
+                                    src: `http://localhost:8000/storage/${track.file_path}`
+                                })} className={`text-[#d7d7d7]/70 cursor-pointer relative text-[16px] w-3 flex-center font-semibold  mr-1`}><IoMdPlay className='absolute opacity-0 group-hover:opacity-100 ' size={15} /> <span className='opacity-100 group-hover:opacity-0'>{ i + 1 } </span> </span>
+                                <img
+                                src={`http://localhost:8000/storage/${track.cover_image}`}
+                                
+                                className="size-11 saturate-150 object-cover rounded-sm"
+                            />
+                            <div className="flex gap-1 flex-col">
+                                <span className={`font-medium ${isPlaying.id === track.id ? 'text-green-500' : 'text-[#fff]/95'}  text-[16.5px]`}>{track.title}</span>
+                                <span>{track.albums?.title}</span>
+
+                            </div>
+                            </div>
+
+                            <Link href={`/artist/${track.user.public_id}`} className="flex hover:underline hover:text-white items-center gap-4">
+                                <span className="font-medium text-[#fff] font-NeueMontreal text-[16px]">{track.user?.username}</span>
+                            </Link>
+
+                            <div className="flex gap-3 items-center">
+                            <IoIosAddCircleOutline  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/>
+                            <p>{track.duration}</p>
+                            <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
+
+                            </div>
+                        </div>
                         )) : null}
                         </div>
                     </div>
