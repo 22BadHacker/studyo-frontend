@@ -221,7 +221,7 @@ export const trackss2 = [
       cover: '/Songs/manchild.jpg',
       src: '/music/manchild.mp3',
       id: 1,
-      profileImage: '/artists/Lola.jpg',
+      profileImage: '/artists/sa.jpg',
       link: '/artist/y582AITbRnGl9GUXUBQf1z',
     },
     

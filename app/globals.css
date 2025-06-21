@@ -9,7 +9,11 @@
 
 @font-face {
   font-family: "Neue Montreal";
-  src: url('/public/fonts/NeueMontreal-Regular.otf') format('opentype');
+  src: url('/public/fonts/NeueMontreal-Regular.otf') format('otf');
+}
+@font-face {
+  font-family: "Gothic";
+  src: url('/public/fonts/alt-gothic-atf-book.otf') format('otf');
 }
 @font-face {
   font-family: "TWK-Everett";
@@ -34,6 +38,7 @@
     --TWKEverett: 'TWK-Everett', Arial, Helvetica, sans-serif;
     --MartianMono : 'Martian Mono', Arial, Helvetica, sans-serif;
     --LeckerliOne: "Leckerli One", cursive;
+    --Gothic : "Gothic", Arial, Helvetica, sans-serif;
   }
   
 }
@@ -59,6 +64,7 @@
   --font-sora: var(--sora);
   --font-MartianMono: var(--MartianMono);
   --font-LeckerliOne: var(--LeckerliOne);
+  --font-Gothic: var(--Gothic);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,6 +95,10 @@ html, body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;                 /* Chrome, Safari, Opera */
+}
+
+img{
+  mix-blend-mode: normal !important;
 }
 
 
@@ -259,3 +269,10 @@ input[type="range"] {
 /* .coon:hover > .cheff{
   opacity: 1 !important;
 } */
+
+
+.textx{
+  color: transparent !important;
+  /* font-size: 2.5em; */
+  -webkit-text-stroke: 1px #d8262c;
+}

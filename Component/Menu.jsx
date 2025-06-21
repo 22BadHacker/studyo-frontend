@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Gallery from './Gallery';
 
 const MenuToggle = () => {
   const [open, setOpen] = useState(false);
@@ -45,13 +46,13 @@ const MenuToggle = () => {
 
         {
             open && (
-                <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, transition: { duration: 0.3, delay: .6, ease: 'linear' }}} className="fixed flex pt-20 flex-col  top-0 bg-[#fcfaf5] left-0 w-full h-screen overflow-hidden  z-[5]">
+                <motion.div initial={{ opacity: 0, height: 0}} animate={{ opacity: 1, height: '100%'}} transition={{ duration: 0.3, delay: .6, ease: 'easeInOut' }} exit={{ opacity: 0, transition: { duration: 0.3, delay: .4, ease: 'linear' }}} className="fixed flex flex-col  top-0 bg-[#fcfaf5] left-0 w-full h-screen overflow-hidden  z-[5]">
 
                 {/* <p className='stroke-[#f8fe23] absolute top-4 right-10 text-[4vw] hover:text-green-500 duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>Popular music videos</p> */}
 
-                <div className="w-full">
-                    {/* <video src="/vedios/one.mp4" autoPlay loop muted className="w-full object-contain h-full"></video> */}
-                </div>
+                <motion.div transition={{ duration: 0.3, delay: 1, ease: 'easeInOut' }} className="w-full">
+                    <Gallery />
+                </motion.div>
 
                 </motion.div>
             )
