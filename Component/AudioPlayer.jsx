@@ -282,7 +282,7 @@ const exitFullscreen = () => {
               >
                 
                 {/* Top Bar: Fullscreen/Minimize */}
-                <div className="absolute  top-0 bg-black  px-2 py-1 right-0 flex space-x-2 z-10">
+                <div className="absolute text-sm top-0 bg-black  px-2 py-1 right-0 flex space-x-2 z-10">
                   {viewMode === 'normal' ? (
                     <button onClick={enterFullscreen}>
                       <FaExpand className="hover:text-green-500" />
@@ -293,7 +293,7 @@ const exitFullscreen = () => {
                     </button>
                   )}
                   <button onClick={() => setViewMode('minimized')}>
-                    <span className="text-sm px-2 py-[2px] bg-white/10 rounded hover:bg-white/20">Minimize</span>
+                    <span className="text-[11.8px] px-2 py-[2px] bg-white/10 rounded hover:bg-white/20">Minimize</span>
                   </button>
                 </div>
 

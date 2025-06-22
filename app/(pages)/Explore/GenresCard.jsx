@@ -46,7 +46,7 @@ const GenreCard = ({ genre, index }) => {
         className="h-[450px] group chiild p-[10px] odd:bg-main bg-[#dddee2] flex flex-col justify-end items-start gap-1 w-[380px] relative  cursor-pointer"
         initial={{ opacity: 0,  filter: 'blur(10px)' }}
         whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-        transition={{ delay: index * 0.1, duration: 0.6, ease: 'easeOut' }}
+        transition={{ delay: index * 0.08, duration: 0.5, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
 
@@ -67,7 +67,7 @@ const GenreCard = ({ genre, index }) => {
 
         <div className="flex flex-wrap relative font-medium gap-3 top-[1px] items-center text-[11.8px]">
           {(genreHashtags[genre.name] || []).map((tag) => (
-              <span key={tag} className="text-[#222]/80 hover:text-red-500">#{tag.replace('#', '')}</span>
+              <span key={tag} className="text-[#222]/70 tracking-wide font-Oswald font-medium hover:text-red-500">#{tag.replace('#', '')}</span>
             ))}
         </div>
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -12,8 +13,8 @@
   src: url('/public/fonts/NeueMontreal-Regular.otf') format('otf');
 }
 @font-face {
-  font-family: "Gothic";
-  src: url('/public/fonts/alt-gothic-atf-book.otf') format('otf');
+  font-family: "Fixture";
+  src: url('/public/fonts/Fixture-Medium.ttf') format('ttf');
 }
 @font-face {
   font-family: "TWK-Everett";
@@ -38,7 +39,8 @@
     --TWKEverett: 'TWK-Everett', Arial, Helvetica, sans-serif;
     --MartianMono : 'Martian Mono', Arial, Helvetica, sans-serif;
     --LeckerliOne: "Leckerli One", cursive;
-    --Gothic : "Gothic", Arial, Helvetica, sans-serif;
+    --Fixture : "Fixture", Arial, Helvetica, sans-serif;
+    --Oswald : 'Oswald', Arial, Helvetica, sans-serif;
   }
   
 }
@@ -64,7 +66,8 @@
   --font-sora: var(--sora);
   --font-MartianMono: var(--MartianMono);
   --font-LeckerliOne: var(--LeckerliOne);
-  --font-Gothic: var(--Gothic);
+  --font-Fixture: var(--Fixture);
+  --font-Oswald: var(--Oswald);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +89,7 @@ body {
 html, body {
   height: auto;
   overflow: hidden; /* Let Lenis control scrolling */
+  /* scroll-behavior: smooth; */
 }
 
 .hide-scrollbar {
@@ -133,20 +137,10 @@ img{
     }
 
     .profile_btn{
-      @apply font-NeueMontreal hover:text-white text-white/85 cursor-pointer duration-200 ease-out hover:bg-main2 px-6 py-[11px] rounded-full  text-[15.5px]
+      @apply font-NeueMontreal hover:text-white text-white/90 cursor-pointer duration-200 ease-out bg-main2/50 hover:bg-main2 px-6 py-[11px] rounded-full  text-[14px]
     }
 
-    /* .inputt{
-      @apply peer h-11 w-full px-2 border-white/40 border-[.5px] text-gray-900 placeholder-transparent focus:outline-none focus:border-white
-    } */
-
-    /* .label{
-      @apply absolute left-[2px]  text-sm peer-focus:left-3  text-white/80 transition-all peer-placeholder-shown:top-[5px] peer-placeholder-shown:text-base peer-placeholder-shown:text-white/70 peer-focus:-top-3 py-1 peer-focus:text-sm peer-focus:text-white peer-focus:bg-[#010101] px-[10px] 
-    } */
-
-    /* .artist_btn{
-      @apply cursor-pointer relative bg-main/15 text-[18px]  text-white/80 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out
-    } */
+    
 
 }
 
@@ -205,7 +199,7 @@ input[type="range"] {
 
 
 .genres:nth-child(21){
-  grid-column: span 4 / span 4 !important;
+  grid-column: span 3 / span 3 !important;
   width: 100%;
   justify-content: end;
   
@@ -275,4 +269,10 @@ input[type="range"] {
   color: transparent !important;
   /* font-size: 2.5em; */
   -webkit-text-stroke: 1px #d8262c;
+}
+
+.someLine:nth-child(125){
+  height: 20px !important;
+  /* margin-inline: 2px; */
+  border-left: solid 1.5px rgb(0, 0, 0, .5) !important;
 }

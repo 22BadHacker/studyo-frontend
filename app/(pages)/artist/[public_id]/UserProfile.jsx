@@ -39,6 +39,7 @@ import Albums from './Albums';
 import ArtistAlbums from './Albums';
 import Tracks from './Track';
 import RelatedArtist from './RelatedArtist';
+import FollowButton from '@/SmallComponent/FollowButton';
 
 export default function UserProfile() {
   const { public_id } = useParams();
@@ -160,14 +161,13 @@ useEffect(() => {
                       <div className="flex gap-[2px] items-center">
                         {user?.username}
                         <img className='inline-flex ml-[.5px] relative top-[1px] w-[15px]' src="/check.png" alt="" />
-
                       </div>
+
                         <span className='text-[11px] font-normal text-white/70'>@{user?.username}</span>
 
                     </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <motion.button
+                  {/* <motion.button
                       onClick={() => setIsFollowing(prev => !prev)}
                       className="relative cursor-pointer px-5 py-[10px] rounded-full border border-white/20 overflow-hidden text-white text-sm font-medium"
                       initial={false}
@@ -183,9 +183,9 @@ useEffect(() => {
                       >
                           {isFollowing ? 'Following' : 'Follow'}
                       </motion.span>
-                  </motion.button>
-                  
-                </div>
+                  </motion.button> */}
+                  <FollowButton artistId={user.id}/>
+                
               </div>
             </motion.nav>
           )}
@@ -249,10 +249,10 @@ useEffect(() => {
         <div  className="items-end  z-[40] pt-[210px] relative flex justify-between gap-3 w-full">
           
           <div className="flex w-fit   flex-col gap-2">
-            <p className='flex  text-white text-[15px] font-NeueMontreal font-medium items-center  gap-2'>
+            <p className='flex  text-white/90 text-[15px] font-Oswald font-medium items-center  gap-2'>
             {/* <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' /> */}
-            <img className='inline-flex ml-[.5px] mb-[.5px] w-[28px]' src="/check.png" alt="" />
-            Verified Artist {user.email }
+            <img className='inline-flex ml-[.5px] mb-[.5px] w-[26.5px]' src="/check.png" alt="" />
+            Verified Artist {user.id}
             </p>
             <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>
@@ -275,7 +275,7 @@ useEffect(() => {
         <div className="min-h-screen relative  flex-col pt-[50px] w-full flex gap-4 ">
           
                 <div className="flex gap-4 items-center">
-                    <p className='font-NeueMontreal bg-main2 px-7 py-[10px] rounded-full text-white text-[15.5px]'>All</p>
+                    <p className='font-NeueMontreal bg-main  px-7 py-[11px] rounded-full text-main2 text-[14px]'>All</p>
                     <p className='profile_btn'>Biography</p>
                     <p className='profile_btn'>Albums</p>
                     <p className='profile_btn'>Tracks</p>
@@ -300,13 +300,16 @@ useEffect(() => {
                   
 
                       <div className=" flex flex-col gap-6 pt-11">
-                          <h1 className='text-2xl flex items-end leading-tight gap-2 text-white font-NeueMontreal font-semibold'> Biography <span className='text-[14px] text-white/70 relative top-[0px] font-medium'>{user.username}</span></h1>
+                          <h1 className='text-2xl flex items-end leading-tight gap-2 text-white font-NeueMontreal font-semibold'> Biography <span className='text-[14px] text-white/70 relative top-[0px] font-medium'></span></h1>
 
                           <div className="w-[720px] h-[490px] overflow-hidden rounded-md relative">
                               <img className='size-full object-top object-cover' src={`http://localhost:8000${user.profile_image}`} alt="" />
                               
-                              <div className="w-full    opacity-95  bg-gradient-to-b from-transparent via-[#000000]/15 to-[#000000]/95 absolute top-0 left-0 h-full" />
-                              <div className="absolute p-6 font-NeueMontreal tracking-wide font-medium leading-[1.42]   text-white/80 text-justify capitalize text-[15px] w-full h-full top-0 left-0 flex items-end justify-end">
+                              <div className="w-full    opacity-95  bg-gradient-to-b from-black/60 via-transparent to-[#000000]/95 absolute top-0 left-0 h-full" />
+                              <div className="absolute p-4 font-Oswald  tracking-wide font-medium leading-[1.4]   text-white/90 text-justify  capitalize text-[14px] w-full h-full top-0 left-0 flex flex-col items-start gap-2 justify-end">
+                                  <div className="flex absolute top-3  items-center gap-2"><img className='size-[53px] shadow-2xl bg-[#c42b1c] p-[1px] rounded-full object-top object-cover' src={`http://localhost:8000${user.profile_image}`} alt="" /> 
+                                    <div className="flex flex-col leading-tight"><p className='text-[17px] font-NeueMontreal font-bold'>{user.username}</p> <h6 className='text-[12.5px] font-NeueMontreal text-white/50]'>Artist</h6></div>
+                                  </div>
                                   {user.bio}
                               </div>
                           </div>

@@ -22,6 +22,7 @@ import UploadProfileImageButton from '../../artist/[public_id]/ImageUpdate';
 import UploadProfileImageButton2 from '../../artist/[public_id]/ImageUpdate2';
 import EditModel from '@/Component/EditModel';
 import ImageUpdate from './ImageUpdate';
+import FollowedArtists from './FollowedArtists';
 
 
 export default function UserProfile() {
@@ -248,12 +249,14 @@ useEffect(() => {
 
 
 
-        {/* <div className="pt-[100px] flex flex-col gap-4 w-full">
+        <div className="pt-[100px] flex flex-col gap-4 w-full">
             <div className="flex w-full items-center justify-between">
-                  <h1 className='text-[20px] text-white font-semibold'>Top Albums</h1>
+                  {/* <h1 className='text-[20px] text-white font-semibold'>Top Albums</h1> */}
                   
             </div>
-        </div> */}
+        </div>
+
+        <FollowedArtists public_id={user.public_id} userId={user.id} />
 
 
 

@@ -58,7 +58,7 @@ export default function ArtistsPage() {
       <div className="py-10 pt-11 min-h-screen grid-rows-[.63fr] gap-y-4 grid grid-cols-6 w-full gap-2">
         {filteredArtists.map((artist, i) => (
 
-          <motion.div className='h-fit ' viewport={{ once: true}} key={artist.id} whileInView={{ opacity: [0, 1] }} transition={{ duration: .05, delay: i * .08, ease: 'easeInOut' }}>
+          <motion.div className='h-fit ' viewport={{ once: true}} key={artist.id} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .04, delay: i * .07, ease: 'easeInOut' }}>
             <Link
               href={`/artist/${artist.public_id}`}
              
@@ -81,7 +81,7 @@ export default function ArtistsPage() {
                     {artist.username?.charAt(0).toUpperCase()}
                   </div>
                 )}
-                <span className="size-[50px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full">
+                <span className="size-[50px] bottom-2 group-hover:bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full">
                   <IoMdPlay />
                 </span>
               </div>
