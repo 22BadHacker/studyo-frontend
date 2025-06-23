@@ -59,14 +59,18 @@ export function AudioProvider({ children }) {
   };
 
   // Auto play when track changes
-  useEffect(() => {
-    if (currentTrack && audioRef.current) {
-      audioRef.current.load();
-      if (isPlaying) {
-        audioRef.current.play();
-      }
+ useEffect(() => {
+  const audio = audioRef.current;
+  if (currentTrack && audio) {
+    if (audio.src !== currentTrack.src) {
+      audio.src = currentTrack.src;
     }
-  }, [currentTrack]);
+    if (isPlaying) {
+      audio.play();
+    }
+  }
+}, [currentTrack]);
+
 
   // Volume update
   useEffect(() => {
@@ -116,9 +120,7 @@ export function AudioProvider({ children }) {
       audioRef,
     }}>
       {children}
-      <audio ref={audioRef}>
-        {currentTrack?.src && <source src={currentTrack.src} type="audio/mpeg" />}
-      </audio>
+      <audio ref={audioRef} src={currentTrack?.src || ''} />
     </AudioContext.Provider>
   );
 }

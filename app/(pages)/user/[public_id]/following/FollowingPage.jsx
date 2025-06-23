@@ -27,7 +27,7 @@ const FollowingPage = () => {
 
   return (
     <>
-      <h1 className="cursor-pointer relative w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6.05vw] "><Link href={`/user/${public_id}`} className='size-[30px] absolute text-[16px] bg-black -left-3  top-1/2 -translate-y-1/2 flex-center text-white rounded-full'><IoChevronBackSharp /></Link>Followed Artists</h1>
+      <h1 className="cursor-pointer relative w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6.05vw] "><Link href={`/user/${public_id}`} className='size-[35px] absolute text-[16px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-sm -left-0  -top-10 flex-center text-white rounded-full'><IoChevronBackSharp /></Link>Followed Artists</h1>
       {artists.length === 0 ? (
         <p className="text-white/60">No followed artists.</p>
       ) : (

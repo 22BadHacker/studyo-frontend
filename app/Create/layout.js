@@ -17,9 +17,9 @@ const layout = ({children}) => {
             <Image alt='Logo' className='size-full object-cover' src={Gradient}/>
         </div>
       
-      {/* <div className="absolute right-6 top-9">
+      <div className="absolute right-6 top-9">
         <Nav />
-      </div> */}
+      </div>
 
       <div className="absolute top-0 h-screen bg-black"></div>
       

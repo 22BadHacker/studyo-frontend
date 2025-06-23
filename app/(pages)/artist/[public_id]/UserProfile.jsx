@@ -252,7 +252,7 @@ useEffect(() => {
             <p className='flex  text-white/90 text-[15px] font-Oswald font-medium items-center  gap-2'>
             {/* <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' /> */}
             <img className='inline-flex ml-[.5px] mb-[.5px] w-[26.5px]' src="/check.png" alt="" />
-            Verified Artist {user.id}
+            Verified Artist 
             </p>
             <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>
@@ -275,7 +275,7 @@ useEffect(() => {
         <div className="min-h-screen relative  flex-col pt-[50px] w-full flex gap-4 ">
           
                 <div className="flex gap-4 items-center">
-                    <p className='font-NeueMontreal bg-main  px-7 py-[11px] rounded-full text-main2 text-[14px]'>All</p>
+                    <p className='font-NeueMontreal bg-main  px-7 py-[10px] rounded-full text-main2 text-[13px]'>All</p>
                     <p className='profile_btn'>Biography</p>
                     <p className='profile_btn'>Albums</p>
                     <p className='profile_btn'>Tracks</p>

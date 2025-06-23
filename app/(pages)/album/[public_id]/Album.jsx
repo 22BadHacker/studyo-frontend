@@ -46,14 +46,14 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
         <div className="w-full  z-[6]   bg-gradient-to-b from-black/50 via-[#000000]/100 to-[#000000]/100 absolute top-0 left-0 h-full" />
     </div>
 
-    <div className="text-white  pt-12 relative z-20">
+    <div className="text-white  pt-[60px] relative z-20">
 
       <div className="w-full flex justify-between items-end">
         <div className="flex gap-5 items-end">
           <img className='size-[250px] rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
           <div className="flex flex-col">
             {/* <h5 className='text-white/80  font- uppercase tracking-wide font-NeueMontreal text-[13px]'>Album</h5> */}
-            <h1 className="text-[72px] pb-2 capitalize leading-[1.1]  font-NeueMontreal  text-white  flex gap-3 items-center  font-bold">{album.title}</h1>
+            <h1 className="text-[72px] max-w-[800px] pb-2 capitalize leading-[1.05]  font-NeueMontreal  text-white  flex gap-3 items-center  font-bold">{album.title}</h1>
             <div className="flex pb-7 font-NeueMontreal items-center gap-3">
               <div className="size-10  bg-green-500/50 rounded-full p-[1px]">
                 <img className='size-full  rounded-full  object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
@@ -77,21 +77,23 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
             {/* <p className='text-white/80 uppercase flex items-end gap-1  font-medium  tracking-wide font-NeueMontreal text-[12px] pt-1'>{formattedDate}</p> */}
 
 
+         
           </div>
 
-        <div className="flex relative -left-2 scale-80 items-center gap-5">
-            <div className="px-6 py-2 text-main2 rounded-full bg-white">Play All</div>
-            <div className="px-6 py-2 text-main rounded-full bg-main2">Shuffle</div>
-            <div className="px-6 py-2 text-main rounded-full bg-main2">Save</div>
-        </div>
         </div>
 
 
       </div>
+
+       <div className="flex pt-6 text-[13px] relative w-fit items-center gap-4">
+              <div className="px-6 py-2 text-main2 rounded-full bg-white">Play All</div>
+              <div className="px-6 py-2 text-main rounded-full bg-main2">Shuffle</div>
+              <div className="px-6 py-2 text-main rounded-full bg-main2">Save</div>
+          </div>
       
 
 
-            <h2 className="text-2xl pt-20 hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Album Songs</h2>
+            <h2 className="text-2xl pt-[60px] hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">Album Songs</h2>
 
             <div className="grid grid-cols-[1fr_.7fr_auto] pb-2 pt-5 border-b-[.5px] border-white/40 items-center px-4 justify-between">
               <span className=" flex gap-4 uppercase items-center text-[#fff]/70 font-semibold  text-[13px]"><span>#</span> Title</span>
@@ -134,28 +136,8 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
         </div>
       
 
-      <h2 className="text-2xl flex items-center gap-2 pt-20 pb-1 hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">More Album by <img  className='size-[32px] object-cover rounded-full' src={`http://localhost:8000/${album.user.profile_image}`}  alt="" /> {album.user.username}</h2>
-      {/* <div className="relative -left-2 w-full grid grid-cols-6 gap-[12px] pt-5">
-          {moreAlbums.map((a) => (
-            <Link
-              key={a.id}
-              href={`/album/${a.public_id}`}
-              className="cursor-pointer hover:scale-[1.01] duration-200 ease-in-out flex flex-col gap-2"
-            >
-              <img
-                src={`http://localhost:8000/storage/${a.cover_image}`}
-                className="w-full h-[190px] object-cover rounded-md saturate-[1.3]"
-                alt={a.title}
-              />
-              <h5 className="font-NeueMontreal text-white/90 font-semibold text-[15px] leading-tight">
-                {a.title}
-              </h5>
-              <p className="text-white/60 font-light text-[12px]">
-                {new Date(a.release_date).getFullYear()}
-              </p>
-            </Link>
-          ))}
-        </div> */}
+      <h2 className="text-2xl flex items-center gap-2 pt-20 pb-[6px] hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">More Album by <img  className='size-[32px] object-cover rounded-full' src={`http://localhost:8000/${album.user.profile_image}`}  alt="" /> {album.user.username}</h2>
+      
 
         {moreAlbums.length > 0 ? (
         <div className=' relative -left-2 w-full  grid grid-cols-8 gap-[2px]'>
@@ -169,13 +151,11 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
 
               </div>
 
-              <div className="flex flex-col gap-[2px]">
-                <div className=" h-[26px]  relative inline-block   overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
-                  <h5 className="block transition-transform duration-300 relative top-[0px]  group-hover:-translate-y-full ease-in-out">{album.title}</h5>
-                  <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{album.title}</h5>
-                </div>
+               <div className="flex flex-col gap-[2px]">
+                
+                  <h5 className="font-semibold line-clamp-2    tracking-wide leading-tight mt-1 text-[16.5px] font-NeueMontreal text-white capitalize text-lg">{album.title}</h5>
 
-                <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> album</p>
+                <p className='text-[12.5px] pt-1 capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> album</p>
 
               </div>
               {/* <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p> */}

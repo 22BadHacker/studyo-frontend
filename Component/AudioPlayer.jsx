@@ -41,6 +41,30 @@ export default function AudioPlayer() {
   const playerRef = useRef(null);
 
 
+  useEffect(() => {
+  const audio = audioRef.current;
+  if (!audio) return;
+
+  const updateProgress = () => {
+    setProgress(audio.currentTime);
+    setDuration(audio.duration || 0);
+  };
+
+  const handleLoadedMetadata = () => {
+    setDuration(audio.duration);
+  };
+
+  audio.addEventListener('timeupdate', updateProgress);
+  audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+  return () => {
+    audio.removeEventListener('timeupdate', updateProgress);
+    audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+  };
+}, [audioRef, currentTrack]);
+
+
+
 
   useEffect(() => {
     const audio = audioRef.current;
