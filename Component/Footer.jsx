@@ -65,18 +65,18 @@ const Footer = () => {
 
                   <div className="flex w-full   flex-col gap-4">
                       <div onClick={() => setCredit(false)} className="link-wrapper  w-fit opacity-95 cursor-pointer font-normal tracking-wide hover:text-red-500 font-NeueMontreal text-[18px] uppercase">Close</div>
-                      <h1 className='text-[200px]   leading-[.8] flex items-center   font-semibold font-NeueMontreal '>Credits</h1>
+                      <h1 className='text-[200px] hover:text-[#c42b1c] cursor-pointer duration-200 ease-in-out  leading-[.8] flex items-center   font-semibold font-NeueMontreal '>Credits</h1>
                   </div>
                   <div className="w-full grid h-auto grid-rows-3 grid-cols-3 gap-x-8 gap-y-9">
                       {
                         crediit.map((item, index) => (
                           <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} transition={{ delay: index*.1, ease: 'easeInOut' }} animate={{ opacity: 1 }} key={index} className="flex flex-col gap-3">
                             <div className="link-wrapper h-[18px] w-fit opacity-95 cursor-pointer font-normal tracking-wide font-NeueMontreal text-[11px] uppercase">
-                                <p className='link-text'>/ {item.name} </p>
+                                <p className='link-text mt-[1.5px'>/ {item.name} </p>
                                 <p className=' link-text-clone '>/ {item.name} </p>
                             </div>
                             {/* <p className='text-[40px] hover:text-green-500 duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>{item.name}</p> */}
-                            <p className='text-[20px] hover:text-green-500 duration-200 ease-in-out cursor-pointer  max-w-[280px] tracking-wide font-semibold capitalize '>{item.attr}</p>
+                            <p className='text-[20px] hover:text-[#c42b1c] duration-200 ease-in-out cursor-pointer  max-w-[280px] tracking-wide font-semibold capitalize '>{item.attr}</p>
                           </motion.div>
                         ))
                       }
@@ -98,8 +98,8 @@ const Footer = () => {
                         <p className=' link-text-clone '>/ Reach out </p>
                     </div>
                     <div className="flex w-fit leading-[1.1] flex-col">
-                        <p className='text-[40px] hover:text-green-500 duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>contact@studyo.com</p>
-                        <p className='text-[40px] hover:text-green-500 duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>/ +1 (123) 456-7890</p>
+                        <p className='text-[40px] hover:text-[#c42b1c]  duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>contact@studyo.com</p>
+                        <p className='text-[40px] hover:text-[#c42b1c] duration-200 ease-in-out cursor-pointer font-NeueMontreal font-semibold'>/ +1 (123) 456-7890</p>
                         {/* <TimeClock /> */}
                     </div>
                 </div>
@@ -112,7 +112,7 @@ const Footer = () => {
                         <p className=' link-text-clone '>/ find us </p>
                     </div>
                     <div className="flex leading-[1.4] flex-col">
-                        <p className='text-[20px] hover:text-green-500 duration-200 ease-in-out cursor-pointer  max-w-[280px] tracking-wide font-semibold capitalize '>70 Washington Square South, New York, NY 10012, United States</p>
+                        <p className='text-[20px] hover:text-[#c42b1c]  duration-200 ease-in-out cursor-pointer  max-w-[280px] tracking-wide font-semibold capitalize '>70 Washington Square South, New York, NY 10012, United States</p>
                         
                     </div>
                   </div>
@@ -124,7 +124,7 @@ const Footer = () => {
 
                     <div className="flex leading-[1.28] flex-col">
                       {socail.map((item, index) =>{return(<div className='h-[30px]'>
-                        <p key={index} className='text-[20px] tracking-wide font-semibold capitalize hover:text-green-500 duration-200 ease-in-out cursor-pointer'>{item.name}</p>
+                        <p key={index} className='text-[20px] tracking-wide font-semibold capitalize hover:text-[#c42b1c]  duration-200 ease-in-out cursor-pointer'>{item.name}</p>
                       </div>)})}
                     </div>
                   </div>
@@ -136,7 +136,7 @@ const Footer = () => {
                     </div>
                     
                     <div className="flex leading-[1.28] flex-col">
-                      {company.map((item, index) =>(<p key={index} className='text-[20px] tracking-wide h-[30px] font-semibold capitalize hover:text-green-500 duration-200 ease-in-out cursor-pointer'>{item.name}</p>))}
+                      {company.map((item, index) =>(<p key={index} className='text-[20px] tracking-wide h-[30px] font-semibold capitalize hover:text-[#c42b1c] duration-200 ease-in-out cursor-pointer'>{item.name}</p>))}
                       
                     </div>
                   </div>
@@ -151,13 +151,13 @@ const Footer = () => {
               <div className="font-NeueMontreal items-end flex flex-col  text-[15px] uppercase">
                 <TimeClock />
                 <div className="flex gap-1 items-center">
-                  <span className='font-bold hover:text-green-500 duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>© Stüdyo llc <span className='text-[16px]'>{new Date().getFullYear()}</span> </span>
+                  <span className='font-bold hover:text-[#c42b1c]  duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>© Stüdyo llc <span className='text-[16px]'>{new Date().getFullYear()}</span> </span>
                   <span className='font-light font-InterTight '>/ </span>
-                  <span className='font-bold hover:text-green-500 duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide' onClick={()=>setCredit(!credit)}>Site Credits </span>
+                  <span className='font-bold hover:text-[#c42b1c]  duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide' onClick={()=>setCredit(!credit)}>Site Credits </span>
                   {/* <span className='font-bold font-InterTight tracking-wide'>/ </span>
                   <span className='font-bold font-InterTight tracking-wide'>Privacy </span> */}
                   <span className='font-light font-InterTight '>/ </span>
-                  <span onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}  className='font-bold hover:text-green-500 duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>up </span>
+                  <span onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}  className='font-bold hover:text-[#c42b1c]  duration-200 ease-in-out cursor-pointer transition-all font-InterTight tracking-wide'>up </span>
 
 
                 </div>

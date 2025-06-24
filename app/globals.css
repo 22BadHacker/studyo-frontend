@@ -271,8 +271,12 @@ input[type="range"] {
   -webkit-text-stroke: 1px #d8262c;
 }
 
+
 .someLine:nth-child(125){
   height: 20px !important;
-  /* margin-inline: 2px; */
   border-left: solid 1.5px rgb(0, 0, 0, .5) !important;
+}
+
+::selection {
+  @apply bg-red-500 text-white; /* Example: purple background with white text */
 }

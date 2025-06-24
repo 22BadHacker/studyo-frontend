@@ -13,7 +13,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { AnimatePresence, motion } from 'framer-motion';
 import { PiMusicNotesPlusFill } from "react-icons/pi";
 import CreatePopup from './CreatePopup';
-import Settiings from './Settiings';
+import SettiingsModel from './Settiings';
+
 
 
 
@@ -128,8 +129,8 @@ const Profiles = () => {
                                         <Link className='linkk' href={'/'}>My Music </Link>
                                         <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
                                         <Link className='linkk' href={'/'}> Notifications </Link>
-                                        <Link href={'/Settings'} className='linkk'>Settings </Link>
-                                        {/* <div onClick={() => setCreate(!create)} className='linkk'>Settings </div> */}
+                                        {/* <Link href={'/Settings'} className='linkk'>Settings </Link> */}
+                                        <div onClick={() => setCreate(!create)} className='linkk'>Settings </div>
                                         <button
                                         onClick={handleLogout}
                                         className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "
@@ -152,17 +153,22 @@ const Profiles = () => {
                             )
                         }   
 
+                        {/* <Settiings isOpen={create}
+                        onClose={() => setCreate(false)}
+                        user={user}/> */}
 
-                        {
+                        {/* {
                             create && (
-                                <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ duration: 0.3, delay: .6, ease: 'linear' }} exit={{ opacity: 0, transition: { duration: 0.2, delay: .2, ease: 'easeIn' }}} className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
+                                <div  className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
                                 
-                                        <Settiings close={()=> setCreate(false)}/>
-                                </motion.div>
+                                        <SettiingsModel close={()=> setCreate(false)}/>
+                                </div>
 
                             )
-                            }        
+                            }         */}
 
+                        <SettiingsModel isOpen={create}
+                        onClose={() => setCreate(false)}/>
 
 
 

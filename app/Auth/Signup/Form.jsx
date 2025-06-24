@@ -97,10 +97,10 @@ const Form = () => {
         <motion.form initial={{ opacity:0, filter: 'blur(10px)'}} animate={{ opacity:1, filter: 'blur(0px)'}} transition={{ duration: 0.3,delay: 0.3, ease: 'easeInOut', type: 'tween' }} onSubmit={handleFormSubmit} className={`flex ${step === 1 ? 'flex flex-col justify-center items-center w-[850px]' : 'border-[.5px] border-white/10 flex-col px-7 items-center rounded-xl bg-gradient-to-r from-[#000]/60 via-[#000]/30 to-[#0000]/60  backdrop-blur-[50px] py-8 h-[645px] w-[520px]'} `}>
           {step === 1 && (
             <>
-              <h1 className="text-white uppercase pt-3 font-semibold tracking-wide font-NeueMontreal text-center leading-[1] text-[65px] ">
+              <h1 className="text-[#c42b1c] uppercase pt-3 font-semibold tracking-wide font-NeueMontreal text-center leading-[1] text-[65px] ">
                 Get access to Stüdyo 
               </h1>
-              <p className="text-white/95 mt-2 font-InterTight font-normal text-[18px] tracking-wide">
+              <p className="text-white/95 mt-2 font-NeueMontreal font-semibold text-[16px] tracking-wide">
                 First, tell us who you are.
               </p>
               
@@ -115,7 +115,7 @@ const Form = () => {
                         : 'border-white/30 hover:bg-black/10 bg-gradient-to-l from-[#000]/40 via-[#000]/20 to-[#0000]/60 hover:border-white/60'
                     }`}
                   >
-                    <h3 className="text-white font-NeueMontreal text-[21px] underline tracking-wider font-bold">Artist or Manager</h3>
+                    <h3 className="text-white font-Oswald text-[21px] underline tracking-wider font-bold">Artist or Manager</h3>
                     {/* <p className="text-white/60 mt-1 font-InterTight text-[13px]">For musicians and their teams</p> */}
                     <Image alt='art' src={art} className=' size-[160px] rounded-full object-cover'/>
                   </div>
@@ -127,7 +127,7 @@ const Form = () => {
                         : 'border-white/30  hover:bg-black/10 bg-gradient-to-t from-[#000]/40 via-[#000]/20 to-[#0000]/60 hover:border-white/60'
                     }`}
                   > 
-                    <h3 className="text-white font-NeueMontreal text-[21px] underline tracking-wider font-bold">Music Listener</h3>
+                    <h3 className="text-white font-Oswald  text-[21px] underline tracking-wider font-bold">Music Listener</h3>
                     {/* <p className="text-white/60 mt-1 font-InterTight text-[13px]">For fans and music enthusiasts</p> */}
                     <Image alt='art' src={art2} className=' size-[160px] rounded-full object-cover'/>
                   </div>
