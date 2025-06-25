@@ -42,11 +42,11 @@ export default function MonthDropdown({ selectedMonth, setSelectedMonth }) {
         <BiChevronDown size={20} />
       </div>
       {open && (
-        <ul className="absolute h-[300px] overflow-y-scroll z-10 mt-1 w-full bg-[#000]/80 backdrop-blur-2xl scrollbar-thin scrollbar-thumb-white border border-white/70 rounded shadow">
+        <ul className="absolute h-[300px] overflow-y-scroll z-10 mt-1 w-full bg-white text-main2 backdrop-blur-2xl scrollbar-thin scrollbar-thumb-white border border-white/70 rounded shadow">
           {monthList.map((month) => (
             <li
               key={month.value}
-              className="px-3 py-2 font-medium font-NeueMontreal hover:bg-white/10 cursor-pointer text-white"
+              className="px-3 py-2 hover:text-main2 hover:bg-gray-200 cursor-pointer"
               onClick={() => {
                 setSelectedMonth(month.value)
                 setOpen(false)

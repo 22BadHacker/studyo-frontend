@@ -27,7 +27,7 @@ export default function Bottom() {
   return (
     <>
 
-    <div className="w-fit z-[20] fixed bottom-7 left-1/2 -translate-x-1/2">
+    <div className="w-fit z-[20] fixed bottom-6 left-1/2 -translate-x-1/2">
         <div className="bg-gradient-to-tr  from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 bottom-nav tracking-wider font-semibold font-NeueMontreal  text-white border-white/10 gap-[2px] scale-95 border-[1px]  flex-center  relative flex items-center rounded-full p-[4px] w-fit">
           {navItems.map((item) => {
             const isActive = pathname === item.href

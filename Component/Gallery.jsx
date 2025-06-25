@@ -105,12 +105,16 @@ export default function Gallery() {
 
   return (
     <div className="w-full relative grid grid-rows-[1fr_auto] text-[#03050a] py-[25px] h-screen">
-      
-
-
-      <div className="w-full pt-20 justify-between">
-
+      <div className="flex items-center pt-[115px] gap-2 flex-col">
+         {/* <p className='text-[14px]   rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
+         {/* <p className='text-[14px]  border-[.5px] rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
+            {/* <h1 className='cursor-pointer relative  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries <h1 className='cursor-pointer absolute textx top-0 left-0 z-[100]  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries </h1></h1> */}
+            <h1 className='cursor-pointer textx relative  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-transparent font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries </h1>
+            {/* <h1 className='cursor-pointer px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6vw] '>Sounds You Shouldn't Miss </h1> */}
       </div>
+
+
+      {/* <div className="w-full pt-20 justify-between"></div> */}
 
     
     <div className="group">
@@ -130,7 +134,7 @@ export default function Gallery() {
             animate={{ opacity: 1, height: '100%' }}
             exit={{ opacity: 0, transition: { delay: 1, duration: 0.4, ease: 'easeInOut' } }}
             transition={{ duration: 0.4, delay: 0.2, ease: 'easeInOut' }}
-            className="absolute top-0 left-0 size-full saturate-[1.3] object-cover"
+            className="absolute mix-blend-difference top-0 left-0 size-full saturate-[1.3] object-cover"
           />
 
           {showControls && (
@@ -323,12 +327,3 @@ export default function Gallery() {
     </div>
   )
 }
-
-
-
-// {/* <div className="flex items-center pt-[115px] gap-2 flex-col"> */}
-        //  {/* <p className='text-[14px]   rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
-        //  {/* <p className='text-[14px]  border-[.5px] rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
-        //     {/* <h1 className='cursor-pointer relative  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries <h1 className='cursor-pointer absolute textx top-0 left-0 z-[100]  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries </h1></h1> */}
-        //     {/* <h1 className='cursor-pointer px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6vw] '>Sounds You Shouldn't Miss </h1> */}
-      // </div>

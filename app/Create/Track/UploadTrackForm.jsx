@@ -217,7 +217,7 @@ export default function UploadTrackForm() {
       <Link href={'/'} className='size-12 mb-1 relative top-5  flex-center text-white bg-main2 rounded-full text-[23px]'><GoChevronLeft/></Link>
             <div className="flex leading-snug flex-col gap-1">
               <p className="text-white/95 font-semibold tracking-wide font-NeueMontreal text-[15px]">Create New Track</p>
-              <h2 className="text-[37px] text-white font-NeueMontreal font-semibold">Your Next Track Starts Here</h2>
+              <h2 className="text-[37px] leading-[1.1] text-white font-NeueMontreal font-semibold">Your sound, your story – drop your track and make history!</h2>
             </div>
       <form onSubmit={handleSubmit} className="space-y-6 pt-3 w-full flex flex-col">
         <div className='relative'>
@@ -402,38 +402,8 @@ export default function UploadTrackForm() {
 
         {/* Custom Track File Upload */}
         <div className='relative w-full'>
-          <label className="text-[14px] absolute -top-3 left-2 text-shadow-sm text-shadow-black px-[6px] text-white font-semibold  font-NeueMontreal">Track File</label>
-          {/* <div className="w-full border border-dashed border-white/70 rounded  hover:border-white/60 transition cursor-pointer p-6 text-center flex items-center justify-center flex-col space-y-3">
-            {trackFile ? (
-              <div className="flex flex-col items-center">
-                <p className="text-white/80 font-medium text-sm">{trackFileName}</p>
-                <button
-                  type="button"
-                  className="text-sm text-red-500"
-                  onClick={() => {
-                    setTrackFile(null)
-                    setTrackFileName('')
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            ) : (
-              <label className="cursor-pointer">
-                <div className="flex flex-col gap-1 items-center">
-                  <span className="text-white/80 font-medium text-sm">Click to upload audio track</span>
-                  <span className="text-white/40 text-xs">MP3 / WAV • Max 20MB</span>
-                </div>
-                <input
-                  type="file"
-                  accept="audio/*"
-                  className="hidden"
-                  onChange={handleTrackUpload}
-                  required
-                />
-              </label>
-            )}
-          </div> */}
+          <label className="text-[14px] absolute -top-3 left-2 bg-[#222222] px-[6px] text-white font-semibold  font-NeueMontreal">Track File</label>
+         
           <div 
             className={`"w-full border border-dashed  rounded  hover:border-white/60 transition cursor-pointer p-6 text-center flex items-center justify-center flex-col space-y-3 ${trackDragActive ? ' bg-blue-50 text-black' : 'border-white/70'}`}
             onDragEnter={(e) => handleDrag(e, 'track')}

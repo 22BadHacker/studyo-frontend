@@ -88,7 +88,7 @@ const Artists = () => {
                           e.target.src = '/Hand.jpeg'
                         }}
                         alt="Profile"
-                        className={`size-full ${[14, 86, 72].includes(artist.id) ? 'object-top' : ''} ${artist.id === 52 ? 'saturate-[1]' : ''} saturate-[1.2] mx-auto rounded-full object-cover`}
+                        className={`size-full  saturate-[1.3] mx-auto rounded-full object-cover`}
                       />
                     ) : (
                       <div className="size-full bg-main text-main2 p-[.2px] mx-auto rounded-full mb-4 flex-center font-NeueMontreal text-[35px] font-bold">

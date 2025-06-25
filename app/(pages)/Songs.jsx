@@ -136,35 +136,35 @@ const Songs = () => {
                         <>
                         <div ref={scrollRef}  className='relative pb-[11.5px] duration-200 ease-in-out flex overflow-x-auto hide-scrollbar scroll-smooth w-full gap-5'>
                             {
-                                    trackss.map((track, index) => (
-                                        <motion.div initial={{opacity: 0}} animate={{ opacity: 1}} transition={{duration: .06, delay: index * .06, ease: 'easeInOut'}} key={index} className="  relative flex flex-col gap-[10px]   ">
-                                            <div className=" w-[308px] rounded-md overflow-hidden cursor-pointer group relative h-[310px]">
-                                                <img className='w-full saturate-[1.3] h-full  object-cover' src={track.cover} alt="" />
-                                                <span onClick={()=>playTrack({id: track.id, title: track.title, artist: track.artist, cover: track.cover, src: track.src})} className="size-[55px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[20px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full">
-                                                    <IoMdPlay />
-                                                </span>
-                                            </div>
-
-                                            <div className="w-full pt-[4px] flex gap-3">
-                                                <h4 className='text-2xl hover:text-red-500 relative -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{track.title}</h4>
-                                                <div className="flex gap-2 text-[12.5px] font-semibold items-center">
-                                                    <img className='size-[29px] rounded-full object-cover' src={track.profileImage} alt="" />
-                                                    <Link className='hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold' href={track.link}>{track.artist}</Link>
-
-                                                    {
-                                                        track.artist2 && track.link2 ? (
-                                                            <>
-                                                                <span className=''>feat,</span>
-                                                                <div className='flex gap-2 text-[12.5px] font-semibold items-center'>
-                                                                    {/* <img className='size-[29px] rounded-full object-cover' src={track.profileImage2} alt="" /> */}
-                                                                    <Link className='hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold' href={track.link2}>{track.artist2}</Link>
-                                                                </div>
-                                                            </>
-                                                        ) : null
-                                                    }
-                                                </div>
+                                trackss.map((track, index) => (
+                                    <motion.div initial={{opacity: 0}} animate={{ opacity: 1}} transition={{duration: .06, delay: index * .06, ease: 'easeInOut'}} key={index} className="  relative flex flex-col gap-[10px]   ">
+                                        <div className=" w-[308px] rounded-md overflow-hidden cursor-pointer group relative h-[310px]">
+                                            <img className='w-full saturate-[1.3] h-full  object-cover' src={track.cover} alt="" />
+                                            <span onClick={()=>playTrack({id: track.id, title: track.title, artist: track.artist, cover: track.cover, src: track.src})} className="size-[55px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[20px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full">
+                                                <IoMdPlay />
+                                            </span>
                                         </div>
-                                    </motion.div>
+
+                                        <div className="w-full pt-[4px] flex gap-3">
+                                            <h4 className='text-2xl hover:text-[#c42b1c] relative -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{track.title}</h4>
+                                            <div className="flex gap-2 text-[12.5px] font-semibold items-center">
+                                                <img className='size-[29px] rounded-full object-cover' src={track.profileImage} alt="" />
+                                                <Link className='hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold' href={track.link}>{track.artist}</Link>
+
+                                                {
+                                                    track.artist2 && track.link2 ? (
+                                                        <>
+                                                            <span className=''>feat,</span>
+                                                            <div className='flex gap-2 text-[12.5px] font-semibold items-center'>
+                                                                {/* <img className='size-[29px] rounded-full object-cover' src={track.profileImage2} alt="" /> */}
+                                                                <Link className='hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold' href={track.link2}>{track.artist2}</Link>
+                                                            </div>
+                                                        </>
+                                                    ) : null
+                                                }
+                                            </div>
+                                    </div>
+                                </motion.div>
                                 ))
 
                             }
@@ -190,7 +190,7 @@ const Songs = () => {
                                             </div>
 
                                             <div className="w-full pt-[4px] flex gap-3">
-                                                <h4 className='text-2xl hover:text-red-500 relative -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{track.title}</h4>
+                                                <h4 className='text-2xl hover:text-[#c42b1c] relative -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{track.title}</h4>
                                                 <div className="flex gap-2 text-[12.5px] font-semibold items-center">
                                                     <img className='size-[29px] rounded-full object-cover' src={track.profileImage} alt="" />
                                                     <Link className='hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold' href={track.link}>{track.artist}</Link>
@@ -234,7 +234,7 @@ const Songs = () => {
                                             </div>
 
                                             <div className="w-full flex-col pt-[3px] flex gap-0">
-                                                <Link href={`/artist/${artist.public_id}`} className='text-lg relative hover:text-red-500 hover:underline -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{artist.username}</Link>
+                                                <Link href={`/artist/${artist.public_id}`} className='text-lg relative hover:text-[#c42b1c] hover:underline -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{artist.username}</Link>
                                                 <p className='text-[11px] font-semibold text-white/[.75px] '>@{artist.username}</p>
                                                 {/* <img className='inline-flex object-cover ml-[.5px] mb-[.6px] w-[16px]' src="/check.png" alt="" /> */}
                                                 

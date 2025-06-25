@@ -13,7 +13,7 @@ const CreatePopup = ({setDrop}) => {
             {/* <h1 className='text-[35px] mix-blend-difference text-white font-NeueMontreal capitalize font-semibold'>What do you wanna create today?</h1> */}
 
         <button onClick={setDrop} className='absolute -top-6 text-lg hover:text-red-500 cursor-pointer font-NeueMontreal font-semibold right-6'>Close</button>
-          <div className="flex p-1 gap-1 rounded items-center scale-90 bg-main2 flex-col ">
+          <Link href={'/Create/Playlist'} className="flex p-1 gap-1 rounded items-center scale-90 bg-main2 flex-col ">
             <div className="flex rounded-lg w-[420px]  bg-main2  flex-col gap-1 ">
                 <div className="flex py-[10px] hover:bg-main/10 group transition-all duration-200 rounded-md px-[10px] items-center  gap-5 backdrop-blur-2xl  h-fit ">
                   <span className='size-[64px] group-hover:rotate-12 transition-all  group-hover:text-green-500 duration-200 ease-in-out bg-main/10 text-[28px] flex-center rounded-full mix-blend-difference text-white'><RiPlayListAddFill className='group-hover:drop-shadow-lg group-hover:drop-shadow-green-500'/></span>
@@ -47,7 +47,7 @@ const CreatePopup = ({setDrop}) => {
                 </div>
                 
             </Link>
-          </div>
+          </Link>
         </div>
     </div>
   )

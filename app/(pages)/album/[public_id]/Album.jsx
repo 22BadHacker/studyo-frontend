@@ -6,6 +6,8 @@ import { IoIosAddCircleOutline, IoMdPlay } from 'react-icons/io'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import Link from 'next/link'
 import { useAudio } from '@/context/AudioProvider';
+import { PiShuffleLight } from "react-icons/pi";
+import { IoPauseSharp, IoPlaySharp } from 'react-icons/io5'
 
 
 
@@ -13,7 +15,7 @@ const Album = () => {
   const { public_id } = useParams()
   const [album, setAlbum] = useState(null)
   const [hover, setHover] = useState(false);
-  const { playTrack, isPlaying, togglePlay} = useAudio();
+   const { playTrack, isPlaying, togglePlay, setQueue, currentTrack} = useAudio();
   const [moreAlbums, setMoreAlbums] = useState([])
   
   
@@ -28,6 +30,20 @@ const Album = () => {
         .catch(err => console.error(err))
     }
   }, [public_id])
+
+
+   const handlePlayAll = () => {
+    const formattedQueue = album.tracks.map(track => ({
+     id: track.id,
+      title: track.title,
+      artist: album.user.username,
+      cover: `http://localhost:8000/storage/${track.cover_image}`,
+      src: `http://localhost:8000/storage/${track.file_path}`
+    }))
+
+    setQueue(formattedQueue)             // Set all tracks in queue
+    playTrack(formattedQueue[0])         // Start playing the first one
+  }
 
  
 
@@ -82,14 +98,16 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
 
         </div>
 
-
-      </div>
-
        <div className="flex pt-6 text-[13px] relative w-fit items-center gap-4">
-              <div className="px-6 py-2 text-main2 rounded-full bg-white">Play All</div>
+              
+                <div  onClick={()=> (isPlaying ? togglePlay() : handlePlayAll())} className="cursor-pointer relative text-main2 text-[19px]  bg-green-500 hover:text-white size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition">{isPlaying ?<IoPauseSharp size={22}/> : <IoPlaySharp /> }<span className="absolute group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Play Music</span></div>
+              {/* <div className="px-6 py-2 text-main2 rounded-full bg-green-500">Play All</div> */}
               <div className="px-6 py-2 text-main rounded-full bg-main2">Shuffle</div>
               <div className="px-6 py-2 text-main rounded-full bg-main2">Save</div>
           </div>
+
+      </div>
+
       
 
 
@@ -103,7 +121,7 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
         <div className="">
             <ul className="space-y-2 pt-1">
               {album.tracks.map((track, i) => (
-                <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
+                <div className={`w-full group py-2 ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : ''} hover:bg-main2/60 px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between`} key={track.id}>
                     <div className="flex items-center gap-4">
                         <span onClick={ () => playTrack({
                                     id: track.id,
@@ -111,13 +129,13 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
                                     artist: album.user.username,
                                     cover: `http://localhost:8000/storage/${track.cover_image}`,
                                     src: `http://localhost:8000/storage/${track.file_path}`
-                                })}  className={`text-[#d7d7d7]/70 relative cursor-pointer text-[16px] w-3 flex-center font-semibold  mr-1`}><IoMdPlay className='absolute opacity-0 group-hover:opacity-100 ' size={15} /> <span className='opacity-100 group-hover:opacity-0'>{ i + 1 } </span> </span>
+                                })}  className={`text-[#d7d7d7]/70 relative cursor-pointer text-[16px] w-3 flex-center font-semibold  mr-1`}><IoMdPlay   className={` ${isPlaying && currentTrack.id === track.id ? 'opacity-100 text-green-500' : 'opacity-0 group-hover:opacity-100'} absolute -left-[3px] top-1/2 -translate-y-1/2 `} size={16} /> <p className={`${isPlaying && currentTrack.id === track.id ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'}`}>{ i + 1}</p> </span>
                         {/* <img
                         src={`http://localhost:8000/storage/${track.cover_image}`}
                         
                         className="size-11 saturate-150 object-cover rounded-sm"
                       /> */}
-                        <span className="font-medium text-[#fff]/95  text-[16.5px]">{track.title}</span>
+                        <span className={`font-medium ${isPlaying && currentTrack.id === track.id ? 'text-green-500' : ''} text-[#fff]/95  text-[16.5px]`}>{track.title}</span>
                     </div>
 
                     <Link href={`/artist/${album.user.public_id}`} className="flex hover:underline hover:text-white items-center gap-4">

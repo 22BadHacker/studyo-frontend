@@ -14,6 +14,7 @@ import { useAudio } from '@/context/AudioProvider'
 import { useAppHook } from '@/context/AppProvider';
 import { PiDotsThreeBold } from "react-icons/pi";
 import { RiCloseLargeLine } from "react-icons/ri";
+import { IoPlaySharp } from "react-icons/io5";
 
 
 import CopyLinkButton from '@/Component/CopyLinkButton';
@@ -138,7 +139,7 @@ useEffect(() => {
               animate={{  opacity: 1 }}
               exit={{  opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="fixed bottom-7 left-0  right-0 mx-auto w-[405px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
+              className="fixed bottom-6 left-0  right-0 mx-auto w-[405px] rounded-full z-40 bg-black/80 border-[.5px]  backdrop-blur-md border-b border-white/10"
             >
               <div className="max-w-7xl mx-auto p-[7.5px] flex items-center justify-between">
                   <div className="text-white flex items-center font-NeueMontreal tracking-[0.01em] gap-3 text-[16px] font-semibold capitalize">

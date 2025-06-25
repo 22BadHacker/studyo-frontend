@@ -113,7 +113,7 @@ export default function CreateAlbumPage() {
       <Link href={'/'} className='size-12 mb-1 relative top-5  flex-center text-white bg-main2 rounded-full text-[23px]'><GoChevronLeft/></Link>
       <div className="flex leading-snug flex-col gap-1">
         <p className="text-white/95 font-semibold tracking-wide font-NeueMontreal text-[15px]">Create Album</p>
-        <h2 className="text-[37px] text-white font-NeueMontreal font-semibold">Your Next Album Starts Here</h2>
+        <h2 className="text-[37px] w-[670px] leading-[1.1] text-white font-NeueMontreal font-semibold">Every great artist starts with one album , will yours be next?</h2>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6 pt-3">
