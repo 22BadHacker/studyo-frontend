@@ -120,7 +120,7 @@ export function AudioProvider({ children }) {
       audioRef,
     }}>
       {children}
-      <audio ref={audioRef} src={currentTrack?.src || ''} />
+      <audio ref={audioRef} src={currentTrack?.src || null} />
     </AudioContext.Provider>
   );
 }

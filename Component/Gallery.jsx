@@ -105,11 +105,11 @@ export default function Gallery() {
 
   return (
     <div className="w-full relative grid grid-rows-[1fr_auto] text-[#03050a] py-[25px] h-screen">
-      <div className="flex items-center pt-[115px] gap-2 flex-col">
-         {/* <p className='text-[14px]   rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
-         {/* <p className='text-[14px]  border-[.5px] rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
-            {/* <h1 className='cursor-pointer relative  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries <h1 className='cursor-pointer absolute textx top-0 left-0 z-[100]  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries </h1></h1> */}
-            {/* <h1 className='cursor-pointer px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6vw] '>Sounds You Shouldn't Miss </h1> */}
+      
+
+
+      <div className="w-full pt-20 justify-between">
+
       </div>
 
     
@@ -140,13 +140,13 @@ export default function Gallery() {
                   </button>
               <div className="absolute h-full flex flex-col justify-end bottom-0 left-0 right-0 bg-gradient-to-t from-black/30 via-transparent to-black/30  ">
                   {/* Volume Controls */}
-                  <div className="flex w-[40%] items-center gap-3 mb-3">
+                  <div className="flex w-[40%] group items-center gap-3 mb-3">
                   
-                      <div className="flex w-[50%] absolute top-1 left-1 gap-2 items-center">
+                      <div className="flex w-[50%] p-3 cursor-pointer bg-black/50 rounded-full backdrop-blur-xl absolute top-1 left-1 gap-2 items-center">
                           {volume === 0 ? <MdVolumeOff className='text-white' /> : <MdVolumeUp className='text-white' />}
-                          <div className=" relative z-[10] w-[50%] flex-1 h-[5px] bg-white/60  overflow-hidden">
+                          <div className=" relative opacity-0 group-hover:opacity-100  z-[10] group-hover:w-[50%] w-0 flex-1 h-[5px] bg-white/60  overflow-hidden">
                               <div 
-                              className="absolute  top-0 left-0 h-full bg-green-500 rounded-full"
+                              className="absolute  top-0 left-0 h-full bg-white "
                               style={{ width: `${volume * 100}%` }}
                               ></div>
                               <input
@@ -298,17 +298,17 @@ export default function Gallery() {
 
         </div>
 
-        <div className="w-full pt-3 grid grid-cols-[.5fr_1fr_.5fr] justify-between items-center px-9">
+        <div className="w-full pt-3 grid grid-cols-[.5fr_1fr] justify-between items-center px-9">
             <div className="flex gap-20 items-center">
                   <p className='text-[11px] font-normal font-Oswald'>@2025</p>
                   <p className='text-[11px] pl-8 uppercase font-normal font-Oswald'>Last update: JUL 2025</p>
             </div>
-            <div className="w-full flex items-center justify-center gap-6">
+            {/* <div className="w-full flex items-center justify-center gap-6">
                   <div className="flex items-center">
                       <RxTriangleLeft/>
                       <RxTriangleLeft/>
                   </div>
-            </div>
+            </div> */}
 
             <div className="w-full flex justify-end">
               <p className='text-[11px] pl-7 uppercase font-normal font-Oswald'>site by mounir lagzouli</p>
@@ -323,3 +323,12 @@ export default function Gallery() {
     </div>
   )
 }
+
+
+
+// {/* <div className="flex items-center pt-[115px] gap-2 flex-col"> */}
+        //  {/* <p className='text-[14px]   rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
+        //  {/* <p className='text-[14px]  border-[.5px] rounded-full px-4 py-2 tracking-wide font-NeueMontreal capitalize font-semibold'>Sounds You Shouldn't Miss </p> */}
+        //     {/* <h1 className='cursor-pointer relative  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries <h1 className='cursor-pointer absolute textx top-0 left-0 z-[100]  px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[7vw] '>New Discoveries </h1></h1> */}
+        //     {/* <h1 className='cursor-pointer px-6 w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6vw] '>Sounds You Shouldn't Miss </h1> */}
+      // </div>

@@ -70,7 +70,7 @@ const Footer = () => {
                   <div className="w-full grid h-auto grid-rows-3 grid-cols-3 gap-x-8 gap-y-9">
                       {
                         crediit.map((item, index) => (
-                          <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} transition={{ delay: index*.1, ease: 'easeInOut' }} animate={{ opacity: 1 }} key={index} className="flex flex-col gap-3">
+                          <motion.div key={index} exit={{ opacity: 0 }} initial={{ opacity: 0 }} transition={{ delay: index*.1, ease: 'easeInOut' }} animate={{ opacity: 1 }}  className="flex flex-col gap-3">
                             <div className="link-wrapper h-[18px] w-fit opacity-95 cursor-pointer font-normal tracking-wide font-NeueMontreal text-[11px] uppercase">
                                 <p className='link-text mt-[1.5px'>/ {item.name} </p>
                                 <p className=' link-text-clone '>/ {item.name} </p>

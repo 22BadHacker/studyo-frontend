@@ -49,20 +49,20 @@ export default function Bottom() {
 
       {/* Login Modal */}
       {showLoginModal && (
-          <div className="fixed inset-0 w-screen h-screen bg-black/70 flex items-center justify-center z-[9999]">
+          <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-xs flex items-center justify-center z-[9999]">
             <div className="bg-[#121212] p-6 rounded-lg max-w-md w-full border border-white/10">
-              <h2 className="text-xl font-bold mb-4">Login Required</h2>
-              <p className="mb-6">You need to be logged in to access your library.</p>
+              <h2 className="text-xl font-bold mb-3">Login Required</h2>
+              <p className="mb-8 text-white/80">You need to be logged in to access your library.</p>
               <div className="flex justify-end gap-3">
                 <button
                   onClick={() => setShowLoginModal(false)}
-                  className="px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition"
+                  className="px-4 font-NeueMontreal text-[15px] py-2 rounded-full border border-white/20 hover:bg-white/10 transition"
                 >
                   Cancel
                 </button>
                 <Link
-                  href="/login" // Adjust this to your login route
-                  className="px-4 py-2 rounded-full bg-white text-black hover:bg-white/90 transition font-medium"
+                  href="/Auth/Login" // Adjust this to your login route
+                  className="px-4 py-2 font-NeueMontreal text-[15px] rounded-full bg-white text-black hover:bg-white/90 transition font-medium"
                   onClick={() => setShowLoginModal(false)}
                 >
                   Go to Login

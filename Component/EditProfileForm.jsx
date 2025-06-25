@@ -128,15 +128,17 @@ const EditProfileForm = () => {
 
     </div>
 
-    <div className="flex w-full  flex-col gap-3 items-end">
+    <div className="flex w-full relative  flex-col gap-3 items-end">
         <input
           type="text"
           name='username'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
-        className=" p-[10px] text-[15px] w-full font-NeueMontreal capitalize h-fit border outline-none bg-main2/10 border-gray-300/40 rounded"
+        className=" p-[10px]  focus:outline-none focus:ring-1 focus:ring-white focus:border-transparent transition-all text-[15px] w-full font-NeueMontreal capitalize h-fit border outline-none bg-main2/10 border-gray-300/40 rounded"
         />
+
+        <div className="absolute bg-[#111] text-[11px] text-white/80  -top-3 px-[6px] py-1 left-2 bg-bla">username</div>
 
         <button className={`${loading ? 'bg-white/10 backdrop-blur-[10px] ' : 'bg-white '} cursor-pointer  border-white/40 border-[.5px] text-[15px] font-semibold w-[100px] flex-center h-[46px] rounded-full text-[#222222] font-NeueMontreal`} type="submit" disabled={loading}>
           {/* {loading ? 'Saving...' : 'Save'} */}

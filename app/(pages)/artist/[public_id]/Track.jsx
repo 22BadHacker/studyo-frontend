@@ -13,11 +13,16 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { useAudio } from '@/context/AudioProvider';
+import AddToPlaylistButton from '@/SmallComponent/AddToPlaylistButton';
+// import AddToPlaylistForm from '@/Component/AddToPlaylistForm';
+// import AddToPlaylistModal from '@/Component/AddToPlaylistModal';
+import PlaylistPage from '@/lib/PlaylistMOdel';
 
 
 const Track = ({owner}) => {
   const [tracks, setTracks] = useState([]);
   const [showModal, setShowModal] = useState(false)
+  const [showModal2, setShowModal2] = useState(false)
   const { public_id } = useParams(); 
   const { authToken} = useAppHook()
    const [allTracks, setAllTracks] = useState([])
@@ -102,16 +107,16 @@ const Track = ({owner}) => {
                     <ul className="">
                       
                       {tracksToShow.map((track , i) => (
-                        <div onClick={ () => playTrack({
-                            id: track.id,
-                            title: track.title,
-                            artist: track.user.username,
-                            cover: `http://localhost:8000/storage/${track.cover_image}`,
-                            src: `http://localhost:8000/storage/${track.file_path}`
-                          })}   className={`w-full group py-2 ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : 'hover:bg-main2/60'} px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between`} key={track.id}>
+                        <div  className={`w-full group py-2 ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : 'hover:bg-main2/60'} px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between`} key={track.id}>
                             <div   className="flex items-center gap-4">
-                                <span className={`text-[#d7d7d7] cursor-pointer relative text-[16px] font-semibold   w-[20px]`}> 
-                                   <IoMdPlay  className={` ${isPlaying && currentTrack.id === track.id ? 'opacity-100 text-green-500' : 'opacity-0 group-hover:opacity-100'} absolute -left-[3px] top-1/2 -translate-y-1/2 `} size={16} /> <p className={`${isPlaying && currentTrack.id === track.id ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'}`}>{ i + 1}</p>  </span>
+                                <span onClick={ () => playTrack({
+                                      id: track.id,
+                                      title: track.title,
+                                      artist: track.user.username,
+                                      cover: `http://localhost:8000/storage/${track.cover_image}`,
+                                      src: `http://localhost:8000/storage/${track.file_path}`
+                                    })} className={`text-[#d7d7d7] cursor-pointer relative text-[16px] font-semibold   w-[20px]`}> 
+                                   <IoMdPlay   className={` ${isPlaying && currentTrack.id === track.id ? 'opacity-100 text-green-500' : 'opacity-0 group-hover:opacity-100'} absolute -left-[3px] top-1/2 -translate-y-1/2 `} size={16} /> <p className={`${isPlaying && currentTrack.id === track.id ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'}`}>{ i + 1}</p>  </span>
                                 {/* <span className={`text-[#d7d7d7] text-[16px] font-semibold   w-[20px]`}>{hover ? <IoMdPlay className='' size={15} /> : i + 1}  </span> */}
                                 <img
                                 src={`http://localhost:8000/storage/${track.cover_image}`}
@@ -127,11 +132,19 @@ const Track = ({owner}) => {
                             </div>
 
                             <div className="flex gap-3 items-center">
-                              <IoIosAddCircleOutline  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/>
+                              {/* <IoIosAddCircleOutline onClick={() => setShowModal2(true)}  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/> */}
+                              {/* <AddToPlaylistButton trackId={track.id}/> */}
+                              <PlaylistPage/>
                               <p>{track.duration}</p>
                               <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
-
+                              {/* <AddToPlaylistForm trackId={track.id} userId={track.user.id} /> */}
                             </div>
+
+                            
+
+                           
+
+
                         </div>
                       ))}
                     </ul>
@@ -195,11 +208,6 @@ const Track = ({owner}) => {
         </div>
 
 
-
-
-
-
-
         <>
           {showModal && (
               <div   className='w-full fixed bottom-0 left-0 flex-center bg-black/50  min-h-screen z-[600]'>
@@ -256,6 +264,15 @@ const Track = ({owner}) => {
           
             )}
           </>
+
+
+            
+
+
+
+
+
+
     
     </>
   )

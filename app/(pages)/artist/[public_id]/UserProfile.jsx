@@ -40,6 +40,7 @@ import ArtistAlbums from './Albums';
 import Tracks from './Track';
 import RelatedArtist from './RelatedArtist';
 import FollowButton from '@/SmallComponent/FollowButton';
+import Playlist from '@/SmallComponent/Playlist';
 
 export default function UserProfile() {
   const { public_id } = useParams();
@@ -49,7 +50,7 @@ export default function UserProfile() {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const { playTrack } = useAudio();
-  const { user: currentUser } = useAppHook();
+  const { user: currentUser, authToken } = useAppHook();
   
   const isOwner = currentUser?.public_id === user?.public_id;
   
@@ -101,7 +102,10 @@ useEffect(() => {
     useEffect(() => {
       // Delay fetch by 5 seconds
       const timer = setTimeout(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${public_id}`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${public_id}`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+          withCredentials: true
+        })
           .then(res => res.json())
           .then(data => {
             setUser(data)
@@ -114,7 +118,7 @@ useEffect(() => {
       }, 1000)
   
       return () => clearTimeout(timer)
-    })
+    }, [public_id])
 
 
 
@@ -167,24 +171,8 @@ useEffect(() => {
 
                     </div>
                 </div>
-                  {/* <motion.button
-                      onClick={() => setIsFollowing(prev => !prev)}
-                      className="relative cursor-pointer px-5 py-[10px] rounded-full border border-white/20 overflow-hidden text-white text-sm font-medium"
-                      initial={false}
-                      animate={{ backgroundColor: isFollowing ? '#ffffff' : 'transparent', color: isFollowing ? '#000' : '#fff' }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      >
-                      <motion.span
-                          key={isFollowing ? 'unfollow' : 'follow'}
-                          initial={{ opacity: 0, y: 5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -5 }}
-                          transition={{ duration: 0.2 }}
-                      >
-                          {isFollowing ? 'Following' : 'Follow'}
-                      </motion.span>
-                  </motion.button> */}
-                  <FollowButton artistId={user.id}/>
+                  
+                  <FollowButton artistProfileImg={user.profile_image} artistName={user.username} artistId={user.id}/>
                 
               </div>
             </motion.nav>
@@ -318,6 +306,12 @@ useEffect(() => {
                       </div>
                   )
                 }
+
+
+                <div className="flex pt-11 flex-col gap-3">
+                    <h1 className='text-2xl flex items-end leading-tight gap-2 text-white font-NeueMontreal font-semibold'> Artist Playlist</h1>
+                    <Playlist />
+                </div>
 
                 <RelatedArtist />
 

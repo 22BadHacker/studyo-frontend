@@ -13,6 +13,7 @@ export default function SearchClient({ query }) {
   const [results, setResults] = useState({
     tracks: [],
     albums: [],
+    playlists: [],
     artists: []
   });
   const [loading, setLoading] = useState(true);
@@ -70,6 +71,15 @@ export default function SearchClient({ query }) {
       return;
     }
 
+    // Then use playlist
+    const topPlaylist = results.playlists.find(pl =>
+      pl.name.toLowerCase() === queryLower
+    );
+    if (topPlaylist) {
+      setTopResult({ type: 'playlist', data: topPlaylist });
+      return;
+    }
+
     // Otherwise fallback to first artist/track/album
     if (results.artists.length > 0) {
       setTopResult({ type: 'artist', data: results.artists[0] });
@@ -77,12 +87,16 @@ export default function SearchClient({ query }) {
       setTopResult({ type: 'track', data: results.tracks[0] });
     } else if (results.albums.length > 0) {
       setTopResult({ type: 'album', data: results.albums[0] });
+    } else if (results.playlists.length > 0) {
+      setTopResult({ type: 'playlist', data: results.playlists[0] });
     }
+    
+
   }
 }, [results, query]);
 
 
-//   if (loading) return <div className="text-white min-h-screen">Loading...</div>;
+//   if (loading) return <div className="text-white flex-center min-h-screen">Loading...</div>;
 //   if (error) return <div className="text-white min-h-screen">{error}</div>;
 
   return (
@@ -118,70 +132,93 @@ export default function SearchClient({ query }) {
                         <div className=" pt-1 pb-8">
                             <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Top Result</h2>
 
-                        {topResult.type === 'artist' && (
-                        <div
-                            
-                            className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition"
-                        >
-                             <span className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
-                                <IoMdPlay />
-                                </span>
-                            <img
-                            src={`http://localhost:8000${topResult.data.profile_image}`}
-                            className="size-[110px] object-cover rounded-full"
-                            alt={topResult.data.username}
-                            />
-                            <div className='flex gap-1 pt-1 flex-col leading-tight'>
-                                <Link href={`/artist/${topResult.data.public_id}`}  className="text-white hover:underline font-NeueMontreal text-[30px] font-bold">{topResult.data.username}</Link>
-                                <p className="text-white/70 font-NeueMontreal text-sm">Artist</p>
+                            {topResult.type === 'artist' && (
+                            <div
+                                
+                                className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition"
+                            >
+                                <span className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
+                                    <IoMdPlay />
+                                    </span>
+                                <img
+                                src={`http://localhost:8000${topResult.data.profile_image}`}
+                                className="size-[110px] object-cover rounded-full"
+                                alt={topResult.data.username}
+                                />
+                                <div className='flex gap-1 pt-1 flex-col leading-tight'>
+                                    <Link href={`/artist/${topResult.data.public_id}`}  className="text-white hover:underline font-NeueMontreal text-[30px] font-bold">{topResult.data.username}</Link>
+                                    <p className="text-white/70 font-NeueMontreal text-sm">Artist</p>
+                                </div>
                             </div>
-                        </div>
-                        )}
+                            )}
 
-                        {topResult.type === 'track' && (
-                        <div className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition">
-                             <span onClick={ () => playTrack({
-                                    id: topResult.data.id,
-                                    title: topResult.data.title,
-                                    artist: topResult.data.user.username,
-                                    cover: `http://localhost:8000/storage/${topResult.data.cover_image}`,
-                                    src: `http://localhost:8000/storage/${topResult.data.file_path}`
-                                })}  className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
-                                <IoMdPlay />
-                                </span>
-                            <img
-                            src={`http://localhost:8000/storage/${topResult.data.cover_image}`}
-                            className="size-[110px] shadow-2xl  object-cover rounded-md"
-                            alt={topResult.data.title}
-                            />
-                            <div className='flex pt-1 gap-1 flex-col leading-tight'>
-                            <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.title}</h3>
-                            <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Song <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link> </p>
-                            </div>
-                        </div>
-                        )}
-
-                        {topResult.type === 'album' && (
-                        <Link
-                            href={`/album/${topResult.data.public_id}`}
-                            className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition"
-                        >
-
-                            <span className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
-                                <IoMdPlay />
-                                </span>
-
-                            <img
-                            src={`http://localhost:8000/storage/${topResult.data.cover_image}`}
-                            className="size-[110px] shadow-2xl  object-cover rounded-md"
-                            alt={topResult.data.title}
-                            />
-                            <div className='flex pt-1 gap-1 flex-col leading-tight'>
+                            {topResult.type === 'track' && (
+                            <div className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition">
+                                <span onClick={ () => playTrack({
+                                        id: topResult.data.id,
+                                        title: topResult.data.title,
+                                        artist: topResult.data.user.username,
+                                        cover: `http://localhost:8000/storage/${topResult.data.cover_image}`,
+                                        src: `http://localhost:8000/storage/${topResult.data.file_path}`
+                                    })}  className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
+                                    <IoMdPlay />
+                                    </span>
+                                <img
+                                src={`http://localhost:8000/storage/${topResult.data.cover_image}`}
+                                className="size-[110px] shadow-2xl  object-cover rounded-md"
+                                alt={topResult.data.title}
+                                />
+                                <div className='flex pt-1 gap-1 flex-col leading-tight'>
                                 <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.title}</h3>
-                                <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Album <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link></p>
+                                <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Song <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link> </p>
+                                </div>
                             </div>
-                        </Link>
-                        )}
+                            )}
+
+                            {topResult.type === 'album' && (
+                            <Link
+                                href={`/album/${topResult.data.public_id}`}
+                                className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition"
+                            >
+
+                                <span className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
+                                    <IoMdPlay />
+                                    </span>
+
+                                <img
+                                src={`http://localhost:8000/storage/${topResult.data.cover_image}`}
+                                className="size-[110px] shadow-2xl  object-cover rounded-md"
+                                alt={topResult.data.title}
+                                />
+                                <div className='flex pt-1 gap-1 flex-col leading-tight'>
+                                    <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.title}</h3>
+                                    <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Album <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link></p>
+                                </div>
+                            </Link>
+                            )}
+
+                            {topResult.type === 'playlist' && (
+                               <Link
+                                href={`/playlist/${topResult.data.public_id}`}
+                                className="flex flex-col duration-200 ease-in-out relative group gap-4 px-6 pb-9 pt-6 w-[420px] rounded-md bg-main2/70 hover:bg-[#282828]/70 transition"
+                            >
+
+                                <span className="size-[50px]  bottom-2 group-hover:bottom-4 shadow-2xl duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[19px] right-4 flex-center absolute bg-green-500  backdrop-blur-[50px] text-[#222222] rounded-full">
+                                    <IoMdPlay />
+                                    </span>
+
+                                <img
+                                src={`http://localhost:8000/storage/${topResult.data.cover_image}`}
+                                className="size-[110px] shadow-2xl  object-cover rounded-md"
+                                alt={topResult.data.name}
+                                />
+                                <div className='flex pt-1 gap-1 flex-col leading-tight'>
+                                    <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.name}</h3>
+                                    <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Playlist <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link></p>
+                                </div>
+                            </Link>
+                            )}
+
                         </div>
                         )}
 
@@ -264,7 +301,7 @@ export default function SearchClient({ query }) {
                     <div className="flex flex-col gap-1">
                         <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-2">Albums</h2>
                         <div className="relative -left-2 w-full grid grid-cols-8 gap-[2px]">
-                        {results.albums.length > 0 ? results.albums.map(album => (
+                        {results.albums.length > 0 ? results.albums.slice(0, 8).map(album => (
                             <Link href={`/album/${album.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group flex-col gap-[6px]' key={album.id}>
                             <div className="relative">
                                 <img className='h-[176px] w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${album.cover_image}`} alt={album.title} />
@@ -286,35 +323,41 @@ export default function SearchClient({ query }) {
                         )) : <p>No albums found.</p>}
                         </div>
                     </div>
+
+
+                    {
+                        results.playlists.length > 0 && (
+                            <div className="flex flex-col gap-1">
+                                <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-2">Playlists</h2>
+                                <div className="space-y-2 pt-1">
+                                    {results.playlists.map((playlist, i) => (
+                                        <Link href={`/album/${playlist.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group flex-col gap-[6px]' key={playlist.id}>
+                                            <div className="relative">
+                                                <img className='h-[176px] w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${playlist.cover_image}`} alt={playlist.title} />
+                                                <span className="size-[45px] bottom-2 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-2 flex-center absolute bg-green-500 shadow-2xl backdrop-blur-[50px] text-[#222222] rounded-full">
+                                                <IoMdPlay />
+                                                </span>
+                                            </div>
+                                            <div className="flex flex-col gap-[2px]">
+                                                <Link href={`/artist/${playlist.public_id}`} className="h-[26px] relative inline-block overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
+                                                <h5 className="block transition-transform duration-300 relative top-[0px] group-hover:-translate-y-full ease-in-out">{playlist.name}</h5>
+                                                <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{playlist.name}</h5>
+                                                </Link>
+                                                <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>
+                                                    by <Link href={`/artist/${playlist.user.public_id}`} className='hover:text-white hover:underline'> {playlist.user.username}</Link>
+                                                </p>
+                                            </div>
+                                            </Link>
+                                    ))}
+                                </div>
+                            </div>
+
+
+                        )
+                    }
                  </>
              )}   
 
-
-             {/* {
-                tabs === 'songs' && (
-                    <div className="flex flex-col gap-0">
-                        <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Songs</h2>
-                        <div className="flex flex-col gap-3 w-full">
-                        {results.tracks.length > 0 ? results.tracks.map(track => (
-                            <div className="flex justify-between max-w-[700px]" key={track.id}>
-                            <div className="flex items-center gap-2">
-                                <img
-                                src={`http://localhost:8000/storage/${track.cover_image}`}
-                                alt={track.title}
-                                className={`size-[50px] saturate-[1.2] mx-auto rounded-sm object-cover`}
-                                />
-                                <div className="flex flex-col gap-">
-                                <p className="text-sm font-semibold">{track.title}</p>
-                                <Link href={`/artist/${track.user?.public_id}`} className="text-sm hover:text-white hover:underline text-white/60">{track.user?.username}</Link>
-                                </div>
-                            </div>
-                            <h5>{track.duration}</h5>
-                            </div>
-                        )) : null}
-                        </div>
-                    </div>
-                )
-             } */}
              {
                 tabs === 'songs' && (
                     <div className="flex flex-col gap-0">
