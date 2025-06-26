@@ -159,8 +159,8 @@ export default function SearchClient({ query }) {
                                                             alt={topResult.data.title}
                                                         />
                                                         <div className='flex pt-1 gap-1 flex-col leading-tight'>
-                                                            <h3 className="text-white font-NeueMontreal text-[30px] font-bold">{topResult.data.title}</h3>
-                                                            <p className="text-white/70 flex items-center gap-[6px] font-NeueMontreal text-sm">Album <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link></p>
+                                                            <h3 className="text-white leading-[1.1] font-NeueMontreal text-[30px] font-bold">{topResult.data.title}</h3>
+                                                            <p className="text-white/70 pt-1 flex items-center gap-[6px] font-NeueMontreal text-sm">Album <span className="size-1 relative top-[2px] rounded-full bg-white/50"></span> <Link href={`/artist/${topResult.data.user.public_id}`} className="font-medium hover:underline text-white">{topResult.data.user.username}</Link></p>
                                                         </div>
                                                     </Link>
                                                 )}
@@ -263,7 +263,7 @@ export default function SearchClient({ query }) {
                                         <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-2">Albums</h2>
                                         <div className="relative -left-2 w-full grid grid-cols-8 gap-[2px]">
                                             {results.albums.length > 0 ? results.albums.slice(0, 8).map(album => (
-                                                <Link href={`/album/${album.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group flex-col gap-[6px]' key={album.id}>
+                                                <div className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group flex-col gap-[6px]' key={album.id}>
                                                     <div className="relative">
                                                         <img className='h-[176px] w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${album.cover_image}`} alt={album.title} />
                                                         <span className="size-[45px] bottom-2 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-2 flex-center absolute bg-green-500 shadow-2xl backdrop-blur-[50px] text-[#222222] rounded-full">
@@ -271,16 +271,13 @@ export default function SearchClient({ query }) {
                                                         </span>
                                                     </div>
                                                     <div className="flex flex-col gap-[2px]">
-                                                        <Link href={`/artist/${album.public_id}`} className="h-[26px] relative inline-block overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
-                                                            <h5 className="block transition-transform duration-300 relative top-[0px] group-hover:-translate-y-full ease-in-out">{album.title}</h5>
-                                                            <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{album.title}</h5>
-                                                        </Link>
+                                                        <Link href={`/album/${album.public_id}`} className="font-semibold hover:underline line-clamp-2    tracking-wide leading-tight mt-1 text-[16.5px] font-NeueMontreal text-white capitalize text-lg">{album.title}</Link>
                                                         <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>
                                                             {new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span>
                                                             <Link href={`/artist/${album.user.public_id}`} className='hover:text-white hover:underline'>{album.user.username}</Link>
                                                         </p>
                                                     </div>
-                                                </Link>
+                                                </div>
                                             )) : <p>No albums found.</p>}
                                         </div>
                                     </div>
@@ -409,10 +406,8 @@ export default function SearchClient({ query }) {
                                                     </span>
                                                 </div>
                                                 <div className="flex flex-col gap-[2px]">
-                                                    <Link href={`/artist/${album.public_id}`} className="h-[26px] relative inline-block overflow-hidden font-semibold tracking-wide mt-1 text-[16.5px] font-NeueMontreal text-white/90 capitalize text-lg">
-                                                        <h5 className="block transition-transform duration-300 relative top-[0px] group-hover:-translate-y-full ease-in-out">{album.title}</h5>
-                                                        <h5 className="absolute ease-in-out left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">{album.title}</h5>
-                                                    </Link>
+                                                   
+                                                    <Link href={`/artist/${album.public_id}`} className="font-semibold hover:underline line-clamp-2    tracking-wide leading-tight mt-1 text-[16.5px] font-NeueMontreal text-white capitalize text-lg">{album.title}</Link>
                                                     <p className='text-[12px] capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>
                                                         {new Date(album.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span>
                                                         <Link href={`/artist/${album.user.public_id}`} className='hover:text-white hover:underline'>{album.user.username}</Link>

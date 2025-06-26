@@ -13,7 +13,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { AnimatePresence, motion } from 'framer-motion';
 import { PiMusicNotesPlusFill } from "react-icons/pi";
 import CreatePopup from './CreatePopup';
-import SettiingsModel from './Settiings';
+import SettingsEdit from './Settings';
 
 
 
@@ -71,113 +71,109 @@ const Profiles = () => {
 
 
   return (
-    <div className='w-full  justify-end'>
-        {
-            !user && !session?.user ? (
-                <div className="flex relative w-full justify-end gap-6 items-center">
-                    <Link href={'/Auth/Login'} className=' duration-200 ease-in-out hover:scale-[1.05] px-6 py-[14px] rounded-full hover:bg-main2/10 backdrop-blur-xl font-semibold text-white'>Log in</Link>
-                    <Link href={'/Auth/Signup'} className='bg-white duration-200 ease-in-out hover:scale-[1.05] px-6 py-3 rounded-full border-white border-[1px] hover:bg-[#f0f0f0] font-semibold text-main2'>Sign up</Link>  
-                </div>
-            )
-            :
-            (
-                <div className="flex w-full justify-end gap-7 items-center">
-                    
+
+    <>
+        <div className='w-full  justify-end'>
+            {
+                !user && !session?.user ? (
+                    <div className="flex relative w-full justify-end gap-6 items-center">
+                        <Link href={'/Auth/Login'} className=' duration-200 ease-in-out hover:scale-[1.05] px-6 py-[14px] rounded-full hover:bg-main2/10 backdrop-blur-xl font-semibold text-white'>Log in</Link>
+                        <Link href={'/Auth/Signup'} className='bg-white duration-200 ease-in-out hover:scale-[1.05] px-6 py-3 rounded-full border-white border-[1px] hover:bg-[#f0f0f0] font-semibold text-main2'>Sign up</Link>  
+                    </div>
+                )
+                :
+                (
+                    <div className="flex w-full justify-end gap-7 items-center">
+                        
 
 
-                    {/* Profile Circle with Dropdown */}
-                    <div className="relative  flex gap-6 items-center p-1 rounded-full cursor-pointer ">
-                        <div onClick={() => setDrop(!drop)} className='cursor-pointer text-white/75 hover:text-white relative border-[.5px] border-main/30 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
-                           Create <span className='bg-[#2d2e2f] duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
-                        </div>
-                        {/* Profile image or first letter  */}
-                        <div className="size-[52px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
-                            <button onClick={() => setOpen(!open)} className="dropdown size-[43px] relative left-[.5px]  cursor-pointer rounded-full bg-white/90 text-main2 font-[800] font-sora text-[17px] flex-center uppercase shadow overflow-hidden"z>
-                            {profileImage ? (
-                            <img src={profileImage || "/Hand.jpeg"}
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = "/Hand.jpeg";
-                            }}
-                            alt="Profile"  className={`w-full ${user.id === 14 && 'object-top'} h-full  object-cover rounded-full`} />
-                            ) : (
-                                
-                            <span className='size-[43px] flex-center'>{firstLetter}</span>
-                            )}
+                        {/* Profile Circle with Dropdown */}
+                        <div className="relative  flex gap-6 items-center p-1 rounded-full cursor-pointer ">
+                            <div onClick={() => setDrop(!drop)} className='cursor-pointer text-white/75 hover:text-white relative border-[.5px] border-main/20 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
+                            Create <span className='bg-[#2d2e2f] duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
+                            </div>
+                            {/* Profile image or first letter  */}
+                            <div className="size-[52px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
+                                <button onClick={() => setOpen(!open)} className="dropdown size-[43px] relative left-[.5px]  cursor-pointer rounded-full bg-white/90 text-main2 font-[800] font-sora text-[17px] flex-center uppercase shadow overflow-hidden"z>
+                                {profileImage ? (
+                                <img src={profileImage || "/Hand.jpeg"}
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = "/Hand.jpeg";
+                                }}
+                                alt="Profile"  className={`w-full ${user.id === 14 && 'object-top'} h-full  object-cover rounded-full`} />
+                                ) : (
+                                    
+                                <span className='size-[43px] flex-center'>{firstLetter}</span>
+                                )}
 
-                        </button>
-                        {/* <span className='text-[12px] w-[120px] flex-center group-hover:opacity-100 opacity-0 rounded absolute top-[57px] right-0 font-semibold duration-200 ease-in-out  text-white/80 bg-main2 px-[10px] py-[4px]'>{displayUser.username}</span> */}
-                        </div>
+                            </button>
+                            {/* <span className='text-[12px] w-[120px] flex-center group-hover:opacity-100 opacity-0 rounded absolute top-[57px] right-0 font-semibold duration-200 ease-in-out  text-white/80 bg-main2 px-[10px] py-[4px]'>{displayUser.username}</span> */}
+                            </div>
 
-                        {/* Dropdown menu */}
-                        <AnimatePresence>
+                            {/* Dropdown menu */}
+                            <AnimatePresence>
+                                {
+                                    
+                                        open &&
+                                        <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: 0.2 }} exit={{ opacity: 0, filter: 'blur(10px)' }} className=" absolute overflow-hidden  right-0 top-[70px] w-[200px]  bg-main2/60 backdrop-blur-[20px] border border-black/40 rounded-md shadow-md   transition-opacity duration-200 z-10">
+                                            {/* <div className="flex py-2 px-2 flex-col border-b-[.5px] border-b-white/20">
+                                                <p className='text-[15px] font-NeueMontreal font-semibold'>{displayUser.username}</p>
+                                                <span className='text-[12px] text-white/50 font-NeueMontreal'>@{displayUser.username}</span>
+                                            </div> */}
+
+                                            
+                                            <Link className='linkk' href={
+                                                displayUser?.role === 'artist'
+                                                ? `/artist/${displayUser?.public_id || displayUser?.id}`
+                                                : `/user/${displayUser?.public_id || displayUser?.id}`
+                                            }>Account <LuSquareArrowOutUpRight size={16}/></Link>
+                                            <Link className='linkk' href={'/'}>My Library </Link>
+                                            <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
+                                            <Link className='linkk' href={'/'}> Notifications </Link>
+                                            {/* <Link href={'/Settings'} className='linkk'>Settings </Link> */}
+                                            <Link href={'/settings'} className='linkk'>Settings </Link>
+                                            <button
+                                            onClick={handleLogout}
+                                            className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "
+                                            >
+                                            Logout 
+                                            <IoPowerSharp size={18}/>
+                                            </button>
+                                        </motion.div>
+                                    }
+
+                            </AnimatePresence>
+
                             {
-                                
-                                    open &&
-                                    <motion.div initial={{ opacity: 0, filter: 'blur(10px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: 0.2 }} exit={{ opacity: 0, filter: 'blur(10px)' }} className=" absolute overflow-hidden  right-0 top-[70px] w-[200px]  bg-main2/60 backdrop-blur-[20px] border border-black/40 rounded-md shadow-md   transition-opacity duration-200 z-10">
-                                        {/* <div className="flex py-2 px-2 flex-col border-b-[.5px] border-b-white/20">
-                                            <p className='text-[15px] font-NeueMontreal font-semibold'>{displayUser.username}</p>
-                                            <span className='text-[12px] text-white/50 font-NeueMontreal'>@{displayUser.username}</span>
-                                        </div> */}
+                                drop && (
 
-                                        
-                                        <Link className='linkk' href={
-                                            displayUser?.role === 'artist'
-                                            ? `/artist/${displayUser?.public_id || displayUser?.id}`
-                                            : `/user/${displayUser?.public_id || displayUser?.id}`
-                                        }>Account <LuSquareArrowOutUpRight size={16}/></Link>
-                                        <Link className='linkk' href={'/'}>My Music </Link>
-                                        <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
-                                        <Link className='linkk' href={'/'}> Notifications </Link>
-                                        {/* <Link href={'/Settings'} className='linkk'>Settings </Link> */}
-                                        <div onClick={() => setCreate(!create)} className='linkk'>Settings </div>
-                                        <button
-                                        onClick={handleLogout}
-                                        className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "
-                                        >
-                                        Logout 
-                                        <IoPowerSharp size={18}/>
-                                        </button>
-                                    </motion.div>
-                                }
+                                    <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
+                                    
+                                            <CreatePopup setDrop={()=> setDrop(false)} />
+                                    </div>
+                                )
+                            }   
 
-                        </AnimatePresence>
+                
 
-                        {
-                            drop && (
-
-                                <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
-                                
-                                        <CreatePopup setDrop={()=> setDrop(false)} />
-                                </div>
-                            )
-                        }   
-
-                        {/* <Settiings isOpen={create}
-                        onClose={() => setCreate(false)}
-                        user={user}/> */}
-
-                        {/* {
-                            create && (
-                                <div  className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm bg-black/60 flex-center flex-col gap-6 z-[9999]">
-                                
-                                        <SettiingsModel close={()=> setCreate(false)}/>
-                                </div>
-
-                            )
-                            }         */}
-
-                        <SettiingsModel isOpen={create}
-                        onClose={() => setCreate(false)}/>
-
-
+                        </div>
 
                     </div>
+                )
+            }
+        </div>
 
+        {/* {
+            !create && (
+                <div  className="fixed inset-0 backdrop-blur-xs z-[9999] bg-black/60 flex items-center justify-center p-4">
+                
+                        <SettingsEdit />
                 </div>
+
             )
-        }
-    </div>
+            }     */}
+    </>
   )
 }
 

@@ -43,7 +43,7 @@ const Layout = ({children}) => {
               </footer>
                {/* <Settings/> */}
 
-              <div className="w-fit z-[20] fixed bottom-7 left-1/2 -translate-x-1/2">
+              <div className="">
                 <Bottom />
               </div>
           </>

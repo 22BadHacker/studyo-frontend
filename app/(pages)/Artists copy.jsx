@@ -12,7 +12,7 @@ const Artists = () => {
   const scrollRef = useRef(null)
   const [showLeft, setShowLeft] = useState(false)
   const [showRight, setShowRight] = useState(false)
-  const { playTrack, isPlaying, togglePlay, setQueue, currentTrack} = useAudio();
+  const { playTrack, isPlaying, togglePlay, setQueue} = useAudio();
 
   useEffect(() => {
     fetch('http://localhost:8000/api/artists', { withCredentials: true })
@@ -53,28 +53,20 @@ const Artists = () => {
       el.removeEventListener('scroll', checkScroll)
       window.removeEventListener('resize', checkScroll)
     }
-  }, [artists])
+  }, [artists]) // also re-check when artists load
 
-  const handlePlayAll = async (artist) => {
-    if (!artist.tracks || artist.tracks.length === 0) return;
-    
-    const formattedQueue = artist.tracks.map(track => ({
-      id: track.id,
+
+  const handlePlayAll = ({artist}) => {
+    const formattedQueue = artist.map(track => ({
+     id: track.id,
       title: track.title,
-      artist: artist.username,
+      artist: artists.username,
       cover: `http://localhost:8000/storage/${track.cover_image}`,
       src: `http://localhost:8000/storage/${track.file_path}`
     }))
 
-    setQueue(formattedQueue)
-     await new Promise(resolve => setTimeout(resolve, 50));
-    
-    // Check if the first track is already playing
-    if (currentTrack?.id === formattedQueue[0]?.id && isPlaying) {
-      togglePlay(); // pause if already playing
-    } else {
-      playTrack(formattedQueue[0]); // play the first track
-    }
+    setQueue(formattedQueue)             // Set all tracks in queue
+    playTrack(formattedQueue[0])         // Start playing the first one
   }
 
   return (
@@ -119,10 +111,7 @@ const Artists = () => {
                         {artist.username?.charAt(0).toUpperCase()}
                       </div>
                     )}
-                    <span 
-                      onClick={() => handlePlayAll(artist)} 
-                      className="size-[50px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full"
-                    >
+                    <span onClick={()=> (isPlaying ? togglePlay() : handlePlayAll(artist.tracks))}  className="size-[50px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full">
                       <IoMdPlay />
                     </span>
                   </div>

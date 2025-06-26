@@ -1,13 +1,21 @@
 import React from 'react'
+import { HiOutlineExternalLink } from "react-icons/hi";
 
-const Settings = () => {
+const SettingsEdit = () => {
   return (
-    <div className='fixed top-0 left-0 flex-center right-0 bottom-0 z-50 bg-black/50'>
-        <div className="w-[500px] p-6 rounded-md  h-[300px] bg-main/80">
+    
+      <div className="bg-[#111] p-6 rounded-2xl w-full max-w-md border border-white/10 shadow-2xl">
+        <h1 className='font-NeueMontreal pb-5 text-white font-bold text-2xl'>Settings</h1>
 
+        <div className="flex flex-col gap-1">
+            <div className="w-full py-2 border-b-[.5px] border-b-white/40 flex justify-between items-center">
+                <p className='font-NeueMontreal text-[15px] text-white font-medium'>Edit Your Info</p>
+                <HiOutlineExternalLink />
+            </div>
         </div>
-    </div>
+
+      </div>
   )
 }
 
-export default Settings
+export default SettingsEdit

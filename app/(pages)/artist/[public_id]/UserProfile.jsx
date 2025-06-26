@@ -119,7 +119,7 @@ useEffect(() => {
       }, 1000)
   
       return () => clearTimeout(timer)
-    }, [public_id])
+    }, )
 
 
 
@@ -238,10 +238,10 @@ useEffect(() => {
         <div  className="items-end  z-[40] pt-[210px] relative flex justify-between gap-3 w-full">
           
           <div className="flex w-fit   flex-col gap-2">
-            <p className='flex  text-white/90 text-[15px] font-Oswald font-medium items-center  gap-2'>
+            <p className='flex  text-white/90 tracking-[0.022em] text-[15px] font-Oswald font-medium items-center  gap-2'>
             {/* <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' /> */}
             <img className='inline-flex ml-[.5px] mb-[.5px] w-[26.5px]' src="/check.png" alt="" />
-            Verified Artist 
+            Verified Artist {user.email}
             </p>
             <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>

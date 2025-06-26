@@ -17,6 +17,7 @@ import AddToPlaylistButton from '@/SmallComponent/AddToPlaylistButton';
 // import AddToPlaylistForm from '@/Component/AddToPlaylistForm';
 // import AddToPlaylistModal from '@/Component/AddToPlaylistModal';
 import PlaylistPage from '@/lib/PlaylistMOdel';
+import TrackActions from '@/Components/TrackActions';
 
 
 const Track = ({owner}) => {
@@ -110,35 +111,43 @@ const Track = ({owner}) => {
                       
                       {tracksToShow.map((track , i) => (
                         <div  className={`w-full group py-2 ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : 'hover:bg-main2/60'} px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between`} key={track.id}>
-                            <div   className="flex items-center gap-4">
-                                <span onClick={ () => playTrack({
+                            <div   className="flex relative items-center gap-4">
+                                
+
+                                <div className="size-11 relative rounded overflow-hidden">
+                                  <img
+                                  src={`http://localhost:8000/storage/${track.cover_image}`}
+                                    alt={track.title}
+                                    className="size-full saturate-150 object-cover "
+                                  />
+
+                                  <span onClick={ () => playTrack({
                                       id: track.id,
                                       title: track.title,
                                       artist: track.user.username,
                                       cover: `http://localhost:8000/storage/${track.cover_image}`,
                                       src: `http://localhost:8000/storage/${track.file_path}`
-                                    })} className={`text-[#d7d7d7] cursor-pointer relative text-[16px] font-semibold   w-[20px]`}> 
-                                   <IoMdPlay   className={` ${isPlaying && currentTrack.id === track.id ? 'opacity-100 text-green-500' : 'opacity-0 group-hover:opacity-100'} absolute -left-[3px] top-1/2 -translate-y-1/2 `} size={16} /> <p className={`${isPlaying && currentTrack.id === track.id ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'}`}>{ i + 1}</p>  </span>
-                                {/* <span className={`text-[#d7d7d7] text-[16px] font-semibold   w-[20px]`}>{hover ? <IoMdPlay className='' size={15} /> : i + 1}  </span> */}
-                                <img
-                                src={`http://localhost:8000/storage/${track.cover_image}`}
-                                alt={track.title}
-                                className="size-11 saturate-150 object-cover rounded-sm"
-                              />
-                                <span className="font-medium text-[#fff]/90  text-[16px]">{track.title}</span>
+                                  })}  className={`text-white bg-black/50 top-0 left-0 absolute size-full  cursor-pointer flex-center  text-[18px] ${isPlaying && currentTrack.id === track.id ? 'opacity-100 text-green-500' : 'opacity-0 group-hover:opacity-100'} flex-center font-semibold  mr-1`}><IoMdPlay /> </span>
+
+                                </div>
+                                <span className={`${isPlaying && currentTrack.id === track.id ? 'text-green-500' : ''} font-NeueMontreal font-semibold text-[15px] ${isPlaying && currentTrack.id === track.id ? 'text-green-500' : ''}`}>{track.title}</span>
                             </div>
 
                             <div className="flex items-center gap-4">
                                 {/* <span className="font-medium text-[#fff] font-NeueMontreal text-[16px]">{track.user.username}</span> */}
-                                <span className="font-medium text-[#fff]/90 text-[16px]"><span className=''></span>{track.album.title}</span>
+                                <Link href={`/album/${track.album.public_id}`} className="font-medium hover:underline text-[#fff]/90 font-NeueMontreal text-[15px]">{track.album.title}</Link>
                             </div>
 
                             <div className="flex gap-3 items-center">
-                              {/* <IoIosAddCircleOutline onClick={() => setShowModal2(true)}  className=' text-[17px] relative right-2 opacity-0 group-hover:opacity-100 '/> */}
-                              {/* <AddToPlaylistButton trackId={track.id}/> */}
-                              <PlaylistPage/>
-                              <p>{track.duration}</p>
+                              <span className=" text-[17px] relative right-2 opacity-0 group-hover:opacity-100 ">
+                                {/* <IoIosAddCircleOutline className=''/> */}
+                                <TrackActions trackId = {track.id} />
+
+                              </span>
+                              <p className='text-[13px] font-NeueMontreal tracking-wide capitalize text-white'>{track.duration}</p>
                               <HiOutlineDotsHorizontal  className=' text-[17px] opacity-0 group-hover:opacity-100 '/>
+                              {/* <AddToPlaylistButton trackId={track.id}/> */}
+                              {/* <PlaylistPage/> */}
                               {/* <AddToPlaylistForm trackId={track.id} userId={track.user.id} /> */}
                             </div>
 

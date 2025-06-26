@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Footer from '@/Component/Footer'
 import Header from '@/Component/Header'
 import Bottom from '@/Component/Bottom';
-import App from '@/Component/App';
 import Hero from '@/Component/Preloader';
 import { motion } from 'framer-motion';
 
