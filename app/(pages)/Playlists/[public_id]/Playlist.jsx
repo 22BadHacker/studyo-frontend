@@ -61,9 +61,9 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
 
   return (
     <>
-    <div className="absolute w-full h-[610px] top-0 left-0">
-        <img className='w-full saturate-[1.5] opacity-90  h-full object-center  object-cover ' src={`/images/img21.jpg`} alt="" />
-        <div className="w-full  z-[6]   bg-gradient-to-b from-black/0  via-[#000000]/95 to-[#000000]/100 absolute top-0 left-0 h-full" />
+    <div className="absolute w-full h-[650px] top-0 left-0">
+        <img className='w-full saturate-[1.5] opacity-90  h-full object-center  object-cover ' src={`/images/img14.jpg`} alt="" />
+        <div className="w-full  z-[6]   bg-gradient-to-b from-black/10  via-[#000000]/80 to-[#000000]/100 absolute top-0 left-0 h-full" />
     </div>
 
     <div className="text-white relative pt-[60px]  z-20">
@@ -72,7 +72,7 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
         <div className="flex gap-5 items-end">
           <img className='size-[250px] saturate-[1.2] border-white/10 shadow-2xl border-[.5px] rounded-md' src={`http://localhost:8000/storage/${playlist.cover_image}`} alt="" />
           <div className="flex flex-col">
-            <h5 className='text-white/85 pb-2  capitalize tracking-wide font-NeueMontreal text-[14px]'>playlist</h5>
+            <h5 className='text-white/85 pb-2  capitalize tracking-wide font-NeueMontreal text-[14px]'>Public Playlist</h5>
             <h1 className="text-[92px] mix-blend-difference line-clamp-2  mb-7 max-w-[800px]  capitalize leading-[.9]  font-NeueMontreal  text-white    font-bold">{playlist.name}</h1>
            
             <div className="flex gap-1 items-center">

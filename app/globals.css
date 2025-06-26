@@ -278,5 +278,5 @@ input[type="range"] {
 }
 
 ::selection {
-  @apply bg-red-500 text-white; /* Example: purple background with white text */
+  @apply bg-[#d8262c] text-white; /* Example: purple background with white text */
 }
