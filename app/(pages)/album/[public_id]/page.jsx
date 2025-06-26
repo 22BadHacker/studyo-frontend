@@ -1,18 +1,18 @@
 import React from 'react'
 import Album from './Album';
 
-export async function generateMetadata({ params }) {
-  const res = await fetch(`http://localhost:8000/api/albums/${params.public_id}`, {
-    cache: "no-store", 
-    withCredentials: true,
-  });
+// export async function generateMetadata({ params }) {
+//   const res = await fetch(`http://localhost:8000/api/albums/${params.public_id}`, {
+//     cache: "no-store", 
+//     withCredentials: true,
+//   });
 
-  const data = await res.json();
+//   const data = await res.json();
 
-  return {
-    title: `${data.album.title} — ${data.album.user.username} `, 
-  };
-}
+//   return {
+//     title: `${data.album.title} — ${data.album.user.username} `, 
+//   };
+// }
 
 const page = () => {
   return (

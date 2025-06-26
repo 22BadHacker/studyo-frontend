@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useAudio } from '@/context/AudioProvider';
 import { PiShuffleLight } from "react-icons/pi";
 import { IoPauseSharp, IoPlaySharp } from 'react-icons/io5'
+import { useAppHook } from '@/context/AppProvider'
 
 
 
@@ -17,12 +18,14 @@ const Album = () => {
   const [hover, setHover] = useState(false);
    const { playTrack, isPlaying, togglePlay, setQueue, currentTrack} = useAudio();
   const [moreAlbums, setMoreAlbums] = useState([])
-  
+  const {authToken} = useAppHook()
   
 
   useEffect(() => {
     if (public_id) {
-      axios.get(`http://localhost:8000/api/albums/${public_id}`)
+      axios.get(`http://localhost:8000/api/albums/${public_id}`, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      })
         .then(res => {
           setAlbum(res.data.album)
           setMoreAlbums(res.data.more_albums)
