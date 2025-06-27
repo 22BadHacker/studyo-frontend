@@ -238,12 +238,12 @@ useEffect(() => {
         <div  className="items-end  z-[40] pt-[210px] relative flex justify-between gap-3 w-full">
           
           <div className="flex w-fit   flex-col gap-2">
-            <p className='flex  text-white/90 tracking-[0.022em] text-[15px] font-Oswald font-medium items-center  gap-2'>
+            <p className='flex  text-white/90 tracking-[0.022em] text-[14px] font-Oswald font-normal items-center  gap-2'>
             {/* <PiSealCheckFill className='text-[#4cb3ff] mb-[.25px] text-[26px]' /> */}
-            <img className='inline-flex ml-[.5px] mb-[.5px] w-[26.5px]' src="/check.png" alt="" />
-            Verified Artist {user.email}
+            <img className='inline-flex ml-[.5px] mb-[.5px] w-[26px]' src="/check.png" alt="" />
+            Verified Artist 
             </p>
-            <h1 className="text-[87px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
+            <h1 className="text-[90px] capitalize leading-[1.1]  font-NeueMontreal  text-white text-shadow-2xs text-shadow-neutral-100  flex gap-3 items-center  font-bold">{user.username} </h1>
           </div>
           
           <div className="flex  relative items-center gap-4">
@@ -295,9 +295,14 @@ useEffect(() => {
                               <img className='size-full object-top object-cover' src={`http://localhost:8000${user.profile_image}`} alt="" />
                               
                               <div className="w-full    opacity-95  bg-gradient-to-b from-black/60 via-transparent to-[#000000]/95 absolute top-0 left-0 h-full" />
-                              <div className="absolute p-4 font-Oswald  tracking-wide font-medium leading-[1.4]   text-white/90 text-justify  capitalize text-[14px] w-full h-full top-0 left-0 flex flex-col items-start gap-2 justify-end">
-                                  <div className="flex absolute top-3  items-center gap-2"><img className='size-[53px] shadow-2xl bg-[#c42b1c] p-[1px] rounded-full object-top object-cover' src={`http://localhost:8000${user.profile_image}`} alt="" /> 
-                                    <div className="flex flex-col leading-tight"><p className='text-[17px] font-NeueMontreal font-bold'>{user.username}</p> <h6 className='text-[12.5px] font-NeueMontreal text-white/50]'>Artist</h6></div>
+                              <div className="absolute p-4 font-NeueMontreal font-bold  tracking-wide  leading-[1.4]   text-white/90 text-justify  capitalize text-[14px] w-full h-full bottom-0 left-0 flex flex-col items-start gap-2 justify-end">
+                                  <div className="flex absolute top-3  items-center gap-2"><img className='size-[53px] shadow-2xl bg-[#c42b1c]  p-[.5px] rounded-full object-top object-cover' src={`http://localhost:8000${user.profile_image}`} alt="" /> 
+                                    <div className="flex flex-col leading-tight">
+                                      <div className="flex text-[15.5px] gap-[2px] items-center">
+                                        {user?.username}
+                                        <img className='inline-flex ml-[.5px] relative top-[1px] w-[15px]' src="/check.png" alt="" />
+                                      </div>
+                                      <h6 className='text-[11.5px] font-NeueMontreal font-medium text-white/90'>Artist</h6></div>
                                   </div>
                                   {user.bio}
                               </div>

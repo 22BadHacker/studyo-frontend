@@ -61,12 +61,13 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
 
   return (
     <>
-    <div className="absolute w-full h-[650px] top-0 left-0">
-        <img className='w-full saturate-[1.5] opacity-90  h-full object-center  object-cover ' src={`/images/img14.jpg`} alt="" />
-        <div className="w-full  z-[6]   bg-gradient-to-b from-black/10  via-[#000000]/80 to-[#000000]/100 absolute top-0 left-0 h-full" />
+    <div className="absolute  w-full h-[980px] top-0 left-0">
+        <img className='w-full saturate-[1.5]  mix-blend-difference h-[150%] object-center  object-cover ' src={'/images/img50.jpg'}  alt="" />
+        <div className="w-full  z-[6]   bg-gradient-to-b from-black/0  via-[#000000]/100 to-[#000000]/100 absolute top-0 left-0 h-full" />
+
     </div>
 
-    <div className="text-white relative pt-[60px]  z-20">
+    <div className="text-white relative pt-[95px]  z-20">
 
       <div className="w-full flex justify-between items-end">
         <div className="flex gap-5 items-end">
@@ -89,7 +90,7 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
 
        <div className="flex pt-6 text-[13px] relative w-fit items-center gap-4">
               
-                <div  onClick={()=> (isPlaying ? togglePlay() : handlePlayAll())} className="cursor-pointer relative text-main2 text-[19px]  bg-green-500  size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition">{isPlaying ?<IoPauseSharp size={22}/> : <IoPlaySharp /> }<span className="absolute text-white group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Play Music</span></div>
+                <div  onClick={()=> (isPlaying ? togglePlay() : handlePlayAll())} className="cursor-pointer relative text-main2 text-[19px]  bg-green-500  size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition">{isPlaying && currentTrack?.artist === playlist.user.username ?<IoPauseSharp size={22}/> : <IoPlaySharp /> }<span className="absolute text-white group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Play Music</span></div>
               {/* <div className="px-6 py-2 text-main2 rounded-full bg-green-500">Play All</div> */}
               <div className="px-6 font-NeueMontreal text-[14.5px] font-medium py-3 text-main rounded-full bg-main2">Shuffle</div>
               <div className="px-6 font-NeueMontreal text-[14.5px] font-medium py-3 text-main rounded-full bg-main2">Save</div>

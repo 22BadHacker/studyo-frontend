@@ -49,6 +49,11 @@ export const genreHashtags = {
   "music festivals": ["#BigStageEnergy", "#FestivalWeekend", "#MusicMadness"],
   "Bands": ["#BandLife", "#ConcertVibes", "#OnStage"],
   "Trending": ["#TrendingNow", "#CurrentlyListening", "#TopHits"],
+  "pop rock": ["#AlternativeRock", "#RockMusic", "#RockBand "],
+  "Pop Music": ["#PopVibes", "#PopCulture", "#PopArtist"],
+  "R&B": ["#RnBLovers", "#RnB", "#SoulMusic"],
+  
+
 
 };
 
@@ -56,7 +61,7 @@ export const genreHashtags = {
 
 
 export const getUserImageClasses = (id) => {
-  const objectTopIds = [14, 15, 17,  23, 24, 25, 29, 33, 35, 44, 45, 72, 75, 86, 98, 99, 101, 116, 114,115, 118, 120,];
+  const objectTopIds = [14, 15, 17,  23, 24, 25, 29, 33, 35,43, 44, 45, 72, 75, 86, 98, 99, 101, 116, 114,115, 118, 120,];
   const saturateIds = [16, 26, 33, 57, 65, 36,];
   const saturate = [52,];
 

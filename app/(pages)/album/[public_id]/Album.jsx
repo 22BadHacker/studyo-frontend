@@ -35,20 +35,40 @@ const Album = () => {
   }, [public_id])
 
 
-   const handlePlayAll = () => {
-    const formattedQueue = album.tracks.map(track => ({
-     id: track.id,
-      title: track.title,
-      artist: album.user.username,
-      cover: `http://localhost:8000/storage/${track.cover_image}`,
-      src: `http://localhost:8000/storage/${track.file_path}`
-    }))
+  //  const handlePlayAll = () => {
+  //   const formattedQueue = album.tracks.map(track => ({
+  //    id: track.id,
+  //     title: track.title,
+  //     artist: album.user.username,
+  //     cover: `http://localhost:8000/storage/${track.cover_image}`,
+  //     src: `http://localhost:8000/storage/${track.file_path}`
+  //   }))
 
-    setQueue(formattedQueue)             // Set all tracks in queue
-    playTrack(formattedQueue[0])         // Start playing the first one
-  }
+  //   setQueue(formattedQueue)             // Set all tracks in queue
+  //   playTrack(formattedQueue[0])         // Start playing the first one
+  // }
 
+  const handlePlayAll = async (album) => {
+     if (!album.tracks || album.tracks.length === 0) return;
+     
+     const formattedQueue = album.tracks.map(track => ({
+       id: track.id,
+       title: track.title,
+       artist: album.user.username,
+       cover: `http://localhost:8000/storage/${track.cover_image}`,
+       src: `http://localhost:8000/storage/${track.file_path}`
+     }))
  
+     setQueue(formattedQueue)
+      await new Promise(resolve => setTimeout(resolve, 50));
+     
+     // Check if the first track is already playing
+     if (currentTrack?.id === formattedQueue[0]?.id && isPlaying) {
+       togglePlay(); // pause if already playing
+     } else {
+       playTrack(formattedQueue[0]); // play the first track
+     }
+   }
 
  
 
@@ -57,24 +77,26 @@ const Album = () => {
 
 //   if (!album) return <p className="text-white">Loading...</p>
 if (!album) return <div className='h-screen flex-center container'> <svg className='fill-green-500 relative -top-[170px]' width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><circle cx="13" cy="3" r="1.5" opacity=".14"/><circle cx="16.75" cy="3.77" r="1.5" opacity=".29"/><circle cx="20.23" cy="7.25" r="1.5" opacity=".43"/><circle cx="21.50" cy="12.00" r="1.5" opacity=".57"/><circle cx="20.23" cy="16.75" r="1.5" opacity=".71"/><circle cx="16.75" cy="20.23" r="1.5" opacity=".86"/><circle cx="12" cy="21.5" r="1.5"/><animateTransform attributeName="transform" type="rotate" calcMode="discrete" dur="0.75s" values="0 12 12;30 12 12;60 12 12;90 12 12;120 12 12;150 12z 12;180 12 12;210 12 12;240 12 12;270 12 12;300 12 12;330 12 12;360 12 12" repeatCount="indefinite"/></g></svg></div>;
-
+// src={`http://localhost:8000/${album.user.profile_image}`} 
   return (
     <>
-    <div className="absolute w-full h-[610px] top-0 left-0">
-        <img className='w-full saturate-[1.5] opacity-90  h-full object-center  object-cover ' src={`/images/img21.jpg`} alt="" />
-        <div className="w-full  z-[6]   bg-gradient-to-b from-black/0  via-[#000000]/95 to-[#000000]/100 absolute top-0 left-0 h-full" />
+    <div className="absolute  w-full h-[940px] top-0 left-0">
+        <img className='w-full saturate-[1.5]  mix-blend-difference h-full object-center  object-cover ' src={`/images/img53.jpg`}  alt="" />
+        <div className="w-full  z-[6]   bg-gradient-to-b from-black/0  via-[#000000]/100 to-[#000000]/100 absolute top-0 left-0 h-full" />
+        {/* <img className='w-full saturate-[1.5] mix-blend-difference absolute  top-0 left-0  h-full object-center  object-cover ' src={`/bbg.jpg`}  alt="" /> */}
+
     </div>
 
-    <div className="text-white relative pt-[60px] relative z-20">
+    <div className="text-white relative pt-[95px]  z-20">
 
       <div className="w-full flex justify-between items-end">
         <div className="flex gap-5 items-end">
-          <img className='size-[250px] saturate-[1.2] border-white/10 shadow-2xl border-[.5px] rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
+          <img className='size-[250px] saturate-[1.2] border-white/10  shadow-2xl border-[.5px] rounded-md' src={`http://localhost:8000/storage/${album.cover_image}`} alt="" />
           <div className="flex flex-col">
             <h5 className='text-white/85 pb-2  capitalize tracking-wide font-NeueMontreal text-[14px]'>Album</h5>
-            <h1 className="text-[92px] mix-blend-difference line-clamp-2  mb-7 max-w-[800px]  capitalize leading-[.9]  font-NeueMontreal  text-white    font-bold">{album.title}</h1>
+            <h1 className="text-[95px] mix-blend-difference line-clamp-2   max-w-[800px]  capitalize leading-[.9]  font-NeueMontreal  text-white    font-bold">{album.title}</h1>
            
-            <div className="flex gap-1 items-center">
+            <div className="flex pt-5 gap-1 items-center">
                 <img className='size-[27px]  rounded-full  object-cover ' src={`http://localhost:8000/${album.user.profile_image}`} alt="" />
                 <Link href={`/artist/${album.user.public_id}`} className='text-white/95 hover:underline  font-semibold capitalize tracking-wide font-NeueMontreal text-[14px]'>{album.user.username} </Link>
                 <span className='size-1 relative top-[2px]  rounded-full bg-white/80'></span>
@@ -88,7 +110,7 @@ if (!album) return <div className='h-screen flex-center container'> <svg classNa
 
        <div className="flex pt-6 text-[13px] relative w-fit items-center gap-4">
               
-                <div  onClick={()=> (isPlaying ? togglePlay() : handlePlayAll())} className="cursor-pointer relative text-main2 text-[19px]  bg-green-500  size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition">{isPlaying ?<IoPauseSharp size={22}/> : <IoPlaySharp /> }<span className="absolute text-white group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Play Music</span></div>
+                <div  onClick={()=>  handlePlayAll(album)} className="cursor-pointer relative text-main2 text-[19px]  bg-green-500  size-12 group rounded-full flex-center backdrop-blur-xl duration-200 ease-in-out  transition">{isPlaying && currentTrack?.artist === album.user.username ? <IoPauseSharp size={22}/> : <IoPlaySharp /> }<span className="absolute text-white group-hover:opacity-100 opacity-0 duration-200 ease-in-out text-[11px] font-NeueMontreal w-[80px] flex-center  bg-main/15  py-1  -top-10 backdrop-blur-2xl scale-95 left-1/2 -translate-x-1/2">Play Music</span></div>
               {/* <div className="px-6 py-2 text-main2 rounded-full bg-green-500">Play All</div> */}
               <div className="px-6 font-NeueMontreal text-[14.5px] font-medium py-3 text-main rounded-full bg-main2">Shuffle</div>
               <div className="px-6 font-NeueMontreal text-[14.5px] font-medium py-3 text-main rounded-full bg-main2">Save</div>

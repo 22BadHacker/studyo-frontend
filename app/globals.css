@@ -190,10 +190,10 @@ input[type="range"] {
 }
 
 
-.genres:nth-child(19), .genres:nth-child(8), .genres:nth-child(14), .genres:nth-child(7){
+.genres:nth-child(19), .genres:nth-child(8), .genres:nth-child(14), .genres:nth-child(7), .genres:nth-child(25){
   grid-column: span 2 / span 2 !important;
   width: 100%;
-  justify-content: end;
+  justify-content: end !important;
   
 }
 
@@ -213,7 +213,7 @@ input[type="range"] {
   }
 }
 
-.genres:nth-child(9),  .genres:nth-child(23){
+.genres:nth-child(9){
   grid-column: span 2 / span 2 !important;
   width: 100%;
   
@@ -275,6 +275,12 @@ input[type="range"] {
 .someLine:nth-child(125){
   height: 20px !important;
   border-left: solid 1.5px rgb(0, 0, 0, .5) !important;
+}
+
+img {
+  user-select: none; /* Prevent image selection */
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
 }
 
 ::selection {

@@ -33,7 +33,7 @@ const FollowedArtists = ({ userId, public_id }) => {
 
         </div>
         <div className="pt-2  grid grid-cols-6 w-full gap-0">
-        {artists.slice(0, 8).map((artist, i) => (
+        {artists.slice(0, 6).map((artist, i) => (
                <Link
               href={`/artist/${artist.public_id}`}
              

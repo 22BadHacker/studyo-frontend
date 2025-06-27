@@ -27,8 +27,8 @@ export default function Bottom() {
   return (
     <>
 
-    <div className="w-fit z-[20] fixed bottom-6 left-1/2 -translate-x-1/2">
-        <div className="bg-gradient-to-tr  from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 bottom-nav tracking-wider font-semibold font-NeueMontreal  text-white border-white/10 gap-[2px] scale-95 border-[1px]  flex-center  relative flex items-center rounded-full p-[4px] w-fit">
+    <div className="w-fit  z-[20] fixed bottom-6 left-1/2 -translate-x-1/2">
+        <div className="bg-gradient-to-tr   from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 bottom-nav tracking-wider font-semibold font-NeueMontreal  text-white border-white/10 gap-[2px] scale-95 border-[1px]  flex-center  relative flex items-center rounded-full p-[5px] w-fit">
           {navItems.map((item) => {
             const isActive = pathname === item.href
             return (
@@ -36,8 +36,8 @@ export default function Bottom() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleLibraryClick(e, item.href)}
-                className={`relative  text-[15.8px] z-10 px-6 py-[13px] flex-center rounded-full transition-colors duration-300 ${
-                  isActive ? 'bg-white  text-black' : 'hover:bg-white/10'
+                className={`relative  text-[15.8px] z-10 px-6 py-[13px] flex-center rounded-full transition-colors duration-200 ease-in-out ${
+                  isActive ? 'bg-white  text-black' : 'hover:bg-white/10 hover:text-[#c42b1c]'
                 }`}
               >
                 {item.label}
@@ -50,7 +50,7 @@ export default function Bottom() {
       {/* Login Modal */}
       {showLoginModal && (
           <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-xs flex items-center justify-center z-[9999]">
-            <div className="bg-[#121212] p-6 rounded-lg max-w-md w-full border border-white/10">
+            <div className="bg-[#121212] py-7 p-6 rounded-lg max-w-md w-full border border-white/10">
               <h2 className="text-xl font-bold mb-3">Login Required</h2>
               <p className="mb-8 text-white/80">You need to be logged in to access your library.</p>
               <div className="flex justify-end gap-3">

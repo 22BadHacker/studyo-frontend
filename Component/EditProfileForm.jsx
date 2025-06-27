@@ -55,7 +55,7 @@ const EditProfileForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    await new Promise((res) => setTimeout(res, 2000));
+    await new Promise((res) => setTimeout(res, 500));
 
     const formData = new FormData();
     formData.append('username', username);
