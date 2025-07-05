@@ -89,8 +89,8 @@ const Profiles = () => {
 
                         {/* Profile Circle with Dropdown */}
                         <div className="relative  flex gap-6 items-center p-1 rounded-full cursor-pointer ">
-                            <div onClick={() => setDrop(!drop)} className='cursor-pointer text-white/75 hover:text-white relative border-[.5px] border-main/20 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
-                            Create <span className='bg-[#2d2e2f] duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
+                            <div onClick={() => setDrop(!drop)} className='cursor-pointer font-NeueMontreal text-white/80 hover:text-white relative border-[.5px] border-main/20 group hover:border-white/90 duration-200 ease-in-out text-[16px] font-semibold group bg-main2/40 backdrop-blur-[10px] pl-[11px] p-[5px] flex gap-[18px] flex-center  rounded-full'>
+                            Create <span className='bg-[#2d2e2f]/80 duration-200 ease-in-out group-hover:rotate-90 group-hover:scale-[1.05] text-[15.5px]  size-[35px] rounded-full flex-center'><AiOutlinePlus className='text-green-500'/> </span>
                             </div>
                             {/* Profile image or first letter  */}
                             <div className="size-[52px] group relative p-1 flex-center bg-main2/80 backdrop-blur-2xl rounded-full">
@@ -132,7 +132,7 @@ const Profiles = () => {
                                             <Link className='linkk' href={'/'}>Upgrade to Premium <LuSquareArrowOutUpRight size={16}/></Link>
                                             <Link className='linkk' href={'/'}> Notifications </Link>
                                             {/* <Link href={'/Settings'} className='linkk'>Settings </Link> */}
-                                            <Link href={'/settings'} className='linkk'>Settings </Link>
+                                            <Link href={'/Settings/Edit-Profile'} className='linkk'>Update Your Profile </Link>
                                             <button
                                             onClick={handleLogout}
                                             className="linkk  border-t border-t-white/20 cursor-pointer hover:text-green-500  "

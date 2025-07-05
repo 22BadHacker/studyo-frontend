@@ -110,13 +110,6 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
       <div className="">
         <div className="flex flex-col gap-3">
             <h2 className=" pt-[75px]  cursor-pointer w-fit  font-NeueMontreal capitalize leading-[.85]   text-[#fff] font-[600] tracking-[0.015em] text-[1.5vw] ">Playlist Songs</h2>
-                
-                <div className="grid  grid-cols-[1fr_.7fr_.7fr_auto] pb-2 pt-5 border-b-[.5px] border-white/40 items-center px-4 justify-between">
-                        {/* <span className="flex gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]"><span>#</span> Title</span>
-                        <span className="flex relative -left-[18px] gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Album</span>
-                        <span className="flex relative -left-[25px] gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Artist</span>
-                        <span className="flex gap-4 relative -left-[4px] uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Duration</span> */}
-                    </div>
 
             
                   <ul className="w-full grid grid-cols-1 gap-x-10 gap-y-2 pt-4">

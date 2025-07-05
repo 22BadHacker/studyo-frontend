@@ -274,21 +274,21 @@ const exitFullscreen = () => {
                   // dragConstraints={containerRef}
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}
-                  className="fixed z-[9999] mix-blend-difference bottom-7 scale-95 left-10 w-[300px] h-[60px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-md rounded-full flex items-center justify-between text-white px-3 shadow-lg "
+                  className="fixed z-[9999] mix-blend-difference bottom-7 scale-95 left-10 w-[300px] h-[60px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-md rounded-full flex items-center pr-3 justify-between text-white px-[7px] shadow-lg "
                 >
                   <div className="flex items-center gap-2">
-                    <img src={currentTrack.cover} alt="" className="w-10  h-10 object-cover bg-gradient-to-tl from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full" />
+                    <img src={currentTrack.cover} alt="" className="size-[46px]   object-cover bg-gradient-to-tl from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full" />
                     <div className='mix-blend-difference text-black'>
                       <p className="text-sm text-white font-semibold">{currentTrack.title}</p>
                       <p className="text-xs text-white ">{currentTrack.artist}</p>
                     </div>
                   </div>
-                  <div className="flex mix-blend-difference items-center gap-2">
-                    <button onClick={togglePlay}>
+                  <div className="flex mix-blend-difference items-center  gap-2">
+                    <button className="cursor-pointer" onClick={togglePlay}>
                       {isPlaying ? <IoMdPause /> : <IoMdPlay />}
                     </button>
                     {hovered && (
-                      <button onClick={() => setViewMode('normal')} className="text-lg">⤢</button>
+                      <button onClick={() => setViewMode('normal')} className="text-lg cursor-pointer">⤢</button>
                     )}
                   </div>
                 </motion.div>

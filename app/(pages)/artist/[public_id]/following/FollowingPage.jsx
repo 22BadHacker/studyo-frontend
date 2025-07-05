@@ -1,40 +1,40 @@
-'use client'
+'use client';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import axios from 'axios';
+import Link from 'next/link';
+import { useAppHook } from '@/context/AppProvider';
+import { IoMdPlay } from 'react-icons/io';
+import {motion} from 'framer-motion';
+import { IoChevronForwardSharp, IoChevronBackSharp } from "react-icons/io5"
 
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Link from 'next/link'
-import { IoMdPlay } from 'react-icons/io'
-import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5'
-import { useAppHook } from '@/context/AppProvider'
-
-const FollowedArtists = ({ userId, public_id }) => {
-  const [artists, setArtists] = useState([])
-  const { authToken } = useAppHook()
+const FollowingPage = () => {
+  const { public_id } = useParams();
+  const [artists, setArtists] = useState([]);
+  const { authToken } = useAppHook();
 
   useEffect(() => {
-    if (userId) {
-      axios.get(`http://localhost:8000/api/users/${userId}/followed-artists`, {
+    if (public_id) {
+      axios.get(`http://localhost:8000/api/users/${public_id}/following`, {
           headers: {
               Authorization: `Bearer ${authToken}`
           }
       })
         .then(res => setArtists(res.data))
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
     }
-  }, [userId])
-
-  if (!artists.length) return null
+  }, [public_id]);
 
   return (
-    <div className='flex flex-col gap-0 '>
-        <div className="w-full flex justify-between items-center">
-            <h1 className='text-2xl hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Artists You Follow</h1>
-            <Link className='text-[#aeaeae] font-NeueMontreal text-[15px] hover:underline ease-in-out duration-200 font-semibold' href={`/user/${public_id}/following`}>Show all</Link>
-
-        </div>
-        <div className="pt-2  grid grid-cols-6 w-full gap-0">
-        {artists.slice(0, 6).map((artist, i) => (
-               <Link
+    <>
+      {/* <h1 className="cursor-pointer relative w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[6.05vw] "><Link href={`/user/${public_id}`} className='size-[35px] absolute text-[16px] bg-gradient-to-r from-[#d8dfe8]/10 via-[#d8dfe8]/10 to-[#d8dfe8]/10 border border-white/10 backdrop-blur-sm -left-0  -top-10 flex-center text-white rounded-full'><IoChevronBackSharp /></Link>Followed Artists</h1> */}
+      {artists.length === 0 ? (
+        <p className="text-white/60">No followed artists.</p>
+      ) : (
+        <div className="grid pt-2 grid-cols-6 gap-1">
+          {artists.map((artist, i) => (
+            <motion.div className='h-fit ' viewport={{ once: true}} key={artist.id} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .04, delay: i * .07, ease: 'easeInOut' }}>
+            <Link
               href={`/artist/${artist.public_id}`}
              
               className="p-4  group relative flex h-fit flex-col gap-1 hover:bg-main2/70  duration-200 ease-in-out cursor-pointer rounded-md text-left"
@@ -66,10 +66,12 @@ const FollowedArtists = ({ userId, public_id }) => {
               </div>
               <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p>
             </Link>
-        ))}
+          </motion.div>
+          ))}
         </div>
-    </div>
-  )
-}
+      )}
+    </>
+  );
+};
 
-export default FollowedArtists;
+export default FollowingPage;

@@ -81,7 +81,7 @@ export default function PlaylistModal({ trackId, onClose }) {
         <div className="w-full flex justify-end">
           <button
             onClick={onClose}
-            className="mt-6 font-semibold  text-main2/80 font-NeueMontreal text-sm py-2 rounded"
+            className="mt-6 font-semibold  text-main2/80 font-NeueMontreal text-sm py-2 rounded hover:bg-red-700"
           >
             Cancel
           </button>

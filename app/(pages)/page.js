@@ -6,6 +6,7 @@ import Songs from "./Songs";
 import Hits from "./Hits";
 import Artists from "./Artists";
 import Studyo from "./Studyo";
+import LatestAlbums from "./Albums";
 
 export default function Home() {
   // const {user} = useAppHook();
@@ -30,6 +31,7 @@ export default function Home() {
            <img src="/xx.svg" alt="xx" className="absolute scale-95 mix-blend-screen saturate-150 -top-20 blur-2xl -right-1 rotate-6  object-cover" />
            <div className="flex z-[10] flex-col gap-[75px]">
             <Songs />
+            <LatestAlbums />
             <Artists/>
             <Hits/>
             <Studyo/>

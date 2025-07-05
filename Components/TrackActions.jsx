@@ -9,7 +9,7 @@ export default function TrackActions({ trackId }) {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="text-white bg-main px-3 py-1 rounded-full hover:bg-main/80"
+        className="text-white px-3 py-1 rounded-full"
       >
         <IoIosAddCircleOutline />
       </button>

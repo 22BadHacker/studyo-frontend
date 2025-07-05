@@ -167,7 +167,6 @@ useEffect(() => {
           <div className="w-full  z-[6] bg-gradient-to-r from-transparent via-[#0f0f0f]/0 to-[#000000]/85 absolute top-0 left-0 h-full" />
           
           <div className={`absolute overflow-hidden grid grid-cols-[.8fr_1fr_.8fr] top-0 left-0 right-0 w-full h-full `}>
-
               {user?.profile_image ? (
                 <>
                 {

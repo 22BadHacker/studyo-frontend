@@ -8,7 +8,7 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='min-h-screen pt-[190px] pb-[180px] '>
+    <div className='min-h-screen pt-[180px] pb-[180px] '>
         <div className="container flex flex-col gap-[30px] relative h-auto">
             <Library />
 

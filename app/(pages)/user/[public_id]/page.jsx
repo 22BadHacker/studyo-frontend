@@ -9,7 +9,8 @@ export async function generateMetadata({ params }) {
   const data = await res.json();
 
   return {
-    title: `${data.username} — 𝗦𝘁ü𝗱𝘆𝗼 `, // customize as needed
+    title: `${data.id === 123 ? '' : data.username} ${data.id === 123 ? '𝗦𝘁ü𝗱𝘆𝗼' : '— 𝗦𝘁ü𝗱𝘆𝗼'} `,
+    // title: `${data.id === 123 ? data.username : data.username} `,
   };
 }
 

@@ -59,8 +59,8 @@ const Songs = () => {
     <div className=''>
         <div className="w-full  flex items-end justify-between">
             <div className="flex pb-4 flex-col gap-2">
-                <h1 className='text-2xl  hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Discover this Week on Stüdyo</h1>
-                {/* <h1 className='text-2xl hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Discography</h1> */}
+                <h1 className='text-2xl flex gap-[7px] items-start hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Discover this Week on Stüdyo</h1>
+                
                 <div className="flex gap-3 items-center">
                     <p onClick={() => setTabs('popular')}  className={`text-[13px] cursor-pointer duration-200 ease-in-out py-[5px] ${tab === 'popular' ? 'text-main2 bg-white': 'bg-main2/60 backdrop-blur-2xl text-white'} capitalize px-4 rounded-full `}>popular releases</p>
                     <p onClick={() => setTabs('new')} className={`text-[13px] duration-200 cursor-pointer ease-in-out py-[5px] ${tab === 'new' ? 'text-main2 bg-white': 'bg-main2/60 backdrop-blur-2xl text-white'} capitalize px-4 rounded-full `}>New Songs</p>
@@ -236,7 +236,7 @@ const Songs = () => {
                                             <div className="w-full flex-col pt-[3px] flex gap-0">
                                                 <Link href={`/artist/${artist.public_id}`} className='text-lg relative hover:text-[#c42b1c] hover:underline -top-[1px]  ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>{artist.username}</Link>
                                                 <p className='text-[11px] font-semibold text-white/[.75px] '>@{artist.username}</p>
-                                                {/* <img className='inline-flex object-cover ml-[.5px] mb-[.6px] w-[16px]' src="/check.png" alt="" /> */}
+                                                
                                                 
                                             </div>
                                         </motion.div>

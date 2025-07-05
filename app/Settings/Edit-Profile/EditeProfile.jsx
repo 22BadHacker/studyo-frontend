@@ -104,7 +104,7 @@ export default function EditProfile() {
   return (
       <div className="max-w-[700px]  flex flex-col gap-[65px] mx-auto  w-full  ">
 
-            <Link href={'/Settings'} className='size-12 relative top-5  flex-center text-white bg-main2 rounded-full text-[23px]'><GoChevronLeft/></Link>
+            <Link href={'/'} className='size-12 relative top-5  flex-center text-white bg-main2 rounded-full text-[23px]'><GoChevronLeft/></Link>
           <div className="flex leading-tight items-end justify-between gap-7">
 
             <div className="link-wrapper   h-[58px]   cursor-pointer w-fit  font-[700] text-white font-NeueMontreal leading-tight  tracking-[0.015em] text-[55px]">

@@ -146,7 +146,7 @@ export default function Gallery() {
                   {/* Volume Controls */}
                   <div className="flex w-[40%] group items-center gap-3 mb-3">
                   
-                      <div className="flex w-[50%] p-3 cursor-pointer bg-black/50 rounded-full backdrop-blur-xl absolute top-1 left-1 gap-2 items-center">
+                      <div className="flex w-[50%] p-3 cursor-pointer  rounded-full backdrop-blur-xl absolute top-1 left-1 gap-2 items-center">
                           {volume === 0 ? <MdVolumeOff className='text-white' /> : <MdVolumeUp className='text-white' />}
                           <div className=" relative opacity-0 group-hover:opacity-100  z-[10] group-hover:w-[50%] w-0 flex-1 h-[5px] bg-white/60  overflow-hidden">
                               <div 

@@ -19,7 +19,7 @@ export default function SearchClient({ query }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [topResult, setTopResult] = useState(null);
-    const { playTrack, isPlaying, togglePlay } = useAudio();
+    const { playTrack, isPlaying, togglePlay, currentTrack } = useAudio();
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -103,7 +103,7 @@ export default function SearchClient({ query }) {
                         <div className="flex pt-7 flex-col gap-12 w-full h-auto">
                             {tabs === 'all' && (
                                 <>
-                                    <div className="grid grid-cols-[auto_1fr] gap-10">
+                                    <div className="grid grid-cols-[auto_1fr] gap-12">
                                         {topResult && (
                                             <div className="pt-1 pb-8">
                                                 <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Top Result</h2>
@@ -190,7 +190,7 @@ export default function SearchClient({ query }) {
                                             <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-2">Songs</h2>
                                             <div className="flex pt-[6px] flex-col gap-1 w-full">
                                                 {results.tracks.length > 0 ? results.tracks.slice(0, 4).map(track => (
-                                                    <div className="flex group py-2 hover:bg-main2/60 px-3 rounded justify-between" key={track.id}>
+                                                    <div className="flex group border-b-[.5px] border-b-white/10 py-2 hover:bg-main2/60 px-3 rounded justify-between" key={track.id}>
                                                         <div className="flex items-center gap-2">
                                                             <div className="size-[47px] relative overflow-hidden">
                                                                 <img
@@ -314,14 +314,15 @@ export default function SearchClient({ query }) {
                             {tabs === 'songs' && (
                                 <div className="flex flex-col gap-0">
                                     <h2 className="text-[26px] hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold pb-4">Songs</h2>
-                                    <div className="grid grid-cols-[1fr_.7fr_auto] pb-2 pt-5 border-b-[.5px] border-white/40 items-center px-4 justify-between">
-                                        <span className="flex gap-4 uppercase items-center text-[#fff]/70 font-semibold text-[13px]"><span>#</span> Title</span>
-                                        <span className="flex relative -left-[14px] gap-4 uppercase items-center text-[#fff]/70 font-semibold text-[13px]">Artist</span>
-                                        <span className="flex gap-4 uppercase items-center text-[#fff]/70 font-semibold text-[13px]">Duration</span>
+                                    <div className="grid  grid-cols-[1fr_.7fr_.7fr_auto] pb-2 pt-5 border-b-[.5px] border-white/40 items-center px-4 justify-between">
+                                        <span className="flex gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]"><span>#</span> Title</span>
+                                        <span className="flex relative -left-[18px] gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Album</span>
+                                        <span className="flex relative -left-[25px] gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Artist</span>
+                                        <span className="flex gap-4 relative -left-[4px] uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Duration</span>
                                     </div>
-                                    <div className="space-y-2 pt-1">
+                                    <div className="space-y-1 pt-1">
                                         {results.tracks.length > 0 ? results.tracks.map((track, i) => (
-                                            <div className="w-full group py-2 hover:bg-main2/60 px-3 rounded grid grid-cols-[1fr_.7fr_auto] items-center justify-between" key={track.id}>
+                                            <div className="w-full group py-2 border-b-[.5px] border-white/10 hover:bg-main2/60 px-3 rounded grid grid-cols-[1fr_.7fr_.7fr_auto] items-center justify-between" key={track.id}>
                                                 <div className="flex items-center gap-4">
                                                     <span onClick={() => playTrack({
                                                         id: track.id,
@@ -338,12 +339,13 @@ export default function SearchClient({ query }) {
                                                         className="size-11 saturate-150 object-cover rounded-sm"
                                                     />
                                                     <div className="flex gap-1 flex-col">
-                                                        <span className={`font-medium ${isPlaying.id === track.id ? 'text-green-500' : 'text-[#fff]/95'} text-[16.5px]`}>{track.title}</span>
-                                                        <span>{track.albums?.title}</span>
+                                                        <span className={`font-medium ${isPlaying && currentTrack.id === track.id ? 'text-green-500' : 'text-white/85'}font-semibold font-NeueMontreal  text-[15px]`}>{track.title}</span>
+                                                        
                                                     </div>
                                                 </div>
+                                                <Link href={`/album/${track.album.public_id}`} className='font-semibold hover:underline font-NeueMontreal text-white/85 text-[15px]'>{track.album?.title}</Link>
                                                 <Link href={`/artist/${track.user.public_id}`} className="flex hover:underline hover:text-white items-center gap-4">
-                                                    <span className="font-medium text-[#fff] font-NeueMontreal text-[16px]">{track.user?.username}</span>
+                                                    <span className="font-semibold font-NeueMontreal text-white/85 text-[15px] ">{track.user?.username}</span>
                                                 </Link>
                                                 <div className="flex gap-3 items-center">
                                                     <IoIosAddCircleOutline className='text-[17px] relative right-2 opacity-0 group-hover:opacity-100' />

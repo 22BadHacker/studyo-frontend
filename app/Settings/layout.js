@@ -4,13 +4,8 @@ import Footer from '@/Component/Footer'
 
 const layout = ({children}) => {
   return (
-    <div className='min-h-screen grid  grid-rows-[auto_1fr_auto] relative w-full  items-center flex-col gap-[70px]  bg-[#111011]'>
-        <Nav />
-
-        <div className="flex flex-col gap-4 container">
-          <h1 className='cursor-pointer w-fit  font-NeueMontreal uppercase leading-[.85]  text-[#d8262c] font-[600] tracking-[0.015em] text-[8vw] '>Settings </h1>
-        </div>
-           
+    <div className='min-h-screen  h-auto   relative w-full  items-center flex-col   bg-[#111011]'>
+        <Nav />          
 
        <div className="w-full  flex justify-center">
           {children}

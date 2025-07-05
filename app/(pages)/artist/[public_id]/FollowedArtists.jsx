@@ -26,7 +26,7 @@ const FollowedArtists = ({ userId, public_id }) => {
   if (!artists.length) return null
 
   return (
-    <div className='flex flex-col gap-0 '>
+    <div className='flex flex-col gap-0 pt-10 '>
         <div className="w-full flex justify-between items-center">
             <h1 className='text-2xl hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold'>Artists You Follow</h1>
             <Link className='text-[#aeaeae] font-NeueMontreal text-[15px] hover:underline ease-in-out duration-200 font-semibold' href={`/user/${public_id}/following`}>Show all</Link>

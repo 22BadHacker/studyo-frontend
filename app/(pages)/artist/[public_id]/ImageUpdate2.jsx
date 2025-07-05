@@ -17,7 +17,7 @@ const UploadProfileImageButton2 = () => {
   const [successMsg, setSuccessMsg] = useState('');
 
   // const { authToken} = useAppHook();
-  const { playTrack, isPlaying, togglePlay, setQueue} = useAudio();
+  const { playTrack, isPlaying, togglePlay, setQueue, currentTrack} = useAudio();
 
   // const playMusic = () => {
   //   playTrack({

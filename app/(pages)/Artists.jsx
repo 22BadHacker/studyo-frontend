@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { IoMdPlay } from 'react-icons/io'
+import { IoMdPause, IoMdPlay } from 'react-icons/io'
 import { IoChevronForwardSharp, IoChevronBackSharp } from "react-icons/io5"
 import { tracks } from '@/Data/data'
 import { useAudio } from '@/context/AudioProvider'
@@ -78,11 +78,12 @@ const Artists = () => {
   }
 
   return (
-    <div className="pt-5">
+    <div className="pt-0">
       <div className="flex pb-3 relative flex-col gap-2">
-        <h1 className='text-2xl flex gap-[6px] pb-3 items-center hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold'>
-          Verified Artist <img src="/check.png" className='size-[21px]' alt="" />
-        </h1>
+        {/* <h1 className='text-2xl flex gap-[7px] pb-3 items-start hover:underline ease-in-out duration-200 w-fit cursor-pointer text-white/95 font-NeueMontreal font-semibold'>
+          <span className='bg-[#c42b1c] relative top-1.5 w-[2px] h-[20px] '></span>Fan Favorites
+        </h1> */}
+        <h1 className='text-2xl relative group  flex gap-[7px] items-start  ease-in-out duration-200 w-fit cursor-pointer   hover:text-[#c42b1c] font-NeueMontreal font-semibold'><span className='bg-[#c42b1c] duration-200 ease-in-out group-hover:opacity-0 absolute top-1/2  opacity-90 w-full h-[2.5px]  '></span>Fan Favorites</h1>
 
         <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className="w-full h-auto relative">
           {hover && showLeft && (
@@ -121,9 +122,10 @@ const Artists = () => {
                     )}
                     <span 
                       onClick={() => handlePlayAll(artist)} 
-                      className="size-[50px] bottom-3 duration-200 ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full"
+                      className={`size-[50px] bottom-3 duration-200 ease-in-out ${isPlaying && currentTrack?.id === artist.tracks[0]?.id ? 'opacity-100' : 'group-hover:opacity-100 opacity-0'}  text-[18px] right-3 flex-center absolute bg-green-500 backdrop-blur-[50px] text-[#222222] rounded-full`}
                     >
-                      <IoMdPlay />
+                      {isPlaying && currentTrack?.id === artist.tracks[0]?.id ? <IoMdPause /> : <IoMdPlay />}
+                      
                     </span>
                   </div>
                   <Link href={`/artist/${artist.public_id}`} className="h-[26px] relative inline-block overflow-hidden font-NeueMontreal font-semibold mt-4 text-[16.5px] text-white capitalize text-lg">

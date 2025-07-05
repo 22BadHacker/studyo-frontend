@@ -53,13 +53,6 @@ const Track = ({owner}) => {
   }, [public_id]);
 
 
-    // const play = (track) => playTrack({
-    //   id: track.id,
-    //   title: track.title,
-    //   artist: 'null',
-    //   cover: `http://localhost:8000/storage/${track.cover_image}`,
-    //   src: `http://localhost:8000/storage/${tracks.file_path}`
-    // })
       
 
 
@@ -110,7 +103,7 @@ const Track = ({owner}) => {
                     <ul className="">
                       
                       {tracksToShow.map((track , i) => (
-                        <div  className={`w-full group py-2 ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : 'hover:bg-main2/60'} px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between`} key={track.id}>
+                        <div  className={`w-full group border-b-[.5px] border-b-white/10 py-2 ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : 'hover:bg-main2/60'} px-3 rounded  grid grid-cols-[1fr_.7fr_auto] items-center justify-between`} key={track.id}>
                             <div   className="flex relative items-center gap-4">
                                 
 
@@ -139,7 +132,7 @@ const Track = ({owner}) => {
                             </div>
 
                             <div className="flex gap-3 items-center">
-                              <span className=" text-[17px] relative right-2 opacity-0 group-hover:opacity-100 ">
+                              <span className=" text-[17px] relative right-2  ">
                                 {/* <IoIosAddCircleOutline className=''/> */}
                                 <TrackActions trackId = {track.id} />
 

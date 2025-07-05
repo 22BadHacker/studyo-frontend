@@ -15,7 +15,6 @@ import { useAppHook } from '@/context/AppProvider'
 const Playlist = () => {
   const { public_id } = useParams()
   const [playlist, setPlaylist] = useState(null)
-  const [albums, setAlbums] = useState(null)
   const [hover, setHover] = useState(false);
    const { playTrack, isPlaying, togglePlay, setQueue, currentTrack} = useAudio();
   const [morePlaylists, setMorePlaylists] = useState([])
@@ -30,7 +29,6 @@ const Playlist = () => {
       })
         .then(res => {
           setPlaylist(res.data.playlist)
-          setAlbums(res.data.albums)
           setMorePlaylists(res.data.more_playlists)
         })
         .catch(err => console.error(err))
@@ -110,20 +108,11 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
       <div className="">
         <div className="flex flex-col gap-3">
             <h2 className=" pt-[75px]  cursor-pointer w-fit  font-NeueMontreal capitalize leading-[.85]   text-[#fff] font-[600] tracking-[0.015em] text-[1.5vw] ">Playlist Songs</h2>
-                
-                <div className="grid  grid-cols-[1fr_.7fr_.7fr_auto] pb-2 pt-5 border-b-[.5px] border-white/40 items-center px-4 justify-between">
-                        {/* <span className="flex gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]"><span>#</span> Title</span>
-                        <span className="flex relative -left-[18px] gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Album</span>
-                        <span className="flex relative -left-[25px] gap-4 uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Artist</span>
-                        <span className="flex gap-4 relative -left-[4px] uppercase items-center font-NeueMontreal text-[#fff]/70 font-medium text-[11px]">Duration</span> */}
-                    </div>
 
             
-                  <ul className="w-full grid grid-cols-1 gap-x-10 gap-y-2 pt-4">
+                  <ul className="w-full grid grid-cols-2 gap-x-10 gap-y-2 pt-4">
                     {playlist.tracks.map((track, i) => (
                       <div className={`w-full p-1 relative rounded-md h-fit group ${isPlaying && currentTrack.id === track.id ? 'bg-main2/60' : ''} hover:bg-main2/60   flex items-center justify-between gap-3  `} key={track.id}>
-
-
 
                         <div className="flex gap-2 items-center">
 
@@ -142,9 +131,6 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
                                     src: `http://localhost:8000/storage/${track.file_path}`
                                 })}  className={`text-white bg-black/50 top-0 left-0 absolute size-full  cursor-pointer flex-center  text-[18px] ${isPlaying && currentTrack.id === track.id ? 'opacity-100 text-green-500' : 'opacity-0 group-hover:opacity-100'} flex-center font-semibold  mr-1`}><IoMdPlay /> </span>
                           </div>
-
-
-                          {albums.id === track.album_id && <span>{albums.title}</span>}
 
 
                             <div className="flex flex-col leading-snug">
@@ -178,36 +164,34 @@ if (!playlist) return <div className='h-screen flex-center container'> <svg clas
 
       
 
+      <h2 className="text-2xl flex items-center gap-2 pt-20 pb-[6px] hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">More Playlists by <img  className='size-[32px] object-cover rounded-full' src={`http://localhost:8000/${playlist.user.profile_image}`}  alt="" /> {playlist.user.username}</h2>
       
 
         {morePlaylists.length > 0 ? (
-          <>
-          <h2 className="text-2xl flex items-center gap-2 pt-20 pb-[6px] hover:underline ease-in-out duration-200 w-fit cursor-pointer   text-white/95 font-NeueMontreal font-semibold">More Playlists by <img  className='size-[32px] object-cover rounded-full' src={`http://localhost:8000/${playlist.user.profile_image}`}  alt="" /> {playlist.user.username}</h2>
-          <div className=' relative -left-2 w-full  grid grid-cols-8 gap-[2px]'>
-            {morePlaylists.map(playlist => (
-              <Link href={`/playlist/${playlist.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group  flex-col gap-[6px]' key={playlist.id}>
-                <div className="relative ">
-                    <img className='h-[176px]  w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${playlist.cover_image}`} alt={playlist.name} />
-                    <span className="size-[45px] bottom-2 duration-200  ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-2 flex-center absolute bg-green-500 shadow-2xl backdrop-blur-[50px] text-[#222222] rounded-full">
-                      <IoMdPlay />
-                    </span>
+        <div className=' relative -left-2 w-full  grid grid-cols-8 gap-[2px]'>
+          {morePlaylists.map(playlist => (
+            <Link href={`/playlist/${playlist.public_id}`} className='flex cursor-pointer rounded-md w-fit hover:bg-[#1f1f1f]/50 duration-200 ease-in-out p-2 group  flex-col gap-[6px]' key={playlist.id}>
+              <div className="relative ">
+                  <img className='h-[176px]  w-[190px] saturate-[1.4] rounded-sm object-cover' src={`http://localhost:8000/storage/${playlist.cover_image}`} alt={playlist.name} />
+                  <span className="size-[45px] bottom-2 duration-200  ease-in-out group-hover:opacity-100 opacity-0 text-[18px] right-2 flex-center absolute bg-green-500 shadow-2xl backdrop-blur-[50px] text-[#222222] rounded-full">
+                    <IoMdPlay />
+                  </span>
 
-                </div>
+              </div>
 
-                <div className="flex flex-col gap-[2px]">
-                  
-                    <h5 className="font-semibold line-clamp-2    tracking-wide leading-tight mt-1 text-[16.5px] font-NeueMontreal text-white capitalize text-lg">{playlist.name}</h5>
+               <div className="flex flex-col gap-[2px]">
+                
+                  <h5 className="font-semibold line-clamp-2    tracking-wide leading-tight mt-1 text-[16.5px] font-NeueMontreal text-white capitalize text-lg">{playlist.name}</h5>
 
-                  <p className='text-[12.5px] pt-1 capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(playlist.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> playlist</p>
+                <p className='text-[12.5px] pt-1 capitalize flex items-end gap-[3.5px] font-normal font-NeueMontreal relative -top-[2px] text-white/75'>{new Date(playlist.release_date).getFullYear()} <span className='bg-[#9d9d9d] relative -top-[5px] size-1 rounded-full'></span> playlist</p>
 
-                </div>
-                {/* <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p> */}
-              </Link>
-            ))}
-          </div>
-          </>
+              </div>
+              {/* <p className="text-[12px] capitalize font-normal font-NeueMontreal relative -top-[2px] text-white/75">@{artist.username}</p> */}
+            </Link>
+          ))}
+        </div>
       ) : (
-        null
+        <p>No playlists found</p>
       )}
 
           
